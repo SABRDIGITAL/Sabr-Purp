@@ -3,102 +3,613 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SABR DIGITAL</title>
+  <title>Sabr Purp – Futuristic Web Design Studio</title>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            midnight: "#0A0214",
-            neonpurple: "#9A4DFF",
-            softglow: "rgba(154,77,255,0.25)",
+            midnight: "#05010B",
+            midnightSoft: "#0B0516",
+            neonPurple: "#B36CFF",
+            neonSoft: "rgba(179,108,255,0.25)",
+            ice: "#E7E1FF",
           },
-          dropShadow: {
-            glow: "0 0 12px rgba(154,77,255,0.75)",
+          boxShadow: {
+            glow: "0 0 30px rgba(179,108,255,0.7)",
+            softGlow: "0 0 18px rgba(179,108,255,0.45)",
           },
         }
       }
     }
   </script>
 
-  <!-- Smooth fade -->
   <style>
-    body { background: #0A0214; font-family: Inter, sans-serif; }
-    .glow-border { box-shadow: 0 0 20px rgba(154,77,255,0.4); }
+    body {
+      background: radial-gradient(circle at top, #1A0730 0, #05010B 45%, #020009 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro", "Inter", sans-serif;
+    }
     .grid-bg {
-      background-image: linear-gradient(to right, rgba(154,77,255,0.1) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(154,77,255,0.1) 1px, transparent 1px);
-      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(179,108,255,0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(179,108,255,0.08) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+    .blob {
+      filter: blur(60px);
+      opacity: 0.65;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 700ms ease-out, transform 700ms ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 
 <body class="text-white overflow-x-hidden">
 
+  <!-- Background glow blobs -->
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="blob absolute -top-20 -left-10 w-72 h-72 bg-neonPurple/40 rounded-full"></div>
+    <div class="blob absolute top-40 -right-10 w-80 h-80 bg-fuchsia-500/30 rounded-full"></div>
+    <div class="blob absolute bottom-10 left-1/3 w-72 h-72 bg-indigo-500/25 rounded-full"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-30 bg-midnight/80 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-5 py-4">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-neonPurple to-fuchsia-500 shadow-softGlow flex items-center justify-center text-xs font-bold tracking-[0.15em]">
+          SP
+        </div>
+        <div>
+          <div class="font-semibold tracking-wide text-sm md:text-base">Sabr Purp</div>
+          <div class="text-xs text-ice/60">Futuristic Web Studio • Wiltshire</div>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm text-ice/80">
+        <a href="#work" class="hover:text-neonPurple transition">Examples</a>
+        <a href="#process" class="hover:text-neonPurple transition">Process</a>
+        <a href="#pricing" class="hover:text-neonPurple transition">Pricing</a>
+        <a href="#faq" class="hover:text-neonPurple transition">FAQ</a>
+      </nav>
+
+      <a href="#contact"
+         class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-neonPurple text-black text-sm font-semibold shadow-glow hover:bg-white transition">
+        Get a Website
+      </a>
+    </div>
+  </header>
+
   <!-- HERO -->
-  <section class="relative grid-bg py-32 px-6">
-    <div class="max-w-3xl mx-auto text-center">
-      <h1 class="text-5xl font-bold drop-shadow-glow">
-        Websites That Feel<br/>
-        <span class="text-neonpurple drop-shadow-glow">Futuristic. Premium. Trustworthy.</span>
-      </h1>
+  <section class="relative grid-bg">
+    <div class="max-w-6xl mx-auto px-5 py-20 md:py-28 flex flex-col md:flex-row gap-12 items-center">
+      <!-- Left -->
+      <div class="md:w-3/5 fade-in">
+        <p class="inline-flex items-center gap-2 text-xs font-medium tracking-[0.2em] uppercase text-ice/60 mb-5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Live in Wiltshire • Work with clients anywhere
+        </p>
 
-      <p class="mt-6 text-xl text-purple-200">
-        We build luxury, high-performance websites for barbers, tattoo studios, cafés & tradesmen in Wiltshire.
-      </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight">
+          Luxury, futuristic websites
+          <span class="block text-neonPurple drop-shadow-glow">that make small businesses feel big.</span>
+        </h1>
 
-      <div class="mt-10 flex justify-center gap-5">
-        <a href="#work"
-          class="px-8 py-3 rounded-xl bg-neonpurple text-black font-semibold drop-shadow-glow hover:bg-white transition">
-          View Our Work
-        </a>
+        <p class="mt-6 text-base md:text-lg text-ice/80 max-w-xl">
+          Sabr Purp builds high-trust, high-conversion websites for barbers, tattoo studios, cafés and trades.
+          You focus on the work – we design the digital shopfront that makes people actually want to visit you.
+        </p>
 
-        <a href="#contact"
-          class="px-8 py-3 rounded-xl border border-neonpurple text-neonpurple hover:bg-neonpurple hover:text-black transition">
-          Get a Quote
-        </a>
+        <!-- Trust bar -->
+        <div class="mt-8 grid grid-cols-2 gap-4 text-xs text-ice/70">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-lg">🛡️</div>
+            <div>
+              <div class="font-semibold text-ice">Trust-first design</div>
+              <div>Clear, modern layouts that feel professional at a glance.</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-lg">⚡</div>
+            <div>
+              <div class="font-semibold text-ice">Lightweight & fast</div>
+              <div>Optimised for speed on mobile and desktop.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a href="#contact"
+             class="px-6 py-3 rounded-xl bg-neonPurple text-black font-semibold shadow-glow hover:bg-white transition text-sm md:text-base">
+            Book a free website chat
+          </a>
+          <a href="#work"
+             class="px-6 py-3 rounded-xl border border-neonPurple/60 text-ice/90 hover:bg-neonPurple/10 transition text-sm md:text-base">
+            See example builds
+          </a>
+        </div>
+
+        <!-- Micro trust line -->
+        <p class="mt-4 text-xs text-ice/60">
+          No pressure, no jargon – just honest advice on what your business actually needs online.
+        </p>
+      </div>
+
+      <!-- Right: “preview” card -->
+      <div class="md:w-2/5 fade-in md:delay-200">
+        <div class="relative rounded-3xl bg-midnightSoft/90 border border-white/10 shadow-softGlow p-5 md:p-6">
+          <div class="flex items-center justify-between text-xs text-ice/70 mb-4">
+            <span class="inline-flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Live demo mockup
+            </span>
+            <span>Barber Studio • Tattoo • Café</span>
+          </div>
+
+          <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-midnightSoft to-black/80 overflow-hidden border border-neonPurple/25 relative">
+            <div class="absolute inset-0 grid-bg opacity-50"></div>
+            <div class="absolute top-4 left-4 text-[10px] uppercase tracking-[0.3em] text-ice/50">
+              Sabr Purp Layout
+            </div>
+
+            <div class="absolute inset-x-5 bottom-4 flex flex-col gap-2 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="text-ice/80 font-medium">Faded Edge Barber Co.</span>
+                <span class="px-3 py-1 rounded-full bg-black/60 border border-white/10 text-[10px]">Booked out</span>
+              </div>
+              <div class="w-full h-1 rounded-full bg-white/10 overflow-hidden">
+                <div class="h-full w-4/5 bg-gradient-to-r from-neonPurple to-fuchsia-500"></div>
+              </div>
+              <p class="text-ice/70">
+                “After launching the new site, we started getting proper enquiries from people who had never heard of us before.”
+              </p>
+            </div>
+          </div>
+
+          <p class="mt-4 text-xs text-ice/70">
+            Every website is tailored to your brand, colours and vibe – this is just one possible layout.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section class="py-28 px-6">
-    <h2 class="text-center text-3xl font-bold text-purple-200 mb-14">Why Businesses Choose Us</h2>
+  <!-- STATS -->
+  <section class="py-16 md:py-20 border-t border-white/5 bg-black/20">
+    <div class="max-w-5xl mx-auto px-5 fade-in">
+      <h2 class="text-center text-2xl md:text-3xl font-semibold text-ice mb-10">
+        Your customers are judging your business by your website – even before they step through the door.
+      </h2>
 
-    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-      <div class="p-8 rounded-2xl glow-border bg-midnight border border-softglow">
-        <h3 class="text-neonpurple text-xl font-semibold mb-3">Professional Presence</h3>
-        <p class="text-purple-200">First impressions matter. Your site will feel premium, clean and trustworthy.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl bg-midnightSoft border border-neonSoft p-6 text-center">
+          <div class="text-5xl font-bold text-neonPurple drop-shadow-glow">38%</div>
+          <p class="mt-3 text-sm text-ice/80">
+            of people decide whether to trust a business based purely on how professional the website looks.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-midnightSoft border border-neonSoft p-6 text-center">
+          <div class="text-5xl font-bold text-neonPurple drop-shadow-glow">70%</div>
+          <p class="mt-3 text-sm text-ice/80">
+            check a website before visiting a barber, tattoo studio, café or tradesperson in real life.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-midnightSoft border border-neonSoft p-6 text-center">
+          <div class="text-5xl font-bold text-neonPurple drop-shadow-glow">88%</div>
+          <p class="mt-3 text-sm text-ice/80">
+            won’t return after a bad online experience – slow, messy, or confusing websites cost repeat business.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE BUILD FOR -->
+  <section class="py-18 md:py-24">
+    <div class="max-w-6xl mx-auto px-5 fade-in">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold text-ice">Designed around real, local businesses</h2>
+          <p class="mt-3 text-sm md:text-base text-ice/75 max-w-xl">
+            We’re based in Neston, Wiltshire – which means we understand small, independent businesses.
+            Your site needs to look sharp, load fast and make it dead-easy for someone to contact or visit you.
+          </p>
+        </div>
+        <p class="text-xs text-ice/60 md:text-right">
+          Ideal for: barbers • tattoo studios • cafés • electricians • plumbers • builders • beauty & nails • PTs
+        </p>
       </div>
 
-      <div class="p-8 rounded-2xl glow-border bg-midnight border border-softglow">
-        <h3 class="text-neonpurple text-xl font-semibold mb-3">Modern & Futuristic</h3>
-        <p class="text-purple-200">A tech-driven aesthetic that sets you apart and keeps users engaged.</p>
+      <div class="grid md:grid-cols-4 gap-5 text-sm">
+        <div class="rounded-2xl bg-midnightSoft border border-white/10 p-5">
+          <div class="text-xl mb-2">💈 Barbers</div>
+          <p class="text-ice/75">
+            Clean price lists, gallery of your cuts, booking links and opening times – all in one place.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-midnightSoft border border-white/10 p-5">
+          <div class="text-xl mb-2">🖋️ Tattoo studios</div>
+          <p class="text-ice/75">
+            Artist portfolios, FAQs, aftercare info and simple enquiry forms that filter serious clients.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-midnightSoft border border-white/10 p-5">
+          <div class="text-xl mb-2">☕ Cafés & food</div>
+          <p class="text-ice/75">
+            Menus, specials, location, opening hours and vibes – so people know why they should choose you.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-midnightSoft border border-white/10 p-5">
+          <div class="text-xl mb-2">🛠️ Trades</div>
+          <p class="text-ice/75">
+            Services, areas covered, testimonials and photo proof so people trust you with their home or project.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="py-18 md:py-24 bg-black/25 border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-5 fade-in">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold text-ice">A simple, done-for-you process</h2>
+          <p class="mt-3 text-sm md:text-base text-ice/75 max-w-xl">
+            No confusing tech talk. No endless forms. Just a clear path from “idea” to “ready to show the world”.
+          </p>
+        </div>
+        <p class="text-xs text-ice/60 md:text-right">
+          Average turnaround: a few days from content agreement
+        </p>
       </div>
 
-      <div class="p-8 rounded-2xl glow-border bg-midnight border border-softglow">
-        <h3 class="text-neonpurple text-xl font-semibold mb-3">Done-For-You</h3>
-        <p class="text-purple-200">We handle everything—design, build, launch and handover.</p>
+      <div class="relative">
+        <div class="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-neonPurple via-neonPurple/40 to-transparent md:left-1/2"></div>
+
+        <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-14">
+          <!-- Step 1 -->
+          <div class="relative md:text-right md:pr-12">
+            <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-2 w-7 h-7 rounded-full border border-neonPurple bg-midnightSoft flex items-center justify-center text-xs">
+              1
+            </div>
+            <h3 class="text-lg font-semibold text-ice mt-8 md:mt-0">Quick discovery chat</h3>
+            <p class="mt-2 text-sm text-ice/75">
+              We talk through your business, goals, and any existing branding or socials you already have.
+            </p>
+            <p class="mt-2 text-xs text-ice/60">
+              What this means for you: you stay in control of your vibe, while we handle the structure and tech.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative md:pl-12">
+            <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-2 w-7 h-7 rounded-full border border-neonPurple bg-midnightSoft flex items-center justify-center text-xs">
+              2
+            </div>
+            <h3 class="text-lg font-semibold text-ice mt-8 md:mt-0">Content & layout plan</h3>
+            <p class="mt-2 text-sm text-ice/75">
+              We sketch a simple layout: sections, pages, copy prompts and image ideas – all tailored to your customers.
+            </p>
+            <p class="mt-2 text-xs text-ice/60">
+              What this means for you: no blank-page stress and no guessing what should go where.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative md:text-right md:pr-12">
+            <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-2 w-7 h-7 rounded-full border border-neonPurple bg-midnightSoft flex items-center justify-center text-xs">
+              3
+            </div>
+            <h3 class="text-lg font-semibold text-ice mt-8 md:mt-0">Design & build</h3>
+            <p class="mt-2 text-sm text-ice/75">
+              We design your site in our midnight-purple, futuristic style – or adapt to your existing brand colours.
+            </p>
+            <p class="mt-2 text-xs text-ice/60">
+              What this means for you: you can preview the site and request tweaks before anything goes live.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="relative md:pl-12">
+            <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-2 w-7 h-7 rounded-full border border-neonPurple bg-midnightSoft flex items-center justify-center text-xs">
+              4
+            </div>
+            <h3 class="text-lg font-semibold text-ice mt-8 md:mt-0">Launch & handover</h3>
+            <p class="mt-2 text-sm text-ice/75">
+              We connect your domain, set up basic SEO, and give you a simple handover guide so you’re never “stuck”.
+            </p>
+            <p class="mt-2 text-xs text-ice/60">
+              What this means for you: you own your website – we’re here for ongoing maintenance if you want it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXAMPLES / WORK -->
+  <section id="work" class="py-18 md:py-24">
+    <div class="max-w-6xl mx-auto px-5 fade-in">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold text-ice">Example layouts from Sabr Purp</h2>
+          <p class="mt-3 text-sm md:text-base text-ice/75 max-w-xl">
+            These showcase projects illustrate the standard of design and functionality we deliver.
+            Once client sites are live, we’ll replace these with real case studies.
+          </p>
+        </div>
+        <p class="text-xs text-ice/60 md:text-right">
+          Scroll, explore and imagine your branding in these layouts.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 text-sm">
+        <!-- Card 1 -->
+        <article class="rounded-2xl bg-midnightSoft border border-white/10 overflow-hidden flex flex-col">
+          <div class="h-40 bg-gradient-to-br from-neonPurple/40 via-fuchsia-500/25 to-black grid-bg"></div>
+          <div class="p-5 flex-1 flex flex-col">
+            <h3 class="font-semibold text-ice">Barber Studio Layout</h3>
+            <p class="mt-2 text-ice/75">
+              Hero with price highlights, gallery of cuts, services list, opening times, Google Maps embed & contact form.
+            </p>
+            <ul class="mt-3 space-y-1 text-ice/65 text-xs">
+              <li>• Built for quick scrollers on mobile</li>
+              <li>• Strong calls-to-action for bookings</li>
+              <li>• Instagram-style gallery panels</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="rounded-2xl bg-midnightSoft border border-white/10 overflow-hidden flex flex-col">
+          <div class="h-40 bg-gradient-to-br from-indigo-500/35 via-neonPurple/35 to-black grid-bg"></div>
+          <div class="p-5 flex-1 flex flex-col">
+            <h3 class="font-semibold text-ice">Tattoo Studio Layout</h3>
+            <p class="mt-2 text-ice/75">
+              Artist sections, flash gallery, FAQ, studio rules and simple enquiry forms that reduce back-and-forth DM chaos.
+            </p>
+            <ul class="mt-3 space-y-1 text-ice/65 text-xs">
+              <li>• Highlights “style” rather than price haggling</li>
+              <li>• Clear booking expectations & deposits info</li>
+              <li>• Aftercare page linked from navigation</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="rounded-2xl bg-midnightSoft border border-white/10 overflow-hidden flex flex-col">
+          <div class="h-40 bg-gradient-to-br from-purple-700/40 via-neonPurple/25 to-black grid-bg"></div>
+          <div class="p-5 flex-1 flex flex-col">
+            <h3 class="font-semibold text-ice">Local Trades Layout</h3>
+            <p class="mt-2 text-ice/75">
+              Service overview, areas covered map, trust badges, testimonials and “call / WhatsApp” buttons always visible.
+            </p>
+            <ul class="mt-3 space-y-1 text-ice/65 text-xs">
+              <li>• Built for people who just want a quote</li>
+              <li>• Proof photos front and centre</li>
+              <li>• Designed to look reliable, not flashy</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-18 md:py-24 bg-black/25 border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-5 fade-in">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ice">Simple, transparent pricing</h2>
+        <p class="mt-3 text-sm md:text-base text-ice/75 max-w-2xl mx-auto">
+          We keep pricing straightforward so you can make a decision quickly.
+          No surprise “extra” design fees later.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 text-sm">
+        <!-- Full build -->
+        <div class="rounded-2xl bg-midnightSoft border border-neonPurple/50 shadow-softGlow p-6 flex flex-col">
+          <div class="text-xs font-semibold tracking-[0.2em] uppercase text-ice/60 mb-1">Most popular</div>
+          <h3 class="text-lg font-semibold text-ice">Full Website Build</h3>
+          <p class="mt-2 text-ice/75 flex-1">
+            From-scratch design & build for your business. Ideal if you don’t have a proper website yet.
+          </p>
+          <div class="mt-4">
+            <div class="text-3xl font-semibold text-neonPurple">£250</div>
+            <div class="text-xs text-ice/60">One-time fee</div>
+          </div>
+          <ul class="mt-4 space-y-1.5 text-ice/70 text-xs">
+            <li>• Custom design in Sabr Purp style</li>
+            <li>• Up to 5 core pages (Home, About, Services, Gallery, Contact)</li>
+            <li>• Mobile-first build & basic SEO</li>
+            <li>• Handover guide so you’re never lost</li>
+          </ul>
+        </div>
+
+        <!-- Remap -->
+        <div class="rounded-2xl bg-midnightSoft border border-white/10 p-6 flex flex-col">
+          <h3 class="text-lg font-semibold text-ice">Website Remap</h3>
+          <p class="mt-2 text-ice/75 flex-1">
+            Already have a site but it feels clunky or outdated? We rebuild it so it finally matches your standards.
+          </p>
+          <div class="mt-4">
+            <div class="text-3xl font-semibold text-neonPurple">£200</div>
+            <div class="text-xs text-ice/60">One-time fee</div>
+          </div>
+          <ul class="mt-4 space-y-1.5 text-ice/70 text-xs">
+            <li>• Full redesign of key pages</li>
+            <li>• Reworked copy & structure</li>
+            <li>• Speed & mobile improvements</li>
+          </ul>
+        </div>
+
+        <!-- Maintenance -->
+        <div class="rounded-2xl bg-midnightSoft border border-white/10 p-6 flex flex-col">
+          <h3 class="text-lg font-semibold text-ice">Ongoing Upkeep</h3>
+          <p class="mt-2 text-ice/75 flex-1">
+            We keep things updated, tuned and tidy so you’re never worrying about “breaking” your website.
+          </p>
+          <div class="mt-4">
+            <div class="text-3xl font-semibold text-neonPurple">£75</div>
+            <div class="text-xs text-ice/60">Per month</div>
+          </div>
+          <ul class="mt-4 space-y-1.5 text-ice/70 text-xs">
+            <li>• Small changes & content updates</li>
+            <li>• Regular checks on performance</li>
+            <li>• Priority support via email</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="mt-6 text-xs text-center text-ice/60">
+        Not sure which option fits you? Message us with your current situation and we’ll tell you honestly what we’d do in your shoes.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-18 md:py-24">
+    <div class="max-w-4xl mx-auto px-5 fade-in">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ice">Questions you might be thinking</h2>
+        <p class="mt-3 text-sm md:text-base text-ice/75">
+          If you’re unsure or nervous about getting a website made, that’s normal.
+          Here are straight answers – no fluffy agency speak.
+        </p>
+      </div>
+
+      <div class="space-y-4 text-sm">
+        <details class="group rounded-2xl bg-midnightSoft border border-white/10 px-5 py-4">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-ice/95">“We’re tiny. Is a website actually worth it?”</span>
+            <span class="text-xs text-ice/60 group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-3 text-ice/75">
+            Yes – especially for local service businesses. People search your name on Google or Instagram and expect to
+            see a proper link. A clean, modern site instantly makes you feel more established than competitors who only
+            have a Facebook page.
+          </p>
+        </details>
+
+        <details class="group rounded-2xl bg-midnightSoft border border-white/10 px-5 py-4">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-ice/95">“I’m not good with tech – will I be able to update it?”</span>
+            <span class="text-xs text-ice/60 group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-3 text-ice/75">
+            We keep things simple and give you a basic handover guide. If you’d rather not touch anything,
+            our maintenance option means you can just send us changes when needed.
+          </p>
+        </details>
+
+        <details class="group rounded-2xl bg-midnightSoft border border-white/10 px-5 py-4">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-ice/95">“Do we need to pay for anything else?”</span>
+            <span class="text-xs text-ice/60 group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-3 text-ice/75">
+            You’ll need a domain name (like <span class="text-neonPurple">yourbusiness.co.uk</span>)
+            and a website platform/subscription. We’ll walk you through the cheapest and cleanest option for your situation.
+          </p>
+        </details>
+
+        <details class="group rounded-2xl bg-midnightSoft border border-white/10 px-5 py-4">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-ice/95">“What if I don’t like the design?”</span>
+            <span class="text-xs text-ice/60 group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-3 text-ice/75">
+            Before anything goes live, you’ll see the site and can request reasonable tweaks.
+            We’d rather spend a bit longer getting it right than rush something you’re not proud to show off.
+          </p>
+        </details>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="py-32 px-6 bg-black/20">
-    <div class="max-w-xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-purple-200 mb-5">Let's Build Your Website</h2>
-      <p class="mb-10 text-purple-300">Email us and we’ll get back to you within 24 hours.</p>
+  <section id="contact" class="py-20 md:py-24 bg-black/40 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-5 fade-in">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ice">Ready for a website that actually feels like you?</h2>
+        <p class="mt-3 text-sm md:text-base text-ice/75">
+          Tell us a bit about your business and what you’d love your site to do.
+          We’ll reply with suggestions and options – no pressure to commit.
+        </p>
+      </div>
 
-      <a href="mailto:sabrdigitalwilts@gmail.com"
-        class="px-10 py-4 rounded-xl bg-neonpurple text-black font-semibold drop-shadow-glow hover:bg-white transition">
-        sabrdigitalwilts@gmail.com
-      </a>
+      <div class="grid md:grid-cols-2 gap-6 text-sm">
+        <div class="rounded-2xl bg-midnightSoft border border-neonPurple/50 shadow-softGlow p-6 flex flex-col justify-between">
+          <div>
+            <h3 class="font-semibold text-ice mb-2">Email Sabr Purp</h3>
+            <p class="text-ice/75 mb-4">
+              Share your business name, what you do, and any links (Insta, Facebook, etc.) you already have.
+            </p>
+          </div>
+          <a href="mailto:sabrdigitalwilts@gmail.com"
+             class="inline-flex items-center justify-center px-4 py-3 rounded-xl bg-neonPurple text-black font-semibold shadow-glow hover:bg-white transition text-sm">
+            sabrdigitalwilts@gmail.com
+          </a>
+        </div>
+
+        <div class="rounded-2xl bg-midnightSoft border border-white/10 p-6 flex flex-col justify-between">
+          <div>
+            <h3 class="font-semibold text-ice mb-2">Instagram DM</h3>
+            <p class="text-ice/75 mb-4">
+              Prefer chatting casually first? Drop us a DM with “Website idea” and we’ll go from there.
+            </p>
+          </div>
+          <a href="#" class="inline-flex items-center justify-center px-4 py-3 rounded-xl border border-neonPurple/60 text-ice hover:bg-neonPurple/10 transition text-sm">
+            @yourinstagramhandle
+          </a>
+        </div>
+      </div>
+
+      <p class="mt-6 text-xs text-center text-ice/55">
+        Based in Neston, Wiltshire • Working with small businesses across the UK
+      </p>
     </div>
   </section>
 
+  <!-- FOOTER -->
+  <footer class="py-6 text-xs text-ice/50 border-t border-white/5 bg-black/40">
+    <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div>© <span id="year"></span> Sabr Purp. All rights reserved.</div>
+      <div class="flex flex-wrap gap-4">
+        <span>Midnight-purple web studio for small businesses.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
