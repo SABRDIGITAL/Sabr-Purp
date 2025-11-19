@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SABR DIGITAL</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            midnight: "#0A0214",
+            neonpurple: "#9A4DFF",
+            softglow: "rgba(154,77,255,0.25)",
+          },
+          dropShadow: {
+            glow: "0 0 12px rgba(154,77,255,0.75)",
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Smooth fade -->
+  <style>
+    body { background: #0A0214; font-family: Inter, sans-serif; }
+    .glow-border { box-shadow: 0 0 20px rgba(154,77,255,0.4); }
+    .grid-bg {
+      background-image: linear-gradient(to right, rgba(154,77,255,0.1) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(154,77,255,0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+  </style>
+</head>
+
+<body class="text-white overflow-x-hidden">
+
+  <!-- HERO -->
+  <section class="relative grid-bg py-32 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-5xl font-bold drop-shadow-glow">
+        Websites That Feel<br/>
+        <span class="text-neonpurple drop-shadow-glow">Futuristic. Premium. Trustworthy.</span>
+      </h1>
+
+      <p class="mt-6 text-xl text-purple-200">
+        We build luxury, high-performance websites for barbers, tattoo studios, cafés & tradesmen in Wiltshire.
+      </p>
+
+      <div class="mt-10 flex justify-center gap-5">
+        <a href="#work"
+          class="px-8 py-3 rounded-xl bg-neonpurple text-black font-semibold drop-shadow-glow hover:bg-white transition">
+          View Our Work
+        </a>
+
+        <a href="#contact"
+          class="px-8 py-3 rounded-xl border border-neonpurple text-neonpurple hover:bg-neonpurple hover:text-black transition">
+          Get a Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="py-28 px-6">
+    <h2 class="text-center text-3xl font-bold text-purple-200 mb-14">Why Businesses Choose Us</h2>
+
+    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+      <div class="p-8 rounded-2xl glow-border bg-midnight border border-softglow">
+        <h3 class="text-neonpurple text-xl font-semibold mb-3">Professional Presence</h3>
+        <p class="text-purple-200">First impressions matter. Your site will feel premium, clean and trustworthy.</p>
+      </div>
+
+      <div class="p-8 rounded-2xl glow-border bg-midnight border border-softglow">
+        <h3 class="text-neonpurple text-xl font-semibold mb-3">Modern & Futuristic</h3>
+        <p class="text-purple-200">A tech-driven aesthetic that sets you apart and keeps users engaged.</p>
+      </div>
+
+      <div class="p-8 rounded-2xl glow-border bg-midnight border border-softglow">
+        <h3 class="text-neonpurple text-xl font-semibold mb-3">Done-For-You</h3>
+        <p class="text-purple-200">We handle everything—design, build, launch and handover.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-32 px-6 bg-black/20">
+    <div class="max-w-xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-purple-200 mb-5">Let's Build Your Website</h2>
+      <p class="mb-10 text-purple-300">Email us and we’ll get back to you within 24 hours.</p>
+
+      <a href="mailto:sabrdigitalwilts@gmail.com"
+        class="px-10 py-4 rounded-xl bg-neonpurple text-black font-semibold drop-shadow-glow hover:bg-white transition">
+        sabrdigitalwilts@gmail.com
+      </a>
+    </div>
+  </section>
+
+</body>
+</html>
