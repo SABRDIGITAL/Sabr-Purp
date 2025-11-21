@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SABR DIGITAL – Futuristic Web Studio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            midnight: "#05010B",
+            midnightSoft: "#0B0516",
+            neonPurple: "#B36CFF",
+            ice: "#E7E1FF",
+          },
+          boxShadow: {
+            glow: "0 0 30px rgba(179,108,255,0.7)",
+            softGlow: "0 0 18px rgba(179,108,255,0.45)",
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/app.js" defer></script>
+  <!-- Optional favicon – add your own file later -->
+  <!-- <link rel="icon" href="assets/images/favicon.png" /> -->
+</head>
+
+<body class="overflow-x-hidden">
+
+  <!-- Background blobs -->
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="blob absolute -top-24 -left-10 w-72 h-72 bg-neonPurple/40 rounded-full"></div>
+    <div class="blob absolute top-40 -right-10 w-80 h-80 bg-fuchsia-500/30 rounded-full"></div>
+    <div class="blob absolute bottom-10 left-1/3 w-72 h-72 bg-indigo-500/25 rounded-full"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-30 bg-midnight/80 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-5 py-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-neonPurple to-fuchsia-500 logo-badge flex items-center justify-center text-xs font-bold tracking-[0.18em]">
+          S
+        </div>
+        <div>
+          <div class="font-semibold tracking-wide text-sm md:text-base">SABR DIGITAL</div>
+          <div class="text-xs text-ice/60">Futuristic web studio</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm text-ice/80">
+        <a href="work.html" class="hover:text-neonPurple transition">Our work</a>
+        <a href="process.html" class="hover:text-neonPurple transition">Process</a>
+        <a href="faq.html" class="hover:text-neonPurple transition">FAQ</a>
+        <a href="contact.html" class="hover:text-neonPurple transition">Talk to us</a>
+      </nav>
+
+      <a href="contact.html"
+         class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-neonPurple text-black text-sm font-semibold shadow-glow hover:bg-white transition">
+        Book a free chat
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative grid-bg particles">
+    <div class="max-w-6xl mx-auto px-5 py-20 md:py-28 flex flex-col md:flex-row gap-12 items-center">
+      <!-- Left -->
+      <div class="md:w-3/5 fade-in">
+        <p class="inline-flex items-center gap-2 text-xs font-medium tracking-[0.2em] uppercase text-ice/60 mb-5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Web studio for real-world businesses
+        </p>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-ice">
+          Futuristic, clean websites
+          <span class="block text-neonPurple drop-shadow-glow">
+            that make people trust your business.
+          </span>
+        </h1>
+
+        <p class="mt-6 text-base md:text-lg text-ice/80 max-w-xl">
+          SABR DIGITAL builds modern, midnight-purple websites for barbers, tattoo studios, cafés and trades.
+          Everything is designed around one thing: turning curious visitors into confident customers.
+        </p>
+
+        <!-- Trust points -->
+        <div class="mt-7 grid grid-cols-3 gap-3 text-[11px] text-ice/70">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-xl bg-white/5 flex items-center justify-center text-lg">🛡️</div>
+            <span>Trust-first layouts</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-xl bg-white/5 flex items-center justify-center text-lg">⚡</div>
+            <span>Fast & mobile-ready</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-xl bg-white/5 flex items-center justify-center text-lg">✨</div>
+            <span>Modern, premium aesthetic</span>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="mt-9 flex flex-wrap items-center gap-4">
+          <a href="contact.html"
+             class="px-6 py-3 rounded-xl bg-neonPurple text-black font-semibold shadow-glow hover:bg-white transition text-sm md:text-base">
+            Book a free chat
+          </a>
+          <a href="work.html"
+             class="px-6 py-3 rounded-xl border border-neonPurple/60 text-ice/90 hover:bg-neonPurple/10 transition text-sm md:text-base">
+            See example builds
+          </a>
+        </div>
+
+        <p class="mt-4 text-xs text-ice/60">
+          No pressure, no jargon – just honest advice on what a good website could do for your business.
+        </p>
+      </div>
+
+      <!-- Right visual (hero mock) -->
+      <div class="md:w-2/5 fade-in">
+        <div class="relative rounded-3xl bg-midnightSoft/90 border border-white/10 shadow-softGlow p-5 md:p-6">
+          <div class="flex items-center justify-between text-xs text-ice/70 mb-4">
+            <span class="inline-flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Live layout preview
+            </span>
+            <span>Barber • Tattoo • Café</span>
+          </div>
+
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-midnightSoft before:via-midnight/80 before:to-black grid-bg relative">
+            <div class="absolute inset-0 particles opacity-70"></div>
+
+            <div class="absolute top-4 left-4 text-[10px] uppercase tracking-[0.3em] text-ice/60">
+              SABR DIGITAL layout
+            </div>
+
+            <div class="absolute inset-x-5 bottom-4 flex flex-col gap-2 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="text-ice/85 font-medium">Example Barber Studio</span>
+                <span class="px-3 py-1 rounded-full bg-black/60 border border-white/10 text-[10px]">
+                  Site fully booked out weekends
+                </span>
+              </div>
+              <div class="w-full h-1 rounded-full bg-white/10 overflow-hidden">
+                <div class="h-full w-4/5 bg-gradient-to-r from-neonPurple to-fuchsia-500"></div>
+              </div>
+              <p class="text-ice/75">
+                “People actually say they found us through the site now – it looks how we always wanted it to.”
+              </p>
+            </div>
+          </div>
+
+          <p class="mt-4 text-xs text-ice/70">
+            Every project is built around your branding, photos and story – this is just one possible layout.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="py-16 md:py-20 border-t border-white/5 bg-black/20">
+    <div class="max-w-5xl mx-auto px-5 fade-in">
+      <h2 class="text-center text-2xl md:text-3xl font-semibold text-ice mb-10">
+        Your website is often the first and only chance to earn trust.
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl bg-midnightSoft border border-neon-soft/60 p-6 text-center hover:shadow-softGlow transition">
+          <div class="text-5xl font-bold text-neonPurple drop-shadow-glow">38%</div>
+          <p class="mt-3 text-sm text-ice/80">
+            of people decide whether to trust a business based purely on how professional the website looks.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-midnightSoft border border-neon-soft/60 p-6 text-center hover:shadow-softGlow transition">
+          <div class="text-5xl font-bold text-neonPurple drop-shadow-glow">70%</div>
+          <p class="mt-3 text-sm text-ice/80">
+            check a website before visiting a barber, tattoo studio, café or tradesperson in real life.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-midnightSoft border border-neon-soft/60 p-6 text-center hover:shadow-softGlow transition">
+          <div class="text-5xl font-bold text-neonPurple drop-shadow-glow">88%</div>
+          <p class="mt-3 text-sm text-ice/80">
+            won’t return after a bad online experience – slow, messy or confusing sites quietly lose customers every day.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY A GOOD WEBSITE MATTERS -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-5xl mx-auto px-5 fade-in">
+      <div class="mb-8">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ice">Why your business needs a proper website</h2>
+        <p class="mt-3 text-sm md:text-base text-ice/80">
+          A good website isn’t a luxury add-on any more – it’s how people decide whether you’re serious, reliable and worth
+          their time. Social media is scrollable. A website feels intentional.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 text-sm">
+        <div class="rounded-2xl bg-midnightSoft border border-white/10 p-6">
+          <h3 class="font-semibold text-ice mb-2">It makes you look established</h3>
+          <p class="text-ice/75">
+            A clear, modern site tells people you’re organised, you care about the details, and you plan to be around.
+            It answers basic questions without making them chase you for info.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-midnightSoft border border-white/10 p-6">
+          <h3 class="font-semibold text-ice mb-2">It removes friction</h3>
+          <p class="text-ice/75">
+            Opening times, prices ranges, services, photos, how to contact you – all in one place. The less work people
+            have to do to understand you, the more likely they are to choose you.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-midnightSoft border border-white/10 p-6">
+          <h3 class="font-semibold text-ice mb-2">It builds real trust</h3>
+          <p class="text-ice/75">
+            Proper copy, real photos and social proof feel very different from a half-empty Facebook page. Your site is
+            where you can show the quality of your work without distraction.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-midnightSoft border border-white/10 p-6">
+          <h3 class="font-semibold text-ice mb-2">There are almost no downsides</h3>
+          <p class="text-ice/75">
+            Once it’s built and set up correctly, it quietly works in the background – 24/7. Answering questions, sending
+            people to you, making it easier for the right clients to find you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMON MISTAKES & HOW WE'RE DIFFERENT -->
+  <section class="py-16 md:py-20 bg-black/25 border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-10 fade-in">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-semibold text-ice mb-3">Common website mistakes we fix</h2>
+        <p class="text-sm md:text-base text-ice/80 mb-5">
+          Most small business sites fail for the same reasons. SABR DIGITAL is built around avoiding these from day one.
+        </p>
+        <ul class="space-y-3 text-sm text-ice/75">
+          <li>• No clear “what do I do next?” button.</li>
+          <li>• Hard-to-read text and cluttered layouts.</li>
+          <li>• Slow loading pages on mobile.</li>
+          <li>• Hidden contact details, or too many ways to contact.</li>
+          <li>• No proof of quality – no photos, reviews or real projects.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-ice mb-3">How SABR DIGITAL approaches it differently</h3>
+        <p class="text-sm text-ice/80 mb-4">
+          We design around clarity, speed and trust – not trends for the sake of it.
+        </p>
+        <div class="grid grid-cols-2 gap-4 text-xs">
+          <div class="rounded-2xl bg-midnightSoft border border-white/10 p-4">
+            <div class="font-semibold text-ice mb-1">Clarity first</div>
+            <p class="text-ice/70">
+              Every page answers simple questions quickly: who you are, what you do, where you are, and how to move forward.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-midnightSoft border border-white/10 p-4">
+            <div class="font-semibold text-ice mb-1">Built for speed</div>
+            <p class="text-ice/70">
+              Lightweight layouts and sensible images so your site feels responsive, not sluggish.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-midnightSoft border border-white/10 p-4">
+            <div class="font-semibold text-ice mb-1">Trust signals</div>
+            <p class="text-ice/70">
+              Testimonials, photos, examples and clear copy that show you’re serious about your work.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-midnightSoft border border-white/10 p-4">
+            <div class="font-semibold text-ice mb-1">Human support</div>
+            <p class="text-ice/70">
+              We keep communication straightforward. No jargon, no pressure sales, just honest guidance.
+            </p>
+          </div>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="mt-6 grid grid-cols-2 gap-3 text-[11px] text-ice/70">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-xs">📱</span>
+            <span>Mobile-first builds</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-xs">🔍</span>
+            <span>SEO-ready basics</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-xs">⚡</span>
+            <span>Fast-loading layouts</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-xs">🤝</span>
+            <span>Straightforward support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-5 fade-in">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ice">What clients say (placeholders for now)</h2>
+        <p class="mt-3 text-sm md:text-base text-ice/75">
+          These are realistic examples of the kind of feedback we aim for on every project.
+        </p>
+      </div>
+
+      <div class="overflow-hidden rounded-2xl bg-midnightSoft border border-white/10 px-6 py-7">
+        <div class="testimonials-track">
+          <article class="testimonial-card">
+            <p class="text-sm md:text-base text-ice/85">
+              “The new website finally matches the standard of our work. People tell us they chose us because everything
+              looked professional and easy to understand.”
+            </p>
+            <p class="mt-4 text-xs text-ice/60">
+              – Example Barber Studio
+            </p>
+          </article>
+          <article class="testimonial-card">
+            <p class="text-sm md:text-base text-ice/85">
+              “We used to get random DMs with half-finished enquiries. Now people fill out the site form and already know
+              how we work. It saves us so much time.”
+            </p>
+            <p class="mt-4 text-xs text-ice/60">
+              – Example Tattoo Studio
+            </p>
+          </article>
+          <article class="testimonial-card">
+            <p class="text-sm md:text-base text-ice/85">
+              “Our bookings and repeat visits went up because people could actually find us, see the menu and get a feel
+              for the place before they arrived.”
+            </p>
+            <p class="mt-4 text-xs text-ice/60">
+              – Example Café
+            </p>
+          </article>
+        </div>
+        <p class="mt-5 text-[11px] text-ice/50">
+          These will be replaced with real client testimonials as projects go live.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="py-14 bg-black/35 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-5 text-center fade-in">
+      <h2 class="text-2xl md:text-3xl font-semibold text-ice">
+        Ready for a website that actually feels like your business?
+      </h2>
+      <p class="mt-3 text-sm md:text-base text-ice/75">
+        Tell us a bit about what you do and what you’d love your site to handle. We’ll reply with clear options – no
+        pressure to commit.
+      </p>
+      <a href="contact.html"
+         class="inline-flex mt-7 px-7 py-3 rounded-xl bg-neonPurple text-black font-semibold shadow-glow hover:bg-white transition text-sm md:text-base">
+        Book a free chat
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="pt-4 bg-black/40 border-t border-white/5 text-xs text-ice/55">
+    <div class="footer-line"></div>
+    <div class="max-w-6xl mx-auto px-5 py-4 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div>© <span id="year-home"></span> SABR DIGITAL. All rights reserved.</div>
+      <div class="flex gap-4">
+        <a href="faq.html" class="hover:text-neonPurple transition">FAQ</a>
+        <a href="contact.html" class="hover:text-neonPurple transition">Talk to us</a>
+      </div>
+    </div>
+    <script>
+      document.getElementById("year-home").textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
+</html>
