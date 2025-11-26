@@ -41,12 +41,12 @@
   <header class="sticky top-0 z-30 bg-midnight/80 backdrop-blur-md border-b border-white/5">
     <div class="max-w-6xl mx-auto flex items-center justify-between px-5 py-4">
       <a href="index.html" class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-neonPurple to-fuchsia-500 logo-badge flex items-center justify-center text-xs font-bold tracking-[0.18em]">
+        <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-midnightSoft to-neonPurple logo-badge flex items-center justify-center text-xs font-bold tracking-[0.18em] text-neonPurple">
           S
         </div>
         <div>
           <div class="font-semibold tracking-wide text-sm md:text-base">SABR DIGITAL</div>
-          <div class="text-xs text-ice/60">Futuristic web studio</div>
+          <div class="text-xs text-ice/60">SABR DIGITAL WILTS</div>
         </div>
       </a>
 
@@ -64,171 +64,113 @@
     </div>
   </header>
 
-  <!-- INTRO -->
+  <!-- TOP LED LINE -->
+  <div class="footer-line"></div>
+
+  <!-- CONTENT -->
   <section class="py-18 md:py-24 grid-bg particles">
     <div class="max-w-6xl mx-auto px-5 fade-in">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
         <div>
           <h1 class="text-3xl md:text-4xl font-semibold text-ice">Examples of how we could build for you</h1>
           <p class="mt-3 text-sm md:text-base text-ice/80 max-w-xl">
-            These example layouts are here to show the kind of standard you can expect – not templates we force you into.
-            When we work together, your site is designed around your branding, photos and goals.
+            These are example layouts to show the standard you can expect: clean, trust-focused, easy to skim. When we
+            work together, your site will be built around your own branding, photos and goals.
           </p>
         </div>
         <p class="text-xs text-ice/60 md:text-right">
-          All images are temporary stock placeholders. Real client projects will replace them as they go live.
+          All imagery shown here is stock for now. Real client work will replace these examples as sites go live.
         </p>
       </div>
 
-      <!-- Before/After Slider -->
-      <div class="mb-14">
-        <h2 class="text-xl md:text-2xl font-semibold text-ice mb-4">Before & after: turning “just a page” into a proper site</h2>
-        <p class="text-sm text-ice/75 mb-4">
-          Drag the line to see the difference between a basic, text-heavy page and a more considered layout with better
-          hierarchy, imagery and calls-to-action.
-        </p>
-        <div class="before-after-wrapper">
-          <img src="https://images.pexels.com/photos/2775269/pexels-photo-2775269.jpeg?auto=compress&cs=tinysrgb&w=1200"
-               alt="Before website example" />
-          <div class="before-after-overlay" style="width:50%;">
-            <img src="https://images.pexels.com/photos/18753222/pexels-photo-18753222.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="After website example" />
-          </div>
-          <div class="before-after-handle" style="left:50%;"></div>
-        </div>
-        <input id="beforeAfterRange" type="range" min="0" max="100" value="50"
-               class="mt-4 w-full accent-neonPurple" />
-      </div>
-
-      <!-- Example cards -->
-      <div class="grid md:grid-cols-3 gap-6 text-sm fade-in">
+      <!-- Example grid: concise, no slider -->
+      <div class="grid md:grid-cols-2 gap-6 text-sm">
         <!-- Barber -->
-        <article class="rounded-2xl bg-midnightSoft border border-white/10 overflow-hidden flex flex-col">
-          <div class="h-40 overflow-hidden">
-            <img src="https://images.pexels.com/photos/3998429/pexels-photo-3998429.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="Barber studio interior" class="w-full h-full object-cover" />
+        <article class="rounded-2xl bg-midnightSoft border border-white/10 hover:border-neonPurple/60 hover:shadow-softGlow transition p-5 flex flex-col">
+          <div class="h-40 rounded-xl overflow-hidden mb-4">
+            <img
+              src="https://images.pexels.com/photos/3998429/pexels-photo-3998429.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Barber studio interior"
+              class="w-full h-full object-cover" />
           </div>
-          <div class="p-5 flex-1 flex flex-col">
-            <h3 class="font-semibold text-ice">Barber studio layout</h3>
-            <p class="mt-2 text-ice/75 flex-1">
-              Sharp hero with prices, service list, photo gallery and clear “Book a chair” call-to-action that works
-              on mobile first.
-            </p>
-            <ul class="mt-3 space-y-1 text-ice/65 text-xs">
-              <li>• Hero highlights what you do and where you are.</li>
-              <li>• Services, price ranges and opening times at a glance.</li>
-              <li>• Gallery panel that feels like a curated Instagram grid.</li>
-            </ul>
-          </div>
+          <h2 class="font-semibold text-ice">Barber studio layout</h2>
+          <p class="mt-2 text-ice/75">
+            Hero that instantly shows services, vibe and where you are. Clear “Book a chair” button on mobile and
+            desktop.
+          </p>
+          <ul class="mt-3 space-y-1 text-ice/65 text-xs">
+            <li>• Price ranges and opening times in one glance.</li>
+            <li>• Gallery grid that feels like a curated Instagram feed.</li>
+            <li>• Map and contact details that are impossible to miss.</li>
+          </ul>
         </article>
 
         <!-- Tattoo -->
-        <article class="rounded-2xl bg-midnightSoft border border-white/10 overflow-hidden flex flex-col">
-          <div class="h-40 overflow-hidden">
-            <img src="https://images.pexels.com/photos/28991522/pexels-photo-28991522.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="Tattoo studio interior" class="w-full h-full object-cover" />
+        <article class="rounded-2xl bg-midnightSoft border border-white/10 hover:border-neonPurple/60 hover:shadow-softGlow transition p-5 flex flex-col">
+          <div class="h-40 rounded-xl overflow-hidden mb-4">
+            <img
+              src="https://images.pexels.com/photos/28991522/pexels-photo-28991522.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Tattoo studio interior"
+              class="w-full h-full object-cover" />
           </div>
-          <div class="p-5 flex-1 flex flex-col">
-            <h3 class="font-semibold text-ice">Tattoo studio layout</h3>
-            <p class="mt-2 text-ice/75 flex-1">
-              Artist sections, flash gallery, studio rules and enquiry forms that help you filter for serious clients
-              and manage expectations upfront.
-            </p>
-            <ul class="mt-3 space-y-1 text-ice/65 text-xs">
-              <li>• Each artist gets their own mini portfolio section.</li>
-              <li>• FAQs cover deposits, booking rules and aftercare.</li>
-              <li>• Simple form so clients can send references in one place.</li>
-            </ul>
-          </div>
+          <h2 class="font-semibold text-ice">Tattoo studio layout</h2>
+          <p class="mt-2 text-ice/75">
+            Artists, flash sets, rules and enquiries all in one place so serious clients know exactly how you work.
+          </p>
+          <ul class="mt-3 space-y-1 text-ice/65 text-xs">
+            <li>• Artist sections with photos and styles.</li>
+            <li>• Clear booking rules and deposit info.</li>
+            <li>• Simple form where clients can attach references.</li>
+          </ul>
         </article>
 
         <!-- Café -->
-        <article class="rounded-2xl bg-midnightSoft border border-white/10 overflow-hidden flex flex-col">
-          <div class="h-40 overflow-hidden">
-            <img src="https://images.pexels.com/photos/31206741/pexels-photo-31206741.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="Modern café interior" class="w-full h-full object-cover" />
+        <article class="rounded-2xl bg-midnightSoft border border-white/10 hover:border-neonPurple/60 hover:shadow-softGlow transition p-5 flex flex-col">
+          <div class="h-40 rounded-xl overflow-hidden mb-4">
+            <img
+              src="https://images.pexels.com/photos/31206741/pexels-photo-31206741.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Café interior"
+              class="w-full h-full object-cover" />
           </div>
-          <div class="p-5 flex-1 flex flex-col">
-            <h3 class="font-semibold text-ice">Café / food layout</h3>
-            <p class="mt-2 text-ice/75 flex-1">
-              Menu highlights, photos that show the atmosphere, opening hours and location – all easy to skim so people
-              can decide to visit quickly.
-            </p>
-            <ul class="mt-3 space-y-1 text-ice/65 text-xs">
-              <li>• Menu or “best sellers” section front and centre.</li>
-              <li>• Photo panels that capture the feel of the place.</li>
-              <li>• Quick-access buttons for directions and contact.</li>
-            </ul>
-          </div>
+          <h2 class="font-semibold text-ice">Café / food layout</h2>
+          <p class="mt-2 text-ice/75">
+            Show the atmosphere, menu highlights and opening hours clearly so people can decide to visit quickly.
+          </p>
+          <ul class="mt-3 space-y-1 text-ice/65 text-xs">
+            <li>• Hero that shows your space properly.</li>
+            <li>• Menu or “best sellers” panel that’s easy to skim.</li>
+            <li>• Quick buttons for directions and contact.</li>
+          </ul>
         </article>
 
         <!-- Trades -->
-        <article class="rounded-2xl bg-midnightSoft border border-white/10 overflow-hidden flex flex-col">
-          <div class="h-40 overflow-hidden">
-            <img src="https://images.pexels.com/photos/5854192/pexels-photo-5854192.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="Tradesperson at work" class="w-full h-full object-cover" />
+        <article class="rounded-2xl bg-midnightSoft border border-white/10 hover:border-neonPurple/60 hover:shadow-softGlow transition p-5 flex flex-col">
+          <div class="h-40 rounded-xl overflow-hidden mb-4">
+            <img
+              src="https://images.pexels.com/photos/5854192/pexels-photo-5854192.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Tradesperson at work"
+              class="w-full h-full object-cover" />
           </div>
-          <div class="p-5 flex-1 flex flex-col">
-            <h3 class="font-semibold text-ice">Local trades layout</h3>
-            <p class="mt-2 text-ice/75 flex-1">
-              Service overview, areas covered, testimonials and proof photos so people feel safe letting you into their
-              home or project.
-            </p>
-            <ul class="mt-3 space-y-1 text-ice/65 text-xs">
-              <li>• Services broken down into clear blocks.</li>
-              <li>• “Areas we cover” and response time listed plainly.</li>
-              <li>• Real work photos and reviews to back you up.</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Beauty / nails -->
-        <article class="rounded-2xl bg-midnightSoft border border-white/10 overflow-hidden flex flex-col">
-          <div class="h-40 overflow-hidden">
-            <img src="https://images.pexels.com/photos/3738341/pexels-photo-3738341.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="Beauty studio" class="w-full h-full object-cover" />
-          </div>
-          <div class="p-5 flex-1 flex flex-col">
-            <h3 class="font-semibold text-ice">Beauty / nails layout</h3>
-            <p class="mt-2 text-ice/75 flex-1">
-              Treatment menus, availability hints and soft imagery that make booking feel easy, not awkward.
-            </p>
-            <ul class="mt-3 space-y-1 text-ice/65 text-xs">
-              <li>• Treatment list with simple explanations.</li>
-              <li>• Gallery of finished looks with subtle overlays.</li>
-              <li>• Call-to-action tuned for bookings or messages.</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Other / mixed -->
-        <article class="rounded-2xl bg-midnightSoft border border-white/10 overflow-hidden flex flex-col">
-          <div class="h-40 overflow-hidden">
-            <img src="https://images.pexels.com/photos/3182781/pexels-photo-3182781.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                 alt="People working at laptops" class="w-full h-full object-cover" />
-          </div>
-          <div class="p-5 flex-1 flex flex-col">
-            <h3 class="font-semibold text-ice">Other businesses</h3>
-            <p class="mt-2 text-ice/75 flex-1">
-              Whether you’re running a studio, online service or something more unusual, we can adapt this style to fit.
-            </p>
-            <ul class="mt-3 space-y-1 text-ice/65 text-xs">
-              <li>• Flexible layouts that work beyond just local services.</li>
-              <li>• Focus on clarity and trust, no matter the niche.</li>
-              <li>• Future-proof structure for when you grow.</li>
-            </ul>
-          </div>
+          <h2 class="font-semibold text-ice">Trades / services layout</h2>
+          <p class="mt-2 text-ice/75">
+            Clear services, areas covered, proof photos and reviews so people feel safe hiring you.
+          </p>
+          <ul class="mt-3 space-y-1 text-ice/65 text-xs">
+            <li>• Services broken into simple blocks.</li>
+            <li>• “Areas we cover” with realistic response times.</li>
+            <li>• Before/after photos and testimonials.</li>
+          </ul>
         </article>
       </div>
 
-      <div class="mt-12 text-center fade-in">
+      <div class="mt-14 text-center fade-in">
         <p class="text-sm text-ice/75 mb-4">
-          These are just starting points. When we work together, we’ll build something that fits your brand instead of
-          trying to squeeze you into a rigid template.
+          These are just starting points. Your version will be built around your story, your photos and how you like to
+          work with clients.
         </p>
         <a href="contact.html"
            class="inline-flex px-7 py-3 rounded-xl bg-neonPurple text-black font-semibold shadow-glow hover:bg-white transition text-sm md:text-base">
-          Talk to us about your project
+          Book a free chat
         </a>
       </div>
     </div>
