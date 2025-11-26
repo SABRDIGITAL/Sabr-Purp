@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SABR DIGITAL – Talk to us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-mark"><span>S</span></div>
+        <div class="logo-text">SABR DIGITAL</div>
+      </a>
+      <nav class="nav-links">
+        <a href="work.html">Our work</a>
+        <a href="process.html">Process</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html" class="active">Talk to us</a>
+      </nav>
+      <a href="contact.html" class="btn btn-primary">Book a free chat</a>
+    </div>
+    <div class="led-bar"></div>
+  </header>
+
+  <div class="page">
+    <main class="container">
+      <section class="section">
+        <h1 class="section-heading" style="text-align:center;">Talk to SABR DIGITAL</h1>
+        <p class="section-sub" style="text-align:center;margin:0 auto 22px;">
+          Fill in a few details and we’ll reply to you from
+          <strong style="color:var(--purple-soft);">sabrdigitalwilts@gmail.com</strong>
+          with honest suggestions. No pressure and no automated funnels.
+        </p>
+
+        <div class="form-card">
+          <!-- Replace action with your real form service (Formspree/Netlify/etc.) -->
+          <form class="form-grid" method="POST" action="#">
+            <div class="form-row-two">
+              <div>
+                <label for="name">Your name</label>
+                <input id="name" type="text" name="name" required />
+              </div>
+              <div>
+                <label for="email">Email address</label>
+                <input id="email" type="email" name="email" required />
+              </div>
+            </div>
+
+            <div class="form-row-two">
+              <div>
+                <label for="business-name">Business name</label>
+                <input id="business-name" type="text" name="business_name" />
+              </div>
+              <div>
+                <label for="business-type">Type of business</label>
+                <select id="business-type" name="business_type">
+                  <option value="">Select an option</option>
+                  <option>Barber / hair</option>
+                  <option>Tattoo studio</option>
+                  <option>Café / food</option>
+                  <option>Trades (electrician, plumber, etc.)</option>
+                  <option>Beauty / nails</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="link">Website or social link (if you have one)</label>
+              <input id="link" type="url" name="current_link" placeholder="https:// or @yourhandle" />
+            </div>
+
+            <div>
+              <label for="message">What would you like your website to do for you?</label>
+              <textarea id="message" name="message" placeholder="Example: help people find us, show our work properly, reduce random DMs, make booking clear…"></textarea>
+            </div>
+
+            <div>
+              <label for="files">Upload any screenshots or sites you like (optional)</label>
+              <input id="files" type="file" name="inspiration_files" multiple />
+            </div>
+
+            <div class="form-footer">
+              <p>
+                By submitting this form you’re giving us permission to email you back about your enquiry. We won’t sign
+                you up to random newsletters.
+              </p>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </div>
+          </form>
+        </div>
+
+        <p style="margin-top:18px;font-size:13px;text-align:center;">
+          Prefer to reach out directly?
+          <strong style="font-size:14px;display:block;margin-top:6px;">
+            <a href="mailto:sabrdigitalwilts@gmail.com" style="color:var(--purple-soft);text-decoration:none;">
+              sabrdigitalwilts@gmail.com
+            </a>
+          </strong>
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="led-bar"></div>
+    <div class="footer-inner">
+      <div>© <span id="year-contact"></span> SABR DIGITAL. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Talk to us</a>
+      </div>
+    </div>
+    <script>
+      document.getElementById('year-contact').textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
+</html>
