@@ -1,0 +1,109 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: #0d0017; /* midnight purple */
+    color: white;
+    overflow-x: hidden;
+}
+
+/* NAV */
+.nav {
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(20, 0, 45, 0.7);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    font-size: 26px;
+    color: #b26dff;
+    font-weight: 700;
+}
+
+.nav a {
+    margin: 0 20px;
+    color: #ddd;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* BUTTON */
+.btn-primary {
+    padding: 12px 22px;
+    border-radius: 12px;
+    background: #a24aff;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 0 15px #a24aff;
+}
+
+/* HERO */
+.hero {
+    padding: 140px 60px 80px;
+    text-align: left;
+}
+
+.hero h1 {
+    font-size: 54px;
+    line-height: 1.2;
+    color: #e7d5ff;
+}
+
+.subtext {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #c9b8ff;
+}
+
+/* STATS */
+.stats {
+    margin: 80px;
+    text-align: center;
+}
+
+.stats .stat {
+    margin: 20px auto;
+}
+
+.stats span {
+    font-size: 38px;
+    color: #c78aff;
+}
+
+/* THREE BLOCKS */
+.three-blocks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    padding: 60px;
+}
+
+.block {
+    background: rgba(50, 0, 90, 0.4);
+    padding: 30px;
+    border-radius: 16px;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+    margin: 100px 60px;
+}
+
+.testimonial {
+    background: rgba(80, 0, 140, 0.35);
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
