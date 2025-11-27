@@ -1,122 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>SABR DIGITAL – Talk to us</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="main.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            sabrBg: '#050516',
+            sabrCard: '#090921',
+            sabrAccent: '#6c5ce7',
+            sabrAccentSoft: '#a29bff',
+          },
+          boxShadow: {
+            'sabr-glow': '0 0 35px rgba(108, 92, 231, 0.5)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #1e1b4b 0, #020016 45%, #000 100%);
+      color: #f8fafc;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      padding-bottom: 0.25rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #4f46e5, #a855f7, #22d3ee);
+      transition: width 0.2s ease-out;
+    }
+    .nav-link.nav-active::after,
+    .nav-link:hover::after {
+      width: 70%;
+    }
+    .grid-overlay {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      opacity: 0.14;
+      background-image: linear-gradient(to right, rgba(148, 163, 184, 0.2) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at top, black 0, black 55%, transparent 100%);
+    }
+  </style>
 </head>
-<body>
-<header class="site-header">
-  <div class="nav-inner">
-    <a href="index.html" class="logo-link">
-      <div class="logo-mark"><span>S</span></div>
-      <div class="logo-text">SABR DIGITAL</div>
-    </a>
-    <nav class="nav-links">
-      <a href="work.html">Our work</a>
-      <a href="process.html">Process</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html" class="active">Talk to us</a>
-    </nav>
-    <a href="contact.html" class="btn btn-primary">Book a free chat</a>
-  </div>
-  <div class="led-bar"></div>
-</header>
+<body data-page="contact" class="min-h-screen text-slate-100">
+  <!-- Header -->
+  <header class="border-b border-slate-800/60 bg-slate-950/40 backdrop-blur-xl sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="h-8 w-8 rounded-xl bg-gradient-to-tr from-indigo-500 via-violet-500 to-sky-400 flex items-center justify-center shadow-sabr-glow">
+          <span class="font-display text-lg font-semibold tracking-tight">S</span>
+        </div>
+        <div class="flex flex-col leading-tight">
+          <span class="font-display font-semibold text-sm tracking-[0.28em] uppercase">SABR DIGITAL</span>
+          <span class="text-[0.7rem] text-slate-400">Websites that feel trustworthy</span>
+        </div>
+      </a>
+      <nav class="flex items-center gap-6">
+        <a href="our-work.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="work">Our work</a>
+        <a href="process.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="process">Process</a>
+        <a href="faq.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="faq">FAQ</a>
+        <a href="talk-to-us.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="contact">Talk to us</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="page">
-  <main class="container">
-    <section class="section">
-      <h1 class="section-heading" style="text-align:center;">Talk to SABR DIGITAL</h1>
-      <p class="section-sub" style="text-align:center;margin:0 auto 22px;">
-        Fill in a few details and we’ll reply from
-        <strong style="color:#d1c5ff;">sabrdigitalwilts@gmail.com</strong>
-        with honest suggestions. No pressure and no automated funnels.
-      </p>
+  <main class="relative">
+    <div class="grid-overlay"></div>
 
-      <div class="form-card">
-        <!-- When you're ready to make the form actually send, change action to Formspree / Netlify -->
-        <form class="form-grid" method="POST" action="#">
-          <div class="form-row-two">
-            <div>
-              <label for="name">Your name</label>
-              <input id="name" type="text" name="name" required>
-            </div>
-            <div>
-              <label for="email">Email address</label>
-              <input id="email" type="email" name="email" required>
-            </div>
-          </div>
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 space-y-10">
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
+        <div class="space-y-4">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Talk to us</p>
+          <h1 class="font-display text-2xl sm:text-3xl font-semibold">
+            Tell us about your business (in normal language)
+          </h1>
+          <p class="text-sm text-slate-300 max-w-xl">
+            You don’t need to know “website speak”. Just tell us what you do, what’s not working right now,
+            and what a better website would help you with.
+          </p>
 
-          <div class="form-row-two">
-            <div>
-              <label for="business-name">Business name</label>
-              <input id="business-name" type="text" name="business_name">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 space-y-2">
+              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Email</p>
+              <p class="text-sm font-medium text-slate-100">sabrdigitalwilts@gmail.com</p>
+              <p class="text-[0.78rem] text-slate-400">
+                Send us a rough idea of what you need and any links or photos.
+              </p>
             </div>
-            <div>
-              <label for="business-type">Type of business</label>
-              <select id="business-type" name="business_type">
-                <option value="">Select an option</option>
-                <option>Barber / hair</option>
-                <option>Tattoo studio</option>
-                <option>Café / food</option>
-                <option>Trades (electrician, plumber, etc.)</option>
-                <option>Beauty / nails</option>
-                <option>Other</option>
-              </select>
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 space-y-2">
+              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Instagram</p>
+              <p class="text-sm font-medium text-slate-100">@sabrdigital</p>
+              <p class="text-[0.78rem] text-slate-400">
+                Prefer DMs? You can voice note or send screenshots there instead.
+              </p>
             </div>
           </div>
+        </div>
 
-          <div>
-            <label for="link">Website or social link (if you have one)</label>
-            <input id="link" type="url" name="current_link" placeholder="https:// or @yourhandle">
-          </div>
+        <!-- Contact form (no 405) -->
+        <div class="rounded-3xl border border-slate-800 bg-slate-950/85 px-5 py-6 shadow-sabr-glow/40">
+          <form
+            action="mailto:sabrdigitalwilts@gmail.com"
+            method="post"
+            enctype="text/plain"
+            class="space-y-4 text-sm"
+          >
+            <div class="space-y-1.5">
+              <label for="name" class="block text-xs font-medium text-slate-300 uppercase tracking-[0.18em]">Name</label>
+              <input id="name" name="name" type="text" required
+                     class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            </div>
 
-          <div>
-            <label for="message">What would you like your website to do for you?</label>
-            <textarea id="message" name="message" placeholder="Example: help people find us, show our work properly, reduce random DMs, make booking clear…"></textarea>
-          </div>
+            <div class="space-y-1.5">
+              <label for="email" class="block text-xs font-medium text-slate-300 uppercase tracking-[0.18em]">Email</label>
+              <input id="email" name="email" type="email" required
+                     class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            </div>
 
-          <div>
-            <label for="files">Upload any screenshots or sites you like (optional)</label>
-            <input id="files" type="file" name="inspiration_files" multiple>
-          </div>
+            <div class="space-y-1.5">
+              <label for="business" class="block text-xs font-medium text-slate-300 uppercase tracking-[0.18em]">Business name</label>
+              <input id="business" name="business" type="text"
+                     class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            </div>
 
-          <div class="form-footer">
-            <p>
-              By submitting this form you’re giving us permission to email you back about your enquiry. We won’t sign you up to random newsletters.
+            <div class="space-y-1.5">
+              <label for="message" class="block text-xs font-medium text-slate-300 uppercase tracking-[0.18em]">
+                What can we help with?
+              </label>
+              <textarea id="message" name="message" rows="5"
+                        placeholder="Tell us briefly what you do, what’s not working, and what a better website would change."
+                        class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="mt-2 inline-flex w-full items-center justify-center rounded-full bg-indigo-500 px-4 py-2.5 text-sm font-medium text-white shadow-sabr-glow hover:bg-indigo-400 hover:shadow-sabr-glow/80 transition-all">
+              Send message
+            </button>
+
+            <p class="pt-2 text-[0.7rem] text-slate-500">
+              This will open your email app with your message pre-filled, so you can double check it before sending.
             </p>
-            <button type="submit" class="btn btn-primary">Send message</button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-
-      <p style="margin-top:18px;font-size:13px;text-align:center;">
-        Prefer to email directly?
-        <br>
-        <strong style="font-size:14px;">
-          <a href="mailto:sabrdigitalwilts@gmail.com" style="color:#d1c5ff;text-decoration:none;">
-            sabrdigitalwilts@gmail.com
-          </a>
-        </strong>
-      </p>
     </section>
   </main>
-</div>
 
-<footer class="site-footer">
-  <div class="led-bar"></div>
-  <div class="footer-inner">
-    <div>© <span id="year-contact"></span> SABR DIGITAL. All rights reserved.</div>
-    <div class="footer-links">
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Talk to us</a>
+  <footer class="border-t border-slate-800/80 bg-slate-950/95">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.75rem] text-slate-500">
+      <p>© SABR DIGITAL · Wiltshire-based web design studio</p>
+      <p>Friendly humans, not robots – even if we like the tech.</p>
     </div>
-  </div>
+  </footer>
+
   <script>
-    document.getElementById('year-contact').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', () => {
+      const page = document.body.dataset.page;
+      if (!page) return;
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.dataset.link === page) {
+          link.classList.add('nav-active');
+        }
+      });
+    });
   </script>
-</footer>
 </body>
 </html>
