@@ -1,124 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>SABR DIGITAL – FAQ</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="main.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            sabrBg: '#050516',
+            sabrCard: '#090921',
+            sabrAccent: '#6c5ce7',
+            sabrAccentSoft: '#a29bff',
+          },
+          boxShadow: {
+            'sabr-glow': '0 0 35px rgba(108, 92, 231, 0.5)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #1e1b4b 0, #020016 45%, #000 100%);
+      color: #f8fafc;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      padding-bottom: 0.25rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #4f46e5, #a855f7, #22d3ee);
+      transition: width 0.2s ease-out;
+    }
+    .nav-link.nav-active::after,
+    .nav-link:hover::after {
+      width: 70%;
+    }
+    .grid-overlay {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      opacity: 0.14;
+      background-image: linear-gradient(to right, rgba(148, 163, 184, 0.2) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at top, black 0, black 55%, transparent 100%);
+    }
+  </style>
 </head>
-<body>
-<header class="site-header">
-  <div class="nav-inner">
-    <a href="index.html" class="logo-link">
-      <div class="logo-mark"><span>S</span></div>
-      <div class="logo-text">SABR DIGITAL</div>
-    </a>
-    <nav class="nav-links">
-      <a href="work.html">Our work</a>
-      <a href="process.html">Process</a>
-      <a href="faq.html" class="active">FAQ</a>
-      <a href="contact.html">Talk to us</a>
-    </nav>
-    <a href="contact.html" class="btn btn-primary">Book a free chat</a>
-  </div>
-  <div class="led-bar"></div>
-</header>
+<body data-page="faq" class="min-h-screen text-slate-100">
+  <!-- Header -->
+  <header class="border-b border-slate-800/60 bg-slate-950/40 backdrop-blur-xl sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="h-8 w-8 rounded-xl bg-gradient-to-tr from-indigo-500 via-violet-500 to-sky-400 flex items-center justify-center shadow-sabr-glow">
+          <span class="font-display text-lg font-semibold tracking-tight">S</span>
+        </div>
+        <div class="flex flex-col leading-tight">
+          <span class="font-display font-semibold text-sm tracking-[0.28em] uppercase">SABR DIGITAL</span>
+          <span class="text-[0.7rem] text-slate-400">Websites that feel trustworthy</span>
+        </div>
+      </a>
+      <nav class="flex items-center gap-6">
+        <a href="our-work.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="work">Our work</a>
+        <a href="process.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="process">Process</a>
+        <a href="faq.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="faq">FAQ</a>
+        <a href="talk-to-us.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="contact">Talk to us</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="page">
-  <main class="container">
-    <section class="section">
-      <h1 class="section-heading" style="text-align:center;">Questions you might be thinking</h1>
-      <p class="section-sub" style="text-align:center;margin:0 auto 22px;">
-        Being unsure about getting a website made is normal. Here are clear, direct answers in plain English.
-      </p>
+  <main class="relative">
+    <div class="grid-overlay"></div>
 
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>
-            <span>“We’re small – is a website actually worth it?”</span>
-            <span class="icon">+</span>
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 space-y-8">
+      <div class="space-y-3 max-w-3xl">
+        <p class="text-xs uppercase tracking-[0.24em] text-slate-400">FAQ</p>
+        <h1 class="font-display text-2xl sm:text-3xl font-semibold">
+          Questions people usually ask us
+        </h1>
+        <p class="text-sm text-slate-300">
+          If you don’t see your question here, you can always message us directly – we’d rather you ask than guess.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <!-- FAQ item -->
+        <details class="group rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3">
+          <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
+            <span>How much does a website cost?</span>
+            <span class="text-slate-500 text-xs group-open:hidden">+</span>
+            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
           </summary>
-          <p>
-            Yes. Especially for local service businesses. People search your name, see a link and expect something more solid than just a social account. A clean site instantly makes you feel more established than others who only rely on Instagram or TikTok.
-          </p>
+          <div class="mt-3 text-sm text-slate-300">
+            For now, our pricing is simple:
+            <br />· £250 for a full website build from scratch
+            <br />· £200 for a remap of an existing website
+            <br />· £75 per month if you want us to handle ongoing updates and upkeep
+          </div>
         </details>
 
-        <details class="faq-item">
-          <summary>
-            <span>“I’m not good with tech. Will I be able to manage it?”</span>
-            <span class="icon">+</span>
+        <details class="group rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3">
+          <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
+            <span>How long does it take?</span>
+            <span class="text-slate-500 text-xs group-open:hidden">+</span>
+            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
           </summary>
-          <p>
-            We keep the setup simple and give you a short handover guide. If you’d rather not touch it at all, we can look after updates so you focus on your actual work.
-          </p>
+          <div class="mt-3 text-sm text-slate-300">
+            Once we have your photos and key info, most small business sites take around 1–3 weeks.
+            If you’re quick to reply with feedback, it can be even faster.
+          </div>
         </details>
 
-        <details class="faq-item">
-          <summary>
-            <span>“Do we need anything in place before we start?”</span>
-            <span class="icon">+</span>
+        <details class="group rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3">
+          <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
+            <span>Do I need to write all the text myself?</span>
+            <span class="text-slate-500 text-xs group-open:hidden">+</span>
+            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
           </summary>
-          <p>
-            A business name, a rough list of services and a couple of websites or brands you like is enough to start.
-            If you already have a domain, great. If not, we can help you choose and set one up.
-          </p>
+          <div class="mt-3 text-sm text-slate-300">
+            No. If you can give us bullet points and basic details, we can write the website copy in a tone
+            that matches your business. You’ll always get to approve it.
+          </div>
         </details>
 
-        <details class="faq-item">
-          <summary>
-            <span>“How long does it usually take?”</span>
-            <span class="icon">+</span>
+        <details class="group rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3">
+          <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
+            <span>What do you need from me to start?</span>
+            <span class="text-slate-500 text-xs group-open:hidden">+</span>
+            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
           </summary>
-          <p>
-            Once we’ve agreed the layout and content, a typical small-business site usually takes days, not months.
-            The main variable is how quickly we both approve content and visuals.
-          </p>
+          <div class="mt-3 text-sm text-slate-300">
+            A quick chat, your logo (if you have one), any photos you like, and your core business info:
+            services, pricing, opening hours, and contact details.
+          </div>
         </details>
 
-        <details class="faq-item">
-          <summary>
-            <span>“How do you approach pricing?”</span>
-            <span class="icon">+</span>
+        <details class="group rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3">
+          <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
+            <span>Can you update the site for me later?</span>
+            <span class="text-slate-500 text-xs group-open:hidden">+</span>
+            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
           </summary>
-          <p>
-            We keep pricing straightforward and talk about it after the discovery chat, when we actually know what you need. No random add-ons dropped on you later.
-          </p>
-        </details>
-
-        <details class="faq-item">
-          <summary>
-            <span>“What if I don’t like the design?”</span>
-            <span class="icon">+</span>
-          </summary>
-          <p>
-            You’ll see a working preview before anything goes live. We’d rather refine it with you than leave you with something you’re not happy to show customers.
-          </p>
+          <div class="mt-3 text-sm text-slate-300">
+            Yes. If you choose the £75/month upkeep option, we’ll handle ongoing changes like new photos,
+            price updates, offers and small layout tweaks.
+          </div>
         </details>
       </div>
 
-      <div style="text-align:center;margin-top:32px;">
-        <p class="section-sub" style="margin:0 auto 16px;">
-          Still unsure? Tell us where you’re at and we’ll tell you honestly what we’d do in your position.
-        </p>
-        <a href="contact.html" class="btn btn-primary">Ask us a question</a>
+      <div class="pt-4 border-t border-slate-800 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-300">
+        <p>Still unsure? We’re happy to talk things through in normal language.</p>
+        <a href="talk-to-us.html" class="inline-flex items-center gap-2 text-xs font-medium text-sabrAccentSoft hover:text-sabrAccent transition-colors">
+          Ask us a question
+          <span class="text-[0.9rem]">↗</span>
+        </a>
       </div>
     </section>
   </main>
-</div>
 
-<footer class="site-footer">
-  <div class="led-bar"></div>
-  <div class="footer-inner">
-    <div>© <span id="year-faq"></span> SABR DIGITAL. All rights reserved.</div>
-    <div class="footer-links">
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Talk to us</a>
+  <footer class="border-t border-slate-800/80 bg-slate-950/95">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.75rem] text-slate-500">
+      <p>© SABR DIGITAL · Wiltshire-based web design studio</p>
+      <p>Honest answers, no pressure.</p>
     </div>
-  </div>
+  </footer>
+
   <script>
-    document.getElementById('year-faq').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', () => {
+      const page = document.body.dataset.page;
+      if (!page) return;
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.dataset.link === page) {
+          link.classList.add('nav-active');
+        }
+      });
+    });
   </script>
-</footer>
 </body>
 </html>
