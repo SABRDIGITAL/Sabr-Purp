@@ -1,118 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>SABR DIGITAL – Our work</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="main.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            sabrBg: '#050516',
+            sabrCard: '#090921',
+            sabrAccent: '#6c5ce7',
+            sabrAccentSoft: '#a29bff',
+          },
+          boxShadow: {
+            'sabr-glow': '0 0 35px rgba(108, 92, 231, 0.5)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #1e1b4b 0, #020016 45%, #000 100%);
+      color: #f8fafc;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      padding-bottom: 0.25rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #4f46e5, #a855f7, #22d3ee);
+      transition: width 0.2s ease-out;
+    }
+    .nav-link.nav-active::after,
+    .nav-link:hover::after {
+      width: 70%;
+    }
+    .grid-overlay {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      opacity: 0.14;
+      background-image: linear-gradient(to right, rgba(148, 163, 184, 0.2) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at top, black 0, black 55%, transparent 100%);
+    }
+  </style>
 </head>
-<body>
-<header class="site-header">
-  <div class="nav-inner">
-    <a href="index.html" class="logo-link">
-      <div class="logo-mark"><span>S</span></div>
-      <div class="logo-text">SABR DIGITAL</div>
-    </a>
-    <nav class="nav-links">
-      <a href="work.html" class="active">Our work</a>
-      <a href="process.html">Process</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Talk to us</a>
-    </nav>
-    <a href="contact.html" class="btn btn-primary">Book a free chat</a>
-  </div>
-  <div class="led-bar"></div>
-</header>
+<body data-page="work" class="min-h-screen text-slate-100">
+  <!-- Header -->
+  <header class="border-b border-slate-800/60 bg-slate-950/40 backdrop-blur-xl sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="h-8 w-8 rounded-xl bg-gradient-to-tr from-indigo-500 via-violet-500 to-sky-400 flex items-center justify-center shadow-sabr-glow">
+          <span class="font-display text-lg font-semibold tracking-tight">S</span>
+        </div>
+        <div class="flex flex-col leading-tight">
+          <span class="font-display font-semibold text-sm tracking-[0.28em] uppercase">SABR DIGITAL</span>
+          <span class="text-[0.7rem] text-slate-400">Websites that feel trustworthy</span>
+        </div>
+      </a>
+      <nav class="flex items-center gap-6">
+        <a href="our-work.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="work">Our work</a>
+        <a href="process.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="process">Process</a>
+        <a href="faq.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="faq">FAQ</a>
+        <a href="talk-to-us.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="contact">Talk to us</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="page">
-  <main class="container">
-    <section class="section">
-      <h1 class="section-heading">Examples of how we can build for you</h1>
-      <p class="section-sub">
-        These examples show the level of clarity and detail we aim for. When we work together, your content, photos and brand sit on top of this standard.
-      </p>
+  <main class="relative">
+    <div class="grid-overlay"></div>
 
-      <div class="work-grid">
-        <article class="work-card">
-          <img src="https://images.pexels.com/photos/3998429/pexels-photo-3998429.jpeg?auto=compress&cs=tinysrgb&w=1200"
-               alt="Barber studio">
-          <h3>Barber studio website</h3>
-          <p>
-            Focused on what you do, where you are, prices and how to book a chair – without feeling cluttered.
-          </p>
-          <ul>
-            <li>Hero that shows the actual space, not stock photos.</li>
-            <li>Simple price and service list people can skim quickly.</li>
-            <li>Booking button that stays obvious on mobile.</li>
-          </ul>
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 space-y-8">
+      <div class="space-y-3 max-w-3xl">
+        <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Examples</p>
+        <h1 class="font-display text-2xl sm:text-3xl font-semibold">
+          Different styles we can build for your business
+        </h1>
+        <p class="text-sm text-slate-300">
+          These showcase projects illustrate the standard of design and functionality we deliver.
+          Once client sites are live, we’ll replace these with real case studies.
+        </p>
+      </div>
+
+      <!-- Grid of styles -->
+      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <!-- Each card is hoverable mini pop-up style -->
+        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
+          <div class="aspect-[4/3] bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 group-hover:from-indigo-500/20 group-hover:via-fuchsia-500/20 group-hover:to-slate-900 transition-all">
+            <!-- placeholder area for screenshot -->
+          </div>
+          <div class="p-4 space-y-2">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 01</p>
+            <h2 class="font-display text-sm font-semibold">
+              Futuristic glow
+            </h2>
+            <p class="text-[0.75rem] text-slate-400">
+              Bold gradients, neon accents and a clean layout – perfect for modern barbers or studios.
+            </p>
+          </div>
         </article>
 
-        <article class="work-card">
-          <img src="https://images.pexels.com/photos/28991522/pexels-photo-28991522.jpeg?auto=compress&cs=tinysrgb&w=1200"
-               alt="Tattoo studio">
-          <h3>Tattoo studio website</h3>
-          <p>
-            Built around your artists, flash sets and studio rules so serious clients know exactly how you work.
-          </p>
-          <ul>
-            <li>Artist sections with styles, examples and availability notes.</li>
-            <li>Studio rules, deposits and aftercare all in one place.</li>
-            <li>Enquiry form where people can attach references.</li>
-          </ul>
+        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
+          <div class="aspect-[4/3] bg-gradient-to-br from-emerald-500/10 via-slate-950 to-slate-900 group-hover:from-emerald-400/25 group-hover:via-teal-400/15 transition-all">
+          </div>
+          <div class="p-4 space-y-2">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 02</p>
+            <h2 class="font-display text-sm font-semibold">
+              Eco-friendly & earthy
+            </h2>
+            <p class="text-[0.75rem] text-slate-400">
+              Soft greens, warm neutrals and space for real photos – ideal for eco brands and cafés.
+            </p>
+          </div>
         </article>
 
-        <article class="work-card">
-          <img src="https://images.pexels.com/photos/31206741/pexels-photo-31206741.jpeg?auto=compress&cs=tinysrgb&w=1200"
-               alt="Café interior">
-          <h3>Café / food website</h3>
-          <p>
-            Built to show the feel of the space, the menu and when you’re open so people can decide quickly to visit.
-          </p>
-          <ul>
-            <li>Hero that actually feels like your café, not generic stock.</li>
-            <li>Menu highlights and best-sellers with clear prices.</li>
-            <li>Buttons for directions, hours and booking (if needed).</li>
-          </ul>
+        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
+          <div class="aspect-[4/3] bg-gradient-to-br from-amber-400/15 via-slate-950 to-slate-900 group-hover:from-amber-300/25 group-hover:via-rose-300/15 transition-all">
+          </div>
+          <div class="p-4 space-y-2">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 03</p>
+            <h2 class="font-display text-sm font-semibold">
+              Vintage & cosy
+            </h2>
+            <p class="text-[0.75rem] text-slate-400">
+              Retro typography, warm colour palettes and storytelling copy for vintage shops and salons.
+            </p>
+          </div>
         </article>
 
-        <article class="work-card">
-          <img src="https://images.pexels.com/photos/5854192/pexels-photo-5854192.jpeg?auto=compress&cs=tinysrgb&w=1200"
-               alt="Tradesperson working">
-          <h3>Trades & services website</h3>
-          <p>
-            For electricians, plumbers, decorators and other trades who want to look professional and safe to hire.
-          </p>
-          <ul>
-            <li>Services split into simple, understandable sections.</li>
-            <li>Areas covered with realistic response expectations.</li>
-            <li>Before / after work photos and reviews in one gallery.</li>
-          </ul>
+        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
+          <div class="aspect-[4/3] bg-gradient-to-br from-sky-400/15 via-slate-950 to-slate-900 group-hover:from-sky-300/25 group-hover:via-cyan-300/20 transition-all">
+          </div>
+          <div class="p-4 space-y-2">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 04</p>
+            <h2 class="font-display text-sm font-semibold">
+              Minimal & premium
+            </h2>
+            <p class="text-[0.75rem] text-slate-400">
+              Light, spacious layouts with minimal colour for premium service providers and studios.
+            </p>
+          </div>
+        </article>
+
+        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
+          <div class="aspect-[4/3] bg-gradient-to-br from-rose-400/15 via-slate-950 to-slate-900 group-hover:from-rose-300/25 group-hover:via-amber-200/20 transition-all">
+          </div>
+          <div class="p-4 space-y-2">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 05</p>
+            <h2 class="font-display text-sm font-semibold">
+              Bold & playful
+            </h2>
+            <p class="text-[0.75rem] text-slate-400">
+              Strong colours, quirky shapes and punchy text – great for creative brands and studios.
+            </p>
+          </div>
+        </article>
+
+        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
+          <div class="aspect-[4/3] bg-gradient-to-br from-purple-400/15 via-slate-950 to-slate-900 group-hover:from-purple-300/25 group-hover:via-indigo-300/20 transition-all">
+          </div>
+          <div class="p-4 space-y-2">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 06</p>
+            <h2 class="font-display text-sm font-semibold">
+              Dark studio
+            </h2>
+            <p class="text-[0.75rem] text-slate-400">
+              Moody dark backgrounds, spotlight effects and strong typography for tattoo and piercing.
+            </p>
+          </div>
+        </article>
+
+        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
+          <div class="aspect-[4/3] bg-gradient-to-br from-slate-700/30 via-slate-950 to-slate-900 group-hover:from-slate-500/40 group-hover:via-sky-400/20 transition-all">
+          </div>
+          <div class="p-4 space-y-2">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 07</p>
+            <h2 class="font-display text-sm font-semibold">
+              Clean trades
+            </h2>
+            <p class="text-[0.75rem] text-slate-400">
+              Straightforward layouts, bold call-to-actions and clear sections for trades and services.
+            </p>
+          </div>
+        </article>
+
+        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
+          <div class="aspect-[4/3] bg-gradient-to-br from-fuchsia-400/15 via-slate-950 to-slate-900 group-hover:from-fuchsia-300/25 group-hover:via-rose-300/20 transition-all">
+          </div>
+          <div class="p-4 space-y-2">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 08</p>
+            <h2 class="font-display text-sm font-semibold">
+              Social-first
+            </h2>
+            <p class="text-[0.75rem] text-slate-400">
+              Layouts built around your TikTok/Instagram content with clear paths to book or enquire.
+            </p>
+          </div>
         </article>
       </div>
 
-      <div style="text-align:center;margin-top:32px;">
-        <p class="section-sub" style="margin:0 auto 16px;">
-          You don’t have to pick a layout. We design around your story, your work and what you want the site to do.
-        </p>
-        <a href="contact.html" class="btn btn-primary">Book a free chat</a>
+      <div class="pt-4 border-t border-slate-800 mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-300">
+        <p>Already have a style in mind? We can adapt any of these to your brand.</p>
+        <a href="talk-to-us.html" class="inline-flex items-center gap-2 text-xs font-medium text-sabrAccentSoft hover:text-sabrAccent transition-colors">
+          Talk to us about your project
+          <span class="text-[0.9rem]">↗</span>
+        </a>
       </div>
     </section>
   </main>
-</div>
 
-<footer class="site-footer">
-  <div class="led-bar"></div>
-  <div class="footer-inner">
-    <div>© <span id="year-work"></span> SABR DIGITAL. All rights reserved.</div>
-    <div class="footer-links">
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Talk to us</a>
+  <footer class="border-t border-slate-800/80 bg-slate-950/95">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.75rem] text-slate-500">
+      <p>© SABR DIGITAL · Wiltshire-based web design studio</p>
+      <p>These are showcase layouts. Real client sites coming soon.</p>
     </div>
-  </div>
+  </footer>
+
   <script>
-    document.getElementById('year-work').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', () => {
+      const page = document.body.dataset.page;
+      if (!page) return;
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.dataset.link === page) {
+          link.classList.add('nav-active');
+        }
+      });
+    });
   </script>
-</footer>
 </body>
 </html>
