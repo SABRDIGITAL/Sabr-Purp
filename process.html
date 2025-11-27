@@ -1,114 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SABR DIGITAL – Process</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="main.js" defer></script>
+  <meta charset="UTF-8" />
+  <title>SABR DIGITAL – Our process</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            sabrBg: '#050516',
+            sabrCard: '#090921',
+            sabrAccent: '#6c5ce7',
+            sabrAccentSoft: '#a29bff',
+          },
+          boxShadow: {
+            'sabr-glow': '0 0 35px rgba(108, 92, 231, 0.5)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #1e1b4b 0, #020016 45%, #000 100%);
+      color: #f8fafc;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      padding-bottom: 0.25rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #4f46e5, #a855f7, #22d3ee);
+      transition: width 0.2s ease-out;
+    }
+    .nav-link.nav-active::after,
+    .nav-link:hover::after {
+      width: 70%;
+    }
+    .grid-overlay {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      opacity: 0.14;
+      background-image: linear-gradient(to right, rgba(148, 163, 184, 0.2) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at top, black 0, black 55%, transparent 100%);
+    }
+  </style>
 </head>
-<body>
-<header class="site-header">
-  <div class="nav-inner">
-    <a href="index.html" class="logo-link">
-      <div class="logo-mark"><span>S</span></div>
-      <div class="logo-text">SABR DIGITAL</div>
-    </a>
-    <nav class="nav-links">
-      <a href="work.html">Our work</a>
-      <a href="process.html" class="active">Process</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Talk to us</a>
-    </nav>
-    <a href="contact.html" class="btn btn-primary">Book a free chat</a>
-  </div>
-  <div class="led-bar"></div>
-</header>
+<body data-page="process" class="min-h-screen text-slate-100">
+  <!-- Header -->
+  <header class="border-b border-slate-800/60 bg-slate-950/40 backdrop-blur-xl sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="h-8 w-8 rounded-xl bg-gradient-to-tr from-indigo-500 via-violet-500 to-sky-400 flex items-center justify-center shadow-sabr-glow">
+          <span class="font-display text-lg font-semibold tracking-tight">S</span>
+        </div>
+        <div class="flex flex-col leading-tight">
+          <span class="font-display font-semibold text-sm tracking-[0.28em] uppercase">SABR DIGITAL</span>
+          <span class="text-[0.7rem] text-slate-400">Websites that feel trustworthy</span>
+        </div>
+      </a>
+      <nav class="flex items-center gap-6">
+        <a href="our-work.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="work">Our work</a>
+        <a href="process.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="process">Process</a>
+        <a href="faq.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="faq">FAQ</a>
+        <a href="talk-to-us.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="contact">Talk to us</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="page">
-  <main class="container">
-    <section class="section">
-      <h1 class="section-heading">A simple, done-for-you process</h1>
-      <p class="section-sub">
-        No jargon and no mystery steps. Just four clear stages from first conversation to a live site you’re happy to show people.
-      </p>
+  <main class="relative">
+    <div class="grid-overlay"></div>
 
-      <div class="process-row">
-        <article class="process-step">
-          <div class="process-step-header">
-            <div class="process-step-index">1</div>
-            <div>
-              <h3>Discovery chat</h3>
-              <p>
-                We talk about what you do, who you want to reach and what you want your website to actually handle – enquiries, bookings, trust or all three.
-              </p>
-              <small>For you: a normal conversation. No scripts, no pressure.</small>
-            </div>
-          </div>
-        </article>
-
-        <article class="process-step">
-          <div class="process-step-header">
-            <div class="process-step-index">2</div>
-            <div>
-              <h3>Layout & content plan</h3>
-              <p>
-                We map out which pages you need and what each one should say and show. You’ll know exactly what we need from you and what we’ll write.
-              </p>
-              <small>For you: a clear plan instead of staring at empty templates.</small>
-            </div>
-          </div>
-        </article>
-
-        <article class="process-step">
-          <div class="process-step-header">
-            <div class="process-step-index">3</div>
-            <div>
-              <h3>Design & build</h3>
-              <p>
-                We build your site in our calm, futuristic style or around your existing brand, always with speed, clarity and trust in mind.
-              </p>
-              <small>For you: a working preview link you can click through and review.</small>
-            </div>
-          </div>
-        </article>
-
-        <article class="process-step">
-          <div class="process-step-header">
-            <div class="process-step-index">4</div>
-            <div>
-              <h3>Launch & support</h3>
-              <p>
-                We connect your domain, test on mobile and desktop, and double-check that forms, links and buttons work as they should.
-              </p>
-              <small>For you: a live site and the option for us to keep looking after it.</small>
-            </div>
-          </div>
-        </article>
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 space-y-8">
+      <div class="space-y-3 max-w-3xl">
+        <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Process</p>
+        <h1 class="font-display text-2xl sm:text-3xl font-semibold">
+          A simple, done-with-you process
+        </h1>
+        <p class="text-sm text-slate-300">
+          No complicated project plans. Just a clear set of steps so you always know what’s happening,
+          what we need from you, and when your new website will be ready.
+        </p>
       </div>
 
-      <div style="text-align:center;margin-top:32px;">
-        <p class="section-sub" style="margin:0 auto 16px;">
-          If you’ve never had a website before, we’ll walk you through it calmly step by step.
-        </p>
-        <a href="contact.html" class="btn btn-primary">Book a free chat</a>
+      <!-- Steps timeline -->
+      <div class="relative">
+        <div class="absolute left-3 sm:left-6 top-1 bottom-1 w-px bg-gradient-to-b from-indigo-500 via-slate-700 to-transparent pointer-events-none"></div>
+
+        <div class="space-y-8">
+          <!-- Step 1 -->
+          <div class="relative pl-10 sm:pl-16">
+            <div class="absolute left-0 sm:left-3 top-1">
+              <div class="h-9 w-9 rounded-full bg-slate-950 border border-slate-600 flex items-center justify-center shadow-sabr-glow/40">
+                <span class="text-xl">💬</span>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
+              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 1</p>
+              <h2 class="font-display text-sm sm:text-base font-semibold">
+                Quick call to understand your business
+              </h2>
+              <p class="text-sm text-slate-300">
+                We jump on a short call or voice note chat to understand what you do, who your customers are,
+                and what isn’t working with your current website (or not having one).
+              </p>
+              <p class="text-xs text-slate-400">
+                What this means for you: no forms, no overwhelm – just talk to real humans about your business.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative pl-10 sm:pl-16">
+            <div class="absolute left-0 sm:left-3 top-1">
+              <div class="h-9 w-9 rounded-full bg-slate-950 border border-slate-600 flex items-center justify-center shadow-sabr-glow/40">
+                <span class="text-xl">📸</span>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
+              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 2</p>
+              <h2 class="font-display text-sm sm:text-base font-semibold">
+                Collect photos, words &amp; key details
+              </h2>
+              <p class="text-sm text-slate-300">
+                You send us your best photos, logo (if you have one) and basic info: services, prices,
+                opening times, contact details and any reviews you love.
+              </p>
+              <p class="text-xs text-slate-400">
+                What this means for you: we turn messy notes and screenshots into clean, on-brand sections.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative pl-10 sm:pl-16">
+            <div class="absolute left-0 sm:left-3 top-1">
+              <div class="h-9 w-9 rounded-full bg-slate-950 border border-slate-600 flex items-center justify-center shadow-sabr-glow/40">
+                <span class="text-xl">🧪</span>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
+              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 3</p>
+              <h2 class="font-display text-sm sm:text-base font-semibold">
+                Design &amp; build the first version
+              </h2>
+              <p class="text-sm text-slate-300">
+                We design your pages, build them, and plug in the key actions – booking, calls, directions, contact.
+                You get a link to click through and test on your phone.
+              </p>
+              <p class="text-xs text-slate-400">
+                What this means for you: you see something real quickly, not just moodboards or theory.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="relative pl-10 sm:pl-16">
+            <div class="absolute left-0 sm:left-3 top-1">
+              <div class="h-9 w-9 rounded-full bg-slate-950 border border-slate-600 flex items-center justify-center shadow-sabr-glow/40">
+                <span class="text-xl">✨</span>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
+              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 4</p>
+              <h2 class="font-display text-sm sm:text-base font-semibold">
+                Tweaks, launch &amp; simple handover
+              </h2>
+              <p class="text-sm text-slate-300">
+                We make tweaks based on your feedback, then launch the site on your domain. We also record a quick
+                walkthrough so you know what’s where.
+              </p>
+              <p class="text-xs text-slate-400">
+                What this means for you: your site goes live feeling like you, not like a template you’ve seen 100 times.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-300">
+        <p>Want to know exactly what we’d do for your business?</p>
+        <a href="talk-to-us.html" class="inline-flex items-center gap-2 text-xs font-medium text-sabrAccentSoft hover:text-sabrAccent transition-colors">
+          Book a free chat
+          <span class="text-[0.9rem]">↗</span>
+        </a>
       </div>
     </section>
   </main>
-</div>
 
-<footer class="site-footer">
-  <div class="led-bar"></div>
-  <div class="footer-inner">
-    <div>© <span id="year-process"></span> SABR DIGITAL. All rights reserved.</div>
-    <div class="footer-links">
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Talk to us</a>
+  <footer class="border-t border-slate-800/80 bg-slate-950/95">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.75rem] text-slate-500">
+      <p>© SABR DIGITAL · Wiltshire-based web design studio</p>
+      <p>Clear steps so you always know what’s next.</p>
     </div>
-  </div>
+  </footer>
+
   <script>
-    document.getElementById('year-process').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', () => {
+      const page = document.body.dataset.page;
+      if (!page) return;
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.dataset.link === page) {
+          link.classList.add('nav-active');
+        }
+      });
+    });
   </script>
-</footer>
 </body>
 </html>
