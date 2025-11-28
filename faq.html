@@ -17,14 +17,13 @@
             body: ['Inter', 'system-ui', 'sans-serif'],
           },
           colors: {
-            sabrBg: '#050016',
-            sabrCard: '#070021',
-            sabrAccent: '#7c5cff',
-            sabrAccentSoft: '#a997ff',
-            sabrCyan: '#46c9ff',
+            sabrBg: '#050014',
+            sabrCard: '#09001f',
+            sabrAccent: '#a855f7',
+            sabrAccentSoft: '#c4b5fd',
           },
           boxShadow: {
-            'sabr-glow': '0 0 35px rgba(124, 92, 255, 0.55)',
+            'sabr-glow': '0 0 40px rgba(168, 85, 247, 0.6)',
           }
         }
       }
@@ -34,10 +33,8 @@
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background:
-        radial-gradient(circle at top, #271066 0, transparent 55%),
-        radial-gradient(circle at bottom, #050016 0, #01000b 55%);
+        radial-gradient(circle at top, #3b0764 0, #020015 45%, #000 100%);
       color: #f8fafc;
-      min-height: 100vh;
     }
     .font-display {
       font-family: 'Space Grotesk', system-ui, sans-serif;
@@ -58,80 +55,95 @@
       width: 0;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(90deg, #46c9ff, #7c5cff, #46c9ff);
-      transition: width 0.18s ease-out;
-      box-shadow: 0 0 16px rgba(111, 225, 255, 0.8);
+      background: linear-gradient(90deg, #a855f7, #38bdf8, #f97316);
+      transition: width 0.2s ease-out;
     }
     .nav-link.nav-active::after,
     .nav-link:hover::after {
-      width: 72%;
+      width: 70%;
     }
-
-    .hex-overlay {
+    .grid-overlay {
       pointer-events: none;
       position: absolute;
       inset: 0;
-      opacity: 0.45;
       background-image:
-        radial-gradient(circle at 1px 1px, rgba(124, 92, 255, 0.22) 1px, transparent 0),
-        radial-gradient(circle at 25px 16px, rgba(70, 201, 255, 0.2) 1px, transparent 0);
-      background-size: 60px 52px;
+        linear-gradient(30deg,
+          rgba(148, 163, 184, 0.16) 12%,
+          transparent 12.5%,
+          transparent 87%,
+          rgba(148, 163, 184, 0.12) 87.5%,
+          rgba(148, 163, 184, 0.2) 100%),
+        linear-gradient(150deg,
+          rgba(88, 28, 135, 0.22) 12%,
+          transparent 12.5%,
+          transparent 87%,
+          rgba(88, 28, 135, 0.2) 87.5%,
+          rgba(88, 28, 135, 0.32) 100%),
+        linear-gradient(90deg,
+          rgba(56, 189, 248, 0.35) 2px,
+          transparent 0);
+      background-size: 80px 140px, 80px 140px, 40px 40px;
+      opacity: 0.28;
       mix-blend-mode: screen;
-      mask-image: radial-gradient(circle at top, black 0, black 55%, transparent 100%);
-      animation: hexDrift 22s linear infinite;
     }
-    @keyframes hexDrift {
-      0% { background-position: 0 0, 0 0; }
-      50% { background-position: 40px 30px, -40px 10px; }
-      100% { background-position: 0 0, 0 0; }
-    }
-
-    .led-strip {
-      position: absolute;
-      left: 0;
-      right: 0;
+    .neon-strip {
       height: 3px;
-      background: linear-gradient(90deg, transparent, #46c9ff, #7c5cff, #46c9ff, transparent);
+      border-radius: 999px;
+      background: linear-gradient(90deg,
+        transparent,
+        rgba(168, 85, 247, 0.95),
+        rgba(56, 189, 248, 0.85),
+        rgba(244, 244, 245, 0.9),
+        transparent);
       background-size: 220% 100%;
-      animation: beamSlide 5.2s linear infinite;
-      box-shadow: 0 0 22px rgba(111, 225, 255, 0.85);
+      box-shadow: 0 0 26px rgba(168, 85, 247, 0.9);
+      animation: neonSweep 9s linear infinite;
       opacity: 0.9;
     }
-    @keyframes beamSlide {
+    @keyframes neonSweep {
       0% { background-position: 200% 0; }
       100% { background-position: -20% 0; }
+    }
+
+    /* FAQ glow */
+    details.faq-item {
+      transition: box-shadow 0.22s ease-out, border-color 0.22s ease-out, background 0.22s ease-out;
+    }
+    details.faq-item[open] {
+      box-shadow: 0 0 32px rgba(168, 85, 247, 0.7);
+      border-color: #a855f7;
+      background: radial-gradient(circle at top left, rgba(168, 85, 247, 0.22), rgba(15, 23, 42, 0.96));
     }
   </style>
 </head>
 <body data-page="faq" class="min-h-screen text-slate-100">
   <!-- Header -->
-  <header class="relative border-b border-slate-800/60 bg-slate-950/70 backdrop-blur-xl sticky top-0 z-40">
-    <div class="led-strip top-0"></div>
+  <header class="border-b border-slate-900/70 bg-slate-950/60 backdrop-blur-2xl sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
-      <a href="index.html" class="flex items-center gap-2">
-        <div class="h-9 w-9 rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center shadow-sabr-glow border border-slate-600/70">
-          <img
-            src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png"
-            alt="SABR DIGITAL logo"
-            class="h-full w-full object-cover"
-          />
-        </div>
-        <div class="flex flex-col leading-tight">
-          <span class="font-display font-semibold text-sm tracking-[0.28em] uppercase">SABR DIGITAL</span>
-          <span class="text-[0.7rem] text-slate-400">Websites that feel trustworthy</span>
-        </div>
+      <a href="index.html" class="flex items-center gap-3">
+        <img
+          src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png"
+          alt="SABR DIGITAL logo"
+          class="h-9 w-auto drop-shadow-[0_0_26px_rgba(168,85,247,0.95)]"
+        />
+        <span class="font-display font-semibold text-sm tracking-[0.28em] uppercase">
+          SABR DIGITAL
+        </span>
       </a>
-      <nav class="flex items-center gap-6">
+      <nav class="flex items-center gap-6 text-[0.78rem]">
         <a href="our-work.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="work">Our work</a>
         <a href="process.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="process">Process</a>
         <a href="faq.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="faq">FAQ</a>
         <a href="talk-to-us.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="contact">Talk to us</a>
       </nav>
     </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-2">
+      <div class="neon-strip"></div>
+    </div>
   </header>
 
   <main class="relative">
-    <div class="hex-overlay"></div>
+    <div class="grid-overlay"></div>
 
     <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 space-y-8">
       <div class="space-y-3 max-w-3xl">
@@ -140,160 +152,169 @@
           Questions people usually ask us
         </h1>
         <p class="text-sm text-slate-300">
-          If you’re unsure about anything, you can always just message us. We prefer clear questions
-          and honest answers over confusing jargon.
+          Straight answers in normal language. If you don’t see your question here, you can always
+          message us – we’d rather you ask than guess.
         </p>
       </div>
 
       <div class="space-y-3">
         <!-- 1 -->
-        <details class="group rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-3">
+        <details class="faq-item group rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-3">
           <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
             <span>How long does a website take?</span>
-            <span class="text-slate-500 text-xs group-open:hidden">+</span>
-            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
+            <span class="text-slate-400 text-xs group-open:hidden">+</span>
+            <span class="text-slate-400 text-xs hidden group-open:inline">−</span>
           </summary>
           <div class="mt-3 text-sm text-slate-300">
-            Once we have your photos and key information, most small business sites are ready to go live
-            in around <strong>3–7 days</strong>. Bigger sites or slower feedback can take a little longer,
-            but we’ll always be clear with you.
+            Once we have your photos and clear information, most small business sites are ready to go live
+            in <strong>3–7 days</strong>. Bigger sites or slower feedback can take a little longer, but we’ll
+            always be clear about timings so you’re not left guessing.
           </div>
         </details>
 
         <!-- 2 -->
-        <details class="group rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-3">
+        <details class="faq-item group rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-3">
           <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
             <span>Do I need to write all the text myself?</span>
-            <span class="text-slate-500 text-xs group-open:hidden">+</span>
-            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
+            <span class="text-slate-400 text-xs group-open:hidden">+</span>
+            <span class="text-slate-400 text-xs hidden group-open:inline">−</span>
           </summary>
           <div class="mt-3 text-sm text-slate-300">
-            No. If you can send us bullet points, rough notes or voice notes,
-            we’ll turn that into clear website copy in a tone that fits your business.
-            You always get to review and approve it.
+            No. If you can send us bullet points, rough notes or even voice notes, we’ll turn that into
+            clear website copy in a tone that fits your business. You always get to review and approve
+            everything before it goes live.
           </div>
         </details>
 
         <!-- 3 -->
-        <details class="group rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-3">
+        <details class="faq-item group rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-3">
           <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
             <span>What do you need from me to get started?</span>
-            <span class="text-slate-500 text-xs group-open:hidden">+</span>
-            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
+            <span class="text-slate-400 text-xs group-open:hidden">+</span>
+            <span class="text-slate-400 text-xs hidden group-open:inline">−</span>
           </summary>
           <div class="mt-3 text-sm text-slate-300">
-            We’ll ask for your logo (if you have one), any photos you like, basic business info
-            (services, prices, opening hours, contact details) and any sites you already like the look of.
+            We’ll ask for your logo (if you have one), any photos you like, and basic business info:
+            services, pricing, opening hours, contact details and any websites you already like the look of.
+            We’ll guide you through it step by step.
           </div>
         </details>
 
         <!-- 4 -->
-        <details class="group rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-3">
+        <details class="faq-item group rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-3">
           <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
-            <span>Can you update the site for me later on?</span>
-            <span class="text-slate-500 text-xs group-open:hidden">+</span>
-            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
+            <span>Can you update the site for me later?</span>
+            <span class="text-slate-400 text-xs group-open:hidden">+</span>
+            <span class="text-slate-400 text-xs hidden group-open:inline">−</span>
           </summary>
           <div class="mt-3 text-sm text-slate-300">
             Yes. If you’d like ongoing support, we can handle updates such as new photos, price changes,
-            offers and small layout tweaks, so you don’t need to touch the tech side at all.
+            offers and small layout tweaks. We can also agree a simple monthly arrangement if you prefer
+            not to touch the tech at all.
           </div>
         </details>
 
         <!-- 5 -->
-        <details class="group rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-3">
+        <details class="faq-item group rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-3">
           <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
             <span>What happens if I don’t like the first version?</span>
-            <span class="text-slate-500 text-xs group-open:hidden">+</span>
-            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
+            <span class="text-slate-400 text-xs group-open:hidden">+</span>
+            <span class="text-slate-400 text-xs hidden group-open:inline">−</span>
           </summary>
           <div class="mt-3 text-sm text-slate-300">
-            That’s normal. The first version is there so we have something real to react to.
-            We’ll collect your feedback and refine the layout, text and colours until it feels right.
+            That’s normal. The first version is there so you’ve got something real to react to. We’ll collect
+            your feedback, ask what feels “off” and then refine the design and wording until it actually feels
+            like your business.
           </div>
         </details>
 
         <!-- 6 -->
-        <details class="group rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-3">
+        <details class="faq-item group rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-3">
           <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
-            <span>Can you connect my domain and existing emails?</span>
-            <span class="text-slate-500 text-xs group-open:hidden">+</span>
-            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
+            <span>Can you connect my domain and existing email?</span>
+            <span class="text-slate-400 text-xs group-open:hidden">+</span>
+            <span class="text-slate-400 text-xs hidden group-open:inline">−</span>
           </summary>
           <div class="mt-3 text-sm text-slate-300">
-            Yes. We’ll help connect your domain and keep your existing email addresses working.
-            We’ll also show you how to manage things in plain language.
+            Yes. We’ll help connect your domain (website address) and make sure any existing email
+            addresses keep working. We’ll also show you, in plain language, how to manage basics in future
+            if you’d like.
           </div>
         </details>
 
         <!-- 7 -->
-        <details class="group rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-3">
+        <details class="faq-item group rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-3">
           <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
-            <span>Will the website work properly on phones?</span>
-            <span class="text-slate-500 text-xs group-open:hidden">+</span>
-            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
+            <span>Will my site work properly on phones?</span>
+            <span class="text-slate-400 text-xs group-open:hidden">+</span>
+            <span class="text-slate-400 text-xs hidden group-open:inline">−</span>
           </summary>
           <div class="mt-3 text-sm text-slate-300">
-            Yes – mobile is our baseline. We design and test on phones first so it loads fast,
-            looks sharp and is easy to use with one hand.
+            Yes – mobile is the baseline we design for, not an afterthought. We constantly check layouts,
+            buttons and text on smaller screens so people can call, book or message you easily from their phone.
           </div>
         </details>
 
         <!-- 8 -->
-        <details class="group rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-3">
+        <details class="faq-item group rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-3">
           <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
-            <span>Can you link my Instagram, TikTok or booking apps?</span>
-            <span class="text-slate-500 text-xs group-open:hidden">+</span>
-            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
+            <span>Do I need to pay for hosting or anything else?</span>
+            <span class="text-slate-400 text-xs group-open:hidden">+</span>
+            <span class="text-slate-400 text-xs hidden group-open:inline">−</span>
           </summary>
           <div class="mt-3 text-sm text-slate-300">
-            Definitely. We can build clear paths from your social media to your website,
-            and then into whatever you use to take bookings or enquiries.
+            Most sites need three things: your domain name, hosting and sometimes email. We’ll walk you
+            through the options and keep things as simple and affordable as possible. We’ll never push
+            add-ons you don’t actually need.
           </div>
         </details>
 
         <!-- 9 -->
-        <details class="group rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-3">
+        <details class="faq-item group rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-3">
           <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
-            <span>Do I need to pay for hosting or anything extra?</span>
-            <span class="text-slate-500 text-xs group-open:hidden">+</span>
-            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
+            <span>Can you work with my existing branding and photos?</span>
+            <span class="text-slate-400 text-xs group-open:hidden">+</span>
+            <span class="text-slate-400 text-xs hidden group-open:inline">−</span>
           </summary>
           <div class="mt-3 text-sm text-slate-300">
-            We’ll walk you through the simple ongoing costs (like domain and hosting) in plain English.
-            No hidden surprises, just what you actually need.
+            Definitely. If you already have a logo, colour palette or photo style, we’ll build around it so
+            everything feels consistent. If you’re not sure where to start, we can suggest a direction that
+            matches your space and audience.
           </div>
         </details>
 
         <!-- 10 -->
-        <details class="group rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-3">
+        <details class="faq-item group rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-3">
           <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm text-slate-100">
-            <span>What if I’ve never had a website before?</span>
-            <span class="text-slate-500 text-xs group-open:hidden">+</span>
-            <span class="text-slate-500 text-xs hidden group-open:inline">−</span>
+            <span>How do we actually start working together?</span>
+            <span class="text-slate-400 text-xs group-open:hidden">+</span>
+            <span class="text-slate-400 text-xs hidden group-open:inline">−</span>
           </summary>
           <div class="mt-3 text-sm text-slate-300">
-            That’s completely fine. A lot of our favourite projects start from scratch.
-            We’ll keep things simple, explain each step and handle the technical bits for you.
+            Start by sending us a quick message with what you do and what you’d like your website to change.
+            From there, we’ll suggest a plan, give you a clear price, and if it feels right we’ll book in
+            a start date and get moving.
           </div>
         </details>
       </div>
 
       <div class="pt-4 border-t border-slate-800 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-300">
-        <p>Still not sure? You can always send us a message in normal language.</p>
-        <a href="talk-to-us.html" class="inline-flex items-center gap-2 text-xs font-medium text-sabrAccentSoft hover:text-sabrCyan transition-colors">
-          Ask us a question
+        <p>Still unsure? Tell us what you do and we’ll explain what we’d recommend in plain English.</p>
+        <a href="talk-to-us.html" class="inline-flex items-center gap-2 text-xs font-medium text-sabrAccentSoft hover:text-sabrAccent transition-colors">
+          Book a free chat
           <span class="text-[0.9rem]">↗</span>
         </a>
       </div>
     </section>
   </main>
 
-  <footer class="relative border-t border-slate-800/80 bg-slate-950/98">
-    <div class="led-strip bottom-0"></div>
+  <footer class="border-t border-slate-900/80 bg-slate-950/98">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-3">
+      <div class="neon-strip"></div>
+    </div>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.75rem] text-slate-500">
-      <p>© SABR DIGITAL · Modern web design studio</p>
-      <p>Straight answers, no pressure.</p>
+      <p>© SABR DIGITAL · Independent web studio</p>
+      <p>Honest answers, no pressure.</p>
     </div>
   </footer>
 
