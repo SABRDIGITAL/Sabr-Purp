@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SABR DIGITAL – Futuristic, clean websites that build trust</title>
+  <title>SABR DIGITAL – Easy-to-use websites for businesses</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,7 +25,7 @@
             sabrAccentSoft: '#a29bff',
           },
           boxShadow: {
-            'sabr-glow': '0 0 35px rgba(108, 92, 231, 0.5)',
+            'sabr-glow': '0 0 35px rgba(108, 92, 231, 0.55)',
           }
         }
       }
@@ -34,7 +34,8 @@
   <style>
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top, #1e1b4b 0, #020016 45%, #000 100%);
+      background:
+        radial-gradient(circle at top, #1e1b4b 0, #020016 40%, #000 100%);
       color: #f8fafc;
     }
     .font-display {
@@ -68,13 +69,14 @@
       position: absolute;
       inset: 0;
       opacity: 0.14;
-      background-image: linear-gradient(to right, rgba(148, 163, 184, 0.2) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+      background-image:
+        linear-gradient(to right, rgba(148, 163, 184, 0.16) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.16) 1px, transparent 1px);
       background-size: 40px 40px;
       mask-image: radial-gradient(circle at top, black 0, black 55%, transparent 100%);
     }
     .btn-primary {
-      box-shadow: 0 0 30px rgba(129, 140, 248, 0.6);
+      box-shadow: 0 0 28px rgba(129, 140, 248, 0.8);
     }
     .stat-card:hover .stat-value {
       transform: translateY(-2px);
@@ -90,19 +92,40 @@
       opacity: 0;
       transform: scale(0.99);
     }
+    .before-after-wrap-inner {
+      box-shadow: 0 0 32px rgba(129, 140, 248, 0.7);
+    }
+    @media (max-width: 640px) {
+      /* On mobile, always show AFTER image so it works without hover */
+      .img-before {
+        opacity: 0 !important;
+      }
+      .img-after {
+        opacity: 1 !important;
+      }
+      .before-after-cta-text {
+        font-size: 0.7rem;
+      }
+    }
   </style>
 </head>
 <body data-page="home" class="min-h-screen text-slate-100">
+  <!-- Top LED strip -->
+  <div class="h-0.5 w-full bg-gradient-to-r from-transparent via-sabrAccentSoft/80 to-transparent shadow-sabr-glow"></div>
+
   <!-- Header -->
-  <header class="border-b border-slate-800/60 bg-slate-950/40 backdrop-blur-xl sticky top-0 z-40">
+  <header class="border-b border-slate-800/60 bg-slate-950/60 backdrop-blur-xl sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
-      <a href="index.html" class="flex items-center gap-2">
-        <div class="h-8 w-8 rounded-xl bg-gradient-to-tr from-indigo-500 via-violet-500 to-sky-400 flex items-center justify-center shadow-sabr-glow">
-          <span class="font-display text-lg font-semibold tracking-tight">S</span>
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-2xl overflow-hidden border border-slate-500/60 bg-slate-900/80 shadow-sabr-glow flex items-center justify-center">
+          <img
+            src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png"
+            alt="SABR DIGITAL logo"
+            class="h-full w-full object-cover"
+          />
         </div>
         <div class="flex flex-col leading-tight">
           <span class="font-display font-semibold text-sm tracking-[0.28em] uppercase">SABR DIGITAL</span>
-          <span class="text-[0.7rem] text-slate-400">Websites that feel trustworthy</span>
         </div>
       </a>
       <nav class="flex items-center gap-6">
@@ -125,38 +148,38 @@
           <div class="space-y-7">
             <p class="inline-flex items-center gap-2 rounded-full border border-slate-700/70 bg-slate-900/60 px-3 py-1 text-[0.7rem] uppercase tracking-[0.22em] text-slate-300">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              Wiltshire-based web design · Made for real small businesses
+              Small business websites · Built for trust
             </p>
 
             <div class="space-y-4">
               <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
-                Futuristic, clean websites
-                <span class="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-cyan-300">
-                  that make people trust your business
+                Easy-to-use websites
+                <span class="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-fuchsia-300 to-cyan-200">
+                  for real businesses
                 </span>
               </h1>
               <p class="text-sm sm:text-base text-slate-300 max-w-xl">
-                We design modern, easy-to-use websites for barbers, tattoo studios, cafés and trades.
-                No jargon, no fuss – just a simple process that ends with a site people actually feel good booking through.
+                We design simple, modern websites that feel trustworthy and are actually easy for people to use.
+                No jargon, no stress – just a clear process from “idea” to “live”.
               </p>
             </div>
 
             <!-- 3 emojis row -->
             <div class="grid sm:grid-cols-3 gap-3 text-sm">
-              <div class="rounded-2xl bg-slate-900/60 border border-slate-800 px-3 py-3 flex flex-col gap-1">
+              <div class="rounded-2xl bg-slate-950/70 border border-slate-800 px-3 py-3 flex flex-col gap-1">
                 <span class="text-lg">🛡️</span>
                 <p class="font-medium text-slate-50 text-xs sm:text-sm">Professional &amp; trustworthy</p>
                 <p class="text-[0.72rem] text-slate-400">Look like a business people can rely on.</p>
               </div>
-              <div class="rounded-2xl bg-slate-900/60 border border-slate-800 px-3 py-3 flex flex-col gap-1">
+              <div class="rounded-2xl bg-slate-950/70 border border-slate-800 px-3 py-3 flex flex-col gap-1">
                 <span class="text-lg">✨</span>
                 <p class="font-medium text-slate-50 text-xs sm:text-sm">Clean, modern design</p>
                 <p class="text-[0.72rem] text-slate-400">Simple, uncluttered pages that are easy to use.</p>
               </div>
-              <div class="rounded-2xl bg-slate-900/60 border border-slate-800 px-3 py-3 flex flex-col gap-1">
+              <div class="rounded-2xl bg-slate-950/70 border border-slate-800 px-3 py-3 flex flex-col gap-1">
                 <span class="text-lg">⚡</span>
                 <p class="font-medium text-slate-50 text-xs sm:text-sm">Done-for-you process</p>
-                <p class="text-[0.72rem] text-slate-400">We handle the tech, you focus on your work.</p>
+                <p class="text-[0.72rem] text-slate-400">We handle the tech; you focus on your work.</p>
               </div>
             </div>
 
@@ -166,19 +189,15 @@
                  class="btn-primary inline-flex items-center justify-center rounded-full bg-indigo-500 px-5 py-2.5 text-sm font-medium text-white shadow-sabr-glow hover:bg-indigo-400 hover:shadow-sabr-glow/80 transition-all">
                 Book a free chat
               </a>
-              <a href="faq.html"
-                 class="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-900/60 px-5 py-2.5 text-sm font-medium text-slate-100 hover:border-slate-500 hover:bg-slate-900 transition-all">
-                Ask us a question
-              </a>
             </div>
           </div>
 
           <!-- Right: before/after hero -->
           <div class="relative">
-            <div class="before-after-wrap group relative rounded-3xl border border-slate-700/70 bg-slate-950/80 shadow-sabr-glow overflow-hidden">
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-fuchsia-500/10 to-cyan-400/10 mix-blend-screen"></div>
+            <div class="before-after-wrap group relative rounded-3xl border border-slate-700/80 bg-slate-950/90 shadow-sabr-glow before-after-wrap-inner overflow-hidden">
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-500/25 via-fuchsia-500/15 to-cyan-400/10 mix-blend-screen"></div>
               <div class="absolute top-3 left-3 z-10">
-                <span class="inline-flex items-center rounded-full bg-slate-900/80 px-3 py-1 text-[0.65rem] uppercase tracking-[0.18em] text-slate-200 border border-slate-600/60">
+                <span class="inline-flex items-center rounded-full bg-slate-950/90 px-3 py-1 text-[0.65rem] uppercase tracking-[0.18em] text-slate-200 border border-slate-600/60">
                   Before / After
                 </span>
               </div>
@@ -187,7 +206,7 @@
                 <!-- Before -->
                 <img
                   src="images/home-before.jpg"
-                  alt="Old, cluttered website example"
+                  alt="Old website example"
                   class="img-before absolute inset-0 h-full w-full object-cover opacity-100"
                 />
                 <!-- After -->
@@ -196,25 +215,17 @@
                   alt="Clean SABR DIGITAL redesign example"
                   class="img-after absolute inset-0 h-full w-full object-cover opacity-0"
                 />
-              </div>
 
-              <div class="relative border-t border-slate-800/80 bg-slate-950/90 px-4 py-3 flex items-center justify-between gap-3">
-                <div class="flex items-center gap-3 text-xs text-slate-300">
-                  <div class="h-8 w-8 rounded-xl bg-slate-900 flex items-center justify-center border border-slate-700/80">
-                    <span class="text-[0.6rem] text-slate-400">Client</span>
-                  </div>
-                  <div class="leading-tight">
-                    <p class="font-medium text-slate-100 text-[0.78rem]">From “DIY and dated”</p>
-                    <p class="text-[0.7rem] text-slate-400">to a website that actually feels like their shop.</p>
-                  </div>
+                <!-- Centered hover text -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <span class="before-after-cta-text inline-flex items-center rounded-full bg-slate-950/80 px-4 py-2 text-[0.72rem] sm:text-xs uppercase tracking-[0.2em] text-slate-100 border border-slate-500/70">
+                    Hover to see the after
+                  </span>
                 </div>
-                <p class="hidden sm:block text-[0.7rem] text-slate-400">
-                  Hover to see the after →
-                </p>
               </div>
             </div>
             <p class="mt-3 text-[0.7rem] text-slate-400 text-right">
-              We’ll replace this with your real projects as they go live.
+              We’ll swap this for your real projects once they’re live.
             </p>
           </div>
         </div>
@@ -222,17 +233,18 @@
     </section>
 
     <!-- Stats -->
-    <section class="border-t border-slate-800/70 bg-slate-950/60">
+    <section class="border-t border-slate-800/70 bg-slate-950/70">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 lg:py-12">
         <div class="max-w-3xl">
           <p class="text-sm text-slate-300">
-            Your website is often the first and only chance to make someone feel confident enough to book, message or visit.
-            A dated or confusing site quietly pushes people away before they ever become customers.
+            Your website is often the first (and only) chance to make someone feel confident enough
+            to book, message or visit. A confusing or dated site quietly pushes people away before
+            they ever become customers.
           </p>
         </div>
 
         <div class="mt-7 grid gap-4 sm:grid-cols-3">
-          <div class="stat-card rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-5 transition-all hover:border-sabrAccentSoft/80 hover:shadow-sabr-glow hover:-translate-y-1 cursor-default">
+          <div class="stat-card rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-5 transition-all hover:border-sabrAccentSoft/80 hover:shadow-sabr-glow hover:-translate-y-1 cursor-default">
             <p class="text-xs text-slate-400 uppercase tracking-[0.18em]">Trust</p>
             <p class="stat-value mt-2 font-display text-3xl font-semibold text-sabrAccentSoft transition-transform">
               38%
@@ -241,16 +253,16 @@
               of people judge how credible you are based on your website at a glance.
             </p>
           </div>
-          <div class="stat-card rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-5 transition-all hover:border-sabrAccentSoft/80 hover:shadow-sabr-glow hover:-translate-y-1 cursor-default">
+          <div class="stat-card rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-5 transition-all hover:border-sabrAccentSoft/80 hover:shadow-sabr-glow hover:-translate-y-1 cursor-default">
             <p class="text-xs text-slate-400 uppercase tracking-[0.18em]">Research</p>
             <p class="stat-value mt-2 font-display text-3xl font-semibold text-sabrAccentSoft transition-transform">
               70%
             </p>
-            <p class="mt-2 text-xs text-slate-400">
+            <p class="mt-2 text-xs text-xs text-slate-400">
               check a website before visiting a business, even if they found it on social media.
             </p>
           </div>
-          <div class="stat-card rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-5 transition-all hover:border-sabrAccentSoft/80 hover:shadow-sabr-glow hover:-translate-y-1 cursor-default">
+          <div class="stat-card rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-5 transition-all hover:border-sabrAccentSoft/80 hover:shadow-sabr-glow hover:-translate-y-1 cursor-default">
             <p class="text-xs text-slate-400 uppercase tracking-[0.18em]">Experience</p>
             <p class="stat-value mt-2 font-display text-3xl font-semibold text-sabrAccentSoft transition-transform">
               88%
@@ -268,7 +280,7 @@
     </section>
 
     <!-- Why + mistakes -->
-    <section class="border-t border-slate-800/70 bg-gradient-to-b from-slate-950/70 to-slate-950/30">
+    <section class="border-t border-slate-800/70 bg-gradient-to-b from-slate-950/80 to-slate-950/40">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-start">
         <div class="space-y-5">
           <h2 class="font-display text-2xl sm:text-3xl font-semibold">
@@ -277,7 +289,7 @@
           <p class="text-sm text-slate-300 max-w-xl">
             Social media gets people interested. Your website helps them decide.
             A clear, modern site answers their questions, shows real proof of your work
-            and makes it ridiculously simple to book, call or message.
+            and makes it extremely simple to book, call or message you.
           </p>
 
           <div class="grid gap-4 sm:grid-cols-2">
@@ -286,10 +298,10 @@
                 What your website should do
               </p>
               <ul class="space-y-2 text-xs text-slate-300">
-                <li>• Make it clear who you are and what you do in seconds.</li>
+                <li>• Make it obvious who you are and what you do in seconds.</li>
                 <li>• Show real photos of your work and space.</li>
-                <li>• Let people book/contact you in as few taps as possible.</li>
-                <li>• Look good on mobile – most people browse there first.</li>
+                <li>• Let people book or contact you in as few taps as possible.</li>
+                <li>• Look great on mobile – most people browse there first.</li>
               </ul>
             </div>
             <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4">
@@ -317,8 +329,8 @@
               and a little bit “wow” without feeling over the top.
             </p>
             <p class="text-slate-300">
-              You don’t need to learn any tech. You tell us how your business works,
-              we turn it into a clear, modern site your customers actually want to use.
+              You tell us how your business works, we turn it into a clear, modern site your
+              customers actually want to use. You don’t need to learn any tech or systems.
             </p>
           </div>
           <div class="pt-1">
@@ -332,7 +344,7 @@
     </section>
 
     <!-- Testimonials slider -->
-    <section class="border-t border-slate-800/70 bg-slate-950/80">
+    <section class="border-t border-slate-800/70 bg-slate-950/90">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
         <div class="flex items-center justify-between gap-4 mb-6">
           <div>
@@ -340,26 +352,22 @@
               What our clients say
             </p>
             <h2 class="font-display text-xl sm:text-2xl font-semibold">
-              Real feedback from real small businesses
+              Real feedback from small businesses
             </h2>
-          </div>
-          <div class="hidden sm:flex items-center gap-2 text-[0.7rem] text-slate-400">
-            <span class="inline-block h-2 w-2 rounded-full bg-emerald-400"></span>
-            <span>Slides automatically every few seconds</span>
           </div>
         </div>
 
-        <div class="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/90">
+        <div class="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/95">
           <div id="testimonial-inner" class="flex transition-transform duration-500 ease-out">
             <article class="min-w-full px-5 sm:px-8 py-8 flex flex-col gap-4">
               <p class="text-sm text-slate-100">
                 “Our old site felt like it was from 2010. SABR took our photos, cleaned up the wording
-                and built something that actually matches our shop. People keep telling us they found us
+                and built something that actually matches our shop. People keep telling us they chose us
                 because the website looked trustworthy.”
               </p>
               <div class="flex items-center justify-between text-xs text-slate-400">
                 <div>
-                  <p class="font-medium text-slate-200">Local barber · Wiltshire</p>
+                  <p class="font-medium text-slate-200">Barber shop</p>
                   <p>Full redesign + booking page</p>
                 </div>
               </div>
@@ -373,7 +381,7 @@
               </p>
               <div class="flex items-center justify-between text-xs text-slate-400">
                 <div>
-                  <p class="font-medium text-slate-200">Tattoo studio · Bristol</p>
+                  <p class="font-medium text-slate-200">Tattoo studio</p>
                   <p>Website remap + mobile fix</p>
                 </div>
               </div>
@@ -387,31 +395,59 @@
               </p>
               <div class="flex items-center justify-between text-xs text-slate-400">
                 <div>
-                  <p class="font-medium text-slate-200">Independent café · Wiltshire</p>
+                  <p class="font-medium text-slate-200">Independent café</p>
                   <p>Brand new site from scratch</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="min-w-full px-5 sm:px-8 py-8 flex flex-col gap-4">
+              <p class="text-sm text-slate-100">
+                “We’d put off sorting our website for ages. SABR broke it down into simple steps,
+                handled the tech and checked in with us at each stage so nothing felt overwhelming.”
+              </p>
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <div>
+                  <p class="font-medium text-slate-200">Home services business</p>
+                  <p>Simple one-page website</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="min-w-full px-5 sm:px-8 py-8 flex flex-col gap-4">
+              <p class="text-sm text-slate-100">
+                “The new site feels like our actual brand instead of a random template.
+                Our enquiries have gone up and people mention the website when they get in touch.”
+              </p>
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <div>
+                  <p class="font-medium text-slate-200">Studio-based business</p>
+                  <p>Full brand + website refresh</p>
                 </div>
               </div>
             </article>
           </div>
 
-          <div class="absolute bottom-3 right-4 flex items-center gap-1.5">
-            <span class="h-1.5 w-6 rounded-full bg-slate-600" id="dot-0"></span>
-            <span class="h-1.5 w-6 rounded-full bg-slate-700" id="dot-1"></span>
-            <span class="h-1.5 w-6 rounded-full bg-slate-700" id="dot-2"></span>
+          <div id="testimonial-dots" class="absolute bottom-3 right-4 flex items-center gap-1.5">
+            <span class="h-1.5 w-6 rounded-full bg-slate-700 testimonial-dot"></span>
+            <span class="h-1.5 w-6 rounded-full bg-slate-700 testimonial-dot"></span>
+            <span class="h-1.5 w-6 rounded-full bg-slate-700 testimonial-dot"></span>
+            <span class="h-1.5 w-6 rounded-full bg-slate-700 testimonial-dot"></span>
+            <span class="h-1.5 w-6 rounded-full bg-slate-700 testimonial-dot"></span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Final CTA -->
-    <section class="border-t border-slate-800/70 bg-slate-950/90">
+    <section class="border-t border-slate-800/70 bg-slate-950/95">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="space-y-2">
           <h2 class="font-display text-xl sm:text-2xl font-semibold">
             Ready for a website that actually feels like your business?
           </h2>
           <p class="text-sm text-slate-300 max-w-xl">
-            Tell us what you do, how you like to work and what isn’t working with your current site (or lack of one).
+            Tell us what you do, what isn’t working right now and what a better website would help you with.
             We’ll come back with ideas, not pressure.
           </p>
         </div>
@@ -425,11 +461,12 @@
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- Bottom LED strip + footer -->
+  <div class="h-0.5 w-full bg-gradient-to-r from-transparent via-sabrAccentSoft/80 to-transparent shadow-sabr-glow"></div>
   <footer class="border-t border-slate-800/80 bg-slate-950/95">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.75rem] text-slate-500">
-      <p>© SABR DIGITAL · Wiltshire-based web design studio</p>
-      <p>Built for barbers, tattoo studios, cafés &amp; trades.</p>
+      <p>© SABR DIGITAL</p>
+      <p>Websites built to feel honest, clear and easy to use.</p>
     </div>
   </footer>
 
@@ -445,26 +482,34 @@
       });
     });
 
-    // Testimonials slider
+    // Testimonials slider (5 dots)
     (function () {
       const inner = document.getElementById('testimonial-inner');
-      if (!inner) return;
-      const total = inner.children.length;
+      const dotsContainer = document.getElementById('testimonial-dots');
+      if (!inner || !dotsContainer) return;
+
+      const slides = Array.from(inner.children);
+      const dots = Array.from(dotsContainer.querySelectorAll('.testimonial-dot'));
+      const total = slides.length;
       let index = 0;
 
       const updateDots = () => {
-        for (let i = 0; i < total; i++) {
-          const dot = document.getElementById(`dot-${i}`);
-          if (!dot) continue;
-          dot.className = 'h-1.5 w-6 rounded-full transition-colors ' + (i === index ? 'bg-slate-100' : 'bg-slate-700');
-        }
+        dots.forEach((dot, i) => {
+          dot.className =
+            'h-1.5 w-6 rounded-full testimonial-dot transition-colors ' +
+            (i === index ? 'bg-slate-100' : 'bg-slate-700');
+        });
       };
 
       const goTo = (i) => {
-        index = i % total;
+        index = (i + total) % total;
         inner.style.transform = `translateX(-${index * 100}%)`;
         updateDots();
       };
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => goTo(i));
+      });
 
       updateDots();
       setInterval(() => goTo(index + 1), 5000);
