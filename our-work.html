@@ -74,16 +74,22 @@
   </style>
 </head>
 <body data-page="work" class="min-h-screen text-slate-100">
+  <!-- Top LED -->
+  <div class="h-0.5 w-full bg-gradient-to-r from-transparent via-sabrAccentSoft/80 to-transparent shadow-sabr-glow"></div>
+
   <!-- Header -->
   <header class="border-b border-slate-800/60 bg-slate-950/40 backdrop-blur-xl sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
-      <a href="index.html" class="flex items-center gap-2">
-        <div class="h-8 w-8 rounded-xl bg-gradient-to-tr from-indigo-500 via-violet-500 to-sky-400 flex items-center justify-center shadow-sabr-glow">
-          <span class="font-display text-lg font-semibold tracking-tight">S</span>
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-2xl overflow-hidden border border-slate-500/60 bg-slate-900/80 shadow-sabr-glow flex items-center justify-center">
+          <img
+            src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png"
+            alt="SABR DIGITAL logo"
+            class="h-full w-full object-cover"
+          />
         </div>
         <div class="flex flex-col leading-tight">
           <span class="font-display font-semibold text-sm tracking-[0.28em] uppercase">SABR DIGITAL</span>
-          <span class="text-[0.7rem] text-slate-400">Websites that feel trustworthy</span>
         </div>
       </a>
       <nav class="flex items-center gap-6">
@@ -110,118 +116,96 @@
         </p>
       </div>
 
-      <!-- Grid of styles -->
-      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        <!-- Each card is hoverable mini pop-up style -->
-        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
-          <div class="aspect-[4/3] bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 group-hover:from-indigo-500/20 group-hover:via-fuchsia-500/20 group-hover:to-slate-900 transition-all">
-            <!-- placeholder area for screenshot -->
+      <!-- Grid of 4 styles with modals -->
+      <div class="grid gap-5 md:grid-cols-2">
+        <!-- Clean modern -->
+        <article
+          class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer"
+          data-modal-target="modal-clean"
+        >
+          <div class="relative aspect-[4/3] bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 group-hover:from-indigo-500/20 group-hover:via-fuchsia-500/20 group-hover:to-slate-900 transition-all">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="inline-flex items-center rounded-full bg-slate-950/85 px-3 py-1 text-[0.7rem] uppercase tracking-[0.2em] text-slate-100 border border-slate-700">
+                Open preview
+              </span>
+            </div>
           </div>
           <div class="p-4 space-y-2">
             <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 01</p>
             <h2 class="font-display text-sm font-semibold">
-              Futuristic glow
+              Clean modern
             </h2>
             <p class="text-[0.75rem] text-slate-400">
-              Bold gradients, neon accents and a clean layout – perfect for modern barbers or studios.
+              Minimal layout, strong hierarchy and calm colour palette. Good for service businesses that want to look sharp without feeling too “techy”.
             </p>
           </div>
         </article>
 
-        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
-          <div class="aspect-[4/3] bg-gradient-to-br from-emerald-500/10 via-slate-950 to-slate-900 group-hover:from-emerald-400/25 group-hover:via-teal-400/15 transition-all">
+        <!-- Bold futuristic -->
+        <article
+          class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer"
+          data-modal-target="modal-bold"
+        >
+          <div class="relative aspect-[4/3] bg-gradient-to-br from-indigo-500/25 via-fuchsia-500/25 to-slate-900 group-hover:from-indigo-400/35 group-hover:via-fuchsia-400/30 transition-all">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="inline-flex items-center rounded-full bg-slate-950/85 px-3 py-1 text-[0.7rem] uppercase tracking-[0.2em] text-slate-100 border border-slate-700">
+                Open preview
+              </span>
+            </div>
           </div>
           <div class="p-4 space-y-2">
             <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 02</p>
             <h2 class="font-display text-sm font-semibold">
-              Eco-friendly & earthy
+              Bold futuristic
             </h2>
             <p class="text-[0.75rem] text-slate-400">
-              Soft greens, warm neutrals and space for real photos – ideal for eco brands and cafés.
+              Strong gradients, neon details and dynamic sections for brands that want a slightly louder, more electric look and feel.
             </p>
           </div>
         </article>
 
-        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
-          <div class="aspect-[4/3] bg-gradient-to-br from-amber-400/15 via-slate-950 to-slate-900 group-hover:from-amber-300/25 group-hover:via-rose-300/15 transition-all">
+        <!-- Warm human -->
+        <article
+          class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer"
+          data-modal-target="modal-warm"
+        >
+          <div class="relative aspect-[4/3] bg-gradient-to-br from-amber-400/20 via-rose-400/15 to-slate-900 group-hover:from-amber-300/30 group-hover:via-rose-300/25 transition-all">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="inline-flex items-center rounded-full bg-slate-950/85 px-3 py-1 text-[0.7rem] uppercase tracking-[0.2em] text-slate-100 border border-slate-700">
+                Open preview
+              </span>
+            </div>
           </div>
           <div class="p-4 space-y-2">
             <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 03</p>
             <h2 class="font-display text-sm font-semibold">
-              Vintage & cosy
+              Warm & human
             </h2>
             <p class="text-[0.75rem] text-slate-400">
-              Retro typography, warm colour palettes and storytelling copy for vintage shops and salons.
+              Softer colours, rounded elements and more storytelling. Great for cafés, studios and any business where people come first.
             </p>
           </div>
         </article>
 
-        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
-          <div class="aspect-[4/3] bg-gradient-to-br from-sky-400/15 via-slate-950 to-slate-900 group-hover:from-sky-300/25 group-hover:via-cyan-300/20 transition-all">
+        <!-- Trust-focused -->
+        <article
+          class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer"
+          data-modal-target="modal-trust"
+        >
+          <div class="relative aspect-[4/3] bg-gradient-to-br from-sky-400/20 via-slate-900 to-slate-950 group-hover:from-sky-300/30 group-hover:via-cyan-300/25 transition-all">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="inline-flex items-center rounded-full bg-slate-950/85 px-3 py-1 text-[0.7rem] uppercase tracking-[0.2em] text-slate-100 border border-slate-700">
+                Open preview
+              </span>
+            </div>
           </div>
           <div class="p-4 space-y-2">
             <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 04</p>
             <h2 class="font-display text-sm font-semibold">
-              Minimal & premium
+              Professional & trust-focused
             </h2>
             <p class="text-[0.75rem] text-slate-400">
-              Light, spacious layouts with minimal colour for premium service providers and studios.
-            </p>
-          </div>
-        </article>
-
-        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
-          <div class="aspect-[4/3] bg-gradient-to-br from-rose-400/15 via-slate-950 to-slate-900 group-hover:from-rose-300/25 group-hover:via-amber-200/20 transition-all">
-          </div>
-          <div class="p-4 space-y-2">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 05</p>
-            <h2 class="font-display text-sm font-semibold">
-              Bold & playful
-            </h2>
-            <p class="text-[0.75rem] text-slate-400">
-              Strong colours, quirky shapes and punchy text – great for creative brands and studios.
-            </p>
-          </div>
-        </article>
-
-        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
-          <div class="aspect-[4/3] bg-gradient-to-br from-purple-400/15 via-slate-950 to-slate-900 group-hover:from-purple-300/25 group-hover:via-indigo-300/20 transition-all">
-          </div>
-          <div class="p-4 space-y-2">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 06</p>
-            <h2 class="font-display text-sm font-semibold">
-              Dark studio
-            </h2>
-            <p class="text-[0.75rem] text-slate-400">
-              Moody dark backgrounds, spotlight effects and strong typography for tattoo and piercing.
-            </p>
-          </div>
-        </article>
-
-        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
-          <div class="aspect-[4/3] bg-gradient-to-br from-slate-700/30 via-slate-950 to-slate-900 group-hover:from-slate-500/40 group-hover:via-sky-400/20 transition-all">
-          </div>
-          <div class="p-4 space-y-2">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 07</p>
-            <h2 class="font-display text-sm font-semibold">
-              Clean trades
-            </h2>
-            <p class="text-[0.75rem] text-slate-400">
-              Straightforward layouts, bold call-to-actions and clear sections for trades and services.
-            </p>
-          </div>
-        </article>
-
-        <article class="group relative rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden cursor-pointer">
-          <div class="aspect-[4/3] bg-gradient-to-br from-fuchsia-400/15 via-slate-950 to-slate-900 group-hover:from-fuchsia-300/25 group-hover:via-rose-300/20 transition-all">
-          </div>
-          <div class="p-4 space-y-2">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Style 08</p>
-            <h2 class="font-display text-sm font-semibold">
-              Social-first
-            </h2>
-            <p class="text-[0.75rem] text-slate-400">
-              Layouts built around your TikTok/Instagram content with clear paths to book or enquire.
+              Structured layouts with clear calls to action, testimonials and proof sections – built to make people feel safe choosing you.
             </p>
           </div>
         </article>
@@ -237,9 +221,130 @@
     </section>
   </main>
 
+  <!-- Modals (simple previews with sections) -->
+  <div id="modal-clean" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-4">
+    <div class="max-w-4xl w-full rounded-3xl border border-slate-700 bg-slate-950/95 shadow-sabr-glow overflow-hidden">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Style 01 – Clean modern</p>
+        <button class="text-slate-400 text-xs hover:text-slate-100" data-modal-close>&times; Close</button>
+      </div>
+      <div class="max-h-[70vh] overflow-y-auto">
+        <div class="px-5 py-6 space-y-6">
+          <section class="space-y-2">
+            <h2 class="font-display text-lg font-semibold">Hero section</h2>
+            <p class="text-sm text-slate-300">
+              Clear, simple headline, one-line explainer and one main button. Minimal background detail so the text is easy to read.
+            </p>
+          </section>
+          <section class="space-y-2">
+            <h2 class="font-display text-lg font-semibold">Services section</h2>
+            <p class="text-sm text-slate-300">
+              Three or four cards explaining what you do, who it’s for and what people can expect.
+            </p>
+          </section>
+          <section class="space-y-2">
+            <h2 class="font-display text-lg font-semibold">Gallery / proof</h2>
+            <p class="text-sm text-slate-300">
+              Simple grid of your best photos with space for short captions where needed.
+            </p>
+          </section>
+          <section class="space-y-2">
+            <h2 class="font-display text-lg font-semibold">Contact & bookings</h2>
+            <p class="text-sm text-slate-300">
+              Clear “next step” – call, message, book or fill in a form. Easy to use on mobile.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-bold" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-4">
+    <div class="max-w-4xl w-full rounded-3xl border border-slate-700 bg-slate-950/95 shadow-sabr-glow overflow-hidden">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Style 02 – Bold futuristic</p>
+        <button class="text-slate-400 text-xs hover:text-slate-100" data-modal-close>&times; Close</button>
+      </div>
+      <div class="max-h-[70vh] overflow-y-auto">
+        <div class="px-5 py-6 space-y-6">
+          <section class="space-y-2">
+            <h2 class="font-display text-lg font-semibold">Hero section</h2>
+            <p class="text-sm text-slate-300">
+              Gradient-heavy hero with layered shapes and punchy wording for bolder brands.
+            </p>
+          </section>
+          <section class="space-y-2">
+            <h2 class="font-display text-lg font-semibold">Feature highlights</h2>
+            <p class="text-sm text-slate-300">
+              Icon-led blocks pulling out the most important benefits, not just features.
+            </p>
+          </section>
+          <section class="space-y-2">
+            <h2 class="font-display text-lg font-semibold">Social proof</h2>
+            <p class="text-sm text-slate-300">
+              Testimonials, stats and logos placed where they actually help people decide.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-warm" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-4">
+    <div class="max-w-4xl w-full rounded-3xl border border-slate-700 bg-slate-950/95 shadow-sabr-glow overflow-hidden">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Style 03 – Warm & human</p>
+        <button class="text-slate-400 text-xs hover:text-slate-100" data-modal-close>&times; Close</button>
+      </div>
+      <div class="max-h-[70vh] overflow-y-auto">
+        <div class="px-5 py-6 space-y-6">
+          <section class="space-y-2">
+            <h2 class="font-display text-lg font-semibold">Story-led intro</h2>
+            <p class="text-sm text-slate-300">
+              Hero copy that sounds like a human speaking, not a corporate brochure.
+            </p>
+          </section>
+          <section class="space-y-2">
+            <h2 class="font-display text-lg font-semibold">Photo-led sections</h2>
+            <p class="text-sm text-slate-300">
+              Larger photos, softer edges and more focus on people and spaces.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-trust" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-4">
+    <div class="max-w-4xl w-full rounded-3xl border border-slate-700 bg-slate-950/95 shadow-sabr-glow overflow-hidden">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Style 04 – Professional & trust-focused</p>
+        <button class="text-slate-400 text-xs hover:text-slate-100" data-modal-close>&times; Close</button>
+      </div>
+      <div class="max-h-[70vh] overflow-y-auto">
+        <div class="px-5 py-6 space-y-6">
+          <section class="space-y-2">
+            <h2 class="font-display text-lg font-semibold">Clear structure</h2>
+            <p class="text-sm text-slate-300">
+              Logical sections answering who you are, what you do, where you are and how to get in touch.
+            </p>
+          </section>
+          <section class="space-y-2">
+            <h2 class="font-display text-lg font-semibold">Proof & reassurance</h2>
+            <p class="text-sm text-slate-300">
+              Testimonials, FAQs and guarantee-style messaging to remove doubts.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom LED + footer -->
+  <div class="h-0.5 w-full bg-gradient-to-r from-transparent via-sabrAccentSoft/80 to-transparent shadow-sabr-glow"></div>
   <footer class="border-t border-slate-800/80 bg-slate-950/95">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.75rem] text-slate-500">
-      <p>© SABR DIGITAL · Wiltshire-based web design studio</p>
+      <p>© SABR DIGITAL</p>
       <p>These are showcase layouts. Real client sites coming soon.</p>
     </div>
   </footer>
@@ -247,11 +352,45 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const page = document.body.dataset.page;
-      if (!page) return;
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.dataset.link === page) {
-          link.classList.add('nav-active');
-        }
+      if (page) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+          if (link.dataset.link === page) link.classList.add('nav-active');
+        });
+      }
+
+      const openers = document.querySelectorAll('[data-modal-target]');
+      const closes = document.querySelectorAll('[data-modal-close]');
+      const modals = document.querySelectorAll('[id^="modal-"]');
+
+      function openModal(id) {
+        const modal = document.getElementById(id);
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+
+      function closeAll() {
+        modals.forEach(m => {
+          m.classList.add('hidden');
+          m.classList.remove('flex');
+        });
+      }
+
+      openers.forEach(card => {
+        card.addEventListener('click', () => {
+          const id = card.getAttribute('data-modal-target');
+          if (id) openModal(id);
+        });
+      });
+
+      closes.forEach(btn => {
+        btn.addEventListener('click', closeAll);
+      });
+
+      modals.forEach(modal => {
+        modal.addEventListener('click', e => {
+          if (e.target === modal) closeAll();
+        });
       });
     });
   </script>
