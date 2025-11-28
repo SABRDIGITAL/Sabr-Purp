@@ -74,16 +74,22 @@
   </style>
 </head>
 <body data-page="contact" class="min-h-screen text-slate-100">
+  <!-- Top LED -->
+  <div class="h-0.5 w-full bg-gradient-to-r from-transparent via-sabrAccentSoft/80 to-transparent shadow-sabr-glow"></div>
+
   <!-- Header -->
   <header class="border-b border-slate-800/60 bg-slate-950/40 backdrop-blur-xl sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
-      <a href="index.html" class="flex items-center gap-2">
-        <div class="h-8 w-8 rounded-xl bg-gradient-to-tr from-indigo-500 via-violet-500 to-sky-400 flex items-center justify-center shadow-sabr-glow">
-          <span class="font-display text-lg font-semibold tracking-tight">S</span>
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-2xl overflow-hidden border border-slate-500/60 bg-slate-900/80 shadow-sabr-glow flex items-center justify-center">
+          <img
+            src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png"
+            alt="SABR DIGITAL logo"
+            class="h-full w-full object-cover"
+          />
         </div>
         <div class="flex flex-col leading-tight">
           <span class="font-display font-semibold text-sm tracking-[0.28em] uppercase">SABR DIGITAL</span>
-          <span class="text-[0.7rem] text-slate-400">Websites that feel trustworthy</span>
         </div>
       </a>
       <nav class="flex items-center gap-6">
@@ -115,25 +121,25 @@
               <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Email</p>
               <p class="text-sm font-medium text-slate-100">sabrdigitalwilts@gmail.com</p>
               <p class="text-[0.78rem] text-slate-400">
-                Send us a rough idea of what you need and any links or photos.
+                Prefer email? Send us a rough idea of what you need and any links or photos.
               </p>
             </div>
             <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 space-y-2">
               <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Instagram</p>
               <p class="text-sm font-medium text-slate-100">@sabrdigital</p>
               <p class="text-[0.78rem] text-slate-400">
-                Prefer DMs? You can voice note or send screenshots there instead.
+                Voice notes, screenshots, quick questions – DMs are fine too.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Contact form (no 405) -->
+        <!-- Contact form -->
         <div class="rounded-3xl border border-slate-800 bg-slate-950/85 px-5 py-6 shadow-sabr-glow/40">
           <form
-            action="mailto:sabrdigitalwilts@gmail.com"
-            method="post"
-            enctype="text/plain"
+            id="contact-form"
+            action="https://formspree.io/f/xangldrg"
+            method="POST"
             class="space-y-4 text-sm"
           >
             <div class="space-y-1.5">
@@ -155,12 +161,26 @@
             </div>
 
             <div class="space-y-1.5">
+              <label for="website" class="block text-xs font-medium text-slate-300 uppercase tracking-[0.18em]">Current website (if you have one)</label>
+              <input id="website" name="website" type="url" placeholder="https://"
+                     class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            </div>
+
+            <div class="space-y-1.5">
               <label for="message" class="block text-xs font-medium text-slate-300 uppercase tracking-[0.18em]">
                 What can we help with?
               </label>
-              <textarea id="message" name="message" rows="5"
+              <textarea id="message" name="message" rows="5" required
                         placeholder="Tell us briefly what you do, what’s not working, and what a better website would change."
                         class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="budget" class="block text-xs font-medium text-slate-300 uppercase tracking-[0.18em]">
+                Rough budget (optional)
+              </label>
+              <input id="budget" name="budget" type="text" placeholder="It’s okay if you’re not sure yet"
+                     class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
             </div>
 
             <button
@@ -169,18 +189,18 @@
               Send message
             </button>
 
-            <p class="pt-2 text-[0.7rem] text-slate-500">
-              This will open your email app with your message pre-filled, so you can double check it before sending.
-            </p>
+            <p id="form-status" class="pt-2 text-[0.7rem] text-slate-500"></p>
           </form>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- Bottom LED + footer -->
+  <div class="h-0.5 w-full bg-gradient-to-r from-transparent via-sabrAccentSoft/80 to-transparent shadow-sabr-glow"></div>
   <footer class="border-t border-slate-800/80 bg-slate-950/95">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.75rem] text-slate-500">
-      <p>© SABR DIGITAL · Wiltshire-based web design studio</p>
+      <p>© SABR DIGITAL</p>
       <p>Friendly humans, not robots – even if we like the tech.</p>
     </div>
   </footer>
@@ -188,12 +208,43 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const page = document.body.dataset.page;
-      if (!page) return;
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.dataset.link === page) {
-          link.classList.add('nav-active');
-        }
-      });
+      if (page) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+          if (link.dataset.link === page) link.classList.add('nav-active');
+        });
+      }
+
+      // Formspree AJAX (optional – keeps user on page)
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+
+      if (form && status) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          status.textContent = 'Sending...';
+
+          try {
+            const data = new FormData(form);
+            const res = await fetch(form.action, {
+              method: form.method,
+              body: data,
+              headers: { 'Accept': 'application/json' }
+            });
+
+            if (res.ok) {
+              form.reset();
+              status.textContent = 'Thanks – we’ve got your message and will reply as soon as we can.';
+              status.className = 'pt-2 text-[0.7rem] text-emerald-400';
+            } else {
+              status.textContent = 'Something went wrong sending the form. You can also email sabrdigitalwilts@gmail.com.';
+              status.className = 'pt-2 text-[0.7rem] text-rose-400';
+            }
+          } catch (err) {
+            status.textContent = 'Something went wrong sending the form. You can also email sabrdigitalwilts@gmail.com.';
+            status.className = 'pt-2 text-[0.7rem] text-rose-400';
+          }
+        });
+      }
     });
   </script>
 </body>
