@@ -17,13 +17,14 @@
             body: ['Inter', 'system-ui', 'sans-serif'],
           },
           colors: {
-            sabrBg: '#050516',
-            sabrCard: '#090921',
-            sabrAccent: '#6c5ce7',
-            sabrAccentSoft: '#a29bff',
+            sabrBg: '#050016',
+            sabrCard: '#070021',
+            sabrAccent: '#7c5cff',
+            sabrAccentSoft: '#a997ff',
+            sabrCyan: '#46c9ff',
           },
           boxShadow: {
-            'sabr-glow': '0 0 35px rgba(108, 92, 231, 0.5)',
+            'sabr-glow': '0 0 35px rgba(124, 92, 255, 0.55)',
           }
         }
       }
@@ -32,8 +33,11 @@
   <style>
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top, #1e1b4b 0, #020016 45%, #000 100%);
+      background:
+        radial-gradient(circle at top, #271066 0, transparent 55%),
+        radial-gradient(circle at bottom, #050016 0, #01000b 55%);
       color: #f8fafc;
+      min-height: 100vh;
     }
     .font-display {
       font-family: 'Space Grotesk', system-ui, sans-serif;
@@ -54,34 +58,75 @@
       width: 0;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(90deg, #4f46e5, #a855f7, #22d3ee);
-      transition: width 0.2s ease-out;
+      background: linear-gradient(90deg, #46c9ff, #7c5cff, #46c9ff);
+      transition: width 0.18s ease-out;
+      box-shadow: 0 0 16px rgba(111, 225, 255, 0.8);
     }
     .nav-link.nav-active::after,
     .nav-link:hover::after {
-      width: 70%;
+      width: 72%;
     }
-    .grid-overlay {
+
+    .hex-overlay {
       pointer-events: none;
       position: absolute;
       inset: 0;
-      opacity: 0.14;
-      background-image: linear-gradient(to right, rgba(148, 163, 184, 0.2) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(148, 163, 184, 0.2) 1px, transparent 1px);
-      background-size: 40px 40px;
+      opacity: 0.45;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(124, 92, 255, 0.22) 1px, transparent 0),
+        radial-gradient(circle at 25px 16px, rgba(70, 201, 255, 0.2) 1px, transparent 0);
+      background-size: 60px 52px;
+      mix-blend-mode: screen;
       mask-image: radial-gradient(circle at top, black 0, black 55%, transparent 100%);
+      animation: hexDrift 22s linear infinite;
+    }
+    @keyframes hexDrift {
+      0% { background-position: 0 0, 0 0; }
+      50% { background-position: 40px 30px, -40px 10px; }
+      100% { background-position: 0 0, 0 0; }
+    }
+
+    .led-strip {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #46c9ff, #7c5cff, #46c9ff, transparent);
+      background-size: 220% 100%;
+      animation: beamSlide 5.2s linear infinite;
+      box-shadow: 0 0 22px rgba(111, 225, 255, 0.85);
+      opacity: 0.9;
+    }
+    @keyframes beamSlide {
+      0% { background-position: 200% 0; }
+      100% { background-position: -20% 0; }
+    }
+
+    /* Vertical timeline accent */
+    .process-line {
+      position: absolute;
+      left: 1.1rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      background: linear-gradient(to bottom, #46c9ff, #7c5cff, transparent);
+      opacity: 0.8;
+      box-shadow: 0 0 18px rgba(111, 225, 255, 0.7);
+    }
+    @media (min-width: 640px) {
+      .process-line {
+        left: 1.4rem;
+      }
     }
   </style>
 </head>
 <body data-page="process" class="min-h-screen text-slate-100">
-  <!-- Top LED -->
-  <div class="h-0.5 w-full bg-gradient-to-r from-transparent via-sabrAccentSoft/80 to-transparent shadow-sabr-glow"></div>
-
   <!-- Header -->
-  <header class="border-b border-slate-800/60 bg-slate-950/40 backdrop-blur-xl sticky top-0 z-40">
+  <header class="relative border-b border-slate-800/60 bg-slate-950/70 backdrop-blur-xl sticky top-0 z-40">
+    <div class="led-strip top-0"></div>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
-      <a href="index.html" class="flex items-center gap-3">
-        <div class="h-9 w-9 rounded-2xl overflow-hidden border border-slate-500/60 bg-slate-900/80 shadow-sabr-glow flex items-center justify-center">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="h-9 w-9 rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center shadow-sabr-glow border border-slate-600/70">
           <img
             src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png"
             alt="SABR DIGITAL logo"
@@ -90,6 +135,7 @@
         </div>
         <div class="flex flex-col leading-tight">
           <span class="font-display font-semibold text-sm tracking-[0.28em] uppercase">SABR DIGITAL</span>
+          <span class="text-[0.7rem] text-slate-400">Websites that feel trustworthy</span>
         </div>
       </a>
       <nav class="flex items-center gap-6">
@@ -102,7 +148,7 @@
   </header>
 
   <main class="relative">
-    <div class="grid-overlay"></div>
+    <div class="hex-overlay"></div>
 
     <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 space-y-8">
       <div class="space-y-3 max-w-3xl">
@@ -111,196 +157,174 @@
           A simple, done-with-you process
         </h1>
         <p class="text-sm text-slate-300">
-          No complicated project plans. Just a clear set of steps so you always know what’s happening,
-          what we need from you, and when your new website will be ready.
+          No complicated project plan. Just a clear sequence so you always know what’s happening,
+          what we need from you, and when your new site will be ready.
         </p>
       </div>
 
-      <!-- Timeline -->
-      <div class="relative">
-        <div class="absolute left-3 sm:left-6 top-1 bottom-1 w-px bg-gradient-to-b from-indigo-500 via-slate-700 to-transparent pointer-events-none"></div>
+      <div class="relative mt-6">
+        <div class="process-line"></div>
 
-        <div class="space-y-8">
+        <div class="space-y-7">
           <!-- Step 1 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-slate-600 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">💬</span>
+          <article class="relative pl-10 sm:pl-16">
+            <div class="absolute left-1 sm:left-2 top-1">
+              <div class="h-8 w-8 rounded-full bg-slate-950 border border-sabrCyan/80 flex items-center justify-center shadow-sabr-glow/40">
+                <span class="text-lg">💬</span>
               </div>
             </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
               <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 1</p>
               <h2 class="font-display text-sm sm:text-base font-semibold">
-                Quick call or questionnaire to understand your business
+                Quick chat to understand your business
               </h2>
               <p class="text-sm text-slate-300">
-                We start with either a short call/voice note chat or a quick questionnaire – whichever you prefer.
-                We ask about what you do, who your customers are and what’s currently frustrating you.
+                We start with a short call or voice notes to get clear on what you do, who you want to attract
+                and what isn’t working with your current setup (or not having a site yet).
               </p>
               <p class="text-xs text-slate-400">
-                What this means for you: no long forms or jargon – just explain things in your own words.
+                What this means for you: you talk in normal language, we translate it into a clear plan.
               </p>
             </div>
-          </div>
+          </article>
 
           <!-- Step 2 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-slate-600 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">📸</span>
+          <article class="relative pl-10 sm:pl-16">
+            <div class="absolute left-1 sm:left-2 top-1">
+              <div class="h-8 w-8 rounded-full bg-slate-950 border border-sabrCyan/80 flex items-center justify-center shadow-sabr-glow/40">
+                <span class="text-lg">📸</span>
               </div>
             </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
               <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 2</p>
               <h2 class="font-display text-sm sm:text-base font-semibold">
-                Collect photos, words &amp; key details
+                You send photos, details and any rough notes
               </h2>
               <p class="text-sm text-slate-300">
-                You send over your best photos, logo (if you have one) and core info: services, prices, opening times,
-                location, socials and any reviews you want to highlight.
+                You share your logo, photos, prices, services, opening hours and any reviews you’re proud of.
+                Bullet points and screenshots are fine – we’ll organise everything.
               </p>
               <p class="text-xs text-slate-400">
-                What this means for you: we turn messy notes and screenshots into clean sections that make sense.
+                What this means for you: no long forms – we do the tidying and structuring for you.
               </p>
             </div>
-          </div>
+          </article>
 
           <!-- Step 3 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-slate-600 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">🧱</span>
+          <article class="relative pl-10 sm:pl-16">
+            <div class="absolute left-1 sm:left-2 top-1">
+              <div class="h-8 w-8 rounded-full bg-slate-950 border border-sabrCyan/80 flex items-center justify-center shadow-sabr-glow/40">
+                <span class="text-lg">🧪</span>
               </div>
             </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
               <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 3</p>
               <h2 class="font-display text-sm sm:text-base font-semibold">
-                Plan the structure &amp; main pages
+                We design and build the first version
               </h2>
               <p class="text-sm text-slate-300">
-                We map out a simple structure for your site – usually a clean homepage plus clear pages for services,
-                gallery/proof and contact. We share this with you before we start building.
+                We create a full working version of your site – not just a mock-up – and send you a link so you can
+                click around on your phone and computer.
               </p>
               <p class="text-xs text-slate-400">
-                What this means for you: you know exactly what’s going on each page before anything is built.
+                What this means for you: you react to something real instead of guessing from static designs.
               </p>
             </div>
-          </div>
+          </article>
 
           <!-- Step 4 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-slate-600 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">🧪</span>
+          <article class="relative pl-10 sm:pl-16">
+            <div class="absolute left-1 sm:left-2 top-1">
+              <div class="h-8 w-8 rounded-full bg-slate-950 border border-sabrCyan/80 flex items-center justify-center shadow-sabr-glow/40">
+                <span class="text-lg">✏️</span>
               </div>
             </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
               <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 4</p>
               <h2 class="font-display text-sm sm:text-base font-semibold">
-                Design &amp; build the first version
+                Tweaks, refinements and extra passes
               </h2>
               <p class="text-sm text-slate-300">
-                We design and build the first full version of your site – not just a mockup. You get a link to click through
-                on your phone and laptop so you can see how it really feels.
+                We adjust the copy, layout and hierarchy based on your feedback – making sure it feels like your business,
+                not a generic template.
               </p>
               <p class="text-xs text-slate-400">
-                What this means for you: you can react to something real instead of trying to imagine it.
+                What this means for you: you can be honest; we’ll keep polishing until it feels right.
               </p>
             </div>
-          </div>
+          </article>
 
           <!-- Step 5 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-slate-600 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">✨</span>
+          <article class="relative pl-10 sm:pl-16">
+            <div class="absolute left-1 sm:left-2 top-1">
+              <div class="h-8 w-8 rounded-full bg-slate-950 border border-sabrCyan/80 flex items-center justify-center shadow-sabr-glow/40">
+                <span class="text-lg">🌐</span>
               </div>
             </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
               <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 5</p>
               <h2 class="font-display text-sm sm:text-base font-semibold">
-                Tweaks, revisions &amp; finishing touches
+                Domain, platform & launch
               </h2>
               <p class="text-sm text-slate-300">
-                We go through your feedback and make changes to wording, photos and layout. You’re not limited to one round –
-                we keep tweaking until it feels right within the agreed scope.
+                We connect your domain, set up hosting and make sure everything works smoothly.
+                We then launch your new site and check it together.
               </p>
               <p class="text-xs text-slate-400">
-                What this means for you: you’re not stuck with something that feels “almost right”.
+                What this means for you: your site goes live without you getting stuck in technical settings.
               </p>
             </div>
-          </div>
+          </article>
 
           <!-- Step 6 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-slate-600 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">🌐</span>
+          <article class="relative pl-10 sm:pl-16">
+            <div class="absolute left-1 sm:left-2 top-1">
+              <div class="h-8 w-8 rounded-full bg-slate-950 border border-sabrCyan/80 flex items-center justify-center shadow-sabr-glow/40">
+                <span class="text-lg">🎥</span>
               </div>
             </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
               <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 6</p>
               <h2 class="font-display text-sm sm:text-base font-semibold">
-                Domain &amp; platform setup
+                Simple walkthrough & handover
               </h2>
               <p class="text-sm text-slate-300">
-                We connect your domain, move you away from any old platform if needed, and make sure everything loads fast
-                and works properly on mobile and desktop.
+                We record a short walkthrough video showing you where everything lives and how to make small edits
+                if you want to.
               </p>
               <p class="text-xs text-slate-400">
-                What this means for you: no confusing DNS settings or tech headaches – we handle it.
+                What this means for you: you’re not left guessing how your own website works.
               </p>
             </div>
-          </div>
+          </article>
 
           <!-- Step 7 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-slate-600 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">🎥</span>
+          <article class="relative pl-10 sm:pl-16">
+            <div class="absolute left-1 sm:left-2 top-1">
+              <div class="h-8 w-8 rounded-full bg-slate-950 border border-sabrCyan/80 flex items-center justify-center shadow-sabr-glow/40">
+                <span class="text-lg">♻️</span>
               </div>
             </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/90 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
               <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 7</p>
               <h2 class="font-display text-sm sm:text-base font-semibold">
-                Walk-through &amp; simple handover
+                Ongoing tweaks & support (optional)
               </h2>
               <p class="text-sm text-slate-300">
-                We record a quick video walking you through the site – where everything lives and how to request or make changes.
+                If you want us to, we can keep handling ongoing changes – new photos, updated prices, new offers,
+                or small layout adjustments as your business evolves.
               </p>
               <p class="text-xs text-slate-400">
-                What this means for you: you’re not left staring at a dashboard wondering what to press.
+                What this means for you: you stay focused on your work while the site quietly keeps up.
               </p>
             </div>
-          </div>
-
-          <!-- Step 8 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-slate-600 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">🔁</span>
-              </div>
-            </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
-              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 8</p>
-              <h2 class="font-display text-sm sm:text-base font-semibold">
-                Aftercare &amp; ongoing updates
-              </h2>
-              <p class="text-sm text-slate-300">
-                If you want, we stay on as your “website person” – updating photos, adding offers and keeping everything tidy.
-                Or you can run things yourself and just shout when you need help.
-              </p>
-              <p class="text-xs text-slate-400">
-                What this means for you: your site doesn’t slowly slide back into “out of date” mode.
-              </p>
-            </div>
-          </div>
+          </article>
         </div>
       </div>
 
       <div class="pt-4 border-t border-slate-800 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-300">
-        <p>Want to know exactly what we’d do for your business?</p>
-        <a href="talk-to-us.html" class="inline-flex items-center gap-2 text-xs font-medium text-sabrAccentSoft hover:text-sabrAccent transition-colors">
+        <p>Want to know how this would look for your business specifically?</p>
+        <a href="talk-to-us.html" class="inline-flex items-center gap-2 text-xs font-medium text-sabrAccentSoft hover:text-sabrCyan transition-colors">
           Book a free chat
           <span class="text-[0.9rem]">↗</span>
         </a>
@@ -308,11 +332,10 @@
     </section>
   </main>
 
-  <!-- Bottom LED + footer -->
-  <div class="h-0.5 w-full bg-gradient-to-r from-transparent via-sabrAccentSoft/80 to-transparent shadow-sabr-glow"></div>
-  <footer class="border-t border-slate-800/80 bg-slate-950/95">
+  <footer class="relative border-t border-slate-800/80 bg-slate-950/98">
+    <div class="led-strip bottom-0"></div>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.75rem] text-slate-500">
-      <p>© SABR DIGITAL</p>
+      <p>© SABR DIGITAL · Modern web design studio</p>
       <p>Clear steps so you always know what’s next.</p>
     </div>
   </footer>
