@@ -72,18 +72,6 @@
       width: 70%;
     }
 
-    .grid-overlay {
-      pointer-events: none;
-      position: absolute;
-      inset: 0;
-      opacity: 0.14;
-      background-image:
-        linear-gradient(to right, rgba(148, 163, 184, 0.18) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(148, 163, 184, 0.18) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(circle at top, black 0, black 55%, transparent 100%);
-    }
-
     .led-strip {
       height: 3px;
       width: 100%;
@@ -96,9 +84,38 @@
     .card-matte {
       background-color: #05040d; /* luxury matte black */
     }
+
+    /* Match home hex background vibe on this page too */
+    .animated-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background-image: url("images/hex-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.33;
+      filter: brightness(0.85) saturate(1.25);
+      animation:
+        hexDrift 24s ease-in-out infinite alternate,
+        hexPulse 10s ease-in-out infinite;
+    }
+
+    @keyframes hexDrift {
+      0%   { transform: scale(1.08) translateX(-12px) translateY(-6px); }
+      100% { transform: scale(1.08) translateX(12px) translateY(6px); }
+    }
+
+    @keyframes hexPulse {
+      0%   { filter: brightness(0.85) saturate(1.25); }
+      50%  { filter: brightness(1.0) saturate(1.45); }
+      100% { filter: brightness(0.85) saturate(1.25); }
+    }
   </style>
 </head>
 <body data-page="work" class="min-h-screen text-slate-100">
+  <!-- Animated hex bg -->
+  <div class="animated-bg"></div>
+
   <!-- Header -->
   <header class="border-b border-slate-800/70 bg-slate-950/70 backdrop-blur-xl sticky top-0 z-40">
     <div class="led-strip"></div>
@@ -128,8 +145,6 @@
   </header>
 
   <main class="relative">
-    <div class="grid-overlay"></div>
-
     <!-- Top LED accent -->
     <div class="led-strip"></div>
 
@@ -137,61 +152,164 @@
       <div class="space-y-3 max-w-3xl">
         <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Examples</p>
         <h1 class="font-display text-2xl sm:text-3xl font-semibold">
-          Different styles we can build for your business
+          Screenshots from example sites we’ve built
         </h1>
         <p class="text-sm text-slate-300">
-          These showcase layouts illustrate the standard of design and structure we deliver.
-          Once client sites are live, we’ll replace these with real case studies.
+          These showcase pages illustrate the type of layout, structure and clarity we aim for.
+          Once client sites are live, we’ll replace these with full case studies and live links.
         </p>
       </div>
 
-      <!-- Three big matte-black cards -->
+      <!-- Screenshot gallery (Flowgrid-style placeholders) -->
       <div class="mt-6 grid gap-6 md:grid-cols-3">
-        <!-- Bold & playful -->
-        <article
-          class="group relative rounded-3xl border border-purple-500/40 card-matte shadow-sabr-soft overflow-hidden">
-          <div class="h-40 sm:h-44 bg-gradient-to-br from-fuchsia-500/30 via-purple-500/10 to-amber-300/20 group-hover:from-fuchsia-400/50 group-hover:via-purple-500/30 group-hover:to-amber-200/40 transition-all duration-500"></div>
-          <div class="p-5 space-y-2">
-            <h2 class="font-display text-base sm:text-lg font-semibold">
-              Bold &amp; playful
+        <!-- Hero -->
+        <article class="group relative rounded-3xl border border-purple-500/40 card-matte shadow-sabr-soft overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="images/work-flowgrid-hero.png"
+              alt="Example website hero section"
+              class="w-full h-full object-cover aspect-[4/3] group-hover:scale-[1.02] transition-transform duration-500"
+            />
+          </div>
+          <div class="p-4 space-y-1.5">
+            <h2 class="font-display text-sm sm:text-base font-semibold">
+              Hero section
             </h2>
-            <p class="text-[0.8rem] sm:text-sm text-slate-300">
-              Strong colour blocks, sharp typography and confident copy for high-energy brands that want to stand out.
+            <p class="text-[0.8rem] sm:text-xs text-slate-300">
+              Clear headline, short subtext and a simple primary button so people know exactly what you do in seconds.
             </p>
           </div>
         </article>
 
-        <!-- Minimal & premium -->
-        <article
-          class="group relative rounded-3xl border border-purple-500/40 card-matte shadow-sabr-soft overflow-hidden">
-          <div class="h-40 sm:h-44 bg-gradient-to-br from-slate-300/15 via-purple-500/10 to-slate-900/80 group-hover:from-slate-100/25 group-hover:via-purple-400/25 group-hover:to-slate-900/90 transition-all duration-500"></div>
-          <div class="p-5 space-y-2">
-            <h2 class="font-display text-base sm:text-lg font-semibold">
-              Minimal &amp; premium
+        <!-- Services -->
+        <article class="group relative rounded-3xl border border-purple-500/40 card-matte shadow-sabr-soft overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="images/work-flowgrid-services.png"
+              alt="Example website services section"
+              class="w-full h-full object-cover aspect-[4/3] group-hover:scale-[1.02] transition-transform duration-500"
+            />
+          </div>
+          <div class="p-4 space-y-1.5">
+            <h2 class="font-display text-sm sm:text-base font-semibold">
+              Services overview
             </h2>
-            <p class="text-[0.8rem] sm:text-sm text-slate-300">
-              Calm, spacious layouts with a focus on proof and clarity – ideal for premium services and studios.
+            <p class="text-[0.8rem] sm:text-xs text-slate-300">
+              Simple cards that explain what you offer, who it’s for and how to book, without long paragraphs.
             </p>
           </div>
         </article>
 
-        <!-- Sleek & future-ready -->
-        <article
-          class="group relative rounded-3xl border border-purple-500/40 card-matte shadow-sabr-soft overflow-hidden">
-          <div class="h-40 sm:h-44 bg-gradient-to-br from-slate-900 via-indigo-700/40 to-slate-950 group-hover:from-slate-900 group-hover:via-indigo-500/60 group-hover:to-slate-950 transition-all duration-500"></div>
-          <div class="p-5 space-y-2">
-            <h2 class="font-display text-base sm:text-lg font-semibold">
-              Sleek &amp; future-ready
+        <!-- Process -->
+        <article class="group relative rounded-3xl border border-purple-500/40 card-matte shadow-sabr-soft overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="images/work-flowgrid-process.png"
+              alt="Example website process section"
+              class="w-full h-full object-cover aspect-[4/3] group-hover:scale-[1.02] transition-transform duration-500"
+            />
+          </div>
+          <div class="p-4 space-y-1.5">
+            <h2 class="font-display text-sm sm:text-base font-semibold">
+              How it works
             </h2>
-            <p class="text-[0.8rem] sm:text-sm text-slate-300">
-              Dark, cinematic design with subtle motion for businesses that want a modern, tech-forward feel.
+            <p class="text-[0.8rem] sm:text-xs text-slate-300">
+              A short, skimmable timeline so people can see what happens after they contact you.
+            </p>
+          </div>
+        </article>
+
+        <!-- Pricing / Packages -->
+        <article class="group relative rounded-3xl border border-purple-500/40 card-matte shadow-sabr-soft overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="images/work-flowgrid-pricing.png"
+              alt="Example website pricing section"
+              class="w-full h-full object-cover aspect-[4/3] group-hover:scale-[1.02] transition-transform duration-500"
+            />
+          </div>
+          <div class="p-4 space-y-1.5">
+            <h2 class="font-display text-sm sm:text-base font-semibold">
+              Pricing &amp; packages
+            </h2>
+            <p class="text-[0.8rem] sm:text-xs text-slate-300">
+              Straightforward pricing, what’s included and what happens next – no clutter, no hidden stuff.
+            </p>
+          </div>
+        </article>
+
+        <!-- FAQ -->
+        <article class="group relative rounded-3xl border border-purple-500/40 card-matte shadow-sabr-soft overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="images/work-flowgrid-faq.png"
+              alt="Example website FAQ section"
+              class="w-full h-full object-cover aspect-[4/3] group-hover:scale-[1.02] transition-transform duration-500"
+            />
+          </div>
+          <div class="p-4 space-y-1.5">
+            <h2 class="font-display text-sm sm:text-base font-semibold">
+              FAQ &amp; reassurance
+            </h2>
+            <p class="text-[0.8rem] sm:text-xs text-slate-300">
+              Short answers to common worries, written in normal language so people feel comfortable reaching out.
+            </p>
+          </div>
+        </article>
+
+        <!-- Contact -->
+        <article class="group relative rounded-3xl border border-purple-500/40 card-matte shadow-sabr-soft overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="images/work-flowgrid-contact.png"
+              alt="Example website contact section"
+              class="w-full h-full object-cover aspect-[4/3] group-hover:scale-[1.02] transition-transform duration-500"
+            />
+          </div>
+          <div class="p-4 space-y-1.5">
+            <h2 class="font-display text-sm sm:text-base font-semibold">
+              Contact &amp; booking
+            </h2>
+            <p class="text-[0.8rem] sm:text-xs text-slate-300">
+              Clear contact options – call, message, form or booking links – so people don’t have to hunt for details.
             </p>
           </div>
         </article>
       </div>
 
+      <!-- Video walkthrough block -->
+      <div class="mt-10 rounded-3xl border border-purple-500/40 bg-slate-950/70 shadow-sabr-soft p-5 space-y-4">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div>
+            <h2 class="font-display text-base sm:text-lg font-semibold">
+              Full website walkthrough (optional)
+            </h2>
+            <p class="text-[0.8rem] sm:text-xs text-slate-300 mt-1.5 max-w-xl">
+              A quick scroll-through of the site so people can see how it feels in motion – from the hero, through services,
+              proof, FAQs and contact.
+            </p>
+          </div>
+          <span class="text-[0.7rem] uppercase tracking-[0.22em] text-slate-400">
+            Video preview
+          </span>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden border border-slate-700/70 bg-black/70">
+          <!-- Replace src with your recorded site video file -->
+          <video
+            controls
+            class="w-full max-h-[420px] object-cover"
+            poster="images/work-video-poster.png"
+          >
+            <!-- put your final video file here -->
+            <source src="media/sabr-site-walkthrough.mp4" type="video/mp4" />
+            Your browser doesn’t support this video.
+          </video>
+        </div>
+      </div>
+
       <div class="pt-5 border-t border-slate-800/70 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-300">
-        <p>Already have a style in mind? We can adapt any of these to your brand.</p>
+        <p>Already have screenshots or a style in mind? We can build around that.</p>
         <a href="talk-to-us.html"
            class="inline-flex items-center gap-2 rounded-full border border-purple-400/70 px-4 py-2 text-xs font-medium text-slate-100 hover:bg-purple-500/10 hover:border-purple-300 transition-colors">
           Talk to us about your project
