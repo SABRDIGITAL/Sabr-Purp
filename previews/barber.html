@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Midnight Cut Club | Modern Grooming Studio</title>
+  <title>Midnight Cut Club | Grooming Studio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -12,7 +12,7 @@
     }
     .glass {
       background: rgba(10, 0, 0, 0.85);
-      backdrop-filter: blur(22px);
+      backdrop-filter: blur(20px);
     }
     .fade-up {
       opacity: 0;
@@ -23,47 +23,12 @@
       opacity: 1;
       transform: translateY(0);
     }
-
-    /* BEFORE/AFTER BOX */
-    .ba-frame {
-      position: relative;
-      overflow: hidden;
-      border-radius: 1.25rem;
-      border: 1px solid rgba(220, 38, 38, 0.7);
-      background: radial-gradient(circle at top left, #2b0000 0, #080000 60%);
-      cursor: pointer;
-    }
-    .ba-before,
-    .ba-after {
-      position: absolute;
-      inset: 0;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      background-size: cover;
-      background-position: center;
-    }
-    .ba-before {
-      background-image: linear-gradient(135deg, #2b0000, #0a0000);
-      opacity: 1;
-    }
-    .ba-after {
-      background-image: linear-gradient(135deg, #7f1d1d, #1c0000);
-      opacity: 0;
-      transform: scale(1.06);
-    }
-    .ba-frame:hover .ba-before {
-      opacity: 0;
-      transform: scale(1.03);
-    }
-    .ba-frame:hover .ba-after {
-      opacity: 1;
-      transform: scale(1);
-    }
   </style>
 </head>
 
 <body class="min-h-screen text-slate-100 font-sans antialiased">
 
-<!-- NAV -->
+<!-- HEADER -->
 <header class="sticky top-0 z-30 bg-black/70 backdrop-blur border-b border-red-900/40">
   <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
     <div class="flex items-center gap-3">
@@ -79,13 +44,13 @@
     <nav class="hidden md:flex gap-8 text-xs uppercase tracking-[0.22em] text-slate-300">
       <a href="#" class="hover:text-white">Home</a>
       <a href="#services" class="hover:text-white">Services</a>
-      <a href="#gallery" class="hover:text-white">Gallery</a>
+      <a href="#studio" class="hover:text-white">Studio</a>
       <a href="#team" class="hover:text-white">Team</a>
       <a href="#contact" class="hover:text-white">Contact</a>
     </nav>
 
-    <button class="hidden md:inline-flex items-center gap-2 text-[11px] tracking-[0.24em] uppercase bg-white text-black px-4 py-2 rounded-full">
-      Book an appointment
+    <button class="hidden md:inline-flex items-center text-[11px] uppercase tracking-[0.24em] bg-white text-black px-4 py-2 rounded-full">
+      Book now
     </button>
   </div>
 </header>
@@ -94,9 +59,10 @@
 <main class="max-w-6xl mx-auto px-4 pt-10 pb-20 space-y-16">
 
   <!-- HERO -->
-  <section class="grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-center fade-up" data-animate>
+  <section class="grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-start fade-up" data-animate>
     <div class="space-y-6">
-      <p class="text-[11px] tracking-[0.25em] uppercase text-red-400/80">Modern barber studio · City centre</p>
+
+      <!-- REMOVED the top subtitle entirely -->
 
       <h1 class="text-3xl md:text-5xl font-semibold leading-tight">
         Precision cuts, clean fades,<br class="hidden md:block">
@@ -104,21 +70,21 @@
       </h1>
 
       <p class="text-sm md:text-base text-slate-300 max-w-xl">
-        A sharp, low-light grooming studio with clean service, zero waiting around and a premium finish every time.
+        A friendly barber studio focused on sharp cuts, no waiting around, and making sure you leave feeling fresh every single time.
       </p>
 
       <div class="flex flex-wrap gap-3">
-        <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-[11px] font-semibold tracking-[0.24em] uppercase bg-red-600 hover:bg-red-500 text-white transition">
-          Book now
+        <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-[11px] font-bold tracking-[0.24em] uppercase bg-red-600 hover:bg-red-500 text-white transition">
+          Book your slot
         </button>
         <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-[11px] tracking-[0.24em] uppercase border border-red-400/60 hover:border-red-300 text-slate-200 hover:text-white transition">
-          View price list
+          View full price list
         </button>
       </div>
 
       <div class="flex flex-wrap gap-6 text-xs text-slate-300 pt-2">
         <div>
-          <p class="text-lg font-semibold text-white">£28</p>
+          <p class="text-lg font-semibold text-white">£23</p>
           <p class="text-[11px] text-slate-400">Signature skin fade</p>
         </div>
         <div>
@@ -132,73 +98,66 @@
       </div>
     </div>
 
-    <!-- BEFORE/AFTER -->
-    <div class="space-y-4">
-      <div class="flex items-center justify-between">
-        <p class="text-xs uppercase tracking-[0.24em] text-slate-300">Fade transformation</p>
-        <span class="text-[10px] uppercase tracking-[0.24em] text-red-400">Hover to see after</span>
+    <!-- NEW BLOCK replacing before/after -->
+    <div class="glass rounded-2xl border border-red-700/60 p-6 space-y-5">
+      <h3 class="text-xl font-semibold">Book your slot</h3>
+      <p class="text-sm text-slate-300">
+        We run on-time appointments so you’re never left waiting around. Pick a time that works for you — it takes less than a minute.
+      </p>
+
+      <div class="pt-3 space-y-2 text-sm text-slate-300">
+        <p class="font-semibold text-white">Opening hours</p>
+        <p>Mon–Wed · 10:00 – 19:00</p>
+        <p>Thu–Sat · 10:00 – 21:00</p>
+        <p>Sun · 11:00 – 17:00</p>
       </div>
 
-      <div class="ba-frame h-64 md:h-72">
-        <div class="ba-before"></div>
-        <div class="ba-after"></div>
-
-        <div class="absolute top-3 left-4 flex gap-2 text-[10px] uppercase tracking-[0.24em]">
-          <span class="px-2 py-0.5 rounded-full bg-black/70 border border-red-400/80">Before</span>
-          <span class="px-2 py-0.5 rounded-full bg-red-600 border border-red-300">After</span>
-        </div>
-
-        <div class="absolute bottom-3 left-4 text-[11px] text-slate-200/90">
-          Low-skin fade · beard shape-up · hot towel finish
-        </div>
-      </div>
+      <button class="mt-4 w-full py-2.5 rounded-full bg-red-600 hover:bg-red-500 text-xs font-semibold uppercase tracking-[0.24em]">
+        Choose a time
+      </button>
     </div>
   </section>
 
 
   <!-- SERVICES -->
   <section id="services" class="fade-up" data-animate>
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="text-lg md:text-2xl font-semibold">Services & pricing</h2>
-      <p class="text-[11px] uppercase tracking-[0.24em] text-slate-400">No surprises</p>
-    </div>
+    <h2 class="text-xl md:text-2xl font-semibold mb-4">Services & pricing</h2>
 
     <div class="grid md:grid-cols-3 gap-5">
+
       <article class="glass rounded-2xl border border-red-900/40 p-5">
-        <p class="text-xs uppercase tracking-[0.24em] text-red-300 mb-3">Cuts & fades</p>
+        <p class="text-xs uppercase tracking-[0.24em] text-red-300 mb-3">Cuts</p>
         <ul class="space-y-2 text-sm text-slate-200">
-          <li class="flex justify-between"><span>Skin fade</span><span>£28</span></li>
-          <li class="flex justify-between"><span>Classic cut</span><span>£24</span></li>
-          <li class="flex justify-between"><span>Buzz cut</span><span>£18</span></li>
+          <li class="flex justify-between"><span>Skin fade</span><span>£23</span></li>
+          <li class="flex justify-between"><span>Classic cut</span><span>£20</span></li>
+          <li class="flex justify-between"><span>Buzz cut</span><span>£15</span></li>
         </ul>
       </article>
 
       <article class="glass rounded-2xl border border-red-900/40 p-5">
-        <p class="text-xs uppercase tracking-[0.24em] text-red-300 mb-3">Beards</p>
+        <p class="text-xs uppercase tracking-[0.24em] text-red-300 mb-3">Beard</p>
         <ul class="space-y-2 text-sm text-slate-200">
-          <li class="flex justify-between"><span>Beard sculpt</span><span>£16</span></li>
-          <li class="flex justify-between"><span>Hot towel shave</span><span>£22</span></li>
-          <li class="flex justify-between"><span>Maintenance</span><span>£8</span></li>
+          <li class="flex justify-between"><span>Beard sculpt</span><span>£14</span></li>
+          <li class="flex justify-between"><span>Hot towel shave</span><span>£20</span></li>
+          <li class="flex justify-between"><span>Quick tidy</span><span>£6</span></li>
         </ul>
       </article>
 
       <article class="glass rounded-2xl border border-red-900/40 p-5">
         <p class="text-xs uppercase tracking-[0.24em] text-red-300 mb-3">Packages</p>
         <ul class="space-y-2 text-sm text-slate-200">
-          <li class="flex justify-between"><span>Cut + beard</span><span>£38</span></li>
-          <li class="flex justify-between"><span>Monthly pass</span><span>£65</span></li>
+          <li class="flex justify-between"><span>Cut + beard</span><span>£33</span></li>
+          <li class="flex justify-between"><span>Monthly pass</span><span>£60</span></li>
         </ul>
       </article>
+
     </div>
   </section>
 
 
-  <!-- ATMOSPHERE -->
-  <section id="gallery" class="fade-up" data-animate>
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="text-lg md:text-2xl font-semibold">Studio atmosphere</h2>
-      <p class="text-[11px] uppercase tracking-[0.24em] text-slate-400">Night energy</p>
-    </div>
+  <!-- STUDIO VIBES -->
+  <section id="studio" class="fade-up" data-animate>
+    <h2 class="text-xl md:text-2xl font-semibold mb-4">Inside the studio</h2>
 
     <div class="grid md:grid-cols-3 gap-4">
       <div class="glass rounded-2xl border border-red-900/40 h-32 md:h-40 flex items-center justify-center text-[11px] text-slate-300">
@@ -214,31 +173,27 @@
   </section>
 
 
-  <!-- TEAM -->
+  <!-- TEAM + CONTACT -->
   <section id="team" class="grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-start fade-up" data-animate>
     <div>
-      <h2 class="text-lg md:text-2xl font-semibold mb-4">Barbers who know your style.</h2>
-      <div class="space-y-4 text-sm text-slate-200">
-        <p>Every appointment includes a quick consultation and style notes saved for next time.</p>
-        <p>No rushing, no guesswork, no “what did we do last time?”</p>
-      </div>
+      <h2 class="text-xl md:text-2xl font-semibold mb-4">Barbers who know your style</h2>
+      <p class="text-sm text-slate-300 mb-3">
+        Friendly barbers who take their time, remember your cut, and make sure you leave looking clean every visit.
+      </p>
+      <p class="text-sm text-slate-300">
+        We make it simple — pick a time, walk in, sit down, and walk out sharp.
+      </p>
     </div>
 
     <aside id="contact" class="glass rounded-2xl border border-red-600/70 p-6 space-y-4">
-      <p class="text-xs uppercase tracking-[0.24em] text-red-300">Book your slot</p>
-      <h3 class="text-lg font-semibold">Open seven days · late nights Thu–Sat</h3>
+      <p class="text-xs uppercase tracking-[0.24em] text-red-300">Get in touch</p>
+      <h3 class="text-lg font-semibold">We reply fast</h3>
 
-      <ul class="text-sm text-slate-200 space-y-1">
-        <li>Mon–Wed · 10:00 – 19:00</li>
-        <li>Thu–Sat · 10:00 – 21:00</li>
-        <li>Sun · 11:00 – 17:00</li>
-      </ul>
-
-      <p class="text-sm text-slate-300 pt-2">Call: 020 1234 5678</p>
+      <p class="text-sm text-slate-300">Call: 020 1234 5678</p>
       <p class="text-sm text-slate-300">WhatsApp: +44 7000 000000</p>
       <p class="text-sm text-slate-300">27 Nightfall Lane, City Centre</p>
 
-      <button class="w-full mt-3 py-2.5 rounded-full bg-red-600 hover:bg-red-500 text-xs font-semibold uppercase tracking-[0.24em]">
+      <button class="w-full mt-2 py-2.5 rounded-full bg-red-600 hover:bg-red-500 text-xs font-semibold uppercase tracking-[0.24em]">
         Book online
       </button>
     </aside>
@@ -247,6 +202,7 @@
 </main>
 
 
+<!-- ANIMATION -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
@@ -256,7 +212,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.25 });
+    }, { threshold: 0.2 });
 
     document.querySelectorAll('[data-animate]').forEach(el => {
       el.classList.add('fade-up');
