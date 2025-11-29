@@ -2,21 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FlowGrid Plumbing & Heating — Next-Gen Trades</title>
+  <title>FlowGrid Plumbing & Heating — Modern Trades Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Tailwind (CDN) -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     :root {
-      --fg-bg: #f6f7fb;
-      --fg-ink: #070b16;
+      --fg-bg: #f7f8fc;
+      --fg-ink: #050816;
       --fg-soft-ink: #4b5563;
-      --fg-mint: #9af5d8;
-      --fg-mint-deep: #18b38a;
-      --fg-ice: #e3f1ff;
-      --fg-line: rgba(148, 163, 184, 0.38);
+      --fg-line: rgba(148, 163, 184, 0.4);
+      --fg-green: #22c55e;
+      --fg-green-soft: #a7f3d0;
+      --fg-blue: #0ea5e9;
+      --fg-blue-soft: #bfdbfe;
+      --fg-pearl: #fbfdff;
     }
 
     body {
@@ -24,18 +26,57 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Inter", sans-serif;
       background:
-        radial-gradient(circle at 0 0, #ffffff 0, #f7fbff 42%, #eef3ff 100%);
+        radial-gradient(circle at 0 0, #ffffff 0, #f4f7ff 40%, #e5f0ff 100%);
       color: var(--fg-ink);
       overflow-x: hidden;
+      cursor: none; /* hide default cursor for glow trail effect */
+    }
+
+    /* CUSTOM CURSOR GLOW (#7) */
+    .cursor-glow {
+      position: fixed;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: 50;
+      background:
+        radial-gradient(circle at 30% 0, rgba(255, 255, 255, 0.9), rgba(56, 189, 248, 0.7));
+      mix-blend-mode: screen;
+      opacity: 0.7;
+      transform: translate(-50%, -50%);
+    }
+
+    .cursor-glow-trail {
+      position: fixed;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 30% 0, rgba(255, 255, 255, 0.9), rgba(34, 197, 94, 0.7));
+      mix-blend-mode: screen;
+      opacity: 0.5;
+      transform: translate(-50%, -50%);
+      animation: trailFade 0.5s ease-out forwards;
+    }
+
+    @keyframes trailFade {
+      0% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+    }
+
+    a, button, input, textarea {
+      cursor: none;
     }
 
     /* HEADER */
     header {
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(18px);
       transition: box-shadow 0.25s ease, background 0.25s ease,
         border-color 0.25s ease;
       border-bottom: 1px solid rgba(209, 213, 219, 0.7);
-      background: rgba(248, 250, 252, 0.85);
+      background: rgba(248, 250, 252, 0.9);
     }
     header.scrolled {
       background: rgba(248, 250, 252, 0.98);
@@ -43,20 +84,45 @@
       border-color: rgba(203, 213, 225, 0.9);
     }
 
-    .logo-chip {
-      border-radius: 999px;
-      padding: 0.4rem 0.9rem;
-      background: radial-gradient(circle at 0 0, #ffffff, #dfffee);
+    .logo-square {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, #0f172a, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       box-shadow:
-        0 10px 28px rgba(15, 23, 42, 0.22),
-        0 0 0 1px rgba(190, 242, 255, 0.55);
+        0 10px 30px rgba(15, 23, 42, 0.5),
+        0 0 0 1px rgba(8, 47, 73, 0.8);
+      color: #a5f3fc;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-main {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #6b7280;
     }
 
     .nav-link {
       position: relative;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
+      color: #4b5563;
     }
     .nav-link::after {
       content: "";
@@ -66,125 +132,227 @@
       width: 0;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(90deg, #22c55e, #0ea5e9);
-      transition: width 0.22s ease;
+      background: linear-gradient(90deg, var(--fg-green), var(--fg-blue));
+      transition: width 0.2s ease;
     }
     .nav-link:hover::after {
       width: 100%;
     }
 
-    /* Y2K HERO CHROME RIBBON */
-    .hero-shell {
+    .hamburger-line {
+      width: 18px;
+      height: 2px;
+      border-radius: 4px;
+      background: #0f172a;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .hamburger.open .line1 {
+      transform: translateY(4px) rotate(45deg);
+    }
+
+    .hamburger.open .line2 {
+      transform: translateY(-4px) rotate(-45deg);
+    }
+
+    /* OFFCANVAS MENU (#17) */
+    .menu-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 260px;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.98);
+      color: #e5e7eb;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(.19,1,.22,1);
+      z-index: 45;
+      box-shadow: -24px 0 60px rgba(15, 23, 42, 0.85);
+      padding: 1.5rem 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .menu-panel.open {
+      transform: translateX(0);
+    }
+
+    .menu-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(55, 65, 81, 0.8);
+    }
+
+    /* HERO */
+    .hero-wrap {
       position: relative;
-      border-radius: 32px;
-      padding: 3.2rem 2.4rem;
       overflow: hidden;
+      border-radius: 28px;
+      padding: 2.4rem 2rem;
       background:
-        radial-gradient(circle at 0 0, rgba(154, 245, 216, 0.5), transparent 55%),
-        radial-gradient(circle at 90% 100%, rgba(147, 197, 253, 0.45), transparent 52%),
-        linear-gradient(135deg, #ffffff, #f4fbff);
+        radial-gradient(circle at 0 0, rgba(148, 163, 255, 0.14), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(45, 212, 191, 0.16), transparent 55%),
+        linear-gradient(135deg, var(--fg-pearl), #edf5ff);
       box-shadow:
-        0 40px 90px rgba(15, 23, 42, 0.26),
+        0 32px 80px rgba(15, 23, 42, 0.18),
         0 0 0 1px rgba(226, 232, 240, 0.9);
     }
 
-    .hero-orb {
+    .hero-blob {
       position: absolute;
-      width: 420px;
-      height: 420px;
+      width: 460px;
+      height: 460px;
       border-radius: 999px;
+      right: -120px;
+      top: -160px;
       background:
-        conic-gradient(from 120deg, rgba(147, 197, 253, 0.4), rgba(34, 197, 94, 0.25), rgba(52, 211, 153, 0.7), rgba(147, 197, 253, 0.65));
+        conic-gradient(from 120deg, rgba(56, 189, 248, 0.6), rgba(34, 197, 94, 0.7), rgba(129, 140, 248, 0.7));
       filter: blur(40px);
-      opacity: 0.55;
-      right: -80px;
-      top: -120px;
-      pointer-events: none;
+      opacity: 0.5;
       mix-blend-mode: screen;
-      animation: heroOrb 18s ease-in-out infinite alternate;
+      pointer-events: none;
+      animation: blobMotion 20s ease-in-out infinite alternate;
     }
 
-    @keyframes heroOrb {
+    @keyframes blobMotion {
       0% { transform: translate3d(0,0,0) scale(1); }
-      50% { transform: translate3d(-16px,22px,0) scale(1.06); }
-      100% { transform: translate3d(-36px,-10px,0) scale(1.1); }
+      50% { transform: translate3d(-20px,12px,0) scale(1.06); }
+      100% { transform: translate3d(-40px,-10px,0) scale(1.1); }
     }
 
-    .hero-tag {
-      font-size: 0.68rem;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
+    /* floating squares (#20) */
+    .float-square {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
       border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(255, 255, 255, 0.92);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .hero-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #ffffff, #10b981);
-      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
-      animation: pingDot 1.6s infinite alternate;
-    }
-    @keyframes pingDot {
-      0% { transform: scale(0.9); opacity: 0.7; }
-      100% { transform: scale(1.1); opacity: 1; }
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: 0 14px 30px rgba(148, 163, 184, 0.4);
+      animation: floatSquare 9s ease-in-out infinite;
     }
 
-    .btn-chrome {
-      border-radius: 999px;
-      padding: 0.9rem 1.9rem;
-      font-size: 0.77rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: #02130f;
-      background: linear-gradient(130deg, #d3ffe9, #7ef2c7);
-      box-shadow:
-        0 14px 34px rgba(16, 185, 129, 0.45),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.9);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-    }
-    .btn-chrome:hover {
-      transform: translateY(-1px) scale(1.03);
-      background: linear-gradient(130deg, #7ef2c7, #d3ffe9);
-      box-shadow:
-        0 20px 45px rgba(16, 185, 129, 0.6),
-        inset 0 0 0 1px rgba(255, 255, 255, 1);
+    .float-square.sm {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
     }
 
-    .btn-outline {
-      border-radius: 999px;
-      padding: 0.9rem 1.9rem;
-      font-size: 0.77rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      font-weight: 600;
-      border: 1px solid rgba(148, 163, 184, 0.95);
-      background: rgba(255, 255, 255, 0.75);
-      color: var(--fg-ink);
-      backdrop-filter: blur(8px);
-      transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-      box-shadow: 0 8px 22px rgba(148, 163, 184, 0.32);
-    }
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.95);
-      transform: translateY(-1px);
-      box-shadow: 0 12px 28px rgba(148, 163, 184, 0.42);
+    @keyframes floatSquare {
+      0% { transform: translate3d(0,0,0); }
+      50% { transform: translate3d(0,-16px,0); }
+      100% { transform: translate3d(0,0,0); }
     }
 
     .mono-label {
       font-size: 0.7rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      letter-spacing: 0.28em;
       color: #6b7280;
     }
 
-    /* REVEAL */
+    /* text stroke -> fill (#12) */
+    .stroke-heading {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-size: clamp(2.2rem, 3.3vw, 3rem);
+      color: transparent;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: rgba(15, 23, 42, 0.65);
+      position: relative;
+    }
+
+    .stroke-heading.fill {
+      -webkit-text-stroke-width: 0;
+      background: linear-gradient(90deg, var(--fg-green), var(--fg-blue));
+      -webkit-background-clip: text;
+      color: transparent;
+      transition: background 0.4s ease;
+    }
+
+    .hero-sub {
+      font-size: 0.9rem;
+      color: var(--fg-soft-ink);
+      max-width: 28rem;
+    }
+
+    .btn-main {
+      border-radius: 12px;
+      padding: 0.85rem 1.6rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--fg-green-soft), #60a5fa);
+      color: #02131a;
+      box-shadow:
+        0 18px 45px rgba(59, 130, 246, 0.4),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-1px) scale(1.02);
+      background: linear-gradient(135deg, #60a5fa, var(--fg-green-soft));
+      box-shadow:
+        0 24px 60px rgba(59, 130, 246, 0.55),
+        inset 0 0 0 1px rgba(255, 255, 255, 1);
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #6b7280;
+    }
+
+    /* hero right image + job number */
+    .hero-image-shell {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(circle at 0 0, rgba(148, 163, 255, 0.36), transparent 60%),
+        linear-gradient(145deg, #020617, #0f172a);
+      box-shadow:
+        0 28px 70px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.6);
+    }
+
+    .hero-image-inner {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      background-image: url("https://images.unsplash.com/photo-1604079628040-94301bb21b11?q=80&w=800&auto=format&fit=crop");
+      background-size: cover;
+      background-position: center;
+      transform-origin: center;
+      transition: transform 0.18s ease, filter 0.18s ease;
+    }
+
+    /* image distortion (#8) */
+    .hero-image-inner.distort-hover:hover {
+      transform: scale(1.03) skewX(-1.5deg) skewY(1deg);
+      filter: contrast(1.02) saturate(1.03);
+    }
+
+    .job-tag {
+      position: absolute;
+      top: 0.9rem;
+      left: 0.9rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: rgba(15, 23, 42, 0.88);
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+    }
+
+    /* reveal on scroll (#reveal) */
     .reveal {
       opacity: 0;
       transform: translateY(26px) scale(0.985);
@@ -192,107 +360,133 @@
         opacity 0.85s cubic-bezier(.19,1,.22,1),
         transform 0.85s cubic-bezier(.19,1,.22,1);
     }
+
     .reveal.visible {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
 
-    /* SERVICES LINES (no boxes) */
+    /* services line style (#6) */
     .service-row {
       position: relative;
       padding: 1.4rem 0;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+      border-bottom: 1px solid var(--fg-line);
     }
+
     .service-row:first-child {
-      border-top: 1px solid rgba(148, 163, 184, 0.35);
+      border-top: 1px solid var(--fg-line);
     }
-    .service-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 0 0, #ffffff, #bbf7d0);
-      box-shadow:
-        0 0 0 1px rgba(167, 243, 208, 0.9),
-        0 12px 32px rgba(74, 222, 128, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-    }
-    .service-row:hover .service-line {
-      width: 100%;
-      opacity: 1;
-    }
+
     .service-line {
       position: absolute;
       left: 0;
       bottom: -1px;
       height: 2px;
       width: 0;
-      opacity: 0;
       border-radius: 999px;
-      background: linear-gradient(90deg, #22c55e, #0ea5e9, #a855f7);
+      background: linear-gradient(90deg, var(--fg-green), var(--fg-blue));
+      opacity: 0;
       transition: width 0.25s ease, opacity 0.25s ease;
     }
 
-    /* TIMELINE */
+    .service-row:hover .service-line {
+      width: 100%;
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    /* chrome edge highlight on headings (#19) */
+    .chrome-heading {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.1rem;
+    }
+
+    .chrome-heading::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.2rem;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--fg-green), var(--fg-blue));
+      transition: width 0.2s ease;
+    }
+
+    .chrome-heading:hover::after {
+      width: 100%;
+    }
+
+    /* timeline */
     .timeline {
       position: relative;
-      padding-left: 1.4rem;
+      padding-left: 1.5rem;
     }
+
     .timeline::before {
       content: "";
       position: absolute;
-      top: 0.45rem;
+      left: 0.3rem;
+      top: 0.4rem;
       bottom: 0.4rem;
-      left: 0.25rem;
       width: 2px;
-      background: linear-gradient(
-        to bottom,
-        rgba(45, 212, 191, 0.85),
-        rgba(59, 130, 246, 0.7)
-      );
-      opacity: 0.78;
+      background: linear-gradient(to bottom, var(--fg-green), var(--fg-blue));
+      opacity: 0.85;
     }
+
     .timeline-step {
       position: relative;
       margin-bottom: 1.7rem;
-      padding-left: 1.2rem;
-    }
-    .timeline-dot {
-      position: absolute;
-      left: -0.38rem;
-      top: 0.18rem;
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 35% 0, #ffffff, #22c55e);
-      box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.35);
+      padding-left: 1rem;
     }
 
-    /* HORIZONTAL CASE STRIP */
+    .timeline-dot {
+      position: absolute;
+      left: -0.48rem;
+      top: 0.16rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #ffffff, var(--fg-green));
+      box-shadow:
+        0 0 0 4px rgba(34, 197, 94, 0.25),
+        0 0 18px rgba(56, 189, 248, 0.4);
+    }
+
+    /* case strip horizontal */
     .case-strip {
       display: grid;
       grid-auto-flow: column;
       grid-auto-columns: minmax(220px, 1fr);
       gap: 1.6rem;
       overflow-x: auto;
-      padding-bottom: 0.4rem;
+      padding-bottom: 0.5rem;
       scroll-snap-type: x mandatory;
     }
+
     .case-card {
       scroll-snap-align: start;
-      border-radius: 20px;
-      padding: 1.1rem 1.2rem;
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.95),
-        rgba(240, 249, 255, 0.97)
-      );
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.96));
       box-shadow:
-        0 18px 40px rgba(15, 23, 42, 0.18),
+        0 16px 40px rgba(15, 23, 42, 0.16),
         0 0 0 1px rgba(226, 232, 240, 0.9);
       min-height: 150px;
+      font-size: 0.78rem;
     }
 
     /* FAQ */
@@ -301,9 +495,11 @@
       padding: 1rem 0;
       cursor: pointer;
     }
+
     .faq-row:first-child {
       border-top: 1px solid var(--fg-line);
     }
+
     .faq-answer {
       max-height: 0;
       overflow: hidden;
@@ -314,8 +510,9 @@
         opacity 0.25s ease,
         transform 0.25s ease;
     }
+
     .faq-answer.open {
-      max-height: 260px;
+      max-height: 240px;
       opacity: 1;
       transform: translateY(0);
     }
@@ -323,82 +520,102 @@
     .faq-symbol {
       transition: transform 0.2s ease, color 0.2s ease;
     }
+
     .faq-row.open .faq-symbol {
       transform: rotate(45deg);
-      color: #22c55e;
+      color: var(--fg-green);
     }
 
-    /* SIMPLE INPUTS */
+    /* inputs */
     .fg-input {
       width: 100%;
-      border-radius: 11px;
+      border-radius: 10px;
       border: 1px solid rgba(148, 163, 184, 0.9);
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.94);
       padding: 0.65rem 0.8rem;
       font-size: 0.85rem;
       transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
+
     .fg-input:focus {
       outline: none;
-      border-color: #22c55e;
+      border-color: var(--fg-green);
       background: #ffffff;
       box-shadow:
         0 0 0 1px rgba(34, 197, 94, 0.55),
-        0 14px 30px rgba(16, 185, 129, 0.22);
+        0 14px 30px rgba(59, 130, 246, 0.25);
     }
+
     textarea.fg-input {
       resize: vertical;
       min-height: 120px;
     }
 
-    /* COUNT-UP LABEL */
-    .stat-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: #6b7280;
+    /* floating particles (#3) */
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 0, #ffffff, rgba(56, 189, 248, 0.75));
+      opacity: 0.7;
+      mix-blend-mode: screen;
+      animation: floatParticle 10s ease-in-out infinite;
     }
 
-    /* MICRO-HOVER ARROW */
-    .link-arrow {
-      transition: transform 0.18s ease;
+    @keyframes floatParticle {
+      0% { transform: translate3d(0,0,0); }
+      50% { transform: translate3d(0,-18px,0); }
+      100% { transform: translate3d(0,0,0); }
     }
-    .group:hover .link-arrow {
-      transform: translateX(3px);
+
+    /* section line animation (#6) */
+    .section-line {
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--fg-green), var(--fg-blue));
+      transition: width 0.5s ease;
+    }
+
+    .section-line.visible {
+      width: 80px;
     }
 
     @media (max-width: 768px) {
-      .hero-shell {
-        padding: 2.4rem 1.6rem;
-        border-radius: 24px;
+      .hero-wrap {
+        padding: 2rem 1.5rem;
+        border-radius: 22px;
       }
-      .hero-orb {
+      .hero-blob {
         width: 320px;
         height: 320px;
-        right: -120px;
-        top: -140px;
+        right: -150px;
+        top: -180px;
       }
     }
   </style>
 </head>
 
 <body>
+  <!-- cursor glow elements -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
   <!-- HEADER -->
   <header class="fixed top-0 inset-x-0 z-40">
     <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="logo-chip flex items-center gap-2">
-          <div class="w-7 h-7 rounded-full bg-slate-900 flex items-center justify-center text-[0.68rem] font-semibold tracking-[0.18em] text-emerald-300">
-            FG
-          </div>
-          <div class="leading-tight">
-            <p class="text-xs font-semibold tracking-wide">FlowGrid Plumbing &amp; Heating</p>
-            <p class="text-[0.62rem] uppercase tracking-[0.22em] text-slate-500">Trusted trades • 24/7 line</p>
-          </div>
+        <div class="logo-square">
+          FG
+        </div>
+        <div class="leading-tight">
+          <p class="brand-text-main">FlowGrid Plumbing &amp; Heating</p>
+          <p class="brand-text-sub">Trusted trades · Wiltshire</p>
         </div>
       </div>
 
-      <nav class="hidden md:flex items-center gap-8 text-[0.75rem] font-medium text-slate-700">
+      <nav class="hidden md:flex items-center gap-7">
         <a href="#top" class="nav-link">Home</a>
         <a href="#services" class="nav-link">Services</a>
         <a href="#process" class="nav-link">Process</a>
@@ -407,157 +624,158 @@
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
-      <a href="#contact" class="hidden md:inline-flex btn-chrome">
-        Get a quote
-      </a>
+      <button
+        id="hamburger"
+        class="hamburger md:hidden flex flex-col gap-1.5 items-end">
+        <span class="hamburger-line line1"></span>
+        <span class="hamburger-line line2"></span>
+      </button>
     </div>
   </header>
 
-  <main id="top" class="pt-28 pb-20">
+  <!-- OFFCANVAS MENU -->
+  <aside class="menu-panel" id="menuPanel">
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-lg bg-slate-900 flex items-center justify-center text-[0.6rem] font-semibold text-sky-300 tracking-[0.14em]">
+          FG
+        </div>
+        <span class="text-[0.7rem] uppercase tracking-[0.18em] text-slate-300">
+          FlowGrid
+        </span>
+      </div>
+      <button id="menuClose" class="text-sm text-slate-300 uppercase tracking-[0.18em]">
+        Close
+      </button>
+    </div>
+
+    <div class="flex-1 flex flex-col gap-2 mt-2 text-[0.75rem]">
+      <a href="#top" class="menu-link">Home</a>
+      <a href="#services" class="menu-link">Services</a>
+      <a href="#process" class="menu-link">Process</a>
+      <a href="#pricing" class="menu-link">Pricing</a>
+      <a href="#faq" class="menu-link">FAQ</a>
+      <a href="#contact" class="menu-link">Contact</a>
+    </div>
+  </aside>
+
+  <main id="top" class="pt-24 pb-20">
     <!-- HERO -->
     <section class="max-w-7xl mx-auto px-5 pb-16 reveal" data-reveal>
-      <div class="hero-shell">
-        <div class="hero-orb"></div>
+      <div class="hero-wrap" id="heroWrap">
+        <!-- liquid chrome blob (#11) -->
+        <div class="hero-blob" id="heroBlob"></div>
 
-        <div class="grid lg:grid-cols-[1.2fr,0.95fr] gap-10 items-center relative z-10">
+        <!-- floating squares (#20) -->
+        <div class="float-square" style="top: 18%; left: 8%; animation-delay: -2s;"></div>
+        <div class="float-square sm" style="top: 70%; left: 20%; animation-delay: -5s;"></div>
+        <div class="float-square" style="top: 58%; right: 14%; animation-delay: -3s;"></div>
+        <div class="float-square sm" style="top: 12%; right: 25%; animation-delay: -7s;"></div>
+
+        <!-- floating particles (#3) -->
+        <div class="particle" style="top: 15%; left: 30%; animation-delay: -1s;"></div>
+        <div class="particle" style="top: 60%; left: 12%; animation-delay: -4s;"></div>
+        <div class="particle" style="top: 35%; right: 18%; animation-delay: -6s;"></div>
+
+        <div class="relative z-10 grid lg:grid-cols-[1.25fr,0.95fr] gap-10 items-center">
           <!-- LEFT -->
           <div class="space-y-7">
-            <div class="flex flex-wrap gap-2 items-center">
-              <span class="hero-tag">
-                <span class="hero-dot"></span>
-                24/7 emergency line
-              </span>
-              <span class="hero-tag">
-                Same-day slots where possible
-              </span>
-            </div>
-
-            <div class="space-y-4">
-              <h1 class="text-[2.2rem] sm:text-[2.8rem] lg:text-[3.4rem] leading-tight font-semibold">
-                Plumbing for <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 via-sky-500 to-emerald-400">2025 homes,</span>
-                not 1995 websites.
+            <div class="space-y-2">
+              <p class="mono-label">Plumbing · Heating · Bathrooms</p>
+              <h1 class="stroke-heading" id="strokeHeading">
+                Plumbing that feels as modern as your home.
               </h1>
-              <p class="text-sm sm:text-[0.92rem] text-slate-600 max-w-xl">
-                FlowGrid combines old-school trade reliability with a clean, futuristic
-                service. Clear pricing, tidy engineers and every boiler, leak and
-                bathroom refit properly documented.
-              </p>
             </div>
 
-            <div class="flex flex-wrap gap-3">
-              <button class="btn-chrome">
-                Call now · 01234 445566
-              </button>
-              <button class="btn-outline">
+            <p class="hero-sub">
+              FlowGrid blends reliable, qualified trades with a clean 2025-style service.
+              Simple bookings, tidy engineers and every boiler, leak and bathroom refit properly documented.
+            </p>
+
+            <div class="flex flex-wrap gap-6 items-center">
+              <button class="btn-main" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
                 View services
               </button>
-            </div>
 
-            <div class="flex flex-wrap gap-5 pt-3">
-              <div>
-                <p class="stat-label">24/7 cover</p>
-                <p class="text-lg font-semibold text-emerald-600">
-                  <span data-count="24" data-suffix="/7">0</span>
-                </p>
+              <div class="flex flex-col gap-1 text-xs text-slate-700">
+                <div>
+                  <span class="stat-label block">24/7 cover</span>
+                  <span class="text-[0.9rem] font-semibold text-emerald-600">
+                    <span data-count="24" data-suffix="/7">0</span>
+                  </span>
+                </div>
               </div>
-              <div>
-                <p class="stat-label">Experience</p>
-                <p class="text-lg font-semibold text-emerald-600">
-                  <span data-count="10" data-suffix="+ yrs">0</span>
-                </p>
-              </div>
-              <div>
-                <p class="stat-label">Average rating</p>
-                <p class="text-lg font-semibold text-emerald-600">
-                  <span data-count="4.9" data-suffix=" ★">0</span>
-                </p>
-              </div>
-            </div>
-          </div>
 
-          <!-- RIGHT: Y2K STATUS COLUMN (minimal boxing) -->
-          <div class="space-y-5">
-            <div class="rounded-3xl bg-slate-900/95 text-slate-50 p-5 shadow-[0_24px_70px_rgba(15,23,42,0.85)] relative overflow-hidden">
-              <div class="absolute inset-0 pointer-events-none opacity-30"
-                   style="background: radial-gradient(circle at 0 0, rgba(45,212,191,0.8), transparent 55%); mix-blend-mode: screen;"></div>
-              <div class="relative">
-                <p class="mono-label text-emerald-200">Live job view</p>
-                <p class="mt-2 text-sm font-semibold">Engineer en-route · 18 mins</p>
-                <p class="mt-1 text-[0.72rem] text-slate-300">
-                  We track notes, ETA and photos for every call-out — so you always know what’s happening.
-                </p>
+              <div class="flex flex-col gap-1 text-xs text-slate-700">
+                <div>
+                  <span class="stat-label block">Experience</span>
+                  <span class="text-[0.9rem] font-semibold text-emerald-600">
+                    <span data-count="10" data-suffix="+ yrs">0</span>
+                  </span>
+                </div>
+              </div>
 
-                <div class="mt-4 rounded-2xl bg-slate-900/60 border border-slate-700 px-4 py-3 text-[0.76rem]">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="tracking-[0.26em] uppercase text-[0.62rem] text-emerald-300">Job #1248</span>
-                    <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-[0.65rem] text-emerald-300 uppercase tracking-[0.18em]">
-                      On route
-                    </span>
-                  </div>
-                  <p class="font-semibold">Leaking boiler pipe · SN13</p>
-                  <p class="text-[0.67rem] text-slate-300 mt-1">
-                    Suspected pressure relief valve leak. Client sent clear photos via WhatsApp.
-                  </p>
+              <div class="flex flex-col gap-1 text-xs text-slate-700">
+                <div>
+                  <span class="stat-label block">Average rating</span>
+                  <span class="text-[0.9rem] font-semibold text-emerald-600">
+                    <span data-count="4.8" data-suffix=" ★">0</span>
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div class="grid sm:grid-cols-2 gap-4 text-xs text-slate-700">
-              <div class="border border-slate-200 rounded-2xl px-4 py-3 bg-white/90 backdrop-blur-md">
-                <p class="mono-label mb-1">Gas Safe</p>
-                <p>Registered engineers for boiler work, servicing and safety checks.</p>
-              </div>
-              <div class="border border-slate-200 rounded-2xl px-4 py-3 bg-white/90 backdrop-blur-md">
-                <p class="mono-label mb-1">Checkatrade</p>
-                <p>Reviewed and verified with written feedback from real clients.</p>
-              </div>
+            <p class="text-xs text-slate-500">
+              Serving homes and landlords across Wiltshire and nearby areas.
+            </p>
+          </div>
+
+          <!-- RIGHT: SQUARE IMAGE + JOB # -->
+          <div class="hero-image-shell">
+            <div class="hero-image-inner distort-hover"></div>
+            <div class="job-tag">
+              Job #1248
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SERVICES — LINE LIST, NO BOX GRID -->
+    <!-- SERVICES -->
     <section id="services" class="max-w-7xl mx-auto px-5 pb-16 reveal" data-reveal>
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-6">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-5">
         <div>
           <p class="mono-label">Services</p>
-          <h2 class="mt-2 text-2xl md:text-3xl font-semibold">
-            From “water everywhere” emergencies to warm, calm bathrooms.
+          <div class="section-line mt-2" data-line></div>
+          <h2 class="mt-4 text-2xl md:text-3xl font-semibold chrome-heading">
+            From “water everywhere” to warm, calm bathrooms.
           </h2>
           <p class="mt-2 text-sm text-slate-600 max-w-xl">
-            We keep the menu simple on paper — but every job comes with clean finishes,
-            respectful engineers and tidy paperwork.
+            We keep the list simple, but every job gets neat finishes, respectful engineers and tidy paperwork you can actually understand.
           </p>
         </div>
-        <div class="flex flex-wrap gap-2 text-[0.72rem] text-slate-600">
-          <span class="uppercase tracking-[0.2em]">Domestic</span>
-          <span class="text-slate-400">·</span>
-          <span class="uppercase tracking-[0.2em]">Landlords</span>
-          <span class="text-slate-400">·</span>
-          <span class="uppercase tracking-[0.2em]">Light commercial</span>
-        </div>
+        <p class="text-[0.78rem] text-slate-500">
+          Domestic · Landlords · Light commercial
+        </p>
       </div>
 
       <div>
-        <!-- Service rows -->
         <div class="service-row group">
           <div class="flex items-start gap-4">
-            <div class="service-icon text-emerald-700">
+            <div class="service-icon">
               💧
             </div>
             <div class="flex-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <div>
                 <p class="text-sm font-semibold">Leaks & burst pipes</p>
                 <p class="text-xs text-slate-600 mt-1 max-w-md">
-                  Rapid diagnosis, shut-off and repair for leaks, bursts and blockages —
-                  with photos logged for insurance.
+                  Rapid diagnosis, shut-off and repair for leaks, bursts and blockages — with clear updates and photos logged for insurance.
                 </p>
               </div>
-              <div class="flex items-center gap-2 text-[0.74rem] text-slate-600">
-                <span>Same-day visits where possible</span>
-                <span class="link-arrow text-lg">↗</span>
-              </div>
+              <p class="text-[0.76rem] text-slate-500 flex items-center gap-1">
+                Same-day where possible
+                <span class="text-base">↗</span>
+              </p>
             </div>
           </div>
           <div class="service-line"></div>
@@ -565,21 +783,20 @@
 
         <div class="service-row group">
           <div class="flex items-start gap-4">
-            <div class="service-icon text-emerald-700">
+            <div class="service-icon">
               🔥
             </div>
             <div class="flex-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <div>
                 <p class="text-sm font-semibold">Boilers & heating</p>
                 <p class="text-xs text-slate-600 mt-1 max-w-md">
-                  Servicing, diagnostics and new boiler installs with properly balanced
-                  radiators and smart controls.
+                  Servicing, diagnostics and new boiler installs with properly balanced radiators and simple, modern controls you’ll actually use.
                 </p>
               </div>
-              <div class="flex items-center gap-2 text-[0.74rem] text-slate-600">
-                <span>Gas Safe registered</span>
-                <span class="link-arrow text-lg">↗</span>
-              </div>
+              <p class="text-[0.76rem] text-slate-500 flex items-center gap-1">
+                Gas Safe registered
+                <span class="text-base">↗</span>
+              </p>
             </div>
           </div>
           <div class="service-line"></div>
@@ -587,21 +804,20 @@
 
         <div class="service-row group">
           <div class="flex items-start gap-4">
-            <div class="service-icon text-emerald-700">
+            <div class="service-icon">
               🚿
             </div>
             <div class="flex-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <div>
                 <p class="text-sm font-semibold">Bathrooms & upgrades</p>
                 <p class="text-xs text-slate-600 mt-1 max-w-md">
-                  Clean, modern bathrooms with pipework, fixtures and finishing handled —
-                  from partial refreshes to full refits.
+                  Clean, modern bathrooms and upgrades with pipework, fixtures and finishing all handled — from partial refreshes to full refits.
                 </p>
               </div>
-              <div class="flex items-center gap-2 text-[0.74rem] text-slate-600">
-                <span>Neat work, minimal disruption</span>
-                <span class="link-arrow text-lg">↗</span>
-              </div>
+              <p class="text-[0.76rem] text-slate-500 flex items-center gap-1">
+                Minimal disruption
+                <span class="text-base">↗</span>
+              </p>
             </div>
           </div>
           <div class="service-line"></div>
@@ -609,48 +825,44 @@
       </div>
     </section>
 
-    <!-- WHY / VALUE STRIP (Y2K NEON LINE ACROSS) -->
-    <section class="relative overflow-hidden mb-16 reveal" data-reveal>
-      <div class="absolute inset-0 pointer-events-none opacity-70"
-           style="background: radial-gradient(circle at 10% 0, rgba(154,245,216,0.5), transparent 55%),
-                    radial-gradient(circle at 90% 100%, rgba(147,197,253,0.5), transparent 52%);
-                  mix-blend-mode: screen;"></div>
-      <div class="max-w-7xl mx-auto px-5 py-10 relative">
-        <div class="border-y border-dashed border-slate-300/80 py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div class="max-w-xl">
-            <p class="mono-label mb-1">Why book FlowGrid</p>
-            <h2 class="text-xl md:text-2xl font-semibold">
-              Proper trades, but the experience feels like a premium service brand.
-            </h2>
-            <p class="text-sm text-slate-600 mt-1">
-              No 7am-8pm “sometime” slots. No mystery invoices. Just neat work, clear options and a follow-up if we’ve done something big.
+    <!-- WHY / VALUE SECTION -->
+    <section class="max-w-7xl mx-auto px-5 pb-16 reveal" data-reveal>
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+        <div class="max-w-xl">
+          <p class="mono-label">Why book FlowGrid</p>
+          <div class="section-line mt-2" data-line></div>
+          <h2 class="mt-4 text-2xl md:text-3xl font-semibold chrome-heading">
+            Proper trades, but the experience feels like a premium service brand.
+          </h2>
+          <p class="mt-2 text-sm text-slate-600">
+            No “sometime between 8am and 8pm” nonsense. No mystery invoices. Just neat work, clear options and a follow-up if we’ve done something big.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5 text-xs text-slate-700 max-w-xl">
+          <div>
+            <p class="font-semibold mb-1">Transparent pricing</p>
+            <p class="text-slate-600">
+              Options and price bands shared before tools leave the van, then confirmed on site. No surprises halfway through.
             </p>
           </div>
-          <div class="grid grid-cols-2 gap-4 text-xs text-slate-700 max-w-md">
-            <div>
-              <p class="font-semibold">Transparent pricing</p>
-              <p class="mt-1 text-slate-600">
-                Options and price bands sent before we start — then confirmed on site.
-              </p>
-            </div>
-            <div>
-              <p class="font-semibold">Respect for your home</p>
-              <p class="mt-1 text-slate-600">
-                Shoe covers, dust sheets and a proper tidy-up when we’re done.
-              </p>
-            </div>
-            <div>
-              <p class="font-semibold">Digital paperwork</p>
-              <p class="mt-1 text-slate-600">
-                Certificates, invoices and guarantees in one clean PDF bundle.
-              </p>
-            </div>
-            <div>
-              <p class="font-semibold">Trusted locally</p>
-              <p class="mt-1 text-slate-600">
-                10+ years working with homeowners and landlords across Wiltshire.
-              </p>
-            </div>
+          <div>
+            <p class="font-semibold mb-1">Respect for your home</p>
+            <p class="text-slate-600">
+              Shoe covers, dust sheets and a final tidy-up. Your hallway is not a building site.
+            </p>
+          </div>
+          <div>
+            <p class="font-semibold mb-1">Digital paperwork</p>
+            <p class="text-slate-600">
+              Certificates, invoices and guarantees emailed as one clean PDF bundle you can actually find again.
+            </p>
+          </div>
+          <div>
+            <p class="font-semibold mb-1">Local & consistent</p>
+            <p class="text-slate-600">
+              10+ years working with homeowners and landlords across Wiltshire and surrounding areas.
+            </p>
           </div>
         </div>
       </div>
@@ -661,12 +873,13 @@
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6">
         <div>
           <p class="mono-label">Process</p>
-          <h2 class="mt-2 text-2xl md:text-3xl font-semibold">
-            A simple, documented path from “it’s leaking” to “it’s sorted”.
+          <div class="section-line mt-2" data-line></div>
+          <h2 class="mt-4 text-2xl md:text-3xl font-semibold chrome-heading">
+            From “it’s leaking” to “it’s sorted” in four clear steps.
           </h2>
         </div>
         <p class="text-sm text-slate-600 max-w-md">
-          We keep the steps the same whether it’s a late-night leak or a planned boiler swap. Same structure, same expectations, less hassle.
+          Whether it’s a late-night leak or a planned boiler swap, we follow the same structure so you always know what’s happening next.
         </p>
       </div>
 
@@ -677,31 +890,34 @@
           <p class="font-semibold">You tell us what’s going on.</p>
           <p class="text-xs text-slate-600 mt-1 max-w-2xl">
             We ask a few focused questions and, if possible, a short video or some clear photos.
-            That lets us give realistic options and a proper price range before we arrive.
+            That lets us give realistic options and a proper price range before we even arrive.
           </p>
         </div>
+
         <div class="timeline-step">
           <div class="timeline-dot"></div>
           <p class="mono-label mb-1">Step 2 · Time window</p>
           <p class="font-semibold">We give an honest arrival slot.</p>
           <p class="text-xs text-slate-600 mt-1 max-w-2xl">
-            We book a tight window, share who’s coming and let you know if traffic or a job overrun nudges it.
+            No vague day-long windows. We book a tight time frame, share who’s coming and message you if anything nudges it.
           </p>
         </div>
+
         <div class="timeline-step">
           <div class="timeline-dot"></div>
           <p class="mono-label mb-1">Step 3 · Diagnosis & approval</p>
           <p class="font-semibold">We confirm the plan on site.</p>
           <p class="text-xs text-slate-600 mt-1 max-w-2xl">
-            Once we’ve seen it in person, we outline the options, walk you through them and agree the final price before any serious work begins.
+            Once we’ve seen it in person, we outline the options and confirm the final price before any major work starts.
           </p>
         </div>
+
         <div class="timeline-step">
           <div class="timeline-dot"></div>
           <p class="mono-label mb-1">Step 4 · Work, tidy, sign-off</p>
           <p class="font-semibold">Issue fixed, paperwork sent.</p>
           <p class="text-xs text-slate-600 mt-1 max-w-2xl">
-            We carry out the work, test everything properly, tidy up and send you photos plus any certificates and invoices in one neat email.
+            We carry out the work, test everything properly, tidy up and send your photos, certificates and invoices in one neat email.
           </p>
         </div>
       </div>
@@ -712,8 +928,9 @@
       <div class="flex items-center justify-between mb-4">
         <div>
           <p class="mono-label">Recent work</p>
-          <h2 class="mt-1 text-xl font-semibold">
-            A few real-world jobs from the last quarter.
+          <div class="section-line mt-2" data-line></div>
+          <h2 class="mt-4 text-xl font-semibold chrome-heading">
+            A few real jobs from the last quarter.
           </h2>
         </div>
         <p class="hidden sm:block text-[0.78rem] text-slate-500">
@@ -721,40 +938,40 @@
         </p>
       </div>
 
-      <div class="case-strip text-xs text-slate-700">
+      <div class="case-strip">
         <article class="case-card">
           <p class="mono-label mb-1">Boiler swap</p>
           <p class="font-semibold mb-1">“Warm House Again” combi upgrade</p>
-          <p class="text-[0.72rem]">
-            Aging boiler replaced with an A-rated system, smart controls installed
-            and radiators balanced. Gas cert and guarantee emailed same day.
+          <p class="text-[0.72rem] text-slate-700">
+            Ageing boiler replaced with an A-rated system, smart controls installed and radiators balanced.
+            Gas certificate and guarantee emailed the same day.
           </p>
         </article>
 
         <article class="case-card">
           <p class="mono-label mb-1">Leak repair</p>
-          <p class="font-semibold mb-1">Kitchen ceiling saved at 10:30pm</p>
-          <p class="text-[0.72rem]">
-            Hidden pipe leak traced behind cupboard. Isolated, repaired and pipe
-            boxed in with minimal redecoration needed.
+          <p class="font-semibold mb-1">Kitchen ceiling saved at 10.30pm</p>
+          <p class="text-[0.72rem] text-slate-700">
+            Hidden pipe leak traced behind cupboards, isolated and repaired, with the area boxed in
+            so only minimal redecoration was needed.
           </p>
         </article>
 
         <article class="case-card">
           <p class="mono-label mb-1">Bathroom refit</p>
           <p class="font-semibold mb-1">Walk-in shower & towel rail</p>
-          <p class="text-[0.72rem]">
-            Old bath removed, new walk-in, concealed pipework and tall towel rail
-            fitted. All work coordinated with tiler.
+          <p class="text-[0.72rem] text-slate-700">
+            Old bath removed, new walk-in, concealed pipework and tall towel radiator fitted.
+            All work coordinated with the tiler to keep disruption low.
           </p>
         </article>
 
         <article class="case-card">
           <p class="mono-label mb-1">Landlord pack</p>
           <p class="font-semibold mb-1">Three-property safety bundle</p>
-          <p class="text-[0.72rem]">
-            Annual boiler service and safety checks for three rentals, scheduled
-            and reported in one simple PDF.
+          <p class="text-[0.72rem] text-slate-700">
+            Annual boiler service and safety checks for three rentals, scheduled and reported in
+            one simple PDF bundle so nothing gets missed.
           </p>
         </article>
       </div>
@@ -765,12 +982,13 @@
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-6">
         <div>
           <p class="mono-label">Pricing</p>
-          <h2 class="mt-2 text-2xl md:text-3xl font-semibold">
-            Clear ranges, written down before we start.
+          <div class="section-line mt-2" data-line></div>
+          <h2 class="mt-4 text-2xl md:text-3xl font-semibold chrome-heading">
+            Realistic ranges, written down before we start.
           </h2>
           <p class="mt-2 text-sm text-slate-600 max-w-xl">
-            These aren’t “from £29” fairy-tale numbers. They’re realistic bands based on
-            the hundreds of similar jobs we’ve already completed.
+            These aren’t “from £29” fairy-tale numbers. They’re bands based on the hundreds of similar jobs
+            we’ve actually done in Wiltshire homes.
           </p>
         </div>
         <p class="text-[0.78rem] text-slate-500">
@@ -778,15 +996,15 @@
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 text-sm text-slate-700">
+      <div class="grid md:grid-cols-3 gap-8 text-sm text-slate-800">
         <div>
           <p class="mono-label mb-2">Most common call-out</p>
           <p class="font-semibold text-lg">Leak & blockage visit</p>
           <p class="text-3xl font-semibold mt-2">£95–£145</p>
           <p class="text-[0.75rem] text-slate-500 mt-1">Typical final invoice</p>
-          <ul class="mt-3 text-[0.78rem] space-y-1.5">
+          <ul class="mt-3 text-[0.78rem] text-slate-700 space-y-1.5">
             <li>• Includes up to first hour on site</li>
-            <li>• Diagnostics, repair where possible</li>
+            <li>• Diagnostics and repair where possible</li>
             <li>• Photos and notes for insurance if needed</li>
           </ul>
         </div>
@@ -796,9 +1014,9 @@
           <p class="font-semibold text-lg">Boiler service & safety check</p>
           <p class="text-3xl font-semibold mt-2">£80–£120</p>
           <p class="text-[0.75rem] text-slate-500 mt-1">Per boiler</p>
-          <ul class="mt-3 text-[0.78rem] space-y-1.5">
+          <ul class="mt-3 text-[0.78rem] text-slate-700 space-y-1.5">
             <li>• Full service and flue check</li>
-            <li>• Safety certification where required</li>
+            <li>• Safety certificate where required</li>
             <li>• Digital paperwork stored neatly</li>
           </ul>
         </div>
@@ -807,8 +1025,8 @@
           <p class="mono-label mb-2">Planned projects</p>
           <p class="font-semibold text-lg">New boiler & system upgrade</p>
           <p class="text-3xl font-semibold mt-2">£1,900+</p>
-          <p class="text-[0.75rem] text-slate-500 mt-1">All-in estimate</p>
-          <ul class="mt-3 text-[0.78rem] space-y-1.5">
+          <p class="text-[0.75rem] text-slate-500 mt-1">All-in ballpark</p>
+          <ul class="mt-3 text-[0.78rem] text-slate-700 space-y-1.5">
             <li>• A-rated boiler with manufacturer warranty</li>
             <li>• Smart controls and radiator check</li>
             <li>• Clear staged payments, no pressure selling</li>
@@ -821,7 +1039,8 @@
     <section id="faq" class="max-w-7xl mx-auto px-5 pb-16 reveal" data-reveal>
       <div class="mb-6">
         <p class="mono-label">FAQ</p>
-        <h2 class="mt-2 text-2xl md:text-3xl font-semibold">
+        <div class="section-line mt-2" data-line></div>
+        <h2 class="mt-4 text-2xl md:text-3xl font-semibold chrome-heading">
           Questions people usually ask before they book.
         </h2>
       </div>
@@ -835,7 +1054,7 @@
           <div class="faq-answer text-xs text-slate-600 mt-2">
             <p>
               We’ll always tell you in advance if a call-out applies and what it covers.
-              For local leak and blockage jobs we usually roll it into the first hour on site,
+              For most local leak and blockage jobs we tend to roll it into the first hour on site,
               so you’re not paying twice.
             </p>
           </div>
@@ -848,9 +1067,8 @@
           </div>
           <div class="faq-answer text-xs text-slate-600 mt-2">
             <p>
-              Yes. Our engineers are Gas Safe registered for any boiler and gas appliance work
-              and we carry full public liability insurance. Certificates are provided after
-              every relevant job.
+              Yes. Our engineers are Gas Safe registered for boiler and gas appliance work
+              and we carry full public liability insurance. Certificates are provided after every relevant job.
             </p>
           </div>
         </div>
@@ -862,9 +1080,8 @@
           </div>
           <div class="faq-answer text-xs text-slate-600 mt-2">
             <p>
-              For emergencies we try to attend the same day where possible. For planned work
-              like boiler swaps and bathroom projects we agree a date, confirm it in writing
-              and keep you updated if timings move.
+              For emergencies we try to attend the same day where possible.
+              For planned work like boiler swaps and bathroom projects we confirm dates in writing and keep you updated if timings move.
             </p>
           </div>
         </div>
@@ -876,8 +1093,8 @@
           </div>
           <div class="faq-answer text-xs text-slate-600 mt-2">
             <p>
-              We’re based in Wiltshire and cover local towns and villages within roughly
-              35 minutes’ drive. If you’re not sure, send your postcode — we’ll confirm straight away.
+              We’re based in Wiltshire and cover local towns and villages within roughly 35 minutes’ drive.
+              If you’re not sure, send your postcode — we’ll confirm straight away.
             </p>
           </div>
         </div>
@@ -889,12 +1106,13 @@
       <div class="grid lg:grid-cols-[1.05fr,1fr] gap-10 items-start">
         <div>
           <p class="mono-label">Contact</p>
-          <h2 class="mt-2 text-2xl md:text-3xl font-semibold">
-            Tell us what’s going on — we’ll outline sensible options.
+          <div class="section-line mt-2" data-line></div>
+          <h2 class="mt-4 text-2xl md:text-3xl font-semibold chrome-heading">
+            Tell us what’s going on and we’ll outline sensible options.
           </h2>
           <p class="mt-2 text-sm text-slate-600 max-w-xl">
             A quick summary, your postcode and photos if you have them.
-            We’ll reply with realistic options, price ranges and the first slots available.
+            We’ll reply with realistic options, price ranges and the first available slots.
           </p>
 
           <div class="mt-5 space-y-1 text-sm text-slate-700">
@@ -904,7 +1122,7 @@
           </div>
         </div>
 
-        <div class="border border-slate-200 rounded-3xl bg-white/90 backdrop-blur-md px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.2)]">
+        <div class="border border-slate-200 rounded-2xl bg-white/95 backdrop-blur-md px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.25)]">
           <form class="space-y-3 text-xs">
             <div class="grid md:grid-cols-2 gap-3">
               <div>
@@ -933,7 +1151,7 @@
               <textarea class="fg-input" placeholder="Brief description of the issue..."></textarea>
             </div>
 
-            <button type="button" class="btn-chrome w-full mt-2">
+            <button type="button" class="btn-main w-full mt-2">
               Send enquiry
             </button>
           </form>
@@ -944,21 +1162,41 @@
 
   <!-- FOOTER -->
   <footer class="border-t border-slate-200 bg-white/90">
-    <div class="max-w-7xl mx-auto px-5 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[0.75rem] text-slate-500">
+    <div class="max-w-7xl mx-auto px-5 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[0.76rem] text-slate-500">
       <p>© 2025 FlowGrid Plumbing &amp; Heating. All rights reserved.</p>
-      <p>Example layout — swap with your branding and images when you’re ready.</p>
+      <p>Example layout — swap with your branding, copy and photos when you’re ready.</p>
     </div>
   </footer>
 
   <script>
-    // Header scroll behaviour
+    // HEADER SCROLL
     const header = document.querySelector("header");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 18) header.classList.add("scrolled");
       else header.classList.remove("scrolled");
     });
 
-    // Reveal on scroll
+    // MENU PANEL (#17)
+    const hamburger = document.getElementById("hamburger");
+    const menuPanel = document.getElementById("menuPanel");
+    const menuClose = document.getElementById("menuClose");
+    const menuLinks = document.querySelectorAll(".menu-link");
+
+    function toggleMenu(open) {
+      if (open) {
+        hamburger.classList.add("open");
+        menuPanel.classList.add("open");
+      } else {
+        hamburger.classList.remove("open");
+        menuPanel.classList.remove("open");
+      }
+    }
+
+    hamburger.addEventListener("click", () => toggleMenu(!menuPanel.classList.contains("open")));
+    menuClose.addEventListener("click", () => toggleMenu(false));
+    menuLinks.forEach(link => link.addEventListener("click", () => toggleMenu(false)));
+
+    // REVEAL ON SCROLL
     const revealEls = document.querySelectorAll("[data-reveal]");
     const revealObs = new IntersectionObserver(
       entries => {
@@ -973,7 +1211,37 @@
     );
     revealEls.forEach(el => revealObs.observe(el));
 
-    // Count-up stats
+    // SECTION LINES (#6)
+    const lineEls = document.querySelectorAll("[data-line]");
+    const lineObs = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            lineObs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    lineEls.forEach(el => lineObs.observe(el));
+
+    // TEXT STROKE -> FILL (#12)
+    const strokeHeading = document.getElementById("strokeHeading");
+    const strokeObs = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            strokeHeading.classList.add("fill");
+            strokeObs.unobserve(strokeHeading);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    strokeObs.observe(strokeHeading);
+
+    // COUNT UP STATS (#13)
     const counters = document.querySelectorAll("[data-count]");
     let countersStarted = false;
 
@@ -985,11 +1253,11 @@
         const target = parseFloat(el.dataset.count);
         const suffix = el.dataset.suffix || "";
         const isDecimal = !Number.isInteger(target);
-        const start = performance.now();
+        const startTime = performance.now();
         const duration = 1400;
 
         function tick(now) {
-          const progress = Math.min((now - start) / duration, 1);
+          const progress = Math.min((now - startTime) / duration, 1);
           let value = target * progress;
           value = isDecimal ? value.toFixed(1) : Math.floor(value);
           el.textContent = value + suffix;
@@ -1000,21 +1268,21 @@
     }
 
     if (counters.length) {
-      const statObserver = new IntersectionObserver(
+      const statsObserver = new IntersectionObserver(
         entries => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               startCounters();
-              statObserver.disconnect();
+              statsObserver.disconnect();
             }
           });
         },
         { threshold: 0.3 }
       );
-      statObserver.observe(counters[0].closest("section"));
+      statsObserver.observe(counters[0].closest("section"));
     }
 
-    // FAQ accordion
+    // FAQ ACCORDION
     document.querySelectorAll(".faq-row").forEach(row => {
       row.addEventListener("click", () => {
         const answer = row.querySelector(".faq-answer");
@@ -1028,6 +1296,45 @@
           row.classList.add("open");
         }
       });
+    });
+
+    // MICRO PARALLAX HERO (#1)
+    const heroWrap = document.getElementById("heroWrap");
+    const heroBlob = document.getElementById("heroBlob");
+
+    heroWrap.addEventListener("mousemove", (e) => {
+      const rect = heroWrap.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      const translateX = x * 18;
+      const translateY = y * 14;
+      heroBlob.style.transform =
+        `translate3d(${translateX}px, ${translateY}px, 0) scale(1.08)`;
+    });
+
+    heroWrap.addEventListener("mouseleave", () => {
+      heroBlob.style.transform = "translate3d(0,0,0) scale(1)";
+    });
+
+    // CURSOR GLOW + TRAIL (#7)
+    const cursorGlow = document.getElementById("cursorGlow");
+    document.addEventListener("mousemove", (e) => {
+      cursorGlow.style.left = e.clientX + "px";
+      cursorGlow.style.top = e.clientY + "px";
+
+      const trail = document.createElement("div");
+      trail.className = "cursor-glow-trail";
+      trail.style.left = e.clientX + "px";
+      trail.style.top = e.clientY + "px";
+      document.body.appendChild(trail);
+      setTimeout(() => trail.remove(), 500);
+    });
+
+    document.addEventListener("mouseleave", () => {
+      cursorGlow.style.opacity = 0;
+    });
+    document.addEventListener("mouseenter", () => {
+      cursorGlow.style.opacity = 0.7;
     });
   </script>
 </body>
