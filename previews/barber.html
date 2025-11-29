@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Barber Studio — SABR DIGITAL Preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: radial-gradient(circle at top, #3b2469 0, #050308 45%, #020108 100%);
+    }
+    .glass {
+      background: rgba(7, 7, 12, 0.9);
+      backdrop-filter: blur(14px);
+    }
+    .neon-border {
+      position: relative;
+      border-radius: 1.25rem;
+      overflow: hidden;
+    }
+    .neon-border::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: conic-gradient(from 160deg,
+        #a855f7, #6366f1, #ec4899, #a855f7);
+      opacity: 0.85;
+      z-index: -1;
+    }
+    .neon-border::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: 1rem;
+      background: radial-gradient(circle at top left, #0f0c2b 0, #05030f 40%, #02010a 100%);
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-up.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-100 font-sans antialiased">
+  <!-- NAV -->
+  <header class="sticky top-0 z-30 bg-black/60 backdrop-blur border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full border border-purple-400/60 flex items-center justify-center text-xs tracking-[0.2em]">
+          SABR
+        </div>
+        <div>
+          <p class="font-semibold text-sm tracking-wide">SABR DIGITAL</p>
+          <p class="text-[10px] uppercase text-slate-400">Barber Preview</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex gap-8 text-xs uppercase tracking-[0.2em] text-slate-300">
+        <span class="hover:text-white cursor-default">Home</span>
+        <span class="hover:text-white cursor-pointer">Services</span>
+        <span class="hover:text-white cursor-pointer">Portfolio</span>
+        <span class="hover:text-white cursor-pointer">Contact</span>
+      </nav>
+      <button class="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.18em] uppercase bg-white text-black px-4 py-2 rounded-full">
+        Book a cut
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="max-w-6xl mx-auto px-4 pt-10 pb-20 space-y-20">
+    <section class="grid md:grid-cols-[1.2fr,1fr] gap-10 items-center fade-up" data-animate>
+      <div class="space-y-6">
+        <p class="text-xs tracking-[0.25em] uppercase text-purple-300/70">Barber Studio Website</p>
+        <h1 class="text-3xl md:text-5xl font-semibold leading-tight">
+          Sharp websites for<br class="hidden md:block">
+          <span class="text-purple-300">sharp barbers.</span>
+        </h1>
+        <p class="text-sm md:text-base text-slate-300 max-w-xl">
+          A sleek, Bond-level homepage that makes your chairs look fully booked:
+          clean layout, dark luxury palette and clear paths to book an appointment.
+        </p>
+
+        <div class="flex flex-wrap gap-3 pt-2">
+          <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-medium tracking-[0.2em] uppercase bg-purple-500 hover:bg-purple-400 text-white transition">
+            Book a chair
+          </button>
+          <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-medium tracking-[0.2em] uppercase border border-slate-500/80 hover:border-purple-400/90 text-slate-200 hover:text-white transition">
+            View gallery
+          </button>
+        </div>
+
+        <div class="flex flex-wrap gap-6 pt-4 text-xs text-slate-300">
+          <div>
+            <p class="text-lg font-semibold text-white">38%</p>
+            <p class="text-[11px] text-slate-400">Trust a business more with a polished website.</p>
+          </div>
+          <div>
+            <p class="text-lg font-semibold text-white">70%</p>
+            <p class="text-[11px] text-slate-400">Check the website before walking in.</p>
+          </div>
+          <div>
+            <p class="text-lg font-semibold text-white">88%</p>
+            <p class="text-[11px] text-slate-400">Won’t return after a bad experience.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mock layout for screenshot -->
+      <div class="relative">
+        <div class="neon-border shadow-[0_0_60px_rgba(168,85,247,0.35)]">
+          <div class="relative rounded-2xl overflow-hidden px-5 py-5 space-y-4">
+            <!-- Top bar -->
+            <div class="flex items-center justify-between">
+              <div class="flex gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
+              </div>
+              <p class="text-[11px] text-slate-300/80 uppercase tracking-[0.25em]">Barber Home</p>
+            </div>
+
+            <div class="grid gap-4">
+              <div class="relative rounded-xl bg-gradient-to-br from-purple-500/25 via-slate-900/60 to-slate-950/90 p-4 border border-purple-400/40">
+                <div class="flex items-center justify-between mb-3">
+                  <p class="text-xs uppercase tracking-[0.2em] text-purple-200/80">Hero section</p>
+                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-black/50 border border-purple-400/40 uppercase tracking-[0.2em]">
+                    Above the fold
+                  </span>
+                </div>
+                <div class="h-20 rounded-lg bg-black/50 flex items-center justify-between px-4 text-[11px] text-slate-200">
+                  <div class="space-y-1 max-w-[60%]">
+                    <div class="h-2 w-24 rounded bg-slate-500/80"></div>
+                    <div class="h-2 w-32 rounded bg-slate-600/80"></div>
+                    <div class="h-2 w-16 rounded bg-slate-700/80"></div>
+                  </div>
+                  <div class="w-20 h-16 rounded-lg border border-purple-300/60 bg-slate-900/70 flex items-center justify-center text-[10px] text-purple-200">
+                    Booking<br>button
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div class="glass rounded-xl border border-slate-700/80 p-3 text-[11px]">
+                  <p class="text-[10px] text-slate-400 uppercase tracking-[0.2em] mb-2">Before</p>
+                  <div class="h-20 rounded-lg bg-slate-950/80 border border-slate-700/80 flex items-center justify-center text-[10px] text-slate-400">
+                    Low-res logo, cluttered menu, no prices
+                  </div>
+                </div>
+                <div class="glass rounded-xl border border-purple-500/60 p-3 text-[11px]">
+                  <p class="text-[10px] text-purple-300 uppercase tracking-[0.2em] mb-2">After with SABR</p>
+                  <div class="h-20 rounded-lg bg-gradient-to-tr from-purple-600/40 to-indigo-500/40 border border-purple-300/70 flex items-center justify-center text-[10px] text-purple-50 text-center">
+                    Clean hero, clear “Book a cut” button, price list, Google reviews.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden md:block absolute -bottom-8 -left-6 w-32 h-32 rounded-2xl bg-purple-500/20 blur-3xl"></div>
+        <div class="hidden md:block absolute -top-10 -right-10 w-40 h-40 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="fade-up" data-animate>
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-lg md:text-2xl font-semibold">Built for busy barbers</h2>
+        <p class="text-[11px] uppercase tracking-[0.25em] text-slate-400">What this homepage shows</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <article class="glass border border-slate-700/80 rounded-2xl p-5 hover:-translate-y-1 hover:border-purple-400/80 transition">
+          <p class="text-xs uppercase tracking-[0.22em] text-slate-400 mb-3">01 · Instant booking</p>
+          <h3 class="text-sm font-semibold mb-2">Tap to book, no faff</h3>
+          <p class="text-sm text-slate-300">
+            A hero section that pushes customers straight into your booking flow in one click.
+          </p>
+        </article>
+        <article class="glass border border-slate-700/80 rounded-2xl p-5 hover:-translate-y-1 hover:border-purple-400/80 transition">
+          <p class="text-xs uppercase tracking-[0.22em] text-slate-400 mb-3">02 · Trust layout</p>
+          <h3 class="text-sm font-semibold mb-2">Reviews where they matter</h3>
+          <p class="text-sm text-slate-300">
+            Google stars & real comments placed right under your hero so new clients feel safe booking in.
+          </p>
+        </article>
+        <article class="glass border border-slate-700/80 rounded-2xl p-5 hover:-translate-y-1 hover:border-purple-400/80 transition">
+          <p class="text-xs uppercase tracking-[0.22em] text-slate-400 mb-3">03 · Nightclub shine</p>
+          <h3 class="text-sm font-semibold mb-2">Sleek, not cartoon</h3>
+          <p class="text-sm text-slate-300">
+            Deep matte blacks, sharp typography and subtle glow — more Bond, less neon chaos.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS + CTA -->
+    <section class="grid md:grid-cols-[1.3fr,0.9fr] gap-10 items-start fade-up" data-animate>
+      <div>
+        <h2 class="text-lg md:text-2xl font-semibold mb-4">What this kind of site says about your shop</h2>
+        <div class="space-y-4">
+          <div class="glass rounded-2xl border border-slate-700/80 p-4 text-sm">
+            <p class="text-slate-200 mb-1">“Looks like a barbershop you’d expect in a film — clean, sharp and easy to book.”</p>
+            <p class="text-[11px] text-slate-400 uppercase tracking-[0.22em]">Knightfade Studio · London</p>
+          </div>
+          <div class="glass rounded-2xl border border-slate-700/80 p-4 text-sm">
+            <p class="text-slate-200 mb-1">“We went from random walk-ins to a fully booked Saturday just from the site.”</p>
+            <p class="text-[11px] text-slate-400 uppercase tracking-[0.22em]">Blade & Ember Barbers</p>
+          </div>
+        </div>
+      </div>
+      <aside class="glass rounded-2xl border border-purple-400/80 p-6 space-y-4">
+        <p class="text-xs uppercase tracking-[0.25em] text-purple-300">Book your barber site</p>
+        <h3 class="text-lg font-semibold">Same energy, your branding.</h3>
+        <p class="text-sm text-slate-300">
+          This preview is just one way we can present a barbershop. We keep the clean layout and interaction, then match it to your logo, colours and photos.
+        </p>
+        <button class="w-full py-2.5 rounded-full bg-purple-500 hover:bg-purple-400 text-xs uppercase tracking-[0.22em]">
+          Start a project with SABR DIGITAL
+        </button>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+
+      document.querySelectorAll('[data-animate]').forEach(el => {
+        const animTarget = el;
+        animTarget.classList.add('fade-up');
+        observer.observe(animTarget);
+      });
+    });
+  </script>
+</body>
+</html>
