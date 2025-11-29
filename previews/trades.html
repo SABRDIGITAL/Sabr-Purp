@@ -2,214 +2,301 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FlowGrid Plumbing & Heating | Advanced Trades Website</title>
+  <title>FlowGrid Plumbing & Heating | Modern Trades Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
+    /* -----------------------------
+       BASE + COLOURS
+    ------------------------------*/
+    :root {
+      --mint-soft: #b9f3dd;
+      --mint-strong: #7fe2c0;
+      --mint-deep: #17b48a;
+      --ink: #111827;
+      --ink-soft: #4b5563;
+      --shell-bg: #f5f7fb;
+    }
+
     body {
-      background: radial-gradient(circle at top, #020617 0, #020617 45%, #020617 100%);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      background: radial-gradient(circle at top, #ffffff 0, #f5f7fb 55%, #ecf5ff 100%);
+      color: var(--ink);
+      overflow-x: hidden;
     }
 
-    /* ---- Shared animation primitives ---- */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
+    /* -----------------------------
+       HEADER
+    ------------------------------*/
+    header {
+      transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      border-bottom: 1px solid rgba(209, 213, 219, 0.7);
+      backdrop-filter: blur(18px);
     }
-    .fade-up.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .scale-in {
-      opacity: 0;
-      transform: scale(0.94);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .scale-in.in-view {
-      opacity: 1;
-      transform: scale(1);
+    header.scrolled {
+      background: rgba(248, 250, 252, 0.95);
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12);
+      border-color: rgba(209, 213, 219, 0.9);
     }
 
-    /* Gradient hero shell */
-    .hero-shell {
-      border-radius: 2rem;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(190, 242, 100, 0.22), transparent 55%),
-        radial-gradient(circle at 100% 0%, rgba(45, 212, 191, 0.22), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.22), transparent 55%),
-        #020617;
-      border: 1px solid rgba(148, 163, 184, 0.55);
+    .logo-pill {
+      background: radial-gradient(circle at 10% 0, #ffffff, #e6fff5);
       box-shadow:
-        0 30px 80px rgba(15, 23, 42, 0.9),
-        0 0 0 1px rgba(15, 23, 42, 0.9);
+        0 8px 22px rgba(55, 65, 81, 0.16),
+        0 0 0 1px rgba(209, 250, 229, 0.8);
+    }
+
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, var(--mint-soft), var(--mint-deep));
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* -----------------------------
+       Y2K SHELL + HERO
+    ------------------------------*/
+    .shell {
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at top left, rgba(185, 243, 221, 0.8), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(219, 234, 254, 0.9), transparent 55%),
+        #ffffff;
+      box-shadow:
+        0 30px 80px rgba(15, 23, 42, 0.16),
+        0 0 0 1px rgba(209, 213, 219, 0.7);
       position: relative;
       overflow: hidden;
     }
 
-    .hero-glow {
+    .shell-glow {
       position: absolute;
-      inset: -40%;
+      inset: -30%;
       background:
-        radial-gradient(circle at 20% 0%, rgba(190, 242, 100, 0.35), transparent 55%),
-        radial-gradient(circle at 80% 80%, rgba(45, 212, 191, 0.3), transparent 55%);
+        radial-gradient(circle at 10% 0, rgba(185, 243, 221, 0.6), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(191, 219, 254, 0.6), transparent 55%);
       mix-blend-mode: screen;
-      opacity: 0.7;
+      opacity: 0.45;
       pointer-events: none;
-      animation: heroGlowMove 18s ease-in-out infinite alternate;
+      animation: shellGlowMove 20s ease-in-out infinite alternate;
     }
 
-    @keyframes heroGlowMove {
-      0% { transform: translate3d(0, 0, 0) scale(1); }
-      50% { transform: translate3d(-4%, 4%, 0) scale(1.05); }
-      100% { transform: translate3d(4%, -4%, 0) scale(1.03); }
+    @keyframes shellGlowMove {
+      0% { transform: translate3d(0,0,0) scale(1); }
+      50% { transform: translate3d(-3%,3%,0) scale(1.04); }
+      100% { transform: translate3d(3%,-3%,0) scale(1.02); }
     }
 
-    /* Header scroll */
-    header {
-      transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-    }
-    header.scrolled {
-      background: rgba(2, 6, 23, 0.95);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-      border-bottom-color: rgba(15, 23, 42, 0.9);
-    }
-
-    /* Nav underline */
-    .nav-underline {
-      position: absolute;
-      bottom: 0;
-      height: 2px;
+    /* -----------------------------
+       BUTTONS & TAGS
+    ------------------------------*/
+    .btn-mint {
+      background: linear-gradient(135deg, var(--mint-soft), var(--mint-strong));
+      color: #022c22;
       border-radius: 999px;
-      background: linear-gradient(to right, #d9f99d, #22c55e);
-      transition: transform 0.3s ease, width 0.3s ease, opacity 0.3s ease;
-      opacity: 0;
-    }
-
-    /* Cards */
-    .card {
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), #020617);
-      border-radius: 1.5rem;
-      border: 1px solid rgba(30, 64, 175, 0.7);
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.85);
-    }
-
-    .card-border-lime {
-      border-color: rgba(190, 242, 100, 0.8);
-      box-shadow: 0 25px 60px rgba(190, 242, 100, 0.25);
-    }
-
-    .card-hover {
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-    }
-    .card-hover:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 32px 70px rgba(15, 23, 42, 0.95);
-      border-color: rgba(190, 242, 100, 0.9);
-      background: radial-gradient(circle at top, rgba(22, 101, 52, 0.75), #020617);
-    }
-
-    /* Tabs */
-    .tab-button {
-      border-radius: 999px;
-      border: 1px solid rgba(51, 65, 85, 0.9);
-      background: rgba(15, 23, 42, 0.9);
-      color: #e5e7eb;
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
+      padding: 0.75rem 1.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 0.5rem 0.9rem;
-      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+      font-weight: 600;
+      box-shadow:
+        0 10px 30px rgba(34, 197, 140, 0.35),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
-    .tab-button.active {
-      background: linear-gradient(to right, #d9f99d, #22c55e);
-      color: #020617;
-      border-color: rgba(190, 242, 100, 1);
-      transform: translateY(-1px);
+    .btn-mint:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow:
+        0 16px 40px rgba(16, 185, 129, 0.45),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+      background: linear-gradient(135deg, var(--mint-strong), var(--mint-soft));
     }
 
-    /* Timeline */
-    .timeline-line {
-      position: absolute;
-      left: 0.65rem;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, #d9f99d, #22c55e);
-      transform-origin: top;
-      transform: scaleY(0);
-      transition: transform 0.8s ease;
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.75rem 1.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: rgba(255, 255, 255, 0.8);
+      color: #111827;
+      box-shadow: 0 6px 18px rgba(148, 163, 184, 0.25);
+      transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
     }
-    .timeline-line.active {
-      transform: scaleY(1);
+    .btn-ghost:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(148, 163, 184, 0.32);
+    }
+
+    .chip {
+      border-radius: 999px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: #ffffff;
+      color: #4b5563;
+      box-shadow: 0 0 0 1px rgba(243, 244, 246, 1);
+    }
+
+    .pill-stat {
+      border-radius: 999px;
+      padding: 0.85rem 1.35rem;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow:
+        0 15px 35px rgba(148, 163, 184, 0.3),
+        0 0 0 1px rgba(209, 213, 219, 0.7);
+    }
+
+    /* -----------------------------
+       ANIMATIONS / REVEAL
+    ------------------------------*/
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px) scale(0.98);
+      transition: opacity 0.85s cubic-bezier(.19,1,.22,1),
+                  transform 0.85s cubic-bezier(.19,1,.22,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .float-soft {
+      animation: floatSoft 7s ease-in-out infinite;
+    }
+    @keyframes floatSoft {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* -----------------------------
+       CARDS / SECTIONS
+    ------------------------------*/
+    .card {
+      border-radius: 1.5rem;
+      background: #ffffff;
+      box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.12),
+        0 0 0 1px rgba(229, 231, 235, 0.9);
+    }
+
+    .card-soft {
+      border-radius: 1.25rem;
+      background: linear-gradient(to bottom, #ffffff, #f9fafb);
+      box-shadow:
+        0 16px 40px rgba(148, 163, 184, 0.18),
+        0 0 0 1px rgba(229, 231, 235, 0.9);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #6b7280;
     }
 
     /* FAQ */
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.35s ease, opacity 0.35s ease;
       opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
     }
     .faq-answer.open {
-      max-height: 200px;
+      max-height: 260px;
       opacity: 1;
     }
 
-    /* Lime button */
-    .lime-btn {
-      background: #d7ff00;
-      color: #020617;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    /* Forms */
+    .input {
+      width: 100%;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      padding: 0.65rem 0.9rem;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.95);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
-    .lime-btn:hover {
-      transform: translateY(-1px) scale(1.03);
-      background: #bef264;
-      box-shadow: 0 0 25px rgba(190, 242, 100, 0.65);
+    .input:focus {
+      outline: none;
+      border-color: var(--mint-deep);
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5),
+                  0 12px 30px rgba(16, 185, 129, 0.18);
+      background: #ffffff;
     }
 
-    .tag-pill {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      padding: 0.25rem 0.7rem;
+    textarea.input {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Pricing ribbons */
+    .ribbon {
+      position: absolute;
+      top: 0.9rem;
+      left: 1rem;
       font-size: 0.65rem;
-      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #9ca3af;
+      letter-spacing: 0.18em;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.08);
+      color: #047857;
     }
   </style>
 </head>
-<body class="text-slate-50">
 
-<!-- HEADER -->
-<header class="fixed top-0 inset-x-0 z-40 border-b border-slate-800/70">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-    <!-- Logo -->
+<body>
+
+<!-- ==========================
+     HEADER
+=========================== -->
+<header class="fixed top-0 inset-x-0 z-40 bg-white/80">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-lg bg-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.7)] flex items-center justify-center text-xs font-bold text-slate-900">
-        FG
+      <div class="logo-pill w-10 h-10 rounded-2xl flex items-center justify-center">
+        <span class="text-xs font-semibold tracking-[0.2em] text-emerald-700">FG</span>
       </div>
       <div class="leading-tight">
-        <p class="text-[13px] font-semibold tracking-wide">FlowGrid Plumbing & Heating</p>
-        <p class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Trusted trades · 24/7 line</p>
+        <p class="text-sm font-semibold tracking-wide">FlowGrid Plumbing & Heating</p>
+        <p class="text-[10px] tracking-[0.18em] uppercase text-slate-500">
+          Trusted Trades • 24/7 Line
+        </p>
       </div>
     </div>
 
-    <!-- Nav -->
-    <nav class="hidden md:flex items-center gap-7 text-[11px] uppercase tracking-[0.18em] text-slate-300 relative">
+    <nav class="hidden md:flex items-center gap-8 text-xs font-medium tracking-[0.15em] uppercase text-slate-600">
       <a href="#" class="nav-link">Home</a>
       <a href="#services" class="nav-link">Services</a>
       <a href="#process" class="nav-link">Process</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
       <a href="#faq" class="nav-link">FAQ</a>
       <a href="#contact" class="nav-link">Contact</a>
-      <span class="nav-underline"></span>
     </nav>
 
-    <a href="#contact" class="hidden md:inline-flex lime-btn px-4 py-2 rounded-full text-[10px] font-semibold tracking-[0.22em] uppercase">
+    <a href="#contact" class="hidden md:inline-flex btn-mint">
       Get a quote
     </a>
   </div>
@@ -217,79 +304,104 @@
 
 <main class="pt-24 pb-20">
 
-  <!-- HERO -->
-  <section class="max-w-6xl mx-auto px-4 mb-16">
-    <div class="hero-shell fade-up" data-animate>
-      <div class="hero-glow"></div>
+  <!-- ==========================
+       HERO
+  =========================== -->
+  <section class="max-w-7xl mx-auto px-6 pt-10 pb-16 reveal" data-reveal>
+    <div class="shell px-7 md:px-12 py-10 md:py-14">
+      <div class="shell-glow"></div>
 
-      <div class="relative grid md:grid-cols-[1.15fr,0.85fr] gap-10 px-6 md:px-10 py-10 md:py-14">
-        <!-- Left -->
-        <div class="space-y-6">
-          <span class="tag-pill inline-flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse"></span>
-            24/7 emergency cover · Same-day where possible
-          </span>
+      <div class="relative grid md:grid-cols-[1.25fr,0.9fr] gap-10 items-center">
+        <!-- LEFT -->
+        <div class="space-y-7 relative z-10">
+          <div class="flex flex-wrap gap-2 items-center">
+            <span class="chip flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              24/7 emergency line
+            </span>
+            <span class="chip">Same-day slots where possible</span>
+          </div>
 
-          <h1 class="text-3xl md:text-5xl font-semibold leading-tight">
-            Plumbing that shows up on time,<br />
-            <span class="text-lime-300">and keeps working after we leave.</span>
-          </h1>
-
-          <p class="text-sm md:text-base text-slate-200/90 max-w-xl">
-            FlowGrid combines old-school trade reliability with clean, modern service.
-            Clear prices, tidy engineers, and proper paperwork for boilers, bathrooms and leaks.
-          </p>
+          <div class="space-y-4">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight">
+              Plumbing for 2025 homes,
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 via-sky-500 to-emerald-400">
+                not 1995 websites.
+              </span>
+            </h1>
+            <p class="text-sm md:text-base text-slate-600 max-w-xl">
+              FlowGrid blends reliable, qualified trades with a clean, modern experience.
+              Quick bookings, tidy engineers and every boiler, leak and bathroom refit
+              documented properly.
+            </p>
+          </div>
 
           <div class="flex flex-wrap gap-3">
-            <a href="#contact" class="lime-btn inline-flex items-center justify-center px-5 py-2.5 rounded-full text-[10px] font-semibold tracking-[0.24em] uppercase">
+            <a href="#contact" class="btn-mint">
               Call now · 01234 445566
             </a>
-            <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-[10px] tracking-[0.22em] uppercase border border-slate-600/80 bg-slate-900/60 hover:bg-slate-900 text-slate-200">
-              View service list
+            <button class="btn-ghost">
+              View services
             </button>
           </div>
 
-          <div class="grid grid-cols-3 gap-4 pt-2 text-xs text-slate-300">
-            <div>
-              <p class="text-lg font-semibold text-slate-50" data-count="24" data-suffix="/7">0</p>
-              <p class="text-[11px] text-slate-400">Emergency response</p>
+          <div class="flex flex-wrap gap-4 pt-4 text-xs text-slate-600">
+            <div class="pill-stat flex items-baseline gap-2">
+              <span class="text-lg font-semibold text-emerald-700" data-count="24" data-suffix="/7">0</span>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500">Emergency cover</span>
             </div>
-            <div>
-              <p class="text-lg font-semibold text-slate-50" data-count="10" data-suffix="+ yrs">0</p>
-              <p class="text-[11px] text-slate-400">Trade experience</p>
+            <div class="pill-stat flex items-baseline gap-2">
+              <span class="text-lg font-semibold text-emerald-700" data-count="10" data-suffix="+ yrs">0</span>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500">Experience</span>
             </div>
-            <div>
-              <p class="text-lg font-semibold text-slate-50" data-count="4.9" data-suffix=" ★">0</p>
-              <p class="text-[11px] text-slate-400">Average rating</p>
+            <div class="pill-stat flex items-baseline gap-2">
+              <span class="text-lg font-semibold text-emerald-700" data-count="4.9" data-suffix=" ★">0</span>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-slate-500">Average rating</span>
             </div>
           </div>
         </div>
 
-        <!-- Right -->
-        <div class="space-y-4">
-          <div class="card card-border-lime scale-in" data-animate>
-            <div class="overflow-hidden rounded-[1.35rem] border border-slate-700/70 bg-slate-950/90">
-              <!-- single hero image only -->
-              <div class="h-52 md:h-64 w-full bg-cover bg-center"
-                   style="background-image: url('https://images.unsplash.com/photo-1604079628040-94301bb21b11?q=80&w=1200&auto=format&fit=crop');">
+        <!-- RIGHT: STATUS PANEL -->
+        <div class="relative z-10 space-y-4">
+          <div class="card p-4 md:p-5 float-soft">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="section-label">Live job panel</p>
+                <p class="text-sm font-semibold mt-1">Engineer en-route in 18 mins</p>
+                <p class="text-xs text-slate-500 mt-1">
+                  We show full job notes, ETA and photos for every call-out.
+                </p>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-sky-400 flex items-center justify-center shadow-lg">
+                <span class="text-white text-xs font-semibold">FG</span>
               </div>
             </div>
-            <div class="p-5">
-              <p class="text-[11px] uppercase tracking-[0.2em] text-lime-300 mb-1">Live job view</p>
-              <p class="text-xs text-slate-300">
-                Professional tools, pressure testing and documentation on every install & repair.
+            <div class="mt-4 rounded-xl bg-slate-900/95 text-slate-50 p-4 text-xs space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="uppercase tracking-[0.22em] text-[10px] text-emerald-300">Job #1248</span>
+                <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-[10px] text-emerald-300">
+                  On route
+                </span>
+              </div>
+              <p class="font-semibold">Leaking boiler pipe · SN13</p>
+              <p class="text-[11px] text-slate-300">
+                Suspected pressure relief valve leak. Client sent photos via WhatsApp.
               </p>
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-3 text-[11px]">
-            <div class="card card-hover px-4 py-3 flex flex-col justify-between">
-              <p class="uppercase tracking-[0.2em] text-slate-400 mb-1">Gas Safe</p>
-              <p class="text-slate-100">Registered engineers for boiler installs and checks.</p>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="card-soft p-3">
+              <p class="section-label mb-1">Gas Safe</p>
+              <p class="text-slate-700">
+                Registered engineers for boiler work and safety checks.
+              </p>
             </div>
-            <div class="card card-hover px-4 py-3 flex flex-col justify-between">
-              <p class="uppercase tracking-[0.2em] text-slate-400 mb-1">Checkatrade</p>
-              <p class="text-slate-100">Reviewed and verified with written feedback.</p>
+            <div class="card-soft p-3">
+              <p class="section-label mb-1">Checkatrade</p>
+              <p class="text-slate-700">
+                Reviewed and verified with written feedback from real clients.
+              </p>
             </div>
           </div>
         </div>
@@ -297,320 +409,470 @@
     </div>
   </section>
 
-  <!-- SERVICES (TABS) -->
-  <section id="services" class="max-w-6xl mx-auto px-4 mb-16 fade-up" data-animate>
-    <div class="flex items-center justify-between gap-4 mb-4">
+  <!-- ==========================
+       SERVICES GRID
+  =========================== -->
+  <section id="services" class="max-w-7xl mx-auto px-6 py-12 reveal" data-reveal>
+    <div class="flex items-end justify-between gap-6 mb-8">
       <div>
-        <p class="text-[11px] uppercase tracking-[0.22em] text-slate-400">Services</p>
-        <h2 class="text-2xl md:text-3xl font-semibold">Everything from leaks to full refits.</h2>
-      </div>
-      <div class="hidden md:flex gap-2">
-        <button class="tab-button active" data-tab="leaks">Leaks & Emergencies</button>
-        <button class="tab-button" data-tab="heating">Boilers & Heating</button>
-        <button class="tab-button" data-tab="bathrooms">Bathrooms & Upgrades</button>
-      </div>
-    </div>
-
-    <!-- Mobile tab row -->
-    <div class="md:hidden flex gap-2 mb-4 overflow-x-auto pb-1">
-      <button class="tab-button active" data-tab="leaks">Leaks</button>
-      <button class="tab-button" data-tab="heating">Heating</button>
-      <button class="tab-button" data-tab="bathrooms">Bathrooms</button>
-    </div>
-
-    <!-- Tab content -->
-    <div class="grid md:grid-cols-[1.1fr,0.9fr] gap-8 mt-4">
-      <!-- Content-panel -->
-      <div class="space-y-5 text-sm text-slate-200">
-        <div class="tab-panel" data-tab-panel="leaks">
-          <p class="text-base text-slate-50 font-semibold mb-1">Leaks, blockages & urgent callouts.</p>
-          <p class="text-slate-300 mb-3">
-            Burst pipes, blocked drains and toilets, mystery damp patches and taps that won’t stop dripping.
-            We find the source, fix it properly and leave things tidy.
-          </p>
-          <ul class="list-disc pl-4 space-y-1 text-slate-300">
-            <li>Same-day response where possible.</li>
-            <li>Photos and notes logged for insurance or landlords.</li>
-            <li>Clear hourly or fixed-rate pricing, agreed before we start.</li>
-          </ul>
-        </div>
-
-        <div class="hidden tab-panel" data-tab-panel="heating">
-          <p class="text-base text-slate-50 font-semibold mb-1">Boilers and heating that actually work.</p>
-          <p class="text-slate-300 mb-3">
-            Servicing, diagnostics, boiler swaps and new radiator installs so you’re not sat in a cold front room.
-          </p>
-          <ul class="list-disc pl-4 space-y-1 text-slate-300">
-            <li>Boiler servicing with safety checks & documentation.</li>
-            <li>New A-rated boilers with smart controls.</li>
-            <li>Radiator upgrades and heating system balancing.</li>
-          </ul>
-        </div>
-
-        <div class="hidden tab-panel" data-tab-panel="bathrooms">
-          <p class="text-base text-slate-50 font-semibold mb-1">Modern bathrooms without the stress.</p>
-          <p class="text-slate-300 mb-3">
-            We handle pipework, waste, fixtures and coordination with other trades if needed.
-          </p>
-          <ul class="list-disc pl-4 space-y-1 text-slate-300">
-            <li>Full or partial bathroom refits.</li>
-            <li>Walk-in showers, towel rails and concealed pipework.</li>
-            <li>Clear timeline with minimal downtime for your home.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Highlight-card -->
-      <div class="card card-hover p-5 md:p-6 text-sm">
-        <p class="text-[11px] uppercase tracking-[0.22em] text-slate-400 mb-2">Most booked this month</p>
-        <h3 class="text-lg font-semibold text-slate-50 mb-2">“Sort my heating & hot water” package</h3>
-        <p class="text-slate-300 mb-4">
-          Boiler health check, radiator bleed and balance, valve check and simple control setup so you’re not guessing.
+        <p class="section-label">Services</p>
+        <h2 class="text-2xl md:text-3xl font-semibold mt-2">
+          Everything from emergency leaks to full bathroom refits.
+        </h2>
+        <p class="text-sm text-slate-600 mt-2 max-w-xl">
+          We keep the list simple on paper, but each service is delivered with clear communication,
+          photo updates and tidy finishes.
         </p>
-        <div class="grid grid-cols-3 gap-3 text-[11px] text-slate-300">
-          <div>
-            <p class="text-base font-semibold text-slate-50">3 hrs</p>
-            <p>Average visit</p>
+      </div>
+      <div class="hidden md:flex gap-2 flex-wrap">
+        <span class="chip">Domestic</span>
+        <span class="chip">Landlords</span>
+        <span class="chip">Light commercial</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-7">
+      <article class="card-soft p-5 hover:-translate-y-1 hover:shadow-xl transition">
+        <p class="section-label">Emergencies</p>
+        <h3 class="mt-2 font-semibold text-lg">Leaks & burst pipes</h3>
+        <p class="mt-2 text-sm text-slate-600">
+          Rapid diagnostics, shut-off, repair and cleanup for leaks, bursts and blockages.
+        </p>
+        <ul class="mt-4 text-xs text-slate-600 space-y-1">
+          <li>• Same-day appointments where possible</li>
+          <li>• Photos and notes logged for insurance</li>
+          <li>• Clear hourly or fixed pricing agreed first</li>
+        </ul>
+      </article>
+
+      <article class="card-soft p-5 hover:-translate-y-1 hover:shadow-xl transition">
+        <p class="section-label">Heating</p>
+        <h3 class="mt-2 font-semibold text-lg">Boilers & radiators</h3>
+        <p class="mt-2 text-sm text-slate-600">
+          Servicing, diagnostics, new boiler installs and warm, balanced radiators.
+        </p>
+        <ul class="mt-4 text-xs text-slate-600 space-y-1">
+          <li>• Boiler servicing and safety certificates</li>
+          <li>• New A-rated systems with smart controls</li>
+          <li>• Radiator upgrades and system balancing</li>
+        </ul>
+      </article>
+
+      <article class="card-soft p-5 hover:-translate-y-1 hover:shadow-xl transition">
+        <p class="section-label">Installations</p>
+        <h3 class="mt-2 font-semibold text-lg">Bathrooms & upgrades</h3>
+        <p class="mt-2 text-sm text-slate-600">
+          Clean, modern bathrooms with pipework, fixtures and finishing handled.
+        </p>
+        <ul class="mt-4 text-xs text-slate-600 space-y-1">
+          <li>• Full or partial refits</li>
+          <li>• Walk-in showers & towel radiators</li>
+          <li>• Coordination with tilers/electricians if needed</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ==========================
+       WHY CHOOSE US
+  =========================== -->
+  <section class="max-w-7xl mx-auto px-6 py-12 reveal" data-reveal>
+    <div class="grid md:grid-cols-[1.2fr,1fr] gap-8 items-start">
+      <div>
+        <p class="section-label">Why homeowners book us twice</p>
+        <h2 class="text-2xl md:text-3xl font-semibold mt-2">
+          Proper trades, with a service that actually feels modern.
+        </h2>
+        <p class="text-sm text-slate-600 mt-2 max-w-xl">
+          No “between 8am and 8pm” windows. No mystery pricing. No van doors slammed and silence
+          until the invoice lands. Just clean work and neat communication.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4 mt-6 text-sm text-slate-700">
+          <div class="card-soft p-4">
+            <p class="font-semibold">Transparent pricing</p>
+            <p class="text-xs text-slate-600 mt-1">
+              We outline options and price bands before tools leave the van, then confirm on site.
+            </p>
           </div>
-          <div>
-            <p class="text-base font-semibold text-slate-50">12 m</p>
-            <p>Work guarantee</p>
+          <div class="card-soft p-4">
+            <p class="font-semibold">Respect for your home</p>
+            <p class="text-xs text-slate-600 mt-1">
+              Shoe covers, dust sheets and a final tidy-up. Your hallway is not a building site.
+            </p>
           </div>
-          <div>
-            <p class="text-base font-semibold text-slate-50">Fixed</p>
-            <p>Upfront price</p>
+          <div class="card-soft p-4">
+            <p class="font-semibold">Paperwork sorted</p>
+            <p class="text-xs text-slate-600 mt-1">
+              Certificates, invoices and guarantees emailed in one clean PDF bundle.
+            </p>
           </div>
+          <div class="card-soft p-4">
+            <p class="font-semibold">Follow-up check-ins</p>
+            <p class="text-xs text-slate-600 mt-1">
+              Larger jobs get a follow-up call or visit to make sure everything still feels right.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-5 float-soft">
+        <p class="section-label">Recent clients</p>
+        <div class="mt-4 space-y-3 text-sm text-slate-700">
+          <div class="flex items-center justify-between">
+            <span class="font-semibold">“Warm House Again” Boiler Swap</span>
+            <span class="chip text-[10px]">Boiler</span>
+          </div>
+          <p class="text-xs text-slate-500">
+            Old combi replaced with A-rated system, smart controls and balanced radiators.
+          </p>
+          <hr class="border-dashed border-slate-200 my-3" />
+          <div class="flex items-center justify-between">
+            <span class="font-semibold">“No More Drip” Bathroom Leak Fix</span>
+            <span class="chip text-[10px]">Leak</span>
+          </div>
+          <p class="text-xs text-slate-500">
+            Hidden pipe leak traced, repaired and boxed in with minimal redecoration needed.
+          </p>
+          <hr class="border-dashed border-slate-200 my-3" />
+          <div class="flex items-center justify-between">
+            <span class="font-semibold">Landlord Safety Pack</span>
+            <span class="chip text-[10px]">Compliance</span>
+          </div>
+          <p class="text-xs text-slate-500">
+            Annual boiler service, gas safety certs and digital log for three properties.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS / TIMELINE -->
-  <section id="process" class="max-w-6xl mx-auto px-4 mb-16 fade-up" data-animate>
-    <div class="flex items-center justify-between mb-6">
+  <!-- ==========================
+       PROCESS / TIMELINE
+  =========================== -->
+  <section id="process" class="max-w-7xl mx-auto px-6 py-12 reveal" data-reveal>
+    <div class="flex items-end justify-between mb-6">
       <div>
-        <p class="text-[11px] uppercase tracking-[0.22em] text-slate-400">Process</p>
-        <h2 class="text-2xl md:text-3xl font-semibold">How a typical job runs.</h2>
+        <p class="section-label">Process</p>
+        <h2 class="text-2xl md:text-3xl font-semibold mt-2">
+          How a typical job runs from first call to sign-off.
+        </h2>
       </div>
-      <span class="tag-pill hidden md:inline-flex">No jargon, no pressure selling</span>
+      <div class="hidden md:block chip">No jargon, no pressure selling.</div>
     </div>
 
-    <div class="relative card p-6 md:p-7">
-      <div class="timeline-line" id="timelineLine"></div>
-      <div class="space-y-6 pl-6 md:pl-8">
-        <!-- Step -->
-        <div class="relative pl-6">
-          <span class="absolute left-0 top-1 w-3 h-3 rounded-full bg-lime-300 shadow-[0_0_12px_rgba(190,242,100,0.8)]"></span>
-          <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Step 1</p>
-          <p class="text-sm text-slate-50 font-semibold">Quick call or message with photos.</p>
-          <p class="text-xs text-slate-300">
-            You tell us what’s happening, send pictures if you can, and we’ll outline the likely options & price band.
+    <div class="card p-6 md:p-7 relative overflow-hidden">
+      <div class="absolute left-6 top-8 bottom-8 w-[2px] bg-gradient-to-b from-emerald-400 via-sky-400 to-emerald-500 opacity-60"></div>
+
+      <div class="space-y-7 pl-10 md:pl-12 text-sm text-slate-700">
+        <div class="relative">
+          <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-md absolute -left-[26px] top-[3px]"></span>
+          <p class="section-label">Step 1 · Quick call & photos</p>
+          <p class="font-semibold mt-1">You tell us what’s going on.</p>
+          <p class="text-xs text-slate-600 mt-1">
+            We ask for a couple of clear photos or a short video so we can give realistic options and price bands.
           </p>
         </div>
-        <!-- Step -->
-        <div class="relative pl-6">
-          <span class="absolute left-0 top-1 w-3 h-3 rounded-full bg-lime-300"></span>
-          <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Step 2</p>
-          <p class="text-sm text-slate-50 font-semibold">Engineer visit & confirmation.</p>
-          <p class="text-xs text-slate-300">
-            We arrive within the agreed window, confirm the issue and walk you through the exact work needed.
+
+        <div class="relative">
+          <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-md absolute -left-[26px] top-[3px]"></span>
+          <p class="section-label">Step 2 · Arrival window</p>
+          <p class="font-semibold mt-1">We give an actual time window.</p>
+          <p class="text-xs text-slate-600 mt-1">
+            We book a tight arrival slot, share engineer details and let you know if anything changes.
           </p>
         </div>
-        <!-- Step -->
-        <div class="relative pl-6">
-          <span class="absolute left-0 top-1 w-3 h-3 rounded-full bg-lime-300"></span>
-          <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Step 3</p>
-          <p class="text-sm text-slate-50 font-semibold">Work, tidy-up and testing.</p>
-          <p class="text-xs text-slate-300">
-            Sheets down, tools out, issue fixed, system tested and your space left as clean as we found it.
+
+        <div class="relative">
+          <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-md absolute -left-[26px] top-[3px]"></span>
+          <p class="section-label">Step 3 · Diagnosis & approval</p>
+          <p class="font-semibold mt-1">We confirm the plan on site.</p>
+          <p class="text-xs text-slate-600 mt-1">
+            Once we’ve seen it in person, we confirm the work and cost before starting — no surprises halfway through.
           </p>
         </div>
-        <!-- Step -->
-        <div class="relative pl-6">
-          <span class="absolute left-0 top-1 w-3 h-3 rounded-full bg-lime-300"></span>
-          <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Step 4</p>
-          <p class="text-sm text-slate-50 font-semibold">Paperwork & support.</p>
-          <p class="text-xs text-slate-300">
-            Certificates, invoices and guarantees emailed or printed, plus a follow-up if it’s a larger install.
+
+        <div class="relative">
+          <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-md absolute -left-[26px] top-[3px]"></span>
+          <p class="section-label">Step 4 · Work, tidy up, sign-off</p>
+          <p class="font-semibold mt-1">Issue fixed, home left tidy.</p>
+          <p class="text-xs text-slate-600 mt-1">
+            We protect your space, complete the work, test everything properly and leave your hallway cleaner than we found it.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq" class="max-w-6xl mx-auto px-4 mb-16 fade-up" data-animate>
-    <div class="flex items-center justify-between mb-5">
+  <!-- ==========================
+       TESTIMONIALS
+  =========================== -->
+  <section class="max-w-7xl mx-auto px-6 py-12 reveal" data-reveal>
+    <div class="flex items-end justify-between mb-6">
       <div>
-        <p class="text-[11px] uppercase tracking-[0.22em] text-slate-400">FAQ</p>
-        <h2 class="text-2xl md:text-3xl font-semibold">Questions people usually ask first.</h2>
+        <p class="section-label">Feedback</p>
+        <h2 class="text-2xl md:text-3xl font-semibold mt-2">
+          “Not what you expect from a plumbing company — in a good way.”
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 text-sm text-slate-700">
+      <div class="card-soft p-5">
+        <p class="text-xs uppercase tracking-[0.22em] text-slate-500 mb-2">Boiler install</p>
+        <p class="font-semibold mb-2">“Felt like a high-end service, not just a job.”</p>
+        <p class="text-xs text-slate-600">
+          “They explained everything clearly, used dust sheets everywhere and walked us through how to use the new boiler & app.”
+        </p>
+        <p class="text-[11px] text-slate-500 mt-3">— Hannah, SN13</p>
+      </div>
+
+      <div class="card-soft p-5">
+        <p class="text-xs uppercase tracking-[0.22em] text-slate-500 mb-2">Emergency leak</p>
+        <p class="font-semibold mb-2">“Actually turned up when they said they would.”</p>
+        <p class="text-xs text-slate-600">
+          “They showed us photos of the pipework, fixed it the same evening and sent pictures for our insurance.”
+        </p>
+        <p class="text-[11px] text-slate-500 mt-3">— Mark, landlord</p>
+      </div>
+
+      <div class="card-soft p-5">
+        <p class="text-xs uppercase tracking-[0.22em] text-slate-500 mb-2">Bathroom refit</p>
+        <p class="font-semibold mb-2">“Everything looked like the drawings they showed us.”</p>
+        <p class="text-xs text-slate-600">
+          “Neat pipework, no mess left behind and the towel rail finally heats the room.”
+        </p>
+        <p class="text-[11px] text-slate-500 mt-3">— Connor & Jay</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================
+       PRICING
+  =========================== -->
+  <section id="pricing" class="max-w-7xl mx-auto px-6 py-12 reveal" data-reveal>
+    <div class="flex items-end justify-between mb-6">
+      <div>
+        <p class="section-label">Pricing</p>
+        <h2 class="text-2xl md:text-3xl font-semibold mt-2">
+          Straightforward, written pricing — no guesswork.
+        </h2>
+        <p class="text-sm text-slate-600 mt-2 max-w-xl">
+          These are guide packages. Every job still gets a proper quote first,
+          but you’ll always know what ballpark you’re in.
+        </p>
+      </div>
+      <div class="hidden md:block chip">All prices + VAT where applicable.</div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-7">
+      <div class="relative card-soft p-6">
+        <div class="ribbon">Most common call-out</div>
+        <h3 class="font-semibold text-lg mt-6">Leak & blockage visit</h3>
+        <p class="text-3xl font-semibold mt-2">£95–£145</p>
+        <p class="text-xs text-slate-600 mt-1">Typical final cost</p>
+        <ul class="mt-4 text-xs text-slate-600 space-y-1">
+          <li>• Includes up to first hour on site</li>
+          <li>• Diagnostics, repair where possible</li>
+          <li>• Photos & notes for insurance</li>
+        </ul>
+        <button class="btn-ghost mt-5 w-full">Book leak visit</button>
+      </div>
+
+      <div class="relative card-soft p-6">
+        <div class="ribbon">Annual essential</div>
+        <h3 class="font-semibold text-lg mt-6">Boiler service & safety check</h3>
+        <p class="text-3xl font-semibold mt-2">£80–£120</p>
+        <p class="text-xs text-slate-600 mt-1">Per boiler</p>
+        <ul class="mt-4 text-xs text-slate-600 space-y-1">
+          <li>• Full service & flue check</li>
+          <li>• Safety certificate where needed</li>
+          <li>• Digital paperwork stored neatly</li>
+        </ul>
+        <button class="btn-ghost mt-5 w-full">Book service</button>
+      </div>
+
+      <div class="relative card-soft p-6">
+        <div class="ribbon">From</div>
+        <h3 class="font-semibold text-lg mt-6">New boiler & system upgrade</h3>
+        <p class="text-3xl font-semibold mt-2">£1,900+</p>
+        <p class="text-xs text-slate-600 mt-1">All-in estimate</p>
+        <ul class="mt-4 text-xs text-slate-600 space-y-1">
+          <li>• A-rated boiler with warranty</li>
+          <li>• Smart controls & radiator check</li>
+          <li>• Clear staged payments</li>
+        </ul>
+        <button class="btn-ghost mt-5 w-full">Request survey</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================
+       FAQ
+  =========================== -->
+  <section id="faq" class="max-w-7xl mx-auto px-6 py-12 reveal" data-reveal>
+    <div class="flex items-end justify-between mb-6">
+      <div>
+        <p class="section-label">FAQ</p>
+        <h2 class="text-2xl md:text-3xl font-semibold mt-2">
+          Questions people usually ask before they book.
+        </h2>
       </div>
     </div>
 
     <div class="space-y-3">
-      <!-- Item -->
-      <div class="card p-4 md:p-5 cursor-pointer faq-item">
+      <div class="card-soft p-4 md:p-5 cursor-pointer faq-item">
         <div class="flex items-center justify-between gap-4">
-          <p class="text-sm font-semibold text-slate-50">Do you charge call-out fees?</p>
-          <span class="text-slate-400 text-lg">+</span>
+          <p class="font-semibold text-sm">Do you charge a call-out fee?</p>
+          <span class="text-slate-500 text-xl">+</span>
         </div>
-        <div class="faq-answer mt-2 text-xs text-slate-300">
+        <div class="faq-answer text-xs text-slate-600 mt-2">
           <p>
-            We’ll tell you upfront if there’s a call-out charge and what it covers.
-            For most local jobs, we roll this into the first hour of work so you’re not paying twice.
+            We’ll tell you upfront if there’s a call-out and what it covers. For local leak and blockage jobs we usually
+            roll it into the first hour on site, so you’re not paying twice.
           </p>
         </div>
       </div>
 
-      <div class="card p-4 md:p-5 cursor-pointer faq-item">
+      <div class="card-soft p-4 md:p-5 cursor-pointer faq-item">
         <div class="flex items-center justify-between gap-4">
-          <p class="text-sm font-semibold text-slate-50">Are you insured and certified for boiler work?</p>
-          <span class="text-slate-400 text-lg">+</span>
+          <p class="font-semibold text-sm">Are you insured and Gas Safe registered?</p>
+          <span class="text-slate-500 text-xl">+</span>
         </div>
-        <div class="faq-answer mt-2 text-xs text-slate-300">
+        <div class="faq-answer text-xs text-slate-600 mt-2">
           <p>
-            Yes. Our engineers are Gas Safe registered, and we carry full public liability insurance.
-            Boiler certificates are sent after every applicable job.
+            Yes. Our engineers are Gas Safe registered for boiler work and we carry full public liability insurance.
+            Certificates are provided after every relevant job.
           </p>
         </div>
       </div>
 
-      <div class="card p-4 md:p-5 cursor-pointer faq-item">
+      <div class="card-soft p-4 md:p-5 cursor-pointer faq-item">
         <div class="flex items-center justify-between gap-4">
-          <p class="text-sm font-semibold text-slate-50">How quickly can you usually get to us?</p>
-          <span class="text-slate-400 text-lg">+</span>
+          <p class="font-semibold text-sm">How soon can you usually come out?</p>
+          <span class="text-slate-500 text-xl">+</span>
         </div>
-        <div class="faq-answer mt-2 text-xs text-slate-300">
+        <div class="faq-answer text-xs text-slate-600 mt-2">
           <p>
-            For emergencies, we try to attend the same day where possible.
-            For planned work like boiler swaps or bathroom refits, we book a clear start date with you.
+            For emergencies, we try to attend the same day where possible. For boiler swaps and bathroom refits,
+            we book a clear start date and realistic schedule so you can plan around it.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT STRIP -->
-  <section id="contact" class="max-w-6xl mx-auto px-4 fade-up" data-animate>
-    <div class="card card-border-lime grid md:grid-cols-[1.1fr,0.9fr] gap-8 p-6 md:p-7">
-      <div class="space-y-4 text-sm">
-        <p class="text-[11px] uppercase tracking-[0.22em] text-lime-300">Get in touch</p>
-        <h2 class="text-2xl md:text-3xl font-semibold text-slate-50">Tell us what’s gone wrong.</h2>
-        <p class="text-xs text-slate-300">
-          A couple of lines, your postcode and photos if possible. We’ll reply with options and a clear price range.
+  <!-- ==========================
+       CONTACT
+  =========================== -->
+  <section id="contact" class="max-w-7xl mx-auto px-6 py-12 reveal" data-reveal>
+    <div class="grid md:grid-cols-[1.1fr,0.9fr] gap-8 items-start">
+      <div class="card p-6 md:p-7">
+        <p class="section-label">Get in touch</p>
+        <h2 class="text-2xl md:text-3xl font-semibold mt-2">
+          Tell us what’s going on and we’ll outline your options.
+        </h2>
+        <p class="text-sm text-slate-600 mt-2">
+          A couple of lines, your postcode and photos if you have them. We’ll reply with
+          sensible options and a clear price range — no pressure selling.
         </p>
-        <div class="space-y-1 text-xs text-slate-300">
-          <p>Phone: <span class="text-slate-50 font-semibold">01234 445566</span></p>
-          <p>Email: <span class="text-slate-50 font-semibold">hello@flowgridplumbing.co.uk</span></p>
+
+        <div class="mt-5 space-y-1 text-sm text-slate-700">
+          <p><span class="font-semibold">Phone:</span> 01234 445566</p>
+          <p><span class="font-semibold">Email:</span> hello@flowgridplumbing.co.uk</p>
+          <p><span class="font-semibold">Area:</span> Wiltshire & surrounding local areas</p>
         </div>
       </div>
 
-      <form class="space-y-3 text-xs">
-        <div class="grid md:grid-cols-2 gap-3">
-          <div>
-            <label class="block mb-1 text-slate-300">Name</label>
-            <input class="w-full rounded-lg border border-slate-600 bg-slate-950 px-3 py-2" placeholder="Full name" />
+      <div class="card p-6 md:p-7">
+        <form class="space-y-3 text-xs">
+          <div class="grid md:grid-cols-2 gap-3">
+            <div>
+              <label class="block mb-1 text-slate-600">Name</label>
+              <input class="input" placeholder="Full name" />
+            </div>
+            <div>
+              <label class="block mb-1 text-slate-600">Phone</label>
+              <input class="input" placeholder="Mobile number" />
+            </div>
           </div>
-          <div>
-            <label class="block mb-1 text-slate-300">Phone</label>
-            <input class="w-full rounded-lg border border-slate-600 bg-slate-950 px-3 py-2" placeholder="Mobile number" />
+
+          <div class="grid md:grid-cols-2 gap-3">
+            <div>
+              <label class="block mb-1 text-slate-600">Email</label>
+              <input class="input" placeholder="you@example.com" />
+            </div>
+            <div>
+              <label class="block mb-1 text-slate-600">Postcode</label>
+              <input class="input" placeholder="e.g. SN13" />
+            </div>
           </div>
-        </div>
-        <div class="grid md:grid-cols-2 gap-3">
+
           <div>
-            <label class="block mb-1 text-slate-300">Email</label>
-            <input class="w-full rounded-lg border border-slate-600 bg-slate-950 px-3 py-2" placeholder="you@example.com" />
+            <label class="block mb-1 text-slate-600">What’s happening?</label>
+            <textarea class="input" placeholder="Brief description of the issue..."></textarea>
           </div>
-          <div>
-            <label class="block mb-1 text-slate-300">Postcode</label>
-            <input class="w-full rounded-lg border border-slate-600 bg-slate-950 px-3 py-2" placeholder="e.g. AB1 2CD" />
-          </div>
-        </div>
-        <div>
-          <label class="block mb-1 text-slate-300">What’s happening?</label>
-          <textarea class="w-full rounded-lg border border-slate-600 bg-slate-950 px-3 py-2 min-h-[90px]" placeholder="Brief description of the issue..."></textarea>
-        </div>
-        <button type="button" class="lime-btn w-full mt-1 py-2.5 rounded-full text-[10px] font-semibold tracking-[0.24em] uppercase">
-          Send enquiry
-        </button>
-      </form>
+
+          <button type="button" class="btn-mint w-full mt-1">
+            Send enquiry
+          </button>
+        </form>
+      </div>
     </div>
   </section>
 
 </main>
 
+<!-- ==========================
+     FOOTER
+=========================== -->
+<footer class="border-t border-slate-200 bg-white/80">
+  <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+    <p>© 2025 FlowGrid Plumbing & Heating. All rights reserved.</p>
+    <p>Built as an example layout — swap with your branding, photos and copy.</p>
+  </div>
+</footer>
+
 <script>
-  // Intersection Observer for fade + scale
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  // Header scroll
+  const header = document.querySelector("header");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) header.classList.add("scrolled");
+    else header.classList.remove("scrolled");
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll("[data-reveal]");
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        observer.unobserve(entry.target);
+        entry.target.classList.add("visible");
+        revealObs.unobserve(entry.target);
       }
     });
   }, { threshold: 0.2 });
 
-  document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
-
-  // Header scroll + nav underline
-  const header = document.querySelector('header');
-  const underline = document.querySelector('.nav-underline');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  function moveUnderline(target) {
-    const rect = target.getBoundingClientRect();
-    const parentRect = target.parentElement.getBoundingClientRect();
-    underline.style.width = rect.width + 'px';
-    underline.style.transform = `translateX(${rect.left - parentRect.left}px)`;
-    underline.style.opacity = 1;
-  }
-
-  navLinks.forEach(link => {
-    link.addEventListener('mouseenter', () => moveUnderline(link));
-  });
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-
-  // Timeline line animation
-  const timelineLine = document.getElementById('timelineLine');
-  const processSection = document.getElementById('process');
-
-  const processObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        timelineLine.classList.add('active');
-        processObserver.unobserve(processSection);
-      }
-    });
-  }, { threshold: 0.4 });
-
-  processObserver.observe(processSection);
+  revealEls.forEach(el => revealObs.observe(el));
 
   // Count-up stats
-  const countTargets = document.querySelectorAll('[data-count]');
-  let countsStarted = false;
+  const counters = document.querySelectorAll("[data-count]");
+  let countersStarted = false;
 
-  function startCounts() {
-    if (countsStarted) return;
-    countsStarted = true;
-    countTargets.forEach(el => {
-      const target = parseFloat(el.getAttribute('data-count'));
-      const suffix = el.getAttribute('data-suffix') || '';
-      let current = 0;
-      const duration = 1200;
-      const startTime = performance.now();
+  function startCounters() {
+    if (countersStarted) return;
+    countersStarted = true;
+
+    counters.forEach(el => {
+      const target = parseFloat(el.getAttribute("data-count"));
+      const suffix = el.getAttribute("data-suffix") || "";
+      const isDecimal = !Number.isInteger(target);
+      const duration = 1400;
+      const start = performance.now();
 
       function update(now) {
-        const progress = Math.min((now - startTime) / duration, 1);
-        const value = target === 4.9
-          ? (4.9 * progress).toFixed(1)
-          : Math.floor(target * progress);
+        const progress = Math.min((now - start) / duration, 1);
+        let value = target * progress;
+        value = isDecimal ? value.toFixed(1) : Math.floor(value);
         el.textContent = value + suffix;
         if (progress < 1) requestAnimationFrame(update);
       }
@@ -618,43 +880,31 @@
     });
   }
 
-  const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        startCounts();
-        statsObserver.disconnect();
+  const statsSection = document.querySelector("section[max-w-7xl]") || document.querySelector("main");
+  const statsObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startCounters();
+        statsObs.disconnect();
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.3 });
 
-  if (countTargets.length) {
-    statsObserver.observe(countTargets[0].closest('section'));
-  }
-
-  // Tabs logic
-  const tabButtons = document.querySelectorAll('.tab-button');
-  const tabPanels = document.querySelectorAll('.tab-panel');
-
-  tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tab = btn.getAttribute('data-tab');
-      tabButtons.forEach(b => b.classList.toggle('active', b.getAttribute('data-tab') === tab));
-      tabPanels.forEach(panel => {
-        panel.classList.toggle('hidden', panel.getAttribute('data-tab-panel') !== tab);
-      });
-    });
-  });
+  if (counters.length) statsObs.observe(counters[0].closest("section"));
 
   // FAQ accordion
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const answer = item.querySelector('.faq-answer');
-      const open = answer.classList.contains('open');
-      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-      document.querySelectorAll('.faq-item span:last-child').forEach(s => s.textContent = '+');
+  document.querySelectorAll(".faq-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const answer = item.querySelector(".faq-answer");
+      const open = answer.classList.contains("open");
+
+      // Close all
+      document.querySelectorAll(".faq-answer").forEach(a => a.classList.remove("open"));
+      document.querySelectorAll(".faq-item span:last-child").forEach(s => s.textContent = "+");
+
       if (!open) {
-        answer.classList.add('open');
-        item.querySelector('span:last-child').textContent = '–';
+        answer.classList.add("open");
+        item.querySelector("span:last-child").textContent = "–";
       }
     });
   });
