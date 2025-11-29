@@ -4,99 +4,223 @@
   <meta charset="UTF-8" />
   <title>SABR DIGITAL – Our work</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="main.js"></script>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            sabrBg: '#050516',
+            sabrCard: '#05040d',
+            sabrCardSoft: '#090918',
+            sabrAccent: '#a855f7',
+            sabrAccentSoft: '#c4b5fd',
+          },
+          boxShadow: {
+            'sabr-glow': '0 0 40px rgba(168, 85, 247, 0.85)',
+            'sabr-soft': '0 0 30px rgba(88, 28, 135, 0.55)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:
+        radial-gradient(circle at top, #3b0764 0, #020018 45%, #000 100%);
+      color: #f9fafb;
+    }
+
+    .font-display {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+    }
+
+    .nav-link {
+      position: relative;
+      padding-bottom: 0.25rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #a855f7, #22d3ee);
+      transition: width 0.18s ease-out;
+    }
+    .nav-link.nav-active::after,
+    .nav-link:hover::after {
+      width: 70%;
+    }
+
+    .grid-overlay {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      opacity: 0.14;
+      background-image:
+        linear-gradient(to right, rgba(148, 163, 184, 0.18) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.18) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(circle at top, black 0, black 55%, transparent 100%);
+    }
+
+    .led-strip {
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, #4c1d95, #a855f7, #4c1d95);
+      box-shadow:
+        0 0 30px rgba(168, 85, 247, 0.9),
+        0 0 60px rgba(76, 29, 149, 0.7);
+    }
+
+    .card-matte {
+      background-color: #05040d; /* luxury matte black */
+    }
+  </style>
 </head>
-<body data-page="work">
-  <div class="page">
-    <header class="site-header">
-      <div class="nav-inner">
-        <a href="index.html" class="logo-link">
-          <div class="logo-mark">
-            <img src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png" alt="SABR DIGITAL logo">
-          </div>
-          <div>
-            <div class="logo-text-main">SABR DIGITAL</div>
-            <div class="logo-text-sub">Websites that feel trustworthy</div>
-          </div>
-        </a>
-        <nav class="nav-links">
-          <a href="our-work.html" data-page-link="work">Our work</a>
-          <a href="process.html" data-page-link="process">Process</a>
-          <a href="faq.html" data-page-link="faq">FAQ</a>
-          <a href="talk-to-us.html" data-page-link="contact">Talk to us</a>
-        </nav>
-      </div>
-      <div class="led-bar"></div>
-    </header>
-
-    <main>
-      <section class="section">
-        <div class="container">
-          <div class="heading-xs">Examples</div>
-          <h1 class="heading-lg" style="margin-top:6px;">Different styles we can build for your business</h1>
-          <p class="text-muted" style="margin-top:10px;max-width:560px;">
-            These showcase layouts illustrate the standard of design and structure we deliver.
-            Once client sites are live, we’ll replace these with real case studies.
-          </p>
-
-          <div class="work-grid">
-            <article class="work-card" data-work-preview="bold-playful">
-              <div class="work-thumb"></div>
-              <h2 style="font-size:15px;margin-bottom:4px;">Bold &amp; playful</h2>
-              <p class="text-muted" style="font-size:13px;">
-                Strong colour blocks, sharp typography and confident copy for high-energy brands that want to stand out.
-              </p>
-            </article>
-
-            <article class="work-card" data-work-preview="minimal-premium">
-              <div class="work-thumb"></div>
-              <h2 style="font-size:15px;margin-bottom:4px;">Minimal &amp; premium</h2>
-              <p class="text-muted" style="font-size:13px;">
-                Calm, spacious layouts with a focus on proof and clarity – ideal for premium services and studios.
-              </p>
-            </article>
-
-            <article class="work-card" data-work-preview="sleek-future">
-              <div class="work-thumb"></div>
-              <h2 style="font-size:15px;margin-bottom:4px;">Sleek &amp; future-ready</h2>
-              <p class="text-muted" style="font-size:13px;">
-                Dark, cinematic design with subtle motion for businesses that want a modern, tech-forward feel.
-              </p>
-            </article>
-          </div>
-
-          <div style="margin-top:26px;border-top:1px solid #221b42;padding-top:14px;display:flex;justify-content:space-between;gap:16px;font-size:13px;color:#c2badf;">
-            <p>Already have a style in mind? We can adapt any of these to your brand.</p>
-            <a href="talk-to-us.html" class="btn btn-outline">Talk to us about your project</a>
-          </div>
+<body data-page="work" class="min-h-screen text-slate-100">
+  <!-- Header -->
+  <header class="border-b border-slate-800/70 bg-slate-950/70 backdrop-blur-xl sticky top-0 z-40">
+    <div class="led-strip"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-full bg-black/80 flex items-center justify-center shadow-sabr-glow border border-purple-400/70">
+          <img
+            src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png"
+            alt="SABR DIGITAL logo"
+            class="h-8 w-8 rounded-full object-contain"
+          />
         </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="led-bar"></div>
-      <div class="footer-inner">
-        <p>© SABR DIGITAL · Wiltshire-based web design studio</p>
-        <p>These are showcase layouts. Real client sites coming soon.</p>
-      </div>
-    </footer>
-
-    <!-- Modal for previews -->
-    <div class="modal-backdrop">
-      <div class="modal">
-        <div class="modal-header">
-          <div class="modal-title">Preview</div>
-          <div class="modal-close">×</div>
+        <div class="flex flex-col leading-tight">
+          <span class="font-display font-semibold text-xs sm:text-sm tracking-[0.28em] uppercase">
+            SABR DIGITAL
+          </span>
+          <span class="text-[0.7rem] text-slate-400">Websites that feel trustworthy</span>
         </div>
-        <div class="modal-body">
-          <!-- Filled by JS -->
-        </div>
-      </div>
+      </a>
+      <nav class="flex items-center gap-6">
+        <a href="our-work.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="work">Our work</a>
+        <a href="process.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="process">Process</a>
+        <a href="faq.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="faq">FAQ</a>
+        <a href="talk-to-us.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="contact">Talk to us</a>
+      </nav>
     </div>
-  </div>
+  </header>
+
+  <main class="relative">
+    <div class="grid-overlay"></div>
+
+    <!-- Top LED accent -->
+    <div class="led-strip"></div>
+
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 space-y-8">
+      <div class="space-y-3 max-w-3xl">
+        <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Examples</p>
+        <h1 class="font-display text-2xl sm:text-3xl font-semibold">
+          Different styles we can build for your business
+        </h1>
+        <p class="text-sm text-slate-300">
+          These showcase layouts illustrate the standard of design and structure we deliver.
+          Once client sites are live, we’ll replace these with real case studies.
+        </p>
+      </div>
+
+      <!-- Three big matte-black cards -->
+      <div class="mt-6 grid gap-6 md:grid-cols-3">
+        <!-- Bold & playful -->
+        <article
+          class="group relative rounded-3xl border border-purple-500/40 card-matte shadow-sabr-soft overflow-hidden">
+          <div class="h-40 sm:h-44 bg-gradient-to-br from-fuchsia-500/30 via-purple-500/10 to-amber-300/20 group-hover:from-fuchsia-400/50 group-hover:via-purple-500/30 group-hover:to-amber-200/40 transition-all duration-500"></div>
+          <div class="p-5 space-y-2">
+            <h2 class="font-display text-base sm:text-lg font-semibold">
+              Bold &amp; playful
+            </h2>
+            <p class="text-[0.8rem] sm:text-sm text-slate-300">
+              Strong colour blocks, sharp typography and confident copy for high-energy brands that want to stand out.
+            </p>
+          </div>
+        </article>
+
+        <!-- Minimal & premium -->
+        <article
+          class="group relative rounded-3xl border border-purple-500/40 card-matte shadow-sabr-soft overflow-hidden">
+          <div class="h-40 sm:h-44 bg-gradient-to-br from-slate-300/15 via-purple-500/10 to-slate-900/80 group-hover:from-slate-100/25 group-hover:via-purple-400/25 group-hover:to-slate-900/90 transition-all duration-500"></div>
+          <div class="p-5 space-y-2">
+            <h2 class="font-display text-base sm:text-lg font-semibold">
+              Minimal &amp; premium
+            </h2>
+            <p class="text-[0.8rem] sm:text-sm text-slate-300">
+              Calm, spacious layouts with a focus on proof and clarity – ideal for premium services and studios.
+            </p>
+          </div>
+        </article>
+
+        <!-- Sleek & future-ready -->
+        <article
+          class="group relative rounded-3xl border border-purple-500/40 card-matte shadow-sabr-soft overflow-hidden">
+          <div class="h-40 sm:h-44 bg-gradient-to-br from-slate-900 via-indigo-700/40 to-slate-950 group-hover:from-slate-900 group-hover:via-indigo-500/60 group-hover:to-slate-950 transition-all duration-500"></div>
+          <div class="p-5 space-y-2">
+            <h2 class="font-display text-base sm:text-lg font-semibold">
+              Sleek &amp; future-ready
+            </h2>
+            <p class="text-[0.8rem] sm:text-sm text-slate-300">
+              Dark, cinematic design with subtle motion for businesses that want a modern, tech-forward feel.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="pt-5 border-t border-slate-800/70 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-300">
+        <p>Already have a style in mind? We can adapt any of these to your brand.</p>
+        <a href="talk-to-us.html"
+           class="inline-flex items-center gap-2 rounded-full border border-purple-400/70 px-4 py-2 text-xs font-medium text-slate-100 hover:bg-purple-500/10 hover:border-purple-300 transition-colors">
+          Talk to us about your project
+          <span class="text-[0.9rem]">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Bottom LED accent -->
+    <div class="led-strip mt-4"></div>
+  </main>
+
+  <footer class="border-t border-slate-800/80 bg-slate-950/95">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.75rem] text-slate-500">
+      <p>© SABR DIGITAL · Wiltshire-based web design studio</p>
+      <p>These are showcase layouts. Real client sites coming soon.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const page = document.body.dataset.page;
+      if (!page) return;
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.dataset.link === page) {
+          link.classList.add('nav-active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
