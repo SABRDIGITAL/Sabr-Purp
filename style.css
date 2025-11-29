@@ -21,7 +21,7 @@ body {
   color: #f7f7ff;
 }
 
-/* Page background: square grid + subtle gradient */
+/* Page background: radial depth (hex bg sits behind this) */
 .page {
   min-height: 100vh;
   position: relative;
@@ -32,18 +32,7 @@ body {
   overflow-x: hidden;
 }
 
-.page::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, rgba(120, 120, 160, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(120, 120, 160, 0.25) 1px, transparent 1px);
-  background-size: 52px 52px;
-  opacity: 0.5;
-  z-index: -1;
-}
+/* Removed old square grid overlay – replaced by animated hex background */
 
 /* Containers */
 
@@ -102,6 +91,37 @@ body {
 @keyframes ledSweep {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
+}
+
+/* =========================
+   HIGH-TECH HEX BACKGROUND
+   ========================= */
+
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background-image: url("images/hex-bg.jpg"); /* put your hex image here */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.33;
+  filter: brightness(0.85) saturate(1.25);
+  animation:
+    hexDrift 24s ease-in-out infinite alternate,
+    hexPulse 10s ease-in-out infinite;
+}
+
+/* Slow drift */
+@keyframes hexDrift {
+  0%   { transform: scale(1.08) translateX(-12px) translateY(-6px); }
+  100% { transform: scale(1.08) translateX(12px) translateY(6px); }
+}
+
+/* Soft breathing glow */
+@keyframes hexPulse {
+  0%   { filter: brightness(0.85) saturate(1.25); }
+  50%  { filter: brightness(1.0) saturate(1.45); }
+  100% { filter: brightness(0.85) saturate(1.25); }
 }
 
 /* =========================
@@ -260,9 +280,10 @@ body {
   padding-top: 64px;
 }
 
+/* Make right side (before/after) wider */
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
   gap: 40px;
   align-items: center;
 }
@@ -332,7 +353,8 @@ body {
 .ba-frame {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  /* wider feel, slightly more cinematic */
+  aspect-ratio: 16 / 10;
   border-radius: 0;
   background: #000;
 }
@@ -342,14 +364,16 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* full coverage, no borders cutting off parts */
   transition: opacity 0.3s ease-out;
 }
 
+/* Default: show BEFORE */
 .ba-image--after {
   opacity: 0;
 }
 
+/* Hover: show AFTER */
 .ba-wrap:hover .ba-image--after {
   opacity: 1;
 }
@@ -358,30 +382,26 @@ body {
   opacity: 0;
 }
 
+/* Purple “Before / After” label */
 .ba-label {
   position: absolute;
   top: 10px;
   left: 10px;
-  padding: 4px 10px;
+  padding: 4px 12px;
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  background: #05040b;
-  color: #dcd6ff;
-  border-radius: 0;
-  border: 1px solid #7d63ff;
+  border-radius: 999px;
+  border: 1px solid #c4b5ff;
+  background: rgba(76, 29, 149, 0.9);
+  color: #f5f3ff;
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.9);
+  transition: opacity 0.25s ease-out;
 }
 
-.ba-label-after {
-  display: none;
-}
-
-.ba-wrap:hover .ba-label-before {
-  display: none;
-}
-
-.ba-wrap:hover .ba-label-after {
-  display: inline-block;
+/* On hover: label disappears completely */
+.ba-wrap:hover .ba-label {
+  opacity: 0;
 }
 
 .ba-caption {
@@ -486,7 +506,7 @@ body {
 }
 
 /* =========================
-   OUR WORK
+   OUR WORK (for original non-Tailwind pages if reused)
    ========================= */
 
 .work-grid {
