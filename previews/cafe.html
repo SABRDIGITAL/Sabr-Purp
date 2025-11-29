@@ -8,9 +8,9 @@
   <style>
     body {
       background:
-        radial-gradient(circle at 10% 10%, rgba(254, 226, 226, 0.9) 0, transparent 45%),
-        radial-gradient(circle at 90% 0, rgba(219, 234, 254, 0.9) 0, transparent 55%),
-        radial-gradient(circle at 5% 90%, rgba(209, 250, 229, 0.9) 0, transparent 55%),
+        radial-gradient(circle at 10% 10%, rgba(254, 226, 226, 0.85) 0, transparent 45%),
+        radial-gradient(circle at 90% 0, rgba(219, 234, 254, 0.85) 0, transparent 55%),
+        radial-gradient(circle at 5% 90%, rgba(209, 250, 229, 0.85) 0, transparent 55%),
         #fdfaf6;
     }
     .card {
@@ -59,43 +59,42 @@
   </style>
 </head>
 <body class="min-h-screen text-slate-800 font-sans antialiased">
-<header class="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-slate-200/70">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+
+<!-- TOP BAR + CENTERED HERO NAV -->
+<header class="bg-white/80 backdrop-blur border-b border-slate-200/70">
+  <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col items-center gap-3">
     <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center text-[11px] font-semibold">
+      <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center text-[11px] font-semibold">
         MB
       </div>
-      <div>
+      <div class="text-center sm:text-left">
         <p class="font-semibold text-sm tracking-wide">Morning Bloom Café</p>
         <p class="text-[10px] uppercase text-slate-400 tracking-[0.22em]">Coffee · Bakery · Brunch</p>
       </div>
     </div>
-    <nav class="hidden md:flex gap-7 text-xs uppercase tracking-[0.2em] text-slate-500">
-      <a href="#" class="text-slate-900">Home</a>
+    <nav class="flex flex-wrap justify-center gap-6 text-[11px] uppercase tracking-[0.2em] text-slate-500">
+      <a href="#hero" class="text-slate-900">Home</a>
       <a href="#menu" class="hover:text-slate-900">Menu</a>
       <a href="#photos" class="hover:text-slate-900">Photos</a>
       <a href="#visit" class="hover:text-slate-900">Visit</a>
     </nav>
-    <button class="hidden md:inline-flex items-center text-[11px] tracking-[0.2em] uppercase bg-slate-900 text-white px-4 py-2 rounded-full">
-      Book a table
-    </button>
   </div>
 </header>
 
-<main class="max-w-6xl mx-auto px-4 pt-10 pb-20 space-y-16">
-  <!-- HERO -->
-  <section class="grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-center fade-up" data-animate>
-    <div class="space-y-5">
-      <p class="text-[11px] tracking-[0.25em] uppercase text-slate-500">Neighbourhood café · Old town</p>
-      <h1 class="text-3xl md:text-5xl font-semibold leading-tight text-slate-900">
-        Fresh coffee, warm bakes,<br class="hidden md:block">
-        <span class="text-slate-700">slow mornings encouraged.</span>
-      </h1>
-      <p class="text-sm md:text-base text-slate-700 max-w-xl">
-        Small-batch coffee, flaky pastries and a cosy corner for every kind of morning — from laptop days to long catch-ups.
-      </p>
+<main class="max-w-5xl mx-auto px-4 pt-10 pb-20 space-y-16">
 
-      <div class="flex flex-wrap gap-3 pt-1">
+  <!-- HERO (STACKED) -->
+  <section id="hero" class="space-y-8 fade-up" data-animate>
+    <div class="text-center space-y-4">
+      <h1 class="text-3xl md:text-4xl font-semibold leading-tight text-slate-900">
+        Coffee that actually tastes good,<br />
+        mornings that feel a bit slower.
+      </h1>
+      <p class="max-w-2xl mx-auto text-sm md:text-base text-slate-700">
+        Morning Bloom is a small neighbourhood café serving proper coffee, warm bakes
+        and easy brunch plates — the kind of place you end up staying longer than you planned.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3 pt-1">
         <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-[11px] font-semibold tracking-[0.24em] uppercase bg-slate-900 hover:bg-slate-800 text-white transition">
           See today’s menu
         </button>
@@ -103,50 +102,50 @@
           Book a brunch table
         </button>
       </div>
-
-      <div class="flex flex-wrap gap-6 text-xs text-slate-600 pt-3">
-        <div>
-          <p class="text-lg font-semibold text-slate-900">08:00</p>
-          <p class="text-[11px] text-slate-500">Doors open weekdays</p>
-        </div>
-        <div>
-          <p class="text-lg font-semibold text-slate-900">7 days</p>
-          <p class="text-[11px] text-slate-500">Open all week</p>
-        </div>
-        <div>
-          <p class="text-lg font-semibold text-slate-900">4.8 ★</p>
-          <p class="text-[11px] text-slate-500">Average rating</p>
-        </div>
-      </div>
     </div>
 
-    <!-- Today’s special hover card -->
+    <!-- Hero image card with hover special -->
     <div class="card rounded-3xl border border-slate-200 shadow-xl p-5 md:p-6 space-y-4">
-      <div class="flex items-center justify-between">
-        <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Today’s special</p>
-        <span class="text-[10px] uppercase tracking-[0.24em] text-slate-500">Hover to see plate</span>
-      </div>
-      <div class="special rounded-2xl border border-slate-200 bg-gradient-to-tr from-rose-100 via-amber-50 to-sky-100 h-44 mb-3">
-        <div class="special-main px-6 text-center text-sm text-slate-700">
-          Honey-almond latte with a warm cinnamon bun.
+      <div class="flex flex-col md:flex-row gap-5 items-stretch">
+        <div class="flex-1 special rounded-2xl border border-slate-200 bg-gradient-to-tr from-rose-100 via-amber-50 to-sky-100 h-44 md:h-52">
+          <div class="special-main px-6 text-center text-sm text-slate-700">
+            A quiet corner with sunlight, a flat white and a fresh croissant.
+          </div>
+          <div class="special-hover px-6 text-center text-sm text-slate-700">
+            Our house flat white and almond croissant — shot in the window seats on Market Street.
+          </div>
         </div>
-        <div class="special-hover px-6 text-center text-sm text-slate-700">
-          Served with toasted almonds, honey drizzle and a still-warm bun from the morning bake.
+        <div class="flex-1 flex flex-col justify-between text-sm text-slate-700 gap-3">
+          <div>
+            <p class="text-xs uppercase tracking-[0.24em] text-slate-500 mb-1">Today at Morning Bloom</p>
+            <p>House espresso from a small roastery, pastries baked in the early hours, and a slow playlist that makes you want to stay for “one more coffee”.</p>
+          </div>
+          <div class="grid grid-cols-3 gap-3 text-xs text-slate-600">
+            <div>
+              <p class="text-lg font-semibold text-slate-900">08:00</p>
+              <p>Doors open<br />Mon–Fri</p>
+            </div>
+            <div>
+              <p class="text-lg font-semibold text-slate-900">7 days</p>
+              <p>Open every day</p>
+            </div>
+            <div>
+              <p class="text-lg font-semibold text-slate-900">4.8 ★</p>
+              <p>Average rating</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="flex items-center justify-between text-sm text-slate-700">
-        <span>Available 08:00 – 12:00</span>
-        <span class="font-semibold">£6.50</span>
       </div>
     </div>
   </section>
 
-  <!-- MENU -->
-  <section id="menu" class="fade-up" data-animate>
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="text-lg md:text-2xl font-semibold text-slate-900">A little of what we serve</h2>
-      <p class="text-[11px] uppercase tracking-[0.24em] text-slate-500">Coffee · bakery · brunch</p>
+  <!-- MENU STRIP -->
+  <section id="menu" class="space-y-6 fade-up" data-animate>
+    <div class="text-center space-y-2">
+      <h2 class="text-xl md:text-2xl font-semibold text-slate-900">A quick look at the menu</h2>
+      <p class="text-sm text-slate-700">Enough to get hungry, not overwhelmed.</p>
     </div>
+
     <div class="grid md:grid-cols-3 gap-5">
       <article class="card rounded-2xl border border-slate-200 p-5">
         <p class="text-xs uppercase tracking-[0.24em] text-slate-500 mb-3">Coffee bar</p>
@@ -156,6 +155,7 @@
           <li class="flex justify-between"><span>Iced vanilla cold brew</span><span>£3.90</span></li>
         </ul>
       </article>
+
       <article class="card rounded-2xl border border-slate-200 p-5">
         <p class="text-xs uppercase tracking-[0.24em] text-slate-500 mb-3">Bakery counter</p>
         <ul class="space-y-2 text-sm text-slate-700">
@@ -164,6 +164,7 @@
           <li class="flex justify-between"><span>Lemon drizzle slice</span><span>£2.90</span></li>
         </ul>
       </article>
+
       <article class="card rounded-2xl border border-slate-200 p-5">
         <p class="text-xs uppercase tracking-[0.24em] text-slate-500 mb-3">Brunch plates</p>
         <ul class="space-y-2 text-sm text-slate-700">
@@ -175,21 +176,22 @@
     </div>
   </section>
 
-  <!-- PHOTOS / VIBE -->
-  <section id="photos" class="fade-up" data-animate>
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="text-lg md:text-2xl font-semibold text-slate-900">Little corners worth staying for</h2>
-      <p class="text-[11px] uppercase tracking-[0.24em] text-slate-500">Interior · details</p>
+  <!-- PHOTO / VIBE STRIP -->
+  <section id="photos" class="space-y-6 fade-up" data-animate>
+    <div class="text-center space-y-2">
+      <h2 class="text-xl md:text-2xl font-semibold text-slate-900">The kind of place it is</h2>
+      <p class="text-sm text-slate-700">Not just “somewhere with coffee”.</p>
     </div>
+
     <div class="grid md:grid-cols-3 gap-4">
       <div class="card rounded-2xl border border-slate-200 h-32 md:h-40 flex items-center justify-center text-[11px] text-slate-600">
-        Sun-lit window seats with soft cushions.
+        Sun-lit window seats with cushions and plants.
       </div>
       <div class="card rounded-2xl border border-slate-200 h-32 md:h-40 flex items-center justify-center text-[11px] text-slate-600">
-        Counter stacked with fresh bakes.
+        Counter stacked with fresh bakes all morning.
       </div>
       <div class="card rounded-2xl border border-slate-200 h-32 md:h-40 flex items-center justify-center text-[11px] text-slate-600">
-        Long table for laptops, books and slow afternoons.
+        Long sharing table for books, laptops and slow afternoons.
       </div>
     </div>
   </section>
@@ -197,9 +199,8 @@
   <!-- VISIT + REVIEWS -->
   <section id="visit" class="grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-start fade-up" data-animate>
     <div class="card rounded-3xl border border-slate-200 p-6 space-y-4">
-      <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Plan your visit</p>
-      <h2 class="text-lg md:text-2xl font-semibold text-slate-900">Drop in or reserve a table.</h2>
-      <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-700">
+      <h2 class="text-xl md:text-2xl font-semibold text-slate-900">Plan your visit</h2>
+      <div class="grid sm:grid-cols-2 gap-4 text-sm text-slate-700">
         <div class="space-y-2">
           <p class="font-semibold text-slate-900">Opening hours</p>
           <p>Mon–Fri · 08:00 – 17:00</p>
@@ -209,7 +210,7 @@
         <div class="space-y-2">
           <p class="font-semibold text-slate-900">Find us</p>
           <p>12 Market Street, Old Town</p>
-          <p>Parking on side streets nearby.</p>
+          <p>Parking on nearby side streets.</p>
         </div>
       </div>
       <div class="pt-2 text-sm text-slate-700 space-y-1">
@@ -217,8 +218,34 @@
         <p>Instagram: @morningbloomcafe</p>
       </div>
     </div>
+
     <aside class="card rounded-3xl border border-slate-200 p-6 space-y-3">
       <p class="text-xs uppercase tracking-[0.24em] text-slate-500">What regulars say</p>
       <div class="space-y-3 text-sm text-slate-700">
         <p>“Best almond croissant in town, and the staff always remember my coffee order.”</p>
-        <p>“Plenty of plugs, strong Wi-Fi and a calm
+        <p>“Calm music, plenty of plugs and good coffee — perfect laptop spot.”</p>
+        <p>“Our go-to for Sunday brunch. It feels like a little treat every time.”</p>
+      </div>
+    </aside>
+  </section>
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+
+    document.querySelectorAll('[data-animate]').forEach(el => {
+      el.classList.add('fade-up');
+      observer.observe(el);
+    });
+  });
+</script>
+</body>
+</html>
