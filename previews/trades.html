@@ -2,230 +2,240 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FlowFix Plumbing & Heating | Reliable Local Engineers</title>
+  <title>FlowFix Plumbing & Heating | Trusted Local Plumbers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     body {
-      background:
-        radial-gradient(circle at top left, #e0f2fe 0, transparent 55%),
-        radial-gradient(circle at bottom right, #dcfce7 0, transparent 55%),
-        #f3f4f6;
+      background: #ffffff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    .shell {
-      border-radius: 1.75rem;
-      background: #f9fafb;
-      box-shadow:
-        0 25px 50px rgba(15, 23, 42, 0.18),
-        0 0 0 1px rgba(148, 163, 184, 0.4);
-      border: 1px solid rgba(148, 163, 184, 0.55);
-    }
-    .fade-up {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-up.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .ba-job {
-      position: relative;
-      overflow: hidden;
-      border-radius: 1.25rem;
-      background: #0f172a;
-      cursor: pointer;
-    }
-    .ba-job-before,
-    .ba-job-after {
-      position: absolute;
-      inset: 0;
-      transition: opacity 0.45s ease, transform 0.45s ease;
+    .hero-image {
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
     }
-    .ba-job-before {
-      background-image: linear-gradient(135deg, #1e293b, #020617);
-      opacity: 1;
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 600;
+      line-height: 1.2;
     }
-    .ba-job-after {
-      background-image: linear-gradient(135deg, #22c55e, #0f172a);
-      opacity: 0;
-      transform: scale(1.04);
+    .subtle {
+      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: #555;
     }
-    .ba-job:hover .ba-job-before {
-      opacity: 0;
-      transform: scale(1.02);
+    .lime-btn{
+      background: #d7ff00;
+      color: #111;
     }
-    .ba-job:hover .ba-job-after {
-      opacity: 1;
-      transform: scale(1);
+    .lime-btn:hover{
+      background: #c4f200;
     }
   </style>
 </head>
-<body class="min-h-screen text-slate-900 font-sans antialiased">
-<header class="sticky top-0 z-30 bg-slate-900 text-slate-100">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+
+<body class="text-slate-900">
+
+<!-- HEADER -->
+<header class="w-full bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    
+    <!-- Logo -->
     <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-full bg-emerald-400 flex items-center justify-center text-[11px] font-semibold text-slate-900">
-        FF
-      </div>
+      <div class="w-10 h-10 bg-emerald-600 rounded-sm"></div>
       <div>
-        <p class="font-semibold text-sm tracking-wide">FlowFix Plumbing & Heating</p>
-        <p class="text-[10px] uppercase text-slate-300 tracking-[0.22em]">Local engineers</p>
+        <p class="font-semibold text-sm">FlowFix Plumbing & Heating</p>
+        <p class="text-[10px] uppercase tracking-[0.18em] text-slate-500">Professional plumbers</p>
       </div>
     </div>
-    <nav class="hidden md:flex gap-7 text-xs uppercase tracking-[0.2em] text-slate-200">
-      <a href="#" class="hover:text-white">Home</a>
-      <a href="#services" class="hover:text-white">Services</a>
-      <a href="#areas" class="hover:text-white">Areas</a>
-      <a href="#projects" class="hover:text-white">Projects</a>
-      <a href="#contact" class="hover:text-white">Contact</a>
+
+    <!-- Nav -->
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#" class="hover:text-black">Home</a>
+      <a href="#services" class="hover:text-black">Services</a>
+      <a href="#projects" class="hover:text-black">Projects</a>
+      <a href="#about" class="hover:text-black">About us</a>
     </nav>
-    <button class="hidden md:inline-flex items-center text-[11px] tracking-[0.2em] uppercase bg-emerald-400 text-slate-900 px-4 py-2 rounded-full">
-      Call 24/7
-    </button>
+
+    <a href="#contact"
+       class="lime-btn px-5 py-2 text-sm font-semibold uppercase tracking-wider">
+       Contact
+    </a>
   </div>
 </header>
 
-<main class="max-w-6xl mx-auto px-4 pt-10 pb-20 space-y-16">
-  <!-- HERO -->
-  <section class="shell p-6 md:p-10 grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-center fade-up" data-animate>
-    <div class="space-y-5">
-      <p class="text-[11px] tracking-[0.25em] uppercase text-slate-500">Plumbing & heating · Local, insured</p>
-      <h1 class="text-3xl md:text-5xl font-semibold leading-tight">
-        Reliable plumbers, clear prices,<br class="hidden md:block">
-        <span class="text-emerald-600">no drama call-outs.</span>
-      </h1>
-      <p class="text-sm md:text-base text-slate-700 max-w-xl">
-        From leaking taps to full boiler installs, FlowFix sends tidy, on-time engineers with straight-up pricing and written guarantees.
-      </p>
+<!-- HERO -->
+<section class="relative w-full hero-image"
+         style="background-image: url('https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=1500&q=60');">
 
-      <div class="flex flex-wrap gap-3 pt-1">
-        <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-[11px] font-semibold tracking-[0.24em] uppercase bg-emerald-500 hover:bg-emerald-400 text-slate-900 transition">
-          Call now · 01234 445566
-        </button>
-        <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-[11px] tracking-[0.24em] uppercase border border-slate-400 hover:border-slate-700 text-slate-700 hover:text-slate-900 transition">
-          Request a fixed quote
-        </button>
-      </div>
+  <div class="max-w-7xl mx-auto px-6 py-32">
 
-      <div class="flex flex-wrap gap-6 text-xs text-slate-700 pt-3">
-        <div>
-          <p class="text-lg font-semibold text-slate-900">24/7</p>
-          <p class="text-[11px] text-slate-500">Emergency response</p>
-        </div>
-        <div>
-          <p class="text-lg font-semibold text-slate-900">£0</p>
-          <p class="text-[11px] text-slate-500">Call-out fee on quotes</p>
-        </div>
-        <div>
-          <p class="text-lg font-semibold text-slate-900">10+ yrs</p>
-          <p class="text-[11px] text-slate-500">Experience</p>
-        </div>
-      </div>
+    <h1 class="text-5xl md:text-6xl font-semibold text-white drop-shadow-lg w-full md:w-2/3">
+      Plumbing you can trust.
+    </h1>
+
+    <p class="mt-6 text-lg md:text-xl text-white/90 drop-shadow-lg w-full md:w-2/3">
+      Reliable repairs, clean installations, and clear communication — every single job handled properly.
+    </p>
+
+    <a href="#projects"
+       class="inline-flex items-center gap-3 mt-10 px-6 py-3 lime-btn text-sm uppercase tracking-wider font-semibold">
+      → View Projects
+    </a>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="max-w-7xl mx-auto px-6 py-20">
+
+  <p class="subtle">Our Services</p>
+  <h2 class="section-title mt-2 mb-10">
+    Plumbing solutions tailored to every home
+  </h2>
+
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <div>
+      <img src="https://images.unsplash.com/photo-1581090700227-1e37b7373dc2?auto=format&fit=crop&w=1200&q=60"
+           class="rounded-lg w-full h-56 object-cover" />
+      <p class="mt-4 text-lg font-semibold">Emergency Repairs</p>
+      <p class="text-slate-600 text-sm">Leaks, burst pipes, blocked drains — fast same-day callouts.</p>
     </div>
 
-    <!-- Before / After job -->
-    <div class="space-y-4">
-      <div class="flex items-center justify-between">
-        <p class="text-xs uppercase tracking-[0.24em] text-slate-600">Recent job · kitchen leak</p>
-        <span class="text-[10px] uppercase tracking-[0.24em] text-slate-500">Hover to see after</span>
-      </div>
-      <div class="ba-job h-52 md:h-64">
-        <div class="ba-job-before"></div>
-        <div class="ba-job-after"></div>
-        <div class="absolute top-3 left-4 flex gap-2 text-[10px] uppercase tracking-[0.24em]">
-          <span class="px-2 py-0.5 rounded-full bg-slate-900/80 border border-slate-400/80 text-slate-100">Before</span>
-          <span class="px-2 py-0.5 rounded-full bg-emerald-400 text-slate-900 border border-emerald-500">After</span>
-        </div>
-        <div class="absolute bottom-3 left-4 text-[11px] text-slate-100/90">
-          Old pipework replaced, stop tap moved, cupboard refitted & area left spotless.
-        </div>
-      </div>
+    <div>
+      <img src="https://images.unsplash.com/photo-1612157777902-538d942bb110?auto=format&fit=crop&w=1200&q=60"
+           class="rounded-lg w-full h-56 object-cover" />
+      <p class="mt-4 text-lg font-semibold">Boilers & Heating</p>
+      <p class="text-slate-600 text-sm">Servicing, repairs, new A-rated boiler installations.</p>
     </div>
-  </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="fade-up" data-animate>
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="text-lg md:text-2xl font-semibold text-slate-900">What we help with</h2>
-      <p class="text-[11px] uppercase tracking-[0.24em] text-slate-500">Everyday issues to full installs</p>
+    <div>
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=60"
+           class="rounded-lg w-full h-56 object-cover" />
+      <p class="mt-4 text-lg font-semibold">Bathrooms & Upgrades</p>
+      <p class="text-slate-600 text-sm">Full refits, showers, pipework, modern heating solutions.</p>
     </div>
-    <div class="grid md:grid-cols-3 gap-5">
-      <article class="bg-white rounded-2xl border border-slate-200 p-5 hover:-translate-y-1 hover:shadow-lg transition">
-        <p class="text-xs uppercase tracking-[0.24em] text-slate-500 mb-3">Emergency plumbing</p>
-        <ul class="space-y-2 text-sm text-slate-700">
-          <li>Leaking pipes & taps</li>
-          <li>Blocked toilets & drains</li>
-          <li>Burst pipes and shut-offs</li>
-        </ul>
-      </article>
-      <article class="bg-white rounded-2xl border border-slate-200 p-5 hover:-translate-y-1 hover:shadow-lg transition">
-        <p class="text-xs uppercase tracking-[0.24em] text-slate-500 mb-3">Heating & boilers</p>
-        <ul class="space-y-2 text-sm text-slate-700">
-          <li>Boiler servicing & repairs</li>
-          <li>New boiler installations</li>
-          <li>Radiator upgrades & balancing</li>
-        </ul>
-      </article>
-      <article class="bg-white rounded-2xl border border-slate-200 p-5 hover:-translate-y-1 hover:shadow-lg transition">
-        <p class="text-xs uppercase tracking-[0.24em] text-slate-500 mb-3">Bathrooms & kitchens</p>
-        <ul class="space-y-2 text-sm text-slate-700">
-          <li>Bathroom refits & tiling</li>
-          <li>Kitchen plumbing for new installs</li>
-          <li>Appliance hook-ups</li>
-        </ul>
-      </article>
-    </div>
-  </section>
 
-  <!-- AREAS + BADGES -->
-  <section id="areas" class="grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-start fade-up" data-animate>
-    <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-4">
-      <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Areas we cover</p>
-      <h2 class="text-lg md:text-2xl font-semibold text-slate-900">Across town and surrounding villages.</h2>
-      <p class="text-sm text-slate-700">
-        Based in Northside, we cover the city and nearby villages within a 25-minute drive.
-        Same-day slots are often available for leaks and urgent issues.
-      </p>
-      <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-700 pt-2">
-        <ul class="space-y-1">
-          <li>Northside</li>
-          <li>Riverside</li>
-          <li>Old Town</li>
-          <li>Eastfield</li>
-        </ul>
-        <ul class="space-y-1">
-          <li>Hillview</li>
-          <li>Brookstone</li>
-          <li>Westgate</li>
-          <li>All surrounding estates</li>
-        </ul>
-      </div>
-    </div>
-    <aside class="bg-slate-900 rounded-3xl text-slate-100 p-6 space-y-4">
-      <p class="text-xs uppercase tracking-[0.24em] text-emerald-300">Licensed & insured</p>
-      <div class="grid gap-2 text-sm">
-        <div class="flex items-center justify-between">
-          <span>Gas Safe registered</span>
-          <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-400 text-slate-900 uppercase tracking-[0.22em]">Verified</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span>Public liability cover</span>
-          <span class="text-[11px] text-slate-300">Up to £5m</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span>Workmanship guarantee</span>
-          <span class="text-[11px] text-slate-300">12 months</span>
-        </div>
-      </div>
-      <p class="text-sm text-slate-200 pt-1">
-        Every job is logged, photographed and signed off so you have a clear record for landlords, tenants or future sales.
-      </p>
-    </aside>
-  </section>
+  </div>
+</section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="fade-up" data-animate>
-    <div class="flex items-center
+<!-- ABOUT -->
+<section id="about" class="relative w-full hero-image"
+         style="background-image: url('https://images.unsplash.com/photo-1581090918398-50f4c36d3f62?auto=format&fit=crop&w=1500&q=60');">
+
+  <div class="max-w-5xl mx-auto px-6 py-32 text-white">
+    <p class="subtle text-white/80">About</p>
+
+    <h2 class="section-title text-white mt-2">
+      About FlowFix
+    </h2>
+
+    <p class="mt-6 text-lg text-white/85 max-w-2xl leading-relaxed">
+      We’re a small team of qualified, reliable plumbers who show up on time, explain everything clearly,
+      and leave your home cleaner than when we arrived. No drama, no unexpected add-ons — just proper work done right.
+    </p>
+
+    <a href="#contact"
+       class="inline-flex items-center gap-3 mt-10 px-6 py-3 lime-btn text-sm uppercase tracking-wider font-semibold">
+      → Learn More
+    </a>
+
+  </div>
+</section>
+
+<!-- PARTNERS / BADGES -->
+<section class="max-w-7xl mx-auto px-6 py-20">
+  <p class="subtle">Our Accreditations</p>
+
+  <div class="flex justify-between flex-wrap gap-10 mt-10 mb-5">
+    <p class="text-xl font-medium text-slate-700">Gas Safe Registered</p>
+    <p class="text-xl font-medium text-slate-700">Checkatrade Verified</p>
+    <p class="text-xl font-medium text-slate-700">Worcester Bosch Partner</p>
+    <p class="text-xl font-medium text-slate-700">Local Council Approved</p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="max-w-7xl mx-auto px-6 py-20">
+  
+  <p class="subtle">Recent Projects</p>
+  <h2 class="section-title mt-2 mb-10">
+    Discover our latest plumbing work
+  </h2>
+
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <div>
+      <img src="https://images.unsplash.com/photo-1587563871167-1ee9c731c5fc?auto=format&fit=crop&w=1200&q=60"
+           class="rounded-lg w-full h-56 object-cover" />
+      <p class="mt-3 font-semibold">Full Bathroom Overhaul</p>
+      <p class="text-slate-600 text-sm">Old Town · 2025</p>
+    </div>
+
+    <div>
+      <img src="https://images.unsplash.com/photo-1615870216519-2f9b0b0bc1c0?auto=format&fit=crop&w=1200&q=60"
+           class="rounded-lg w-full h-56 object-cover" />
+      <p class="mt-3 font-semibold">New Boiler & Radiators</p>
+      <p class="text-slate-600 text-sm">Hillview · 2025</p>
+    </div>
+
+    <div>
+      <img src="https://images.unsplash.com/photo-1615870216519-2f9b0b0bc1c0?auto=format&fit=crop&w=1200&q=60"
+           class="rounded-lg w-full h-56 object-cover" />
+      <p class="mt-3 font-semibold">Kitchen Pipework Refit</p>
+      <p class="text-slate-600 text-sm">Riverside · 2025</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CTA BAR -->
+<section class="w-full bg-lime-300 py-20 text-center text-slate-900">
+  <h2 class="text-3xl md:text-4xl font-semibold mb-6">
+    Get a quote for your plumbing job
+  </h2>
+  <a href="#contact"
+     class="px-7 py-3 lime-btn text-sm font-semibold uppercase tracking-wider inline-block">
+    Contact
+  </a>
+</section>
+
+<!-- CONTACT + FOOTER -->
+<section id="contact" class="max-w-7xl mx-auto px-6 py-20">
+  <div class="grid md:grid-cols-3 gap-10">
+
+    <div>
+      <div class="w-10 h-10 bg-emerald-600 rounded-sm"></div>
+      <p class="mt-3 font-semibold">FlowFix Plumbing & Heating</p>
+      <p class="text-sm mt-1 text-slate-600">Trusted Local Plumbers</p>
+    </div>
+
+    <div>
+      <p class="font-semibold tracking-wide">HEAD OFFICE</p>
+      <p class="mt-3 text-sm text-slate-700">12 Market Street, Old Town</p>
+      <p class="text-sm text-slate-700 mt-1">01234 445566</p>
+      <p class="text-sm text-slate-700 mt-1">info@flowfix.co.uk</p>
+    </div>
+
+    <div>
+      <p class="font-semibold tracking-wide">FOLLOW US</p>
+      <p class="mt-3 text-sm text-slate-700">Facebook</p>
+      <p class="text-sm text-slate-700">Instagram</p>
+      <p class="text-sm text-slate-700">LinkedIn</p>
+    </div>
+
+  </div>
+
+  <p class="text-center text-xs text-slate-500 mt-10">
+    © 2025 FlowFix Plumbing & Heating — All rights reserved
+  </p>
+
+</section>
+
+</body>
+</html>
