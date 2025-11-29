@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Café Haven — SABR DIGITAL Preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255, 216, 230, 0.9) 0, transparent 45%),
+        radial-gradient(circle at 80% 10%, rgba(204, 233, 255, 0.9) 0, transparent 50%),
+        radial-gradient(circle at 20% 85%, rgba(220, 252, 231, 0.8) 0, transparent 50%),
+        #fdfaf7;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-up.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .paint-edge {
+      position: relative;
+      overflow: hidden;
+    }
+    .paint-edge::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0 20%, rgba(248, 250, 252, 0.9) 0, transparent 55%),
+        radial-gradient(circle at 100% 80%, rgba(254, 249, 195, 0.7) 0, transparent 55%);
+      mix-blend-mode: multiply;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 font-sans antialiased">
+  <!-- NAV -->
+  <header class="sticky top-0 z-30 bg-white/70 backdrop-blur border-b border-slate-200/70">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-semibold">
+          CH
+        </div>
+        <div>
+          <p class="font-semibold text-sm tracking-wide">Café Haven</p>
+          <p class="text-[10px] uppercase text-slate-400 tracking-[0.22em]">SABR DIGITAL Preview</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex gap-7 text-xs uppercase tracking-[0.2em] text-slate-500">
+        <span class="cursor-default text-slate-900">Home</span>
+        <span class="hover:text-slate-900 cursor-pointer">Menu</span>
+        <span class="hover:text-slate-900 cursor-pointer">Gallery</span>
+        <span class="hover:text-slate-900 cursor-pointer">Visit</span>
+      </nav>
+      <button class="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.18em] uppercase bg-slate-900 text-white px-4 py-2 rounded-full">
+        Book a table
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 pt-8 pb-20 space-y-16">
+    <!-- HERO -->
+    <section class="grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-center fade-up" data-animate>
+      <div class="space-y-5">
+        <p class="text-xs tracking-[0.25em] uppercase text-slate-500">Neighbourhood café website</p>
+        <h1 class="text-3xl md:text-5xl font-semibold leading-tight text-slate-900">
+          A cosy online home<br class="hidden md:block">
+          for your café.
+        </h1>
+        <p class="text-sm md:text-base text-slate-700 max-w-xl">
+          Pastel watercolour splashes, soft typography and a clean layout that shows
+          your menu, photos and opening times at a glance.
+        </p>
+
+        <div class="flex flex-wrap gap-3 pt-2">
+          <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-medium tracking-[0.2em] uppercase bg-slate-900 hover:bg-slate-800 text-white transition">
+            View today’s menu
+          </button>
+          <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-medium tracking-[0.2em] uppercase border border-slate-400 hover:border-slate-700 text-slate-700 hover:text-slate-900 transition">
+            Book a table
+          </button>
+        </div>
+
+        <div class="flex flex-wrap gap-4 pt-4 text-xs text-slate-600">
+          <div>
+            <p class="text-lg font-semibold text-slate-900">3 clicks</p>
+            <p class="text-[11px] text-slate-500">To see menu, opening times and map.</p>
+          </div>
+          <div>
+            <p class="text-lg font-semibold text-slate-900">1 place</p>
+            <p class="text-[11px] text-slate-500">For photos, reviews & specials.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mock card layout with paint splatter -->
+      <div class="relative">
+        <div class="card rounded-3xl shadow-xl paint-edge border border-white/80">
+          <div class="p-5 md:p-6 space-y-4 relative z-10">
+            <div class="flex items-center justify-between">
+              <p class="text-xs uppercase tracking-[0.26em] text-slate-500">Homepage preview</p>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-900 text-white uppercase tracking-[0.22em]">
+                Above the fold
+              </span>
+            </div>
+            <div class="grid grid-cols-[1.1fr,0.9fr] gap-4 items-center">
+              <div class="space-y-2">
+                <div class="h-2 w-32 rounded-full bg-slate-800/80"></div>
+                <div class="h-2 w-40 rounded-full bg-slate-600/80"></div>
+                <div class="h-2 w-24 rounded-full bg-slate-400/80"></div>
+                <div class="flex gap-2 pt-3">
+                  <span class="h-7 w-24 rounded-full bg-slate-900/90"></span>
+                  <span class="h-7 w-24 rounded-full border border-slate-500/80"></span>
+                </div>
+              </div>
+              <div class="rounded-2xl overflow-hidden border border-slate-200 bg-white/80">
+                <div class="h-24 bg-gradient-to-tr from-amber-100 via-rose-100 to-sky-100 flex items-center justify-center text-[11px] text-slate-600">
+                  Hero café photo area
+                </div>
+                <div class="p-3 space-y-2">
+                  <div class="h-1.5 w-28 rounded-full bg-slate-300"></div>
+                  <div class="h-1.5 w-20 rounded-full bg-slate-200"></div>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-3 pt-1">
+              <div class="rounded-2xl border border-slate-200 bg-white/80 p-3 text-[11px] text-slate-600">
+                Today’s special<br><span class="text-[10px] text-slate-500">Highlight one dish</span>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white/80 p-3 text-[11px] text-slate-600">
+                Opening times<br><span class="text-[10px] text-slate-500">Always visible</span>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white/80 p-3 text-[11px] text-slate-600">
+                Map & directions<br><span class="text-[10px] text-slate-500">One tap away</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden md:block absolute -bottom-6 -left-6 w-32 h-32 rounded-full bg-rose-200/70 blur-3xl"></div>
+        <div class="hidden md:block absolute -top-8 -right-10 w-40 h-40 rounded-full bg-sky-200/80 blur-3xl"></div>
+      </div>
+    </section>
+
+    <!-- PHOTO STRIP -->
+    <section class="fade-up" data-animate>
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-lg md:text-2xl font-semibold text-slate-900">Let the coffee sell itself.</h2>
+        <p class="text-[11px] uppercase tracking-[0.24em] text-slate-400">Gallery section preview</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <article class="card rounded-2xl border border-slate-200 p-3 hover:-translate-y-1 hover:shadow-lg transition">
+          <div class="h-32 rounded-xl bg-gradient-to-tr from-amber-100 via-rose-50 to-slate-50 flex items-center justify-center text-[11px] text-slate-500">
+            Hero drink photo
+          </div>
+          <p class="mt-3 text-sm font-medium text-slate-800">Signature drinks</p>
+          <p class="text-xs text-slate-600">Show 3–4 of your best-selling coffees & bakes.</p>
+        </article>
+        <article class="card rounded-2xl border border-slate-200 p-3 hover:-translate-y-1 hover:shadow-lg transition">
+          <div class="h-32 rounded-xl bg-gradient-to-tr from-sky-100 via-emerald-50 to-slate-50 flex items-center justify-center text-[11px] text-slate-500">
+            Interior shot
+          </div>
+          <p class="mt-3 text-sm font-medium text-slate-800">Your space</p>
+          <p class="text-xs text-slate-600">Make the vibe clear so people know what to expect.</p>
+        </article>
+        <article class="card rounded-2xl border border-slate-200 p-3 hover:-translate-y-1 hover:shadow-lg transition">
+          <div class="h-32 rounded-xl bg-gradient-to-tr from-violet-100 via-blue-50 to-slate-50 flex items-center justify-center text-[11px] text-slate-500">
+            Community events
+          </div>
+          <p class="mt-3 text-sm font-medium text-slate-800">Events & specials</p>
+          <p class="text-xs text-slate-600">Promote live music, book clubs or seasonal specials.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- STORY + CTA -->
+    <section class="grid md:grid-cols-[1.2fr,0.8fr] gap-10 items-start fade-up" data-animate>
+      <div class="card rounded-3xl border border-slate-200 p-6 space-y-3">
+        <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Café story section</p>
+        <h2 class="text-lg md:text-2xl font-semibold text-slate-900">Tell a short, warm story.</h2>
+        <p class="text-sm text-slate-700">
+          The homepage dedicates space for a few honest lines about why the café exists —
+          family-run, locally roasted beans, pastries baked every morning. Enough to feel human,
+          not enough to feel like a wall of text.
+        </p>
+        <p class="text-sm text-slate-700">
+          Underneath, we add a subtle “Meet the team” link and a small row of badges:
+          vegetarian options, dog-friendly, free Wi-Fi — whatever actually matters to your visitors.
+        </p>
+      </div>
+      <aside class="card rounded-3xl border border-slate-200 p-6 space-y-4">
+        <p class="text-xs uppercase tracking-[0.24em] text-slate-500">For your real café</p>
+        <h3 class="text-lg font-semibold text-slate-900">Same layout. Your colours and photos.</h3>
+        <p class="text-sm text-slate-700">
+          This preview shows how a soft, pastel layout can still be interactive and modern —
+          hover effects, smooth sections and clear calls to action without looking “techy”.
+        </p>
+        <button class="w-full py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-xs text-white uppercase tracking-[0.22em]">
+          Start a café website with SABR DIGITAL
+        </button>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+
+      document.querySelectorAll('[data-animate]').forEach(el => {
+        const animTarget = el;
+        animTarget.classList.add('fade-up');
+        observer.observe(animTarget);
+      });
+    });
+  </script>
+</body>
+</html>
