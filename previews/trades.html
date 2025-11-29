@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trades Pro Site — SABR DIGITAL Preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background:
+        radial-gradient(circle at top left, #e5f0ff 0, transparent 50%),
+        radial-gradient(circle at bottom right, #e9fbf0 0, transparent 55%),
+        #f5f5f7;
+    }
+    .shell {
+      background: #f9fafb;
+      border-radius: 1.75rem;
+      box-shadow:
+        0 25px 60px rgba(15, 23, 42, 0.18),
+        0 0 0 1px rgba(148, 163, 184, 0.25);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+    .badge-row {
+      border-radius: 9999px;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-up.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-900 font-sans antialiased">
+  <!-- NAV -->
+  <header class="sticky top-0 z-30 bg-slate-900 text-slate-100">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center text-xs font-semibold">
+          TP
+        </div>
+        <div>
+          <p class="font-semibold text-sm tracking-wide">Trades Pro Site</p>
+          <p class="text-[10px] uppercase text-slate-300 tracking-[0.22em]">SABR DIGITAL Preview</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex gap-7 text-xs uppercase tracking-[0.2em] text-slate-200">
+        <span class="cursor-default">Home</span>
+        <span class="hover:text-white cursor-pointer">Services</span>
+        <span class="hover:text-white cursor-pointer">Projects</span>
+        <span class="hover:text-white cursor-pointer">Areas we cover</span>
+      </nav>
+      <button class="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.18em] uppercase bg-emerald-400 text-slate-900 px-4 py-2 rounded-full">
+        Get a fixed quote
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 pt-10 pb-20 space-y-16">
+    <!-- HERO -->
+    <section class="shell p-6 md:p-10 grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-center fade-up" data-animate>
+      <div class="space-y-5">
+        <p class="text-xs tracking-[0.25em] uppercase text-slate-500">Trades website that feels solid</p>
+        <h1 class="text-3xl md:text-5xl font-semibold leading-tight">
+          A professional website<br class="hidden md:block">
+          for real-world trades.
+        </h1>
+        <p class="text-sm md:text-base text-slate-700 max-w-xl">
+          Clean, neutral colours with friendly touches. Built to show what you do, where you work,
+          and how to book you — without looking cheap or outdated.
+        </p>
+
+        <div class="flex flex-wrap gap-3 pt-1">
+          <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-medium tracking-[0.2em] uppercase bg-emerald-500 hover:bg-emerald-400 text-slate-900 transition">
+            Get a fixed quote
+          </button>
+          <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-medium tracking-[0.2em] uppercase border border-slate-400 hover:border-slate-700 text-slate-700 hover:text-slate-900 transition">
+            See recent projects
+          </button>
+        </div>
+
+        <div class="badge-row inline-flex items-center gap-3 px-3 py-1 mt-3 text-[11px]">
+          <span class="px-2 py-0.5 rounded-full bg-emerald-500 text-slate-900 font-semibold text-[10px] tracking-[0.22em] uppercase">
+            Trusted
+          </span>
+          <span>Photos of your work</span>
+          <span class="h-1 w-1 rounded-full bg-slate-400"></span>
+          <span>Areas you cover</span>
+          <span class="h-1 w-1 rounded-full bg-slate-400"></span>
+          <span>Insurance & guarantees</span>
+        </div>
+      </div>
+
+      <!-- Mock homepage layout -->
+      <div class="bg-slate-900 rounded-3xl p-4 md:p-5 text-slate-100 shadow-2xl">
+        <div class="flex items-center justify-between mb-4 text-[11px]">
+          <span class="text-slate-400 uppercase tracking-[0.22em]">Homepage preview</span>
+          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-900 tracking-[0.22em] uppercase">Desktop</span>
+        </div>
+        <div class="bg-slate-800/80 rounded-2xl p-4 space-y-4">
+          <div class="h-14 rounded-xl bg-slate-700 flex items-center justify-between px-4">
+            <div class="space-y-1">
+              <div class="h-1.5 w-24 rounded-full bg-slate-200"></div>
+              <div class="h-1.5 w-40 rounded-full bg-slate-500"></div>
+            </div>
+            <div class="h-8 w-24 rounded-full bg-emerald-400/90"></div>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="h-16 rounded-xl bg-slate-700/90 flex items-center justify-center text-[10px] text-slate-300 text-center">
+              Plumbing<br>before/after photos
+            </div>
+            <div class="h-16 rounded-xl bg-slate-700/90 flex items-center justify-center text-[10px] text-slate-300 text-center">
+              Electrical<br>certified work
+            </div>
+            <div class="h-16 rounded-xl bg-slate-700/90 flex items-center justify-center text-[10px] text-slate-300 text-center">
+              Carpentry<br>custom builds
+            </div>
+          </div>
+          <div class="grid grid-cols-[1.3fr,0.9fr] gap-3 items-center">
+            <div class="space-y-2">
+              <div class="h-1.5 w-28 rounded-full bg-slate-300"></div>
+              <div class="h-1.5 w-48 rounded-full bg-slate-500"></div>
+              <div class="h-1.5 w-40 rounded-full bg-slate-600"></div>
+              <div class="h-1.5 w-32 rounded-full bg-slate-500"></div>
+            </div>
+            <div class="rounded-xl bg-slate-700 flex items-center justify-center text-[10px] text-slate-300 text-center px-2 py-6">
+              Map showing areas covered<br>+ clear contact options
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="fade-up" data-animate>
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-lg md:text-2xl font-semibold">What this homepage highlights</h2>
+        <p class="text-[11px] uppercase tracking-[0.24em] text-slate-500">Service tiles</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <article class="bg-white rounded-2xl border border-slate-200 p-5 hover:-translate-y-1 hover:shadow-lg transition">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-500 mb-2">01 · What you do</p>
+          <h3 class="text-sm font-semibold mb-1">Clear list of services</h3>
+          <p class="text-sm text-slate-700">
+            Simple tiles for each trade — plumbing, electrics, carpentry, landscaping — with short, plain-English descriptions.
+          </p>
+        </article>
+        <article class="bg-white rounded-2xl border border-slate-200 p-5 hover:-translate-y-1 hover:shadow-lg transition">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-500 mb-2">02 · Proof you’re legit</p>
+          <h3 class="text-sm font-semibold mb-1">Reviews & badges</h3>
+          <p class="text-sm text-slate-700">
+            Space for real customer reviews, star ratings and trade memberships — laid out clearly, not hidden at the bottom.
+          </p>
+        </article>
+        <article class="bg-white rounded-2xl border border-slate-200 p-5 hover:-translate-y-1 hover:shadow-lg transition">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-500 mb-2">03 · How to book</p>
+          <h3 class="text-sm font-semibold mb-1">One obvious next step</h3>
+          <p class="text-sm text-slate-700">
+            Either a “Get a fixed quote” form, or a simple phone + WhatsApp section, depending on how you work.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS + CTA -->
+    <section class="grid md:grid-cols-[1.3fr,0.9fr] gap-10 items-start fade-up" data-animate>
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg md:text-2xl font-semibold">Recent project snapshots</h2>
+          <p class="text-[11px] uppercase tracking-[0.24em] text-slate-500">Before / after</p>
+        </div>
+        <div class="grid gap-4">
+          <div class="bg-white rounded-2xl border border-slate-200 p-4 flex flex-col md:flex-row gap-4">
+            <div class="flex-1 space-y-2">
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Kitchen refit · Swindon</p>
+              <p class="text-sm font-semibold">Full rip-out to finished kitchen.</p>
+              <p class="text-sm text-slate-700">
+                Two photo sliders — one for the old job, one for the finished work — so customers can see the difference at a glance.
+              </p>
+            </div>
+            <div class="flex-1 grid grid-cols-2 gap-2 text-[10px] text-slate-500">
+              <div class="h-20 rounded-xl bg-slate-200 flex items-center justify-center">Before</div>
+              <div class="h-20 rounded-xl bg-emerald-100 flex items-center justify-center">After</div>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-4 flex flex-col md:flex-row gap-4">
+            <div class="flex-1 space-y-2">
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Driveway · Chippenham</p>
+              <p class="text-sm font-semibold">From mud patch to clean driveway.</p>
+              <p class="text-sm text-slate-700">
+                Simple caption, three photos, clear label for “Materials used” so people know what they’re getting.
+              </p>
+            </div>
+            <div class="flex-1 grid grid-cols-3 gap-2 text-[10px] text-slate-500">
+              <div class="h-16 rounded-xl bg-slate-200 flex items-center justify-center">1</div>
+              <div class="h-16 rounded-xl bg-slate-200 flex items-center justify-center">2</div>
+              <div class="h-16 rounded-xl bg-slate-200 flex items-center justify-center">3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="bg-slate-900 rounded-3xl text-slate-100 p-6 space-y-4">
+        <p class="text-xs uppercase tracking-[0.24em] text-emerald-300">For trades like yours</p>
+        <h3 class="text-lg font-semibold">Neutral colours. Modern feel.</h3>
+        <p class="text-sm text-slate-200">
+          This preview keeps things neutral and professional — slate, off-white, soft green — with just enough modern interaction
+          (hover effects, clean sections) so you don’t look old-school.
+        </p>
+        <p class="text-sm text-slate-300">
+          We take this structure, drop in your logo, your areas, your photos and your real reviews so it feels like your business,
+          not a generic template.
+        </p>
+        <button class="w-full py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-xs text-slate-900 uppercase tracking-[0.22em]">
+          Start your trades website with SABR DIGITAL
+        </button>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+
+      document.querySelectorAll('[data-animate]').forEach(el => {
+        const animTarget = el;
+        animTarget.classList.add('fade-up');
+        observer.observe(animTarget);
+      });
+    });
+  </script>
+</body>
+</html>
