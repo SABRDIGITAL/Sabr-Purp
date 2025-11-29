@@ -7,241 +7,126 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
-            body: ['Inter', 'system-ui', 'sans-serif'],
-          },
-          colors: {
-            sabrBg: '#050014',
-            sabrCard: '#09001f',
-            sabrAccent: '#a855f7',
-            sabrAccentSoft: '#c4b5fd',
-          },
-          boxShadow: {
-            'sabr-glow': '0 0 40px rgba(168, 85, 247, 0.6)',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background:
-        radial-gradient(circle at top, #3b0764 0, #020015 45%, #000 100%);
-      color: #f8fafc;
-    }
-    .font-display {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-    }
-    .nav-link {
-      position: relative;
-      padding-bottom: 0.25rem;
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #a855f7, #38bdf8, #f97316);
-      transition: width 0.2s ease-out;
-    }
-    .nav-link.nav-active::after,
-    .nav-link:hover::after {
-      width: 70%;
-    }
-    .grid-overlay {
-      pointer-events: none;
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(30deg,
-          rgba(148, 163, 184, 0.16) 12%,
-          transparent 12.5%,
-          transparent 87%,
-          rgba(148, 163, 184, 0.12) 87.5%,
-          rgba(148, 163, 184, 0.2) 100%),
-        linear-gradient(150deg,
-          rgba(88, 28, 135, 0.22) 12%,
-          transparent 12.5%,
-          transparent 87%,
-          rgba(88, 28, 135, 0.2) 87.5%,
-          rgba(88, 28, 135, 0.32) 100%),
-        linear-gradient(90deg,
-          rgba(56, 189, 248, 0.35) 2px,
-          transparent 0);
-      background-size: 80px 140px, 80px 140px, 40px 40px;
-      opacity: 0.28;
-      mix-blend-mode: screen;
-    }
-    .neon-strip {
-      height: 3px;
-      border-radius: 999px;
-      background: linear-gradient(90deg,
-        transparent,
-        rgba(168, 85, 247, 0.95),
-        rgba(56, 189, 248, 0.85),
-        rgba(244, 244, 245, 0.9),
-        transparent);
-      background-size: 220% 100%;
-      box-shadow: 0 0 26px rgba(168, 85, 247, 0.9);
-      animation: neonSweep 9s linear infinite;
-      opacity: 0.9;
-    }
-    @keyframes neonSweep {
-      0% { background-position: 200% 0; }
-      100% { background-position: -20% 0; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="main.js"></script>
 </head>
-<body data-page="contact" class="min-h-screen text-slate-100">
-  <!-- Header -->
-  <header class="border-b border-slate-900/70 bg-slate-950/60 backdrop-blur-2xl sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
-      <a href="index.html" class="flex items-center gap-3">
-        <img
-          src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png"
-          alt="SABR DIGITAL logo"
-          class="h-9 w-auto drop-shadow-[0_0_26px_rgba(168,85,247,0.95)]"
-        />
-        <span class="font-display font-semibold text-sm tracking-[0.28em] uppercase">
-          SABR DIGITAL
-        </span>
-      </a>
-      <nav class="flex items-center gap-6 text-[0.78rem]">
-        <a href="our-work.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="work">Our work</a>
-        <a href="process.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="process">Process</a>
-        <a href="faq.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="faq">FAQ</a>
-        <a href="talk-to-us.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="contact">Talk to us</a>
-      </nav>
-    </div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-2">
-      <div class="neon-strip"></div>
-    </div>
-  </header>
+<body data-page="contact">
+  <div class="page">
+    <header class="site-header">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+          <div class="logo-mark">
+            <img src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png" alt="SABR DIGITAL logo">
+          </div>
+          <div>
+            <div class="logo-text-main">SABR DIGITAL</div>
+            <div class="logo-text-sub">Websites that feel trustworthy</div>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="our-work.html" data-page-link="work">Our work</a>
+          <a href="process.html" data-page-link="process">Process</a>
+          <a href="faq.html" data-page-link="faq">FAQ</a>
+          <a href="talk-to-us.html" data-page-link="contact">Talk to us</a>
+        </nav>
+      </div>
+      <div class="led-bar"></div>
+    </header>
 
-  <main class="relative">
-    <div class="grid-overlay"></div>
-
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 space-y-10">
-      <div class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
-        <div class="space-y-4">
-          <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Talk to us</p>
-          <h1 class="font-display text-2xl sm:text-3xl font-semibold">
-            Tell us about your business (in normal language)
-          </h1>
-          <p class="text-sm text-slate-300 max-w-xl">
-            You don’t need to know “website speak”. Just tell us what you do, what isn’t working right now,
-            and what a better website would help you with. We’ll come back with ideas – not pressure.
-          </p>
-
-          <div class="grid gap-4 sm:grid-cols-2">
-            <div class="rounded-2xl border border-violet-700/80 bg-slate-950/85 px-4 py-4 space-y-2">
-              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Email</p>
-              <p class="text-sm font-medium text-slate-100">sabrdigitalwilts@gmail.com</p>
-              <p class="text-[0.78rem] text-slate-400">
-                Prefer writing directly? Send us a rough idea of what you need and any links or photos.
+    <main>
+      <section class="section">
+        <div class="container">
+          <div style="display:grid;gap:28px;grid-template-columns:minmax(0,1.05fr)minmax(0,0.95fr);align-items:flex-start;">
+            <div>
+              <div class="heading-xs">Talk to us</div>
+              <h1 class="heading-lg" style="margin-top:6px;">Tell us about your business (in normal language)</h1>
+              <p class="text-muted" style="margin-top:10px;max-width:520px;">
+                You don’t need to know “website speak”. Just tell us what you do, what isn’t working right now,
+                and what a better website would help you with.
               </p>
+
+              <div style="margin-top:22px;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+                <div class="feature-card">
+                  <div class="heading-xs">Email</div>
+                  <p style="margin-top:6px;font-size:14px;font-weight:600;">sabrdigitalwilts@gmail.com</p>
+                  <p class="feature-card-text" style="margin-top:6px;">
+                    Send us a rough idea of what you need and any links or photos.
+                  </p>
+                </div>
+                <div class="feature-card">
+                  <div class="heading-xs">Instagram</div>
+                  <p style="margin-top:6px;font-size:14px;font-weight:600;">@sabrdigital</p>
+                  <p class="feature-card-text" style="margin-top:6px;">
+                    Prefer DMs? You can voice note or send screenshots there instead.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="rounded-2xl border border-violet-700/80 bg-slate-950/85 px-4 py-4 space-y-2">
-              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Instagram</p>
-              <p class="text-sm font-medium text-slate-100">@sabrdigital</p>
-              <p class="text-[0.78rem] text-slate-400">
-                Voice notes, screenshots, quick questions – whatever’s easiest. We can start the conversation there.
-              </p>
+
+            <div class="form-shell">
+              <form
+                action="https://formspree.io/f/xangldrg"
+                method="POST"
+                class="form-grid"
+              >
+                <div class="form-row-two">
+                  <div>
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" required placeholder="Your name" />
+                  </div>
+                  <div>
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" required placeholder="you@example.com" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="business">Business name</label>
+                  <input id="business" name="business" type="text" placeholder="What’s your business called?" />
+                </div>
+
+                <div class="form-row-two">
+                  <div>
+                    <label for="current-site">Current website (if you have one)</label>
+                    <input id="current-site" name="current_site" type="url" placeholder="https://…" />
+                  </div>
+                  <div>
+                    <label for="budget">Rough budget (optional)</label>
+                    <input id="budget" name="budget" type="text" placeholder="e.g. full build, remap, or a range" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="message">What can we help with?</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Tell us briefly what you do, what isn’t working, and what a better website would change."
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:100%;margin-top:6px;">
+                  Send message
+                </button>
+
+                <p class="text-muted" style="font-size:11px;margin-top:8px;">
+                  We’ll reply as soon as we can with ideas and next steps – no pressure, no hard sell.
+                </p>
+              </form>
             </div>
           </div>
         </div>
+      </section>
+    </main>
 
-        <!-- Contact form -->
-        <div class="rounded-3xl border border-violet-700/80 bg-slate-950/90 px-5 py-6 shadow-sabr-glow/40">
-          <form
-            action="https://formspree.io/f/xangldrg"
-            method="POST"
-            class="space-y-4 text-sm"
-          >
-            <div class="space-y-1.5">
-              <label for="name" class="block text-xs font-medium text-slate-300 uppercase tracking-[0.18em]">Name</label>
-              <input id="name" name="name" type="text" required
-                     class="w-full rounded-xl border border-slate-700 bg-slate-950/90 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sabrAccent" />
-            </div>
-
-            <div class="space-y-1.5">
-              <label for="email" class="block text-xs font-medium text-slate-300 uppercase tracking-[0.18em]">Email</label>
-              <input id="email" name="_replyto" type="email" required
-                     class="w-full rounded-xl border border-slate-700 bg-slate-950/90 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sabrAccent" />
-            </div>
-
-            <div class="space-y-1.5">
-              <label for="business" class="block text-xs font-medium text-slate-300 uppercase tracking-[0.18em]">Business name</label>
-              <input id="business" name="business_name" type="text"
-                     class="w-full rounded-xl border border-slate-700 bg-slate-950/90 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sabrAccent" />
-            </div>
-
-            <div class="space-y-1.5">
-              <label for="website" class="block text-xs font-medium text-slate-300 uppercase tracking-[0.18em]">Current website (if you have one)</label>
-              <input id="website" name="current_website" type="url" placeholder="https://"
-                     class="w-full rounded-xl border border-slate-700 bg-slate-950/90 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sabrAccent" />
-            </div>
-
-            <div class="space-y-1.5">
-              <label for="message" class="block text-xs font-medium text-slate-300 uppercase tracking-[0.18em]">
-                What can we help with?
-              </label>
-              <textarea id="message" name="message" rows="5"
-                        placeholder="Tell us briefly what you do, what isn’t working right now, and what a better website would change."
-                        class="w-full rounded-xl border border-slate-700 bg-slate-950/90 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sabrAccent"></textarea>
-            </div>
-
-            <input type="hidden" name="_subject" value="New enquiry from SABR DIGITAL website" />
-
-            <button
-              type="submit"
-              class="mt-2 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-fuchsia-500 via-violet-500 to-sky-400 px-4 py-2.5 text-sm font-medium text-slate-950 shadow-sabr-glow hover:from-fuchsia-400 hover:via-violet-400 hover:to-sky-300 hover:shadow-sabr-glow/80 transition-all">
-              Send message
-            </button>
-
-            <p class="pt-2 text-[0.7rem] text-slate-500">
-              We usually reply within one working day. If you’d rather start on Instagram or email, that works too.
-            </p>
-          </form>
-        </div>
+    <footer class="site-footer">
+      <div class="led-bar"></div>
+      <div class="footer-inner">
+        <p>© SABR DIGITAL · Wiltshire-based web design studio</p>
+        <p>Friendly humans, not robots – even if we like the tech.</p>
       </div>
-    </section>
-  </main>
-
-  <footer class="border-t border-slate-900/80 bg-slate-950/98">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-3">
-      <div class="neon-strip"></div>
-    </div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.75rem] text-slate-500">
-      <p>© SABR DIGITAL · Independent web studio</p>
-      <p>Friendly humans, not robots – even if we like the tech.</p>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const page = document.body.dataset.page;
-      if (!page) return;
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.dataset.link === page) {
-          link.classList.add('nav-active');
-        }
-      });
-    });
-  </script>
+    </footer>
+  </div>
 </body>
 </html>
