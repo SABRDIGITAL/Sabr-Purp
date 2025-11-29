@@ -7,317 +7,130 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
-            body: ['Inter', 'system-ui', 'sans-serif'],
-          },
-          colors: {
-            sabrBg: '#050014',
-            sabrCard: '#09001f',
-            sabrAccent: '#a855f7',
-            sabrAccentSoft: '#c4b5fd',
-          },
-          boxShadow: {
-            'sabr-glow': '0 0 40px rgba(168, 85, 247, 0.6)',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background:
-        radial-gradient(circle at top, #3b0764 0, #020015 45%, #000 100%);
-      color: #f8fafc;
-    }
-    .font-display {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-    }
-    .nav-link {
-      position: relative;
-      padding-bottom: 0.25rem;
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #a855f7, #38bdf8, #f97316);
-      transition: width 0.2s ease-out;
-    }
-    .nav-link.nav-active::after,
-    .nav-link:hover::after {
-      width: 70%;
-    }
-    .grid-overlay {
-      pointer-events: none;
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(30deg,
-          rgba(148, 163, 184, 0.16) 12%,
-          transparent 12.5%,
-          transparent 87%,
-          rgba(148, 163, 184, 0.12) 87.5%,
-          rgba(148, 163, 184, 0.2) 100%),
-        linear-gradient(150deg,
-          rgba(88, 28, 135, 0.22) 12%,
-          transparent 12.5%,
-          transparent 87%,
-          rgba(88, 28, 135, 0.2) 87.5%,
-          rgba(88, 28, 135, 0.32) 100%),
-        linear-gradient(90deg,
-          rgba(56, 189, 248, 0.35) 2px,
-          transparent 0);
-      background-size: 80px 140px, 80px 140px, 40px 40px;
-      opacity: 0.28;
-      mix-blend-mode: screen;
-    }
-    .neon-strip {
-      height: 3px;
-      border-radius: 999px;
-      background: linear-gradient(90deg,
-        transparent,
-        rgba(168, 85, 247, 0.95),
-        rgba(56, 189, 248, 0.85),
-        rgba(244, 244, 245, 0.9),
-        transparent);
-      background-size: 220% 100%;
-      box-shadow: 0 0 26px rgba(168, 85, 247, 0.9);
-      animation: neonSweep 9s linear infinite;
-      opacity: 0.9;
-    }
-    @keyframes neonSweep {
-      0% { background-position: 200% 0; }
-      100% { background-position: -20% 0; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="main.js"></script>
 </head>
-<body data-page="process" class="min-h-screen text-slate-100">
-  <!-- Header -->
-  <header class="border-b border-slate-900/70 bg-slate-950/60 backdrop-blur-2xl sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
-      <a href="index.html" class="flex items-center gap-3">
-        <img
-          src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png"
-          alt="SABR DIGITAL logo"
-          class="h-9 w-auto drop-shadow-[0_0_26px_rgba(168,85,247,0.95)]"
-        />
-        <span class="font-display font-semibold text-sm tracking-[0.28em] uppercase">
-          SABR DIGITAL
-        </span>
-      </a>
-      <nav class="flex items-center gap-6 text-[0.78rem]">
-        <a href="our-work.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="work">Our work</a>
-        <a href="process.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="process">Process</a>
-        <a href="faq.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="faq">FAQ</a>
-        <a href="talk-to-us.html" class="nav-link text-slate-300 hover:text-slate-50 transition-colors" data-link="contact">Talk to us</a>
-      </nav>
-    </div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-2">
-      <div class="neon-strip"></div>
-    </div>
-  </header>
-
-  <main class="relative">
-    <div class="grid-overlay"></div>
-
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 space-y-8">
-      <div class="space-y-3 max-w-3xl">
-        <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Process</p>
-        <h1 class="font-display text-2xl sm:text-3xl font-semibold">
-          A simple, done-with-you process
-        </h1>
-        <p class="text-sm text-slate-300">
-          No complicated project plans. Just a clear set of steps so you always know what’s happening,
-          what we need from you, and when your new website will be ready.
-        </p>
+<body data-page="process">
+  <div class="page">
+    <header class="site-header">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+          <div class="logo-mark">
+            <img src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png" alt="SABR DIGITAL logo">
+          </div>
+          <div>
+            <div class="logo-text-main">SABR DIGITAL</div>
+            <div class="logo-text-sub">Websites that feel trustworthy</div>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="our-work.html" data-page-link="work">Our work</a>
+          <a href="process.html" data-page-link="process">Process</a>
+          <a href="faq.html" data-page-link="faq">FAQ</a>
+          <a href="talk-to-us.html" data-page-link="contact">Talk to us</a>
+        </nav>
       </div>
+      <div class="led-bar"></div>
+    </header>
 
-      <!-- Steps timeline -->
-      <div class="relative">
-        <div class="absolute left-3 sm:left-6 top-1 bottom-1 w-px bg-gradient-to-b from-fuchsia-500 via-violet-600 to-transparent pointer-events-none"></div>
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="heading-xs">Process</div>
+          <h1 class="heading-lg" style="margin-top:6px;">A simple, done-with-you process</h1>
+          <p class="text-muted" style="margin-top:10px;max-width:560px;">
+            No complicated project plans. Just a clear set of steps so you always know what’s happening,
+            what we need from you, and when your new website will be ready.
+          </p>
 
-        <div class="space-y-8">
-          <!-- Step 1 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-violet-500 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">💬</span>
-              </div>
-            </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
-              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 1</p>
-              <h2 class="font-display text-sm sm:text-base font-semibold">
-                Quick chat to understand your business
-              </h2>
-              <p class="text-sm text-slate-300">
+          <div class="process-timeline">
+            <article class="process-step">
+              <div class="process-index">Step 1</div>
+              <h2 class="process-title">Quick chat to understand your business</h2>
+              <p class="process-text">
                 We start with a short call or voice notes. You tell us what you do, who your customers are,
                 and what isn’t working with your current website (or not having one yet).
               </p>
-              <p class="text-xs text-slate-400">
-                What this means for you: no long forms or jargon – just a normal conversation so we can see
-                things from your side.
+              <p class="process-meaning">
+                What this means for you: no long forms or jargon – just a normal conversation so we can see things from your side.
               </p>
-            </div>
-          </div>
+            </article>
 
-          <!-- Step 2 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-violet-500 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">📸</span>
-              </div>
-            </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
-              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 2</p>
-              <h2 class="font-display text-sm sm:text-base font-semibold">
-                Collect photos, words &amp; key details
-              </h2>
-              <p class="text-sm text-slate-300">
-                You send us your best photos, logo (if you have one) and basic info: services, pricing,
-                opening times, socials, reviews and anything else you want people to see.
+            <article class="process-step">
+              <div class="process-index">Step 2</div>
+              <h2 class="process-title">Collect photos, words &amp; key details</h2>
+              <p class="process-text">
+                You send us your best photos, logo (if you have one) and basic info: services, pricing, opening times,
+                socials, reviews and anything else you want people to see.
               </p>
-              <p class="text-xs text-slate-400">
-                What this means for you: you can send rough notes and screenshots – we organise everything
-                into clean sections.
+              <p class="process-meaning">
+                What this means for you: you can send rough notes and screenshots – we organise everything into clean sections.
               </p>
-            </div>
-          </div>
+            </article>
 
-          <!-- Step 3 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-violet-500 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">🧪</span>
-              </div>
-            </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
-              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 3</p>
-              <h2 class="font-display text-sm sm:text-base font-semibold">
-                Design &amp; build the first version
-              </h2>
-              <p class="text-sm text-slate-300">
-                We design your pages, build them, and plug in key actions – call, message, booking links,
-                directions and contact. You get a private link to click through on your phone.
+            <article class="process-step">
+              <div class="process-index">Step 3</div>
+              <h2 class="process-title">Design &amp; build the first version</h2>
+              <p class="process-text">
+                We design your pages, build them, and plug in key actions – call, message, booking links, directions and contact.
+                You get a private link to click through on your phone.
               </p>
-              <p class="text-xs text-slate-400">
+              <p class="process-meaning">
                 What this means for you: you see something real quickly, not just sketches or moodboards.
               </p>
-            </div>
+            </article>
+
+            <article class="process-step">
+              <div class="process-index">Step 4</div>
+              <h2 class="process-title">Refine, launch &amp; simple handover</h2>
+              <p class="process-text">
+                We make tweaks based on your feedback, then launch the site on your domain and connect any existing email.
+                We also record a quick walkthrough so you know what’s where.
+              </p>
+              <p class="process-meaning">
+                What this means for you: your site goes live feeling like your business, not like a template.
+              </p>
+            </article>
+
+            <article class="process-step">
+              <div class="process-index">Step 5</div>
+              <h2 class="process-title">Domain, platform &amp; future updates</h2>
+              <p class="process-text">
+                We help move you off old DIY builders if needed, make sure hosting and domain are set up properly,
+                and agree how future updates will work.
+              </p>
+              <p class="process-meaning">
+                What this means for you: no wrestling with settings – everything is handled and documented.
+              </p>
+            </article>
+
+            <article class="process-step">
+              <div class="process-index">Step 6</div>
+              <h2 class="process-title">Ongoing support if you want it</h2>
+              <p class="process-text">
+                If you’d like ongoing help, we can handle updates like new photos, price changes, offers and small layout tweaks.
+              </p>
+              <p class="process-meaning">
+                What this means for you: you stay focused on your work while the site quietly stays up to date.
+              </p>
+            </article>
           </div>
 
-          <!-- Step 4 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-violet-500 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">🪄</span>
-              </div>
-            </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
-              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 4</p>
-              <h2 class="font-display text-sm sm:text-base font-semibold">
-                Tweaks, refinements &amp; extra passes
-              </h2>
-              <p class="text-sm text-slate-300">
-                We collect your feedback, tweak layouts, adjust wording and make sure everything feels like you.
-                We’ll also double-check mobile, loading speed and any forms or links.
-              </p>
-              <p class="text-xs text-slate-400">
-                What this means for you: you don’t have to “get it right” the first time – we refine it together.
-              </p>
-            </div>
-          </div>
-
-          <!-- Step 5 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-violet-500 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">🌐</span>
-              </div>
-            </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
-              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 5</p>
-              <h2 class="font-display text-sm sm:text-base font-semibold">
-                Domain, email &amp; launch
-              </h2>
-              <p class="text-sm text-slate-300">
-                We connect your domain, make sure your email still works and then push the site live.
-                We time this with you so it doesn’t interrupt your day-to-day work.
-              </p>
-              <p class="text-xs text-slate-400">
-                What this means for you: everything is wired up properly without you needing to touch DNS or settings.
-              </p>
-            </div>
-          </div>
-
-          <!-- Step 6 -->
-          <div class="relative pl-10 sm:pl-16">
-            <div class="absolute left-0 sm:left-3 top-1">
-              <div class="h-9 w-9 rounded-full bg-slate-950 border border-violet-500 flex items-center justify-center shadow-sabr-glow/40">
-                <span class="text-xl">🎥</span>
-              </div>
-            </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/85 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
-              <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 6</p>
-              <h2 class="font-display text-sm sm:text-base font-semibold">
-                Walkthrough &amp; optional ongoing help
-              </h2>
-              <p class="text-sm text-slate-300">
-                We record a quick walkthrough so you know what’s where. If you’d prefer not to touch it at all,
-                we can look after ongoing updates for you.
-              </p>
-              <p class="text-xs text-slate-400">
-                What this means for you: you stay in control, with the option to hand off maintenance if that’s easier.
-              </p>
-            </div>
+          <div style="margin-top:26px;border-top:1px solid #221b42;padding-top:14px;display:flex;justify-content:space-between;gap:16px;font-size:13px;color:#c2badf;">
+            <p>Want to know exactly what we’d do for your business?</p>
+            <a href="talk-to-us.html" class="btn btn-outline">Book a free chat</a>
           </div>
         </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="led-bar"></div>
+      <div class="footer-inner">
+        <p>© SABR DIGITAL · Wiltshire-based web design studio</p>
+        <p>Clear steps so you always know what’s next.</p>
       </div>
-
-      <div class="pt-4 border-t border-slate-800 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-300">
-        <p>Want to know exactly what we’d do for your business?</p>
-        <a href="talk-to-us.html" class="inline-flex items-center gap-2 text-xs font-medium text-sabrAccentSoft hover:text-sabrAccent transition-colors">
-          Book a free chat
-          <span class="text-[0.9rem]">↗</span>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="border-t border-slate-900/80 bg-slate-950/98">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-3">
-      <div class="neon-strip"></div>
-    </div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.75rem] text-slate-500">
-      <p>© SABR DIGITAL · Independent web studio</p>
-      <p>Clear steps so you always know what’s next.</p>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const page = document.body.dataset.page;
-      if (!page) return;
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.dataset.link === page) {
-          link.classList.add('nav-active');
-        }
-      });
-    });
-  </script>
+    </footer>
+  </div>
 </body>
 </html>
