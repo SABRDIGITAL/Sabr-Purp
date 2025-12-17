@@ -5,20 +5,15 @@
   <title>SABR DIGITAL – Websites that do the convincing for you</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
-
-  <!-- JS -->
   <script defer src="main.js"></script>
 </head>
 
 <body data-page="home">
-  <!-- Animated background -->
   <div class="animated-bg"></div>
 
   <div class="page">
@@ -28,7 +23,7 @@
       <div class="nav-inner">
         <a href="index.html" class="logo-link">
           <div class="logo-mark">
-            <img src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png" alt="SABR DIGITAL logo">
+            <img src="images/ChatGPT Image Nov 28, 2025 at 04_48_54 PM.png" alt="SABR DIGITAL logo" />
           </div>
           <div>
             <div class="logo-text-main">SABR DIGITAL</div>
@@ -43,18 +38,17 @@
           <a href="talk-to-us.html" data-page-link="contact">Talk to us</a>
         </nav>
       </div>
-
       <div class="led-bar"></div>
     </header>
 
     <main>
 
       <!-- HERO -->
-      <section class="section hero">
+      <section class="section hero hero-accent">
         <div class="container hero-grid">
 
           <!-- LEFT -->
-          <div>
+          <div class="hero-copy">
             <h1 class="hero-title accent-gradient">
               Websites that do the convincing for you
             </h1>
@@ -64,49 +58,55 @@
               trustworthy, and easy to contact.
             </p>
 
-            <div class="feature-row">
+            <!-- FEATURE CARDS (FLIP ON LOAD) -->
+            <div class="feature-row flip-sequence">
+
               <div class="feature-card flip-card">
-                <div class="feature-icon">🛡️</div>
-                <div class="feature-card-title">Professional & trustworthy</div>
+                <div class="feature-icon accent-glow">🛡️</div>
+                <div class="feature-card-title">Professional &amp; trustworthy</div>
                 <p class="feature-card-text">
                   Look like a business people feel confident booking.
                 </p>
               </div>
 
               <div class="feature-card flip-card">
-                <div class="feature-icon">✨</div>
+                <div class="feature-icon accent-glow">✨</div>
                 <div class="feature-card-title">Clean, modern layout</div>
                 <p class="feature-card-text">
-                  Clear sections, no clutter, no confusion.
+                  Clear sections, no clutter, no confusing pages.
                 </p>
               </div>
 
               <div class="feature-card flip-card">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon accent-glow">⚡</div>
                 <div class="feature-card-title">Done-for-you build</div>
                 <p class="feature-card-text">
-                  You talk. We handle the site and all the tech.
+                  You talk, we handle the site and all the tech.
                 </p>
               </div>
+
             </div>
 
             <div class="hero-ctas">
-              <a href="talk-to-us.html" class="btn btn-primary">Book a free chat</a>
-              <a href="faq.html" class="btn btn-outline">See common questions</a>
+              <a href="talk-to-us.html" class="btn btn-primary accent-glow">
+                Book a free chat
+              </a>
+              <a href="faq.html" class="btn btn-outline">
+                See common questions
+              </a>
             </div>
           </div>
 
           <!-- RIGHT -->
-          <div>
+          <div class="hero-visual">
             <div class="ba-wrap glow-frame">
               <div class="ba-frame">
-                <img src="images/home-before.jpg" alt="Before redesign" class="ba-image ba-image--before">
-                <img src="images/home-after.jpg" alt="After redesign" class="ba-image ba-image--after">
+                <img src="images/home-before.jpg" class="ba-image ba-image--before" alt="Before redesign" />
+                <img src="images/home-after.jpg" class="ba-image ba-image--after" alt="After redesign" />
                 <div class="ba-label">Before / After</div>
               </div>
-
               <p class="ba-caption">
-                Same business, presented in a way people actually trust.
+                Same business, shown in a way people actually trust.
               </p>
             </div>
           </div>
@@ -115,132 +115,44 @@
       </section>
 
       <!-- STATS -->
-      <section class="section">
+      <section class="section section-accent">
         <div class="container">
 
-          <p class="text-muted" style="max-width:720px;">
-            Your website is often the first and only chance to make someone feel confident
-            enough to book, message or visit. A dated or confusing site quietly pushes people away.
+          <p class="text-muted">
+            Your website is often the first and only chance to make someone feel confident enough
+            to book, message or visit.
           </p>
 
           <div class="stats-grid">
-            <div class="stat-card">
+
+            <div class="stat-card accent-border">
               <div class="stat-label">Trust</div>
-              <div class="stat-number">38%</div>
+              <div class="stat-number accent-gradient">38%</div>
               <div class="stat-text">
-                of people judge credibility based on a website at a glance.
+                of people judge how credible you are based on your website at a glance.
               </div>
             </div>
 
-            <div class="stat-card">
+            <div class="stat-card accent-border">
               <div class="stat-label">Research</div>
-              <div class="stat-number">70%</div>
+              <div class="stat-number accent-gradient">70%</div>
               <div class="stat-text">
                 check a website before visiting a business.
               </div>
             </div>
 
-            <div class="stat-card">
+            <div class="stat-card accent-border">
               <div class="stat-label">Experience</div>
-              <div class="stat-number">88%</div>
+              <div class="stat-number accent-gradient">88%</div>
               <div class="stat-text">
                 won’t return after a bad website experience.
               </div>
             </div>
+
           </div>
 
           <div class="stats-source">
             Sources: Google / UX industry studies
-          </div>
-
-        </div>
-      </section>
-
-      <!-- WHY -->
-      <section class="section">
-        <div class="container">
-
-          <div class="two-col-layout">
-            <div>
-              <h2 class="heading-lg accent-title">
-                Why a proper website still matters
-              </h2>
-
-              <p class="text-muted">
-                Social media gets attention. Your website decides whether people trust you enough
-                to actually book or message.
-              </p>
-
-              <div class="card-grid">
-                <div class="feature-card">
-                  <div class="feature-card-title">What your site should do</div>
-                  <p class="feature-card-text">
-                    • Explain who you are in seconds<br>
-                    • Show real work and proof<br>
-                    • Make contact effortless
-                  </p>
-                </div>
-
-                <div class="feature-card">
-                  <div class="feature-card-title">Common mistakes we fix</div>
-                  <p class="feature-card-text">
-                    • Outdated designs<br>
-                    • No clear next step<br>
-                    • Cluttered layouts
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="feature-card highlight-card">
-              <div class="heading-xs">How SABR DIGITAL approaches it</div>
-              <p class="feature-card-text">
-                We treat your website like your shopfront —
-                clear, confident, and designed to quietly do the selling for you.
-              </p>
-
-              <a href="process.html" class="btn btn-outline">
-                See how the process works
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- TESTIMONIALS -->
-      <section class="section testimonials-section">
-        <div class="container">
-
-          <div class="section-head">
-            <div class="heading-xs">What our clients say</div>
-            <h2 class="heading-lg accent-title">
-              Real feedback from small businesses
-            </h2>
-          </div>
-
-          <div class="testimonials-shell">
-            <div class="testimonial testimonial-active">
-              “Our old site felt like it was from 2010. SABR rebuilt it and now people
-              actually trust us before even walking in.”
-              <small>Fade Barbers · Full redesign</small>
-            </div>
-
-            <div class="testimonial">
-              “We send one link now and customers just get it.”
-              <small>North Row Café · New build</small>
-            </div>
-
-            <div class="testimonial">
-              “The site finally matches the level of work we do.”
-              <small>Forge Tattoo · Visual refresh</small>
-            </div>
-
-            <div class="testimonial-dots">
-              <div class="testimonial-dot"></div>
-              <div class="testimonial-dot"></div>
-              <div class="testimonial-dot"></div>
-            </div>
           </div>
 
         </div>
@@ -253,7 +165,7 @@
       <div class="led-bar"></div>
       <div class="footer-inner">
         <p>© SABR DIGITAL · Wiltshire-based web design studio</p>
-        <p>Built for barbers, studios, cafés & trades.</p>
+        <p>Built for barbers, studios, cafés &amp; trades.</p>
       </div>
     </footer>
 
