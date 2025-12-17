@@ -1,5 +1,66 @@
 /* =========================
-   GLOBAL BASE (LIGHT)
+   SABR DIGITAL — STYLE.CSS (LIGHT + ECCENTRIC ACCENTS)
+   Goal: keep SAME layout + classes, change ONLY colour/spacing/feel.
+   ========================= */
+
+/* =========================
+   THEME TOKENS
+   ========================= */
+
+:root {
+  /* Light base (FlowGrid-ish cleanliness) */
+  --bg: #eef2f7;
+  --bg-2: #f6f8fc;
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-strong: rgba(255, 255, 255, 0.98);
+  --surface-muted: rgba(255, 255, 255, 0.86);
+
+  /* Text */
+  --ink: #0b1220;
+  --ink-2: #1a2436;
+  --muted: #4b5a73;
+  --muted-2: #66748b;
+
+  /* Lines */
+  --line: rgba(15, 25, 40, 0.10);
+  --line-2: rgba(15, 25, 40, 0.14);
+
+  /* Accents (heavier than FlowGrid: teal/green/blue pop) */
+  --a-teal: #28e3c8;
+  --a-green: #2df28b;
+  --a-cyan: #35c7ff;
+  --a-blue: #2d63ff;
+
+  /* Gradient beams */
+  --beam: linear-gradient(90deg, var(--a-green), var(--a-teal), var(--a-cyan), var(--a-blue));
+  --beam-soft: linear-gradient(90deg, rgba(45,242,139,0.0), rgba(45,242,139,0.9), rgba(40,227,200,0.95), rgba(53,199,255,0.95), rgba(45,99,255,0.9), rgba(45,99,255,0.0));
+
+  /* Shadows */
+  --shadow-soft: 0 10px 30px rgba(10, 20, 40, 0.12);
+  --shadow-med: 0 18px 45px rgba(10, 20, 40, 0.16);
+  --shadow-hard: 0 26px 70px rgba(10, 20, 40, 0.22);
+
+  /* Radii */
+  --r-1: 14px;
+  --r-2: 18px;
+  --r-3: 22px;
+
+  /* Spacing scale (to make the whole site feel less cramped) */
+  --s-1: 6px;
+  --s-2: 10px;
+  --s-3: 14px;
+  --s-4: 18px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 44px;
+  --s-8: 56px;
+
+  /* Focus ring */
+  --focus: 0 0 0 3px rgba(53, 199, 255, 0.28);
+}
+
+/* =========================
+   GLOBAL BASE
    ========================= */
 
 *,
@@ -17,74 +78,163 @@ body {
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-  background: #f7f8fb;
-  color: #1e1f24;
+  background: var(--bg);
+  color: var(--ink);
 }
 
-/* Page shell */
+/* Page background: CLEAN light w/ subtle depth (hex bg sits behind this) */
 .page {
   min-height: 100vh;
   position: relative;
-  background: #f7f8fb;
+  background:
+    radial-gradient(circle at top left, rgba(45,242,139,0.10) 0, transparent 45%),
+    radial-gradient(circle at top right, rgba(53,199,255,0.12) 0, transparent 42%),
+    radial-gradient(circle at bottom, rgba(40,227,200,0.10) 0, transparent 55%),
+    linear-gradient(180deg, var(--bg-2), var(--bg));
   overflow-x: hidden;
 }
 
 /* Containers */
-
 .container {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
 }
 
-/* Typography */
-
+/* Typography helpers */
 .heading-xs {
   font-size: 11px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #6b7280;
+  color: rgba(11, 18, 32, 0.60);
 }
 
 .heading-xl {
-  font-size: 36px;
-  line-height: 1.15;
+  font-size: 32px;
+  line-height: 1.08;
+  color: var(--ink);
 }
 
 .heading-lg {
-  font-size: 26px;
+  font-size: 24px;
+  line-height: 1.12;
+  color: var(--ink);
 }
 
 .text-muted {
-  color: #5f6470;
-  font-size: 15px;
+  color: var(--muted);
+  font-size: 14px;
 }
 
-/* =========================
-   SECTION SPACING
-   ========================= */
-
-.section {
-  padding: 88px 0;
+/* Accent underline helper (matches your FlowGrid screenshots vibe) */
+.accent-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
 }
 
-/* =========================
-   HIGH-CONTRAST BEAM (GLOBAL)
-   ========================= */
-
-.section::before {
+.accent-underline::after {
   content: "";
-  display: block;
-  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 62px;
+  border-radius: 999px;
+  background: var(--beam);
+  box-shadow: 0 10px 30px rgba(45, 242, 139, 0.20);
+}
+
+/* =========================
+   HIGH-TECH HEX BACKGROUND (still allowed, just subtle on light)
+   ========================= */
+
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background-image: url("images/hex-bg.jpg"); /* your existing file */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.10;              /* IMPORTANT: low so it doesn't darken the page */
+  filter: brightness(1.25) saturate(1.05) contrast(1.05);
+  animation:
+    hexDrift 24s ease-in-out infinite alternate,
+    hexPulse 12s ease-in-out infinite;
+}
+
+@keyframes hexDrift {
+  0%   { transform: scale(1.08) translateX(-12px) translateY(-6px); }
+  100% { transform: scale(1.08) translateX(12px) translateY(6px); }
+}
+
+@keyframes hexPulse {
+  0%   { filter: brightness(1.20) saturate(1.05) contrast(1.05); }
+  50%  { filter: brightness(1.35) saturate(1.15) contrast(1.08); }
+  100% { filter: brightness(1.20) saturate(1.05) contrast(1.05); }
+}
+
+/* =========================
+   GLOBAL “SEPARATING BEAM” (your #7)
+   Use: add <div class="section-beam"></div> between sections or under headers.
+   ========================= */
+
+.section-beam {
+  height: 3px;
   width: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #2563eb,
-    transparent
-  );
-  margin-bottom: 48px;
-  opacity: 0.85;
+  border-radius: 999px;
+  background: var(--beam-soft);
+  box-shadow:
+    0 10px 30px rgba(45, 242, 139, 0.20),
+    0 14px 38px rgba(53, 199, 255, 0.16);
+  margin: var(--s-6) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-beam::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  transform: translateX(-120%);
+  animation: beamSweep 5.5s linear infinite;
+  opacity: 0.55;
+}
+
+@keyframes beamSweep {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+/* =========================
+   LED STRIPS (kept, but now colourful on light)
+   ========================= */
+
+.led-bar {
+  height: 3px;
+  width: 100%;
+  background: var(--beam-soft);
+  box-shadow:
+    0 12px 32px rgba(45, 242, 139, 0.20),
+    0 16px 40px rgba(53, 199, 255, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.led-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.65), transparent);
+  transform: translateX(-100%);
+  animation: ledSweep 6s linear infinite;
+  opacity: 0.65;
+}
+
+@keyframes ledSweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 /* =========================
@@ -95,22 +245,22 @@ body {
   position: sticky;
   top: 0;
   z-index: 40;
-  backdrop-filter: blur(14px);
-  background: rgba(247, 248, 251, 0.92);
-  border-bottom: 1px solid #e5e7eb;
+  backdrop-filter: blur(18px);
+  background: rgba(246, 248, 252, 0.86);
+  border-bottom: 1px solid var(--line);
 }
 
 .nav-inner {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 18px 24px;
+  padding: 16px 20px; /* a touch more breathing room */
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 18px;
 }
 
 /* Logo */
-
 .logo-link {
   display: inline-flex;
   align-items: center;
@@ -120,17 +270,19 @@ body {
 }
 
 .logo-mark {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 999px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: rgba(255,255,255,0.92);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--line);
 }
 
 .logo-mark img {
+  display: block;
   width: 30px;
   height: 30px;
   object-fit: contain;
@@ -138,46 +290,57 @@ body {
 
 .logo-text-main {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.14em;
+  color: var(--ink);
 }
 
+/* IMPORTANT: you said you’re removing the “little bottom-right lines” everywhere.
+   This is the NAV subtitle though — if you want it gone, set display:none here. */
 .logo-text-sub {
   font-size: 11px;
-  color: #6b7280;
+  color: rgba(11, 18, 32, 0.55);
 }
 
 /* Nav links */
-
 .nav-links {
   display: flex;
-  gap: 28px;
+  gap: 26px;
+  font-size: 13px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .nav-links a {
-  text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #374151;
   position: relative;
-  padding-bottom: 4px;
+  text-decoration: none;
+  color: rgba(11, 18, 32, 0.72);
+  padding-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 11px;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
 }
 
 .nav-links a::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -6px;
+  bottom: -4px;
   width: 0;
   height: 2px;
-  background: #2563eb;
+  border-radius: 999px;
+  background: var(--beam);
   transform: translateX(-50%);
-  transition: width 0.18s ease;
+  transition: width 0.18s ease-out;
+  box-shadow: 0 12px 28px rgba(53, 199, 255, 0.20);
 }
 
 .nav-links a.is-active::after {
-  width: 28px;
+  width: 34px;
 }
 
 /* =========================
@@ -185,172 +348,759 @@ body {
    ========================= */
 
 .btn {
-  border-radius: 999px;
-  font-size: 14px;
-  padding: 12px 24px;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  border-radius: 999px;
+  font-size: 14px;
+  padding: 11px 22px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.12s ease,
+    color 0.12s ease,
+    border-color 0.12s ease;
 }
 
 .btn-primary {
-  background: #2563eb;
-  color: #ffffff;
+  background: var(--beam);
+  color: #07111f;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  box-shadow:
+    0 16px 40px rgba(45, 242, 139, 0.22),
+    0 20px 54px rgba(45, 99, 255, 0.18);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25);
+  box-shadow:
+    0 18px 46px rgba(45, 242, 139, 0.26),
+    0 26px 70px rgba(45, 99, 255, 0.20);
 }
 
 .btn-outline {
-  border: 1px solid #d1d5db;
-  color: #1f2937;
-  background: #ffffff;
+  border: 1px solid var(--line-2);
+  background: rgba(255,255,255,0.72);
+  color: var(--ink);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.92);
+  border-color: rgba(11, 18, 32, 0.18);
 }
 
 /* =========================
-   HERO
+   SECTIONS / GLOBAL SPACING
    ========================= */
 
-.hero {
-  padding-top: 96px;
+.section {
+  padding: var(--s-8) 0; /* bigger = less cramped */
 }
 
+.hero {
+  padding-top: calc(var(--s-8) + 6px);
+}
+
+/* =========================
+   HERO (HOMEPAGE)
+   ========================= */
+
+/* Keep your existing layout */
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
-  gap: 64px;
+  gap: 48px; /* was 40 — more breathing room */
   align-items: center;
 }
 
 .hero-title {
   font-size: 42px;
-  line-height: 1.15;
-  margin-bottom: 18px;
+  line-height: 1.06;
+  margin-bottom: var(--s-4);
+  color: var(--ink);
 }
 
 .hero-title span {
-  color: #374151;
+  display: block;
+  color: var(--ink);
 }
 
 .hero-text {
-  font-size: 16px;
-  color: #4b5563;
-  max-width: 520px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 560px;
+}
+
+/* Feature row */
+.feature-row {
+  margin-top: var(--s-6);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Card surface (light, clean, pops with accent) */
+.feature-card {
+  background: var(--surface);
+  border-radius: var(--r-2);
+  padding: 18px 18px 16px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--line);
+}
+
+.feature-card-title {
+  font-size: 14px;
+  font-weight: 800;
+  margin-top: 8px;
+  color: var(--ink);
+}
+
+.feature-card-text {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* Make emojis/icons pop (you asked: titles / important icons should be accent colours) */
+.feature-card .heading-xs,
+.feature-card-title strong,
+.feature-card-title,
+.feature-card p strong {
+  color: var(--ink);
+}
+
+/* Hero CTAs */
+.hero-ctas {
+  margin-top: var(--s-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
 /* =========================
-   CARDS (GLOBAL)
-   ========================= */
-
-.feature-card,
-.stat-card,
-.process-step,
-.work-card,
-.form-shell,
-.testimonials-shell,
-.faq-item {
-  background: #ffffff;
-  border-radius: 20px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
-}
-
-/* Hover lift only */
-.feature-card:hover,
-.process-step:hover,
-.work-card:hover {
-  transform: translateY(-2px);
-}
-
-/* =========================
-   BEFORE / AFTER
+   BEFORE / AFTER (NO ZOOM / NO CUTOFF + BORDER OUTSIDE PHOTO)
    ========================= */
 
 .ba-wrap {
-  padding: 18px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-med);
+  padding: 16px;
+  border-radius: var(--r-2);
+  border: 1px solid var(--line);
 }
 
 .ba-frame {
+  position: relative;
+  overflow: hidden;
   aspect-ratio: 16 / 10;
-  background: #f3f4f6;
+  border-radius: var(--r-1);
+  background: #ffffff;
+  border: 1px solid rgba(11, 18, 32, 0.14); /* border OUTSIDE photo */
 }
 
+/* CRITICAL: no zoom, no cutoff */
 .ba-image {
-  object-fit: contain;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;      /* was cover (causes crop) */
+  object-position: center;
+  padding: 10px;           /* breathing room so it never kisses the border */
+  transition: opacity 0.3s ease-out;
+  background: #ffffff;
+}
+
+/* Default: show BEFORE */
+.ba-image--after { opacity: 0; }
+
+/* Hover: show AFTER */
+.ba-wrap:hover .ba-image--after { opacity: 1; }
+.ba-wrap:hover .ba-image--before { opacity: 0; }
+
+/* Label (now clean + accent) */
+.ba-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 12px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1px solid rgba(11, 18, 32, 0.14);
+  background: rgba(255,255,255,0.88);
+  color: rgba(11, 18, 32, 0.70);
+  box-shadow: var(--shadow-soft);
+  transition: opacity 0.25s ease-out;
+}
+
+.ba-wrap:hover .ba-label { opacity: 0; }
+
+.ba-caption {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
 }
 
 /* =========================
-   FAQ
+   “FLOWGRID-STYLE ICON METRICS” (you want to replace the current ones)
+   Add to HTML later using this class, e.g. <div class="icon-metrics">...</div>
    ========================= */
 
+.icon-metrics {
+  margin-top: var(--s-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  align-items: center;
+}
+
+.icon-metric {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.icon-metric strong {
+  color: var(--a-blue);
+  font-weight: 900;
+}
+
+.icon-metric .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--beam);
+  box-shadow: 0 14px 32px rgba(45, 242, 139, 0.22);
+}
+
+/* =========================
+   STATS
+   ========================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: var(--s-6);
+}
+
+.stat-card {
+  background: var(--surface);
+  border-radius: var(--r-2);
+  padding: 18px 18px 16px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--line);
+}
+
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(11, 18, 32, 0.55);
+}
+
+.stat-number {
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.stat-text {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.stats-source {
+  margin-top: 10px;
+  font-size: 11px;
+  color: rgba(11, 18, 32, 0.55);
+}
+
+/* =========================
+   TESTIMONIALS
+   ========================= */
+
+.testimonials-section {
+  padding-bottom: var(--s-8);
+}
+
+.testimonials-shell {
+  background: var(--surface);
+  border-radius: var(--r-3);
+  box-shadow: var(--shadow-med);
+  padding: 22px 20px 20px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.testimonial {
+  display: none;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.testimonial-active {
+  display: block;
+}
+
+.testimonial small {
+  display: block;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.testimonial-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.testimonial-dot {
+  width: 14px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(11, 18, 32, 0.18);
+}
+
+.testimonial-dot.is-active {
+  background: var(--beam);
+  box-shadow: 0 16px 34px rgba(53, 199, 255, 0.18);
+}
+
+/* =========================
+   OUR WORK (cards + modal stay same, now light aesthetic)
+   ========================= */
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: var(--s-6);
+}
+
+.work-card {
+  background: var(--surface);
+  border-radius: var(--r-3);
+  padding: 16px 16px 18px;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  border: 1px solid var(--line);
+}
+
+.work-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-med);
+  border-color: rgba(53, 199, 255, 0.28);
+}
+
+.work-thumb {
+  background:
+    radial-gradient(circle at top left, rgba(45,242,139,0.16), transparent 55%),
+    radial-gradient(circle at top right, rgba(53,199,255,0.18), transparent 55%),
+    rgba(255,255,255,0.8);
+  height: 160px;
+  border-radius: var(--r-2);
+  margin-bottom: 10px;
+  border: 1px solid var(--line);
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 14, 24, 0.62);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
+.modal-backdrop.is-open {
+  display: flex;
+}
+
+.modal {
+  width: min(960px, 100% - 40px);
+  max-height: calc(100vh - 80px);
+  background: var(--surface-strong);
+  border-radius: var(--r-3);
+  box-shadow: var(--shadow-hard);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255,255,255,0.45);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.modal-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.modal-close {
+  cursor: pointer;
+  font-size: 18px;
+  color: rgba(11, 18, 32, 0.70);
+}
+
+.modal-body {
+  padding: 16px 18px 18px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+/* Mini-site sections inside modal */
+.mini-site-section {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.mini-site-section:last-child {
+  border-bottom: none;
+}
+
+/* =========================
+   PROCESS (cards stay the same layout — now interactive-ready styling)
+   ========================= */
+
+.process-timeline {
+  margin-top: var(--s-6);
+  display: grid;
+  gap: 16px; /* slightly tighter gaps, but cards get more padding */
+}
+
+.process-step {
+  background: var(--surface);
+  border-radius: var(--r-3);
+  padding: 18px 18px 16px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  transition: box-shadow 0.16s ease, transform 0.16s ease, border-color 0.16s ease;
+  border: 1px solid var(--line);
+}
+
+/* Left accent rail (only appears on hover/open) */
+.process-step::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--beam);
+  opacity: 0.0;
+  transition: opacity 0.16s ease;
+}
+
+/* “Beam glow” ring (used when card is active/open — main.js will toggle .is-open) */
+.process-step::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--r-3) + 2px);
+  background: var(--beam);
+  opacity: 0;
+  filter: blur(14px);
+  z-index: -1;
+  transition: opacity 0.18s ease;
+}
+
+.process-step:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-med);
+  border-color: rgba(45, 242, 139, 0.22);
+}
+
+.process-step:hover::before {
+  opacity: 1;
+}
+
+/* ACTIVE/OPEN state (main.js will add .is-open) */
+.process-step.is-open {
+  border-color: rgba(53, 199, 255, 0.30);
+  box-shadow: var(--shadow-med);
+}
+
+.process-step.is-open::before {
+  opacity: 1;
+}
+
+.process-step.is-open::after {
+  opacity: 0.18; /* the “LED beam behind box” look */
+}
+
+.process-index {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(11, 18, 32, 0.55);
+}
+
+.process-title {
+  font-size: 15px;
+  font-weight: 900;
+  margin-top: 6px;
+  color: var(--ink);
+}
+
+.process-text {
+  font-size: 13px;
+  line-height: 1.55;
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.process-meaning {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: rgba(11, 18, 32, 0.62);
+}
+
+/* =========================
+   FAQ (same structure, better logic-ready styling)
+   ========================= */
+
+.faq-list {
+  margin-top: var(--s-6);
+  display: grid;
+  gap: 12px;
+}
+
 .faq-item {
-  padding: 16px 18px;
+  background: var(--surface);
+  border-radius: var(--r-2);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--line);
+  transition: box-shadow 0.16s ease, border-color 0.16s ease, transform 0.16s ease;
+  position: relative;
+}
+
+.faq-item::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--r-2) + 2px);
+  background: var(--beam);
+  opacity: 0;
+  filter: blur(14px);
+  z-index: -1;
+  transition: opacity 0.18s ease;
 }
 
 .faq-item[open] {
-  border-color: #2563eb;
+  border-color: rgba(45, 99, 255, 0.26);
+  box-shadow: var(--shadow-med);
+}
+
+.faq-item[open]::after {
+  opacity: 0.18; /* same “beam behind box” */
 }
 
 .faq-summary {
-  font-size: 14px;
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--ink);
+  gap: 14px;
+  padding: 6px 0;
+}
+
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-icon {
+  font-size: 18px;
+  color: rgba(11, 18, 32, 0.55);
+  margin-left: 8px;
+}
+
+.faq-body {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  padding-bottom: 6px;
 }
 
 /* =========================
-   FORMS
+   TALK TO US FORM (more spacing + cleaner inputs)
    ========================= */
 
-label {
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #6b7280;
+.form-shell {
+  background: var(--surface);
+  border-radius: var(--r-3);
+  padding: 22px 20px 18px;
+  box-shadow: var(--shadow-med);
+  border: 1px solid var(--line);
 }
 
-input,
+.form-grid {
+  display: grid;
+  gap: 16px; /* more breathing room */
+}
+
+.form-row-two {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 720px) {
+  .form-row-two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+label {
+  display: block;
+  font-size: 11px;
+  color: rgba(11, 18, 32, 0.62);
+  margin-bottom: 6px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
 textarea,
 select {
+  width: 100%;
   border-radius: 14px;
-  border: 1px solid #d1d5db;
-  background: #ffffff;
-  padding: 12px 14px;
-  font-size: 14px;
+  border: 1px solid rgba(11, 18, 32, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+  padding: 11px 12px;
+  font-size: 13px;
+  color: var(--ink);
+  outline: none;
+  box-shadow: 0 1px 0 rgba(10, 20, 40, 0.04);
+  transition: box-shadow 0.14s ease, border-color 0.14s ease, transform 0.14s ease;
+}
+
+textarea { resize: vertical; }
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(11, 18, 32, 0.38);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(53, 199, 255, 0.45);
+  box-shadow: var(--focus);
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: rgba(45, 242, 139, 0.35);
 }
 
 /* =========================
-   FOOTER
+   FOOTER (clean — you said remove the “little lines” per page)
+   This keeps footer but makes it neutral. If you want it gone entirely, we can.
    ========================= */
 
 .site-footer {
-  border-top: 1px solid #e5e7eb;
-  background: #ffffff;
-  color: #6b7280;
-  font-size: 12px;
+  background: rgba(246, 248, 252, 0.78);
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  color: rgba(11, 18, 32, 0.55);
 }
 
 .footer-inner {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 18px 24px;
+  padding: 12px 20px 14px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: 12px;
 }
+
+/* Optional: if you want to remove the right-side footer sentence everywhere:
+   Add class="footer-right" to the second <p> and this will hide it. */
+.footer-right { display: none; }
 
 /* =========================
    RESPONSIVE
    ========================= */
 
-@media (max-width: 840px) {
+@media (max-width: 980px) {
   .hero-grid {
-    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+}
+
+@media (max-width: 840px) {
+  .nav-links {
+    gap: 18px;
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero {
+    padding-top: 44px;
+  }
+
+  .feature-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stats-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .section {
-    padding: 72px 0;
+    padding: 46px 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .nav-inner {
+    padding: 14px 16px;
   }
 }
